@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./semiTestMain.css">
+    <link rel="stylesheet" href="./semiQue.css">
+    <link rel="stylesheet" href="./semiAns.css"> 
+    <link rel="stylesheet" href="./animation.css">
+
+
+    <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
+  
+    <title>Document</title>
+</head>
+<body>
+
+    <main>
+        <header>
+
+            <div>
+                <a href="#"><img src="./image/LogoMakr-9dgAJM.png" name="home-logo"></a>
+            </div>
+
+            <div>
+                <ul class="home-nav">
+                    <li><a href="#">홈</a></li>
+                    <li><a href="#">장르 검색</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="#">추천 시뮬레이션</a></li>
+                </ul>
+            </div>
+
+            <div class="head-right">
+
+                <div class="search-box">
+                
+                <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
+                <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
+                </div>
+
+                <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
+                <div><a href="#"><i class="fa-solid fa-user"></i></a></div>
+
+            </div>
+
+        </header>
+
+        <section class="main">
+            <div class="test_main">
+               
+                <img src="./image/추천영화테스트.png" class="test_main_img"  >
+                
+            <div class="test_start_btn" onclick="begin()">시뮬레이션 시작<img src="./image/play (1).png" class="test_start_btn_img"></div>
+        </div>
+             
+            
+
+        </section>
+       
+        <section id="qna" >
+            
+            <div class="test_page">
+                <div class="simulation_top">
+                    <span class="simulation_text">시뮬레이션</span><span id="simul_count_num" ></span><span class="simul_total_num">/12</span>
+                </div>
+             <div class="status">
+                <div class="statusBar">
+
+                </div>
+             </div>
+             <!-- <div class="question_number">
+               1. (1번질문)     
+            </div>   -->
+
+            <div class="question_p">
+
+            </div>
+            <div class="answerBox">
+
+            </div>
+        
+        </div>
+
+            
+       
+        </section>
+
+
+        <section id="result">
+            <p class="main_Center">당신을 위한 오늘의 영화는??</p>
+            <div class="test_finall_main">
+                <div class="arrow"><img class="movie_recommend_left_btn" src="./image/nextleft.png">
+                </div>
+                <div class="resultParent">
+                <div class="resultname" id="con">
+
+                </div>
+
+                <div class="resultImg" id="con">
+                   
+                </div>
+                <div class="resultDesc">
+
+                </div>
+                <div class="btnDiv" id="con">
+                <button type="butten" class="q_btn" >공유하기</button>
+            </div>
+            </div>
+           
+                <div class="arrow"><img class="movie_recommend_right_btn" src="./image/next.png">
+                </div>
+            </div>
+
+        </section>
+        <script src="./js/data.js" charset="utf-8"></script>
+        <script src="/start.js" charset="utf-8"></script>
+     
+
+
+
+
+    </main>
+    <footer>
+        <p><a href="#">이용약관</a></p>
+        <p><a href="#">개인정보처리방침</a></p>
+        <p><a href="#">고객센터</a></p>
+        <p><a href="#">(주)KH</a></p>
+    </footer>
+    
+</body>
+</html>

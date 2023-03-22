@@ -1,0 +1,10 @@
+#DB_tab41{position:relative;width:1300px;height:470px;}
+#DB_tab41 .mask{position:relative;float:left;width:860px;height:100%;overflow:hidden;}
+#DB_tab41 .img{position:absolute;}
+#DB_tab41 .img li{float:left;width:200px;margin-right:20px}
+#DB_tab41 .btn{float:right;margin:313px 4px 0 0;width:10px;bottom:-40px;text-align:center}
+#DB_tab41 .btn li{cursor:pointer;margin-bottom:13px;display:block;text-indent: -99999px;width:10px;height:10px;border-radius:50%;border:2px solid #666;}
+#DB_tab41 .btn li.on{background:#fff;border:none;width:9px;height:9px}
+.btn_mycont{float:left;margin:363px 0 0 240px}
+.btn_newcont{float:left;margin:364px 237px 0 -3px}
+.cont2-2_4{margin-right:0}

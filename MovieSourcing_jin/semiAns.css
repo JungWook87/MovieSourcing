@@ -122,7 +122,7 @@ header>div:nth-child(3) {
 .resultImg {
     display: contents;
 }
-#con{
+#resultSort{
     display:inline-block;
    
     text-align: center;

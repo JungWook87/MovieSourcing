@@ -1,0 +1,9 @@
+#DB_etc38{position:fixed;right:20px;top:90%;margin-top:-100px;display:none}
+#DB_etc38 .btn{position:relative;z-index:1;}
+#DB_etc38 .btn a{display:block;width:74px;height:74px;text-indent:-9999px}
+#DB_etc38 .btn a:hover{background-color:#eee;}
+#DB_etc38 .btn a.up{background:url('../img/btn_top.png') no-repeat;
+    width:77px;height:77px;}
+#DB_etc38 .btn a.more{background:url('../img/btn_dl.png') no-repeat;
+    width:74px;height:74px;position:relative;top:-10px;}
+#DB_etc38 .btn a.more_light{background:url('../img/btn_dl_light.png') no-repeat;}

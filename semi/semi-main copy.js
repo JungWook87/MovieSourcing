@@ -11,7 +11,7 @@ janrbutton.addEventListener("click", function() {
 
 
 
-
+/*
 // 첫번째 영화추천 슬라이드
 let slides = document.querySelector('.slides'),
     slide = document.querySelectorAll('.slides li'),
@@ -71,7 +71,7 @@ function moveSlide(num) {
 */
 
 
-
+/*
 //수동 슬라이드
 nextBtn.addEventListener('click', function() {
 
@@ -92,7 +92,7 @@ prevBtn.addEventListener('click', function() {
         moveSlide(slideCount - 4);
     }
 });
-
+*/
 
 // 둦번쨰 영화추천 슬라이드
 let slides2 = document.querySelector('.slides2'),
@@ -172,6 +172,17 @@ minterval = setInterval(function() {
 
 
 
+
 // 인기순위 슬라이드 실험
 
+
+/*function chart() {
+    let chart = document.querySelectorAll(".charts");
+
+    for(let i=0; i<chart.length; i++) {
+        chart[i].toggleAttribute('active');
+    }
+    setTimeout()
+}
+*/
 

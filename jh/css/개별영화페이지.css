@@ -12,6 +12,10 @@ span {
     color: white;
 }
 
+body {
+    background-color: black;
+}
+
 #root {
     position : relative;
     min-width : 320px;
@@ -28,9 +32,10 @@ span {
     overflow : hidden;
     display: flex;
     flex-direction: column;
+    padding-bottom: 60px;
 }
 
-header {
+.backpageHeader {
     position : relative;
     min-width : 320px;
     background-color: black;
@@ -38,9 +43,8 @@ header {
     align-items: center;
 }
 
-header > div {
+.backpageDiv {
     position : relative;
-    
     max-width : 800px;
     display : flex;
 }
@@ -388,3 +392,58 @@ pre {
     margin: 5px;
 
 }
+
+.navHeader {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    width: 100%;
+    border-bottom: 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.32);
+    background-color: rgb(20, 20, 21);
+}
+
+
+.nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    
+}
+.nav > a {
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 80px;
+    width : 25%;
+    height: 58px;
+    margin : auto;
+    position: relative;
+    border-radius: 5px;
+
+}
+
+.nav > a > i {
+    margin-top: 8px;
+    color : rgb(194, 194, 194);
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.nav > a > span {
+    font-size: 12px;
+    color : rgb(194, 194, 194);
+}
+
+.nav > a:hover {
+    background-color: rgb(41, 41, 75);
+   
+
+}
+
+
+

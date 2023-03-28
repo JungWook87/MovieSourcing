@@ -12,6 +12,10 @@ span {
     color: white;
 }
 
+body {
+    background-color: black;
+}
+
 #root {
     position : relative;
     min-width : 320px;
@@ -31,19 +35,20 @@ span {
     overflow : hidden;
 }
 
-header {
+.backpageHeader {
     position : relative;
     min-width : 320px;
     background-color: black;
     display : flex;
     align-items: center;
 }
-header > div {
+
+.backpageDiv {
     position : relative;
-    
     max-width : 800px;
     display : flex;
 }
+
 .backpage {
     margin-top: 30px;
     margin-left: 30px;

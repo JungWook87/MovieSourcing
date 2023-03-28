@@ -12,6 +12,10 @@ span {
     color: white;
 }
 
+body {
+    background-color: black;
+}
+
 #root {
     position : relative;
     min-width : 320px;
@@ -29,8 +33,10 @@ span {
     margin : 0 auto;
     box-sizing: border-box;
     overflow : hidden;
+    padding-bottom: 60px;
 }
-header {
+
+.backpageHeader {
     position : relative;
     min-width : 320px;
     background-color: black;
@@ -38,9 +44,8 @@ header {
     align-items: center;
 }
 
-header > div {
+.backpageDiv {
     position : relative;
-    
     max-width : 800px;
     display : flex;
 }
@@ -211,6 +216,17 @@ section {
     cursor: pointer;
     margin : 0px 2px;
 }
+
+#arrow {
+    color : white;
+    font-size: 14px;
+}
+
+#boxLine {
+    color: rgb(137, 132, 132);
+    height: 50%;
+}
+
 .genre {
     padding: 4px 8px;
     margin : 0px;
@@ -236,6 +252,7 @@ section {
 .lifemovie-top > a {
     font-size: 12px;
     color : gray;
+
 }
 
 .lifemovie-bottom {
@@ -307,3 +324,49 @@ section {
     font-size: 18px;
     background-color: rgb(83, 83, 115);
 }
+
+
+.navHeader {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    width: 100%;
+    border-bottom: 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.32);
+    background-color: rgb(20, 20, 21);
+}
+
+.nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    
+}
+.nav > a {
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+    min-width: 80px;
+    height: 58px;
+    margin : auto;
+    position: relative;
+
+}
+
+.nav > a > i {
+    margin-top: 8px;
+    color : white;
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.nav > a > span {
+    font-size: 12px;
+}
+
+
+

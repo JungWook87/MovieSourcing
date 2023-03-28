@@ -9,8 +9,6 @@
     font-style: normal;
 }
 
-
-
 body {
     background-color: black;
     margin: 0;
@@ -18,24 +16,34 @@ body {
     padding: 0;
 }
 
-main {
+
+
+/*메인 포스터*/
+.main-slides {
+    position: absolute;
+    left: 0; top: 0;
 }
 
 .main-image {
+    position: relative;
     width: 1920px;
+    margin: 0 auto;
+    height: 800px;
     overflow: hidden;
 }
-.main-slides {
-    position: relative;
-    transition: left 1.0s ease-out;
-    
+.main-slides li {
+    width: 1920px;
+    height: 800px;
+    float: left;
 
 }
 .main-slides li:not(:last-child), .slides2 li:not(:last-child) {
-    float: left;
-    margin-right: 30px;
+    
+    margin-right: 0px;
 }
-
+.main-slides.animated {
+    transition: 0.5s ease-in-out;
+}
 
 
 
@@ -112,8 +120,6 @@ header  > div:nth-child(4){
     flex-direction: column;
 }
 
-.slide_wrapper {
-}
 .movie > span:nth-child(1) {
     color: white;
     font-size: 25px;
@@ -156,22 +162,31 @@ header  > div:nth-child(4){
 }
 
 
-
-
-
-
+.slides li img {
+    width: 200px;
+    height: 300px;
+}
 
 .slides, .slides2 {
     position: absolute;
     left: 0; top: 0;
     width: 1810px;
-    transition: left 0.5s ease-out;
     padding: 0;
 }
+
+.slides.animated, .slides2.animated {
+    transition: left 0.5s ease-out;
+}
+
+
+
 .slides li:not(:last-child), .slides2 li:not(:last-child) {
     float: left;
     margin-right: 30px;
 }
+
+
+
 .controls {
     margin-left: 580px;
 }

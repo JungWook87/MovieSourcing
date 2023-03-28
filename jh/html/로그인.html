@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name ="google-signin-client_id" 
     content="935814438564-8ocf3d4e2vsp790u21l0vctt9qahq9bj.apps.googleusercontent.com">
-    <link rel="stylesheet" href="/css/로그인.css">
+    <link rel="stylesheet" href="../css/로그인.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" 
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
     crossorigin="anonymous"></script>
@@ -36,25 +36,30 @@
                     <section class="loginbox">
                         <div class="login">
                             <div class="loginwrap">
-                                <span>아이디</span>
-                                <div class="id">
-                                    <input type="text" id="id" placeholder="아이디를 입력해주세요">
-                                </div>
-                                <span>비밀번호</span>
-                                <div class="password">
-                                    <input type="password" id="password" placeholder="비밀번호를 입력해주세요">
-                                </div>
-                                <div class="keepLogin">
-                                    <input type="checkbox" name="keepLogin">
-                                    <label for="keepLogin"><span>로그인 상태 유지</span></label>
-
-                                </div>
+                                <form action="" method="">
+                                    <fieldset id="">
+                                        <span>아이디</span>
+                                        <div class="id">
+                                            <input type="text" id="id" placeholder="아이디를 입력해주세요">
+                                        </div>
+                                        <span>비밀번호</span>
+                                        <div class="password">
+                                            <input type="password" id="password" placeholder="비밀번호를 입력해주세요">
+                                        </div>
+                                        <div class="keepLogin">
+                                            <input type="checkbox" name="keepLogin">
+                                            <label for="keepLogin"><span>로그인 상태 유지</span></label>
+                                        </div>
+                                        <button id="nomalLogin">
+                                            <span>로그인</span>
+                                        </button>
+                                    </fieldset>
+                                </form>
+                               
                             </div>
 
                             <div class="btnwrap">
-                                <div id="nomalLogin">
-                                    <span>로그인</span>
-                                </div>
+                                
                                 <div id="kakaoLogin">
                                     <div>
                                         <i class="fa-solid fa-comment" id="kakaoImg"></i>

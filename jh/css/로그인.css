@@ -74,6 +74,11 @@ section {
     font-weight: bold;
 }
 
+fieldset {
+    border-style: none;
+
+}
+
 .login {
     padding : 30px 50px;
     margin : 8px 0;
@@ -84,7 +89,7 @@ section {
 .loginwrap {
     display : flex;
     flex-direction: column;
-    margin : 25px 0;
+    margin : 25px 0 0;
 }
 
 
@@ -146,6 +151,11 @@ input::placeholder {
     line-height: 55px;
     background-color: rgb(181, 133, 128);
     cursor: pointer;
+
+    margin : 14px auto;
+    border-radius: 30px;
+    height: 55px;
+    width: 75%;
 }
 #nomalLogin > span {
     font-size: 20px;

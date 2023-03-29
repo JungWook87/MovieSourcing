@@ -12,6 +12,14 @@ span {
     color: white;
 }
 
+body {
+    background-color: black;
+}
+
+input {
+    padding : 0 13px;
+}
+
 #root {
     position : relative;
     min-width : 320px;
@@ -31,19 +39,20 @@ span {
     overflow : hidden;
 }
 
-header {
+.backpageHeader {
     position : relative;
     min-width : 320px;
     background-color: black;
     display : flex;
     align-items: center;
 }
-header > div {
+
+.backpageDiv {
     position : relative;
-    
     max-width : 800px;
     display : flex;
 }
+
 .backpage {
     margin-top: 30px;
     margin-left: 30px;
@@ -75,7 +84,7 @@ section {
 }
 
 .infomation {
-    padding : 30px 30px;
+    padding : 40px 15%;
     margin : 8px 0;
     border-radius: 15px;
     background-color:  rgb(57, 41, 41);
@@ -186,11 +195,14 @@ section {
 
 input::placeholder {
     font-size: 16px;
-    padding-left: 15px;
 }
 
 input {
     border-radius: 5px;
+}
+
+input:focus{
+    border: 4px solid rgb(194, 194, 255);
 }
 
 

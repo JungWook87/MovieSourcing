@@ -1,74 +1,45 @@
-//아이디 닉네임 중복체크 
-const id = document.getElementById("id");
 
-document.getElementById("iddupcheck")
-.addEventListener("click",function(){
-    const regEx = /^[a-zA-Z0-9]{5,12}$/;
-    if(regEx.test(id.value)){
-        // if(){
-        // } else {alert("중복입니다")}
-        alert("사용가능한 아이디입니다.");
-    } else {
-        alert("형식에 맞지않습니다.");
+// 이메일 유효성 검사
+const EmailObj = false;
+const cNumberObj = false;
+
+const memberEmail = document.getElementById("email");
+const emailMessage = document.querySelector("#emailMessage");
+const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
+
+memberEmail.addEventListener("input", function(){
+    if(memberEmail.value.length == 0 ){
+        emailMessage.innerText("");
+        return;
     }
-})
-
-const nickname = document.getElementById("nickname");
-
-document.getElementById("namedupcheck")
-.addEventListener("click",function(){
-    const nickRegEx = /^[가-힣a-zA-Z0-9]{2,15}$/;
-    if(nickRegEx.test(nickname.value)){
-        // if(){
-        // } else {alert("중복입니다")}
-        alert("사용가능한 닉네임입니다.");
+    if(regExp.test(memberEmail.value)){
+        emailMessage.innerText = "유효한 이메일 주소입니다";
+        EmailObj = true;
     } else {
-        alert("형식에 맞지않습니다.");
+        emailMessage.innerText = "유효하지않은 이메일 주소입니다.";
+        EmailObj = false;
     }
-})
+});
 
 
+const cNumberBtn = document.getElementById("cNumberBtn");
+const cMessage = document.getElementById("cMessage");
 
+cNumberBtn.addEventListener("click",function(){
 
-// 비밀번호 체크
+    if(EmailObj){
 
-const pw1 = document.getElementById("pw1");
-const regEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-zA-Z0-9\d$@$!%*#?&]{8,15}$/;
-const pw2 = document.getElementById("pw2");
-const pwCheck = document.getElementById("pwCheck");
+        $.ajax({
+            url : "sendEmail",
+            data : {"memberEmail" : memberEmail.value},
+            type : "GET",
+            success : function(emailResult){
+                cNumberObj = true;
+            },
+            error : function(){
+                console.log("뭐임?")
+            }     
+        })
 
-
-pw2.addEventListener("keyup",function(){
-    if(regEx.test(pw1.value)){
-        if(pw2.value == pw1.value){
-            pwCheck.innerText = "사용가능한 비밀번호 입니다.";
-            pwCheck.style.color = "springgreen";
-            pwCheck.style.fontWeight = "bold";
-        } else {
-            pwCheck.innerText = "비밀번호가 일치하지 않습니다.";
-            pwCheck.style.color = "tomato";
-            pwCheck.style.fontWeight = "bold";
-        }
-    } else {
-        pwCheck.innerText = "비밀번호 형식이 맞지 않습니다";
-        pwCheck.style.color = "tomato";
-        pwCheck.style.fontWeight = "bold";
-    }  
-})
-
-
-// 출생연도
-$(document).ready(function(){            
-    var now = new Date();
-    // var year = now.getFullYear();
-    // var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
-
-    for(var i = 2023 ; i >= 1920 ; i--) {
-        $('#year').append('<option value="' + i + '">' + i + '년</option>');    
-    }
-    
-    for(var i=1; i <= 12; i++) {
-        var mm = i > 9 ? i : "0"+i ;            
-        $('#month').append('<option value="' + mm + '">' + mm + '월</option>');    
     }
 })

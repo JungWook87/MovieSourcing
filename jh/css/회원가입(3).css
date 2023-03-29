@@ -12,6 +12,15 @@ span {
     color: white;
 }
 
+body {
+    background-color: black;
+}
+
+input {
+    padding : 0 13px;
+}
+
+
 #root {
     position : relative;
     min-width : 320px;
@@ -31,19 +40,20 @@ span {
     overflow : hidden;
 }
 
-header {
+.backpageHeader {
     position : relative;
     min-width : 320px;
     background-color: black;
     display : flex;
     align-items: center;
 }
-header > div {
+
+.backpageDiv {
     position : relative;
-    
     max-width : 800px;
     display : flex;
 }
+
 .backpage {
     margin-top: 30px;
     margin-left: 30px;
@@ -62,6 +72,11 @@ section {
     font-size: 20px;
 }
 
+#emailFont {
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .signup {
     display : flex;
     text-align: center;
@@ -75,19 +90,27 @@ section {
 }
 
 .infomation {
-    padding : 30px 30px;
+    padding : 40px 15%;
     margin : 8px 0;
     border-radius: 15px;
     background-color:  rgb(57, 41, 41);
 
 }
+
+input {
+    border-radius: 5px;
+}
+
 .infomation > div {
     display : flex;
     flex-direction: column;
     margin : 15px 0;
 }
 
-
+.emailSpan {
+    display : flex;
+    justify-content: space-between;
+}
 .email{
     margin : 10px 0; 
     display : flex;
@@ -97,36 +120,23 @@ section {
 .email > input {
     width : 100%;
     height : 50px;
-    margin-right: 5%;
+    
     font-size: 20px;
     font-weight: bold;
 }
 
 
 
-.certification{
-    margin : 10px 0; 
-    display : flex;
-    justify-content: left;
-}
-
-.certification > input {
-    width : 75%;
-    height : 50px;
-    margin-right: 5%;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.certificationbox {
+.cNumberBox {
     display : flex;
     flex-direction: column;
     text-align: center;
-    width : 15%;
+    width : 150px;
+    margin-left: 10px;
 
 }
 
-#certificationbtn {
+#cNumberBtn {
     margin : auto;
     background-color: rgb(175, 161, 158);
     height : 100%;
@@ -137,9 +147,48 @@ section {
 }
 
 
+
+.certification{
+    margin : 10px 0; 
+    display : flex;
+    justify-content: space-between;
+}
+
+.certification > input {
+    width : 100%;
+    height : 50px;
+    
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.certificationbox {
+    display : flex;
+    flex-direction: column;
+    text-align: center;
+    width : 150px;
+    margin-left: 10px;
+
+}
+
+#certificationbtn {
+    margin : auto;
+    background-color: rgb(212, 151, 135);
+    height : 100%;
+    width : 100%;
+    border-radius: 5px;
+    border-style: none;
+    cursor: pointer;
+}
+
+button > span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
 input::placeholder {
     font-size: 16px;
-    padding-left: 15px;
 }
 
 hr {
@@ -164,4 +213,8 @@ hr {
     border-radius: 15px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.savebox > button > span {
+    font-size: 22px;
 }

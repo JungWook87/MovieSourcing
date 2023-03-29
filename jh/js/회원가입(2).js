@@ -1,3 +1,14 @@
+
+// 유효성 검사 여부를 기록할 객체 생성
+const checkObj = { 
+    "memberId"     : false,
+    "memberPw"        : false,
+    "memberNickname"  : false,
+
+};
+
+
+
 //아이디 닉네임 중복체크 
 const id = document.getElementById("id");
 
@@ -5,24 +16,58 @@ document.getElementById("iddupcheck")
 .addEventListener("click",function(){
     const regEx = /^[a-zA-Z0-9]{5,12}$/;
     if(regEx.test(id.value)){
-        // if(){
-        // } else {alert("중복입니다")}
+        $.ajax ({
+            // 경로 지정 체크 
+            url : "idDupCheck",
+            data : {"memberId" : id.value},
+            type : "GET",
+            // result => servlet에서 출력된 result값
+            success : function(idResult){
+                if(idResult == 1){ // 중복일 경우
+                    alert("이미 사용 중인 아이디입니다.");
+                    checkObj.memberId = false;
+                } else {
+                    checkObj.memberId = true;
+                }
+            },
+            error : function(){
+                cosole.log("뭐임?");
+            }
+        })
         alert("사용가능한 아이디입니다.");
     } else {
         alert("형식에 맞지않습니다.");
+        checkObj.memberId = false;
     }
 })
 
+// 닉네임 중복체크
 const nickname = document.getElementById("nickname");
 
 document.getElementById("namedupcheck")
 .addEventListener("click",function(){
     const nickRegEx = /^[가-힣a-zA-Z0-9]{2,15}$/;
     if(nickRegEx.test(nickname.value)){
-        // if(){
-        // } else {alert("중복입니다")}
+        $.ajax({
+            url : "nicknameDupcheck",
+            data : {"membeNickname" : nickname.value},
+            type : "GET",
+            success : function(nickResult){
+                if(nickResult == 1 ){ // 중복
+                    alert("닉네임 중복입니다.");
+                    checkObj.memberNick = false;
+                } else {
+                    checkObj.memberNick = true;
+                }
+            },
+            error : function(){
+                cosole.log("왜이럼?");
+            }
+
+        })
         alert("사용가능한 닉네임입니다.");
     } else {
+        checkObj.memberNick = false;
         alert("형식에 맞지않습니다.");
     }
 })
@@ -44,15 +89,18 @@ pw2.addEventListener("keyup",function(){
             pwCheck.innerText = "사용가능한 비밀번호 입니다.";
             pwCheck.style.color = "springgreen";
             pwCheck.style.fontWeight = "bold";
+            checkObj.memberPw = true;
         } else {
             pwCheck.innerText = "비밀번호가 일치하지 않습니다.";
             pwCheck.style.color = "tomato";
             pwCheck.style.fontWeight = "bold";
+            checkObj.memberPw = false;
         }
     } else {
         pwCheck.innerText = "비밀번호 형식이 맞지 않습니다";
         pwCheck.style.color = "tomato";
         pwCheck.style.fontWeight = "bold";
+        checkObj.memberPw = false;
     }  
 })
 
@@ -72,3 +120,28 @@ $(document).ready(function(){
         $('#month').append('<option value="' + mm + '">' + mm + '월</option>');    
     }
 })
+
+// 전체 유효성 검사
+function signUpValidate() {
+
+    let str;
+
+    for (let key in checkObj) {
+
+        if(!checkObj[key]){
+            switch(key){
+            case "memberId" : str="아이디가"; break;
+            case "memberPw" : str="비밀번호가"; break;
+            case "memberNickname" : str="닉네임이"; break;
+            }
+            str += " 유효하지 않습니다.";
+
+            alert(str);
+
+            document.getElementById(key).focus();
+
+            return false;
+        }
+    }
+    return true;
+}

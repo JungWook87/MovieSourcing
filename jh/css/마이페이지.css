@@ -178,6 +178,11 @@ section {
 }
 
 
+.countSpan {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .count{
     font-size: 20px;
     font-weight: bold;
@@ -187,6 +192,9 @@ section {
     color : gray;
     font-weight: 400;
 }
+
+
+/* 중간박스 */
 
 .profile-container2 {
     margin-top: 12px;
@@ -198,7 +206,6 @@ section {
     flex-direction: column;
 }
 
-
 .profile-container-box{
     cursor: pointer;
     display: flex;
@@ -209,6 +216,18 @@ section {
     box-sizing: border-box;
     position: relative;
 }
+
+/* 중간박스 구분선 생성 */
+.profile-container-box:nth-of-type(1)::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    position: absolute;
+    bottom : -20px;
+}
+
+
 
 .profile-container-box > a > button{
     background-color: rgb(57, 41, 41);
@@ -226,6 +245,21 @@ section {
     color: rgb(137, 132, 132);
     height: 50%;
 }
+
+/* display : none으로 제어 */
+#unlikeBox {
+    display : none;
+}
+.profile-container-box:nth-of-type(2)::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    position: absolute;
+    bottom : -20px;
+    display : none;
+}
+
 
 .genre {
     padding: 4px 8px;

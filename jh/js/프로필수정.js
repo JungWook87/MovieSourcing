@@ -8,7 +8,7 @@ const pwCheck = document.getElementById("pwCheck");
 newPw2.addEventListener("keyup",function(){
     if(regEx.test(newPw1.value)){
         if(newPw2.value == newPw1.value){
-            pwCheck.innerText = "비밀번호 일치";
+            pwCheck.innerText = "사용가능";
             pwCheck.style.color = "springgreen";
             pwCheck.style.fontWeight = "bold";
         } else {
@@ -26,15 +26,19 @@ newPw2.addEventListener("keyup",function(){
 })
 
 
-$("#introduceArea").on("input",function(){
-    
-    $(".introCounter").text($(this).val().length);
-})
 $("#nicknameArea").on("input",function(){
     
     $(".nicknameCounter").text($(this).val().length);
 })
 
 
+$("#introduceArea").on("input",function(){
+    
+    $(".introCounter").text($(this).val().length);
+})
 
-document.getElementById("saveBtn").addEventListener("")
+
+
+document.getElementById("saveBtn").addEventListener("click",function(){
+
+})

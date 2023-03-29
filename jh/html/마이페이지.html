@@ -46,34 +46,37 @@
 
                         </div>
                     </section>
+
+                    <!-- 카운트 -->
                     <section class="contents-wrap">
                         <div class="profile-count-container">
                             <a href="#" >
-                                <span class="wannaseeCount">0</span>
+                                <span id="wannaseeCount" class="countSpan">0</span>
                                 <span>찜</span>
                             </a>
                             <a href="#" >
-                                <span class="watchedCount">0</span>
+                                <span id="watchedCount" class="countSpan">0</span>
                                 <span>본 영화</span>
                             </a>
                             <a href="#" >
-                                <span class="lifeMovieCount">0</span>
+                                <span id="lifeMovieCount" class="countSpan">0</span>
                                 <span>인생영화</span>
                             </a>
                            
                         </div>
+
                         <div class="profile-container2">
                             <div class="profile-container-box">
                                 <a href="#">내가 쓴 리뷰</a>
                                 <a href="#"><span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
                             </div>
-                            <hr id="boxLine" color="gray">
+                            <!-- <hr id="boxLine" color="gray"> -->
                             <div class="profile-container-box">
                                 <a href="#">커뮤니티 작성글</a>
                                 <a href="#"><span id="communityCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
                             </div>
-                            <hr id="boxLine" color="gray">
-                            <div class="profile-container-box">
+                            <!-- <hr id="boxLine" color="gray"> -->
+                            <div class="profile-container-box" id="unlikeBox">
                                 <a href="#">관심없어요</a>
                                 <a href="#">
                                     <button><span class="genre">액션</span></button>
@@ -82,6 +85,7 @@
                                 </a>
                             </div>  
                         </div>
+                        
                         <div class="lifemovie-container">
                             <div class="lifemovie-top">
                                 <span>인생영화</span>

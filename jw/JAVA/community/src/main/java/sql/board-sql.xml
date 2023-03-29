@@ -11,9 +11,8 @@
 
 	<!-- 특정 게시판의 전체 게시글 수 조회 -->
 	<entry key="getListCount">
-		SELECT COUNT(*) FROM BOARD
+		SELECT COUNT(*) FROM COMMUNITY_TABLE
 		WHERE BOARD_ST = 'N'
-		AND BOARD_CD = ?
 	</entry>
 
 

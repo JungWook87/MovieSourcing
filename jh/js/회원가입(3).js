@@ -34,12 +34,36 @@ cNumberBtn.addEventListener("click",function(){
             data : {"memberEmail" : memberEmail.value},
             type : "GET",
             success : function(emailResult){
+                console.log(emailResult);
                 cNumberObj = true;
             },
             error : function(){
                 console.log("뭐임?")
             }     
-        })
+        });
 
+        cMessage.innerText = "3:00";
+        min = 2;
+        sec = 59;
+
+        checkInterval = setInterval(function(){
+            if(sec<10) sec = "0" + sec;
+            cMessage.innerText = min + ":" + sec;
+            if(Number(sec) === 0 ){
+                min--;
+                sec = 59;
+            } else {
+                sec--; 
+            }
+
+            if(min === -1){
+                cMessage.innerText = "인증번호 만료";
+
+                clearInterval(checkInterval);
+            }
+                
+        }, 1000);
+
+        alert("인증번호가 발송되었습니다. 이메일을 확인해주세요.")
     }
 })

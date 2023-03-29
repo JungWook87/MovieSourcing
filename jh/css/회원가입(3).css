@@ -72,7 +72,7 @@ section {
     font-size: 20px;
 }
 
-#emailFont {
+#Font {
     font-weight: bold;
     font-size: 20px;
 }
@@ -180,6 +180,12 @@ input {
     border-style: none;
     cursor: pointer;
 }
+
+#cMessage {
+    font-size: 16px;
+    color : red;
+}
+
 
 button > span {
     font-size: 16px;

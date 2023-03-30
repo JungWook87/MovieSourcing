@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +48,10 @@
                     </div>
 
                     <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
-                    <div><form action="member/loginPgEnter" method="post"><button><i class="fa-solid fa-user"></i></button></form></div>
+                    <div>
+                    
+                    <a href="${contextPath}/member/loginPgEnter" class="fa-solid fa-user"></a>
+                    </div>
 
                 </div>
 

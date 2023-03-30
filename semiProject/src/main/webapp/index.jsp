@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,8 @@
                     <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
                     <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                     </div>
-
+			
+ 				  <c:if test="${ loginMember.memberId== null }">
                     <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
                     <div>
                     
@@ -54,7 +56,17 @@
                     </div>
 
                 </div>
+ 				 </c:if>
+ 				 
+ 				  <c:if test="${ loginMember.memberId!= null }">
+                    <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
+                    <div>
+                    
+                    <a href="${contextPath}/member/MyPageEnter" class="fa-solid fa-user"></a>
+                    </div>
 
+                </div>
+ 				 </c:if>
           
         </header>
 

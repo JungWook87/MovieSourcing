@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/기본값.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/basic.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
@@ -33,6 +33,7 @@
                                     <div class="avatar-wrap">
                                      
                                         <span>
+                                        
                                             <i class="fa-solid fa-face-laugh-squint">
                                             </i>
                                         </span>
@@ -49,14 +50,15 @@
                                     </div>
                                      </c:if>
                                      
-                                     
-                                     
+                              
                                      
                                      
                                     <div class="info-wrap">
                                         <p class="user-name">
-                                            <span>${loginMember.memberNick}</span>
-                                           <formc action = ""> <span><i class="fa-regular fa-pen-to-square"></i></span></form>
+                                          <span>${loginMember.memberNick}</span>  
+                                        
+                                          <span> <a href="${contextPath}/member/myPageChange"" ><i class="fa-regular fa-pen-to-square"></i></a></span>
+                                          
                                         </p>
                                         <p class="user-email"><span>${loginMember.memberEmail}</span></p>
                                     </div>

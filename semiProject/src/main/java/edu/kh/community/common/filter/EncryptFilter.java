@@ -19,7 +19,7 @@ import edu.kh.community.common.wrapper.EncryptWrapper;
 // 필터가 적용될 url이 여러 개인 경우 : String 배열 초기화 형태 {}로 작성
 
 @WebFilter(filterName = "encryptFilter", 
-		   urlPatterns = {"/member/login", 
+		   urlPatterns = {
 				   		  "/member/signUp", 
 				   		  "/member/myPage/changePw", 
 						  "/member/myPage/secession"
@@ -48,6 +48,8 @@ public class EncryptFilter extends HttpFilter implements Filter {
 		
 		// wrapper 객체를 생성해서 기존 HttpServletRequest 객체 역할을 대체함
 		EncryptWrapper wrapper = new EncryptWrapper(req);
+		
+		
 		
 		// 다음 연결된 필터를 수행(없으면 Servlet으로 이동)
 		chain.doFilter(wrapper, response);

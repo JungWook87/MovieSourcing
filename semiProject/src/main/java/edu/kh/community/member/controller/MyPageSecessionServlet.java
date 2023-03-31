@@ -13,14 +13,14 @@ import javax.servlet.http.HttpSession;
 import edu.kh.community.member.model.service.MemberService;
 import edu.kh.community.member.model.vo.Member;
 
-@WebServlet("/member/myPage/secession")
+@WebServlet("/member/secession")
 public class MyPageSecessionServlet extends HttpServlet{
 
 	// 회원 탈퇴 페이지로 전환
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/views/member/myPage-secession.jsp";
+		String path = "/WEB-INF/views/member/memberDelete.jsp";
 	
 		req.getRequestDispatcher(path).forward(req, resp);
 	}

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/프로필수정.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myProfileChangePg.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
@@ -31,13 +31,24 @@
                 <main id="contents">
                     <section class="profilebox">
                         <span class="title">프로필수정</span>
+                          <c:if test="${empty loginMember.memberImg}">
                         <div> 
+
                             <i class="fa-solid fa-face-laugh-squint" 
                             id="profileimg"></i>
+                            
                         </div>
+                           </c:if>
+                     <c:if test="${!empty loginMember.memberImg}">
+                     
+                        <img src="${contextPath}${loginMember.memberImg}" id="profileimg">
+                       </c:if>
                         <a href="#">사진변경</a>
                         <span class="email1">가입시 입력한 email 주소</span>
-                        <span class="email2">wogur5252@naver.com</span>
+                        
+                        
+                        
+                        <span class="email2">${loginMember.memberEmail}</span>
                         
                     </section>
                     <section class="passwordbox">
@@ -76,7 +87,7 @@
                     </section>
 
                     
-                    <a href="#">회원탈퇴 <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a href="${contextPath}/member/session">회원탈퇴 <i class="fa-solid fa-chevron-right"></i> </a>
 
 
                     <hr class="line" color="gray">
@@ -90,7 +101,7 @@
 
     </div>
 
-    <script src="/js/프로필수정.js"></script>
+    <script src="${contextPath}/resources//js/myProfileChangePg.js"></script>
     
 </body>
 </html>

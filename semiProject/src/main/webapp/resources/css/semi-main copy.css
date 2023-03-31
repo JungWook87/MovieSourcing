@@ -50,6 +50,8 @@ body {
 header {
     margin: 0 ;
     display: flex;
+    position: relative; /*부모요소에 relative하면 모바일에서
+                            위치가 이상하지 않음*/
 }
 header > div:nth-child(1) {
     margin-bottom: 50px;
@@ -119,23 +121,36 @@ header  > div:nth-child(4){
     display: flex;
     flex-direction: column;
 }
-
-.movie > span:nth-child(1) {
+.m-recommend {
+    position: relative;
+}
+.m-recommend > span {
+    position: absolute;
+    left: 60%;
+    top: 30%;
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     font-family: 'S-CoreDream-3Light';
     text-shadow: 0px 4px 24px #f20;
     margin-left: 250px;
+    margin-top: 100px;
 }
-.movie > span:nth-child(4) {
+
+.m-contents {
+    position: relative;
+    margin-top: 140px;
+}
+.m-contents > span{
+    position: absolute;
+    left: -55%;
+    top: 20%;
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     font-family: 'S-CoreDream-3Light';
     text-shadow: 0px 4px 24px #f20;
     margin-left: 1200px;
-    margin-top: 100px;
 }
 
 .prev:hover{filter: opacity(0.5) drop-shadow(0 0 0 #2e333b);}
@@ -151,6 +166,7 @@ header  > div:nth-child(4){
     margin-left: 250px;
     height: 300px;
     overflow: hidden;
+    margin-top: 140px;
 }
 
 .slide_wrapper2 {
@@ -162,7 +178,7 @@ header  > div:nth-child(4){
 }
 
 
-.slides li img {
+.slides li img, .slides2 li img {
     width: 200px;
     height: 300px;
 }
@@ -233,8 +249,9 @@ header  > div:nth-child(4){
 .community {
     display: flex;
     flex-direction: column;
-    margin-left: 240px;
+    margin : auto;
     margin-top: 50px;
+    position: relative;
 }
 .community > span {
     color: white;
@@ -242,16 +259,26 @@ header  > div:nth-child(4){
     font-weight: bold;
     font-family: 'S-CoreDream-3Light';
     text-shadow: 0px 4px 24px #f20;
-    margin-left: 20px;
     margin-top: 100px;
+}
+.community > a {
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    left: 100%;
+    top: 25%;
+}
+.community > a:hover{
+    cursor: pointer;
 }
 
 
 .review {
     display: flex;
     flex-direction: column;
-    margin-left: 610px;
+    margin : auto;
     margin-top: 100px;
+    position: relative;
 }
 .review > span {
     color: white;
@@ -259,29 +286,42 @@ header  > div:nth-child(4){
     font-weight: bold;
     font-family: 'S-CoreDream-3Light';
     text-shadow: 0px 4px 24px #f20;
-    margin-left: 620px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
-
-
+.review > a {
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    left: 97%;
+    top: 8%;
+}
+.review > a:hover {
+    cursor: pointer;
+}
 
 .side {
     width: 200px;
     padding-top: 50px;
+    margin-top: 100px;
 }
 .side-1 {
     position: sticky;
     top: 50px;
 }
 
-.side-1 > div:nth-child(3) a{
+.side-1 > div:nth-child(2) a{
     color: white;
     display: flex;
     align-items: end;
     justify-content: end;
     text-decoration: none;
+    opacity: 0;
 }
+.side-1 > div:nth-child(2) a.on {
+    opacity: 1;
+}
+
 
 ul, li {
     list-style: none;
@@ -294,6 +334,7 @@ ul, li {
 
 .chart {
     display: none;
+    position: relative;
 }
 .active {
     display: flex;
@@ -302,8 +343,15 @@ ul, li {
     height: 400px;
     margin-top: 150px;
     margin-left: 100px;
+    
  
     
+}
+.rotate {
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    font-size: 25px;
 }
 
 
@@ -528,4 +576,8 @@ footer p a {
   .search-box:hover > .search-txt{
     width: 200px;
     padding: 0px;
+  }
+
+  .rotate:hover{
+    cursor: pointer;
   }

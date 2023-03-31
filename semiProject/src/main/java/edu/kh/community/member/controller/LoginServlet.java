@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet{
 		// getParameter() 오버라이딩 확인
 		System.out.println("id : " + id);
 		System.out.println("password : " + password);
+	
 		
 		
 		// 파라미터를 VO에 세팅(롬복 확인)
@@ -45,11 +46,15 @@ public class LoginServlet extends HttpServlet{
 		
 		try {
 			
+			
+			
+			
 			// 서비스 객체 생성
 			MemberService service = new MemberService();
 			
 			// 이메일, 비밀번호가 일치하는 회원을 조회하는 서비스 호출 후 결과 반환 받기
 			Member loginMember = service.login(mem);
+			
 			
 			// 로그인 성공/실패에 따른 처리 코드
 			
@@ -61,15 +66,12 @@ public class LoginServlet extends HttpServlet{
 			
 			if(loginMember != null) { // 성공
 				
+				
 				// 회원 정보 Session 세팅
 				session.setAttribute("loginMember", loginMember);
-				System.out.println("성공~");
-				
-				
-				
+		
 				// 특정 시간동안 요청이 없으면 세션 만료
 				session.setMaxInactiveInterval(3600); // 3600초 == 1시간
-				// -> 초 단위로 작성
 				
 				
 				// =================================================================
@@ -98,6 +100,9 @@ public class LoginServlet extends HttpServlet{
 				
 				// 쿠키 객체 생성
 				//Cookie c = new Cookie("클라이언트쪽에 저장될 쿠키 이름", "쿠키 내용");
+				
+			
+				
 				Cookie c = new Cookie( "saveId" , id );
 			
 				
@@ -128,7 +133,9 @@ public class LoginServlet extends HttpServlet{
 			} else { // 실패
 				
 				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
-				
+				session.setAttribute("loginMember", loginMember);
+				System.out.println(loginMember);
+				System.out.println("실패");
 			}
 			
 			

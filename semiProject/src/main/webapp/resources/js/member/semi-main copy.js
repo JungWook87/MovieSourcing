@@ -42,7 +42,7 @@ function moveSlide(num) {
        
           slides.classList.add('animated');
        
-        }, 700);
+        }, 600);
         
     }
 };
@@ -85,78 +85,10 @@ nextBtn.addEventListener('click', function() {
     moveSlide(currentIdx + 1);
 });
 prevBtn.addEventListener('click', function() {
-    moveSlide(currentIdx -1);
+    moveSlide(currentIdx - 1);
 });
 
 
-
-
-
-/*    
-function moveSlide(num) {
-
-    slides.style.left = -num * 230 + 'px';
-    
-    currentIdx = num;
-
-};
-*/
-
-/*// 자동슬라이드
-interval = setInterval(function() {
-    currentIdx++
-    if(currentIdx < slideCount -3 ) {
-        moveSlide(currentIdx);
-
-    }else{
-        moveSlide(0);
-    }
-
-}, 2000);
-*/
-
-
-// 정적인 슬라이드
-/*setInterval(function() {
-    var from = -(230 * currentIdx);
-    var to = from - 230;
-    slides.animate({
-        marginLeft: [from + "px", to + "px"]
-    }, {
-        duration: 500,
-        easing: "ease-in-out",
-        iterations: 0,
-        fill: "both"
-    });
-    currentIdx++;
-    if (currentIdx === (slide.length - 3)) {
-        currentIdx = 0;
-    }
-}, 2000);
-*/
-
-
-
-//수동 슬라이드
-nextBtn.addEventListener('click', function() {
-
-    if(currentIdx < slideCount -4 ) {
-        moveSlide(currentIdx + 1);
-        console.log(currentIdx);
-    }else {
-        moveSlide(0);
-    }
-}); 
-
-prevBtn.addEventListener('click', function() {
-
-    if(currentIdx > 0 ) {
-        moveSlide(currentIdx - 1);
-        
-    }else {
-        moveSlide(slideCount - 4);
-    }
-});
 
 
 // 둦번쨰 영화추천 슬라이드
@@ -171,34 +103,75 @@ let slides2 = document.querySelector('.slides2'),
 
     slides2.style.width = (slideWidth2 + slideMargin2)*slideCount2 - slideMargin2 + 'px';
 
+makeClone2();
 
-function moveSlide2(num) {
 
-    slides2.style.left = -num * 230 + 'px';
-    
-    currentIdx2 = num;
-
+function moveSlide2(num2) {
+    slides2.style.left = -num2 * (slideWidth2 + slideMargin2) + 'px';
+    currentIdx2 = num2;
+    console.log(currentIdx2, slideCount2);
+    if(currentIdx2 == slideCount2 || currentIdx2 == -slideCount2) {
+           
+        setTimeout(function() {
+            slides2.classList.remove('animated');
+            slides2.style.left = '0px';
+            currentIdx2 = 0;
+        }, 500);
+           
+        setTimeout(function() {
+           
+            slides2.classList.add('animated');
+           
+        }, 600);
+            
+    }
+};
+           
+function makeClone2() {
+    for(var i = 0; i<slideCount2; i++) {
+        var cloneSlide = slide2[i].cloneNode(true);
+        cloneSlide.classList.add('clone');
+        slides2.appendChild(cloneSlide);
+    }
+    for(var i =  slideCount2 -1; i>=0; i--){
+        var cloneSlide = slide2[i].cloneNode(true);
+        cloneSlide.classList.add('clone');
+        slides2.prepend(cloneSlide);
+    }
+    updateWidth2();
+    setInitialPos2();
+    setTimeout(function() {
+        slides2.classList.add('animated');
+           
+    },100);
 }
-
+           
+function updateWidth2() {
+    var currentSlides2 = document.querySelectorAll('.slides2 li');
+    var newSlideCount2 = currentSlides2.length;
+           
+    var newWidth = (slideWidth2 + slideMargin2) * newSlideCount2 - slideMargin2 + 'px';
+    slides2.style.width = newWidth;
+           
+}
+           
+function setInitialPos2() {
+    var initialTranslateValue = -(slideWidth2 + slideMargin2) * slideCount2
+           
+    slides2.style.transform = 'translateX(' + initialTranslateValue + 'px)';
+           
+}
 nextBtn2.addEventListener('click', function() {
-
-    if(currentIdx2 < slideCount2 -4 ) {
-        moveSlide2(currentIdx2 + 1);
-        console.log(currentIdx2);
-    }else {
-        moveSlide2(0);
-    }
+    moveSlide2(currentIdx2 + 1);
 });
-
 prevBtn2.addEventListener('click', function() {
-
-    if(currentIdx2 > 0 ) {
-        moveSlide2(currentIdx2 - 1);
-        
-    }else {
-        moveSlide2(slideCount2 - 4);
-    }
+    moveSlide2(currentIdx2 - 1);
 });
+    
+
+
+
+
 
 //메인포스터 슬라이드
 
@@ -209,17 +182,10 @@ let mslides = document.querySelector('.main-slides'),
     mslideWidth = 1920,
     mslideMargin = 0;
 
-    /*mslides.style.width = (mslideWidth + mslideMargin)*mslideCount - mslideMargin + 'px';*/
 
     makeClone();
 
-/*function mmoveSlide(mnum) {
 
-    mslides.style.left = -mnum * 1950 + 'px';
-    
-    mcurrentIdx = mnum;
-
-};*/
 
 
 function mmoveSlide(mnum) {
@@ -306,26 +272,6 @@ mslides.addEventListener('mouseleave', function() {
 
 
 
-
-
-// 자동슬라이드
-/*minterval = setInterval(function() {
-    mcurrentIdx++
-    if(mcurrentIdx < mslideCount ) {
-        mmoveSlide(mcurrentIdx+1);
-
-    }else {
-        mmoveSlide(0);
-    }
-
-}, 2000);
-*/
-
-
-
-
-
-
 // 인기순위 슬라이드 실험
 
 
@@ -339,3 +285,35 @@ mslides.addEventListener('mouseleave', function() {
 }
 */
 
+
+//top 버튼 클릭시 위로 이동
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.btn').addClass('on');
+    }else {
+        $('.btn').removeClass('on');
+    }
+});
+
+$('.btn').click(function() {
+    window.scrollTo({top : 0, behavior: 'smooth'});
+});
+
+
+//인기차트 변경
+
+let showNum = 0;
+let chart = document.querySelectorAll('.chart');
+$('.rotate').click(function() {
+
+    chart[showNum].classList.remove("active");
+
+    showNum++;
+
+    if(showNum == 3){
+        showNum = 0;
+    }
+
+    chart[showNum].classList.add("active");
+ 
+});

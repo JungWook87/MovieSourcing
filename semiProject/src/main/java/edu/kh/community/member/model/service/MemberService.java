@@ -31,6 +31,8 @@ public class MemberService {
 		return loginMember;
 	}
 
+	
+
 //	
 //	/** 회원가입 Service
 //	 * @param mem
@@ -102,27 +104,21 @@ public class MemberService {
 //		
 //		return result;
 //	}
-//
-//
-//	/** 회원 탈퇴 Service
-//	 * @param memberNo
-//	 * @param memberPw
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int secession(int memberNo, String memberPw) throws Exception{
-//		Connection conn = getConnection(); // DBCP에서 얻어옴
-//		
-//		int result = dao.secession(conn, memberNo, memberPw);
-//		
-//		if(result > 0)	commit(conn);
-//		else			rollback(conn);
-//		
-//		close(conn);
-//		
-//		return result;
-//	}
-//
+
+	public int secession(int memberNo, String memberPw) throws Exception{
+		Connection conn = getConnection(); // DBCP에서 얻어옴
+		
+		int result = dao.secession(conn, memberNo, memberPw);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
 //
 //	/** 이메일 중복 검사 Service
 //	 * @param memberEmail

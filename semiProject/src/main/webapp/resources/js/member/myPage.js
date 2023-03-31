@@ -105,6 +105,7 @@ function changePwValidate(){
 
 
 
+
 // 회원 탈퇴 유효성 검사
 function secessionValidate(){
 
@@ -138,6 +139,7 @@ function secessionValidate(){
 
     return true;
 }
+
 
 
 

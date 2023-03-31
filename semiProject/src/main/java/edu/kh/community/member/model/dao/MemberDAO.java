@@ -57,7 +57,7 @@ public class MemberDAO {
 			
 			// PreparedStatment 생성 및 SQL 적재
 			pstmt = conn.prepareStatement(sql);
-			
+						
 			pstmt.setString(1, mem.getMemberId());
 			pstmt.setString(2, mem.getMemberPw());
 			
@@ -199,36 +199,37 @@ public class MemberDAO {
 //	}
 //
 //
-//
-//	/** 회원 탈퇴 DAO
-//	 * @param conn
-//	 * @param memberNo
-//	 * @param memberPw
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int secession(Connection conn, int memberNo, String memberPw) throws Exception {
-//		int result = 0;
-//		
-//		try {
-//			
-//			String sql = prop.getProperty("secession");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setInt(1, memberNo);
-//			pstmt.setString(2, memberPw);
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		}finally {
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
-//
-//
+
+
+	/** 회원 탈퇴 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param memberPw
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Connection conn, int memberNo, String memberPw) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, memberPw);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
 //
 //	/** 이메일 중복 검사 DAO
 //	 * @param conn

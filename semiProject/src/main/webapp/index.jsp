@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-
+          <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,36 +46,76 @@
                     <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
                     <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                     </div>
-			
- 				  <c:if test="${ loginMember.memberId== null }">
-                    <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
-                    <div>
-                    
-                    <a href="${contextPath}/member/loginPgEnter" class="fa-solid fa-user"></a>
-                    </div>
+
+                 <c:if test="${ loginMember.memberId== null }">
+                    <div>   <a href="${contextPath}/member/loginPgEnter" ><i class="fa-solid fa-heart"></i></a></div>
+              
+              
+              
+                    <div><a href="${contextPath}/member/loginPgEnter" ><i class="fa-solid fa-user"></i></a></div>
 
                 </div>
- 				 </c:if>
- 				 
- 				  <c:if test="${ loginMember.memberId!= null }">
-                    <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
-                    <div>
-                    
-                    <a href="${contextPath}/member/MyPageEnter" class="fa-solid fa-user"></a>
-                    </div>
+					 </c:if>
+			 
+			 		<c:if test="${ loginMember.memberId!= null }">
+                    <div> <a href="${contextPath}/member/MyPageEnter" ><i class="fa-solid fa-heart"></i></a></div>
+              
+              
+              
+                    <div> <a href="${contextPath}/member/MyPageEnter" ><i class="fa-solid fa-user"></i></a></div>
 
                 </div>
- 				 </c:if>
-          
+					 </c:if>
         </header>
 
         <section class="main">
 
             <!-- 영화 정보 -->
             <div class="movie">
+                <div class="chart active">
+                    <span>넷플릭스 랭킹&nbsp
+                        <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
 
+                    </span>
+                    <ul class="charts">
+                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어벤져스1 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg" width="200px"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="resources/images/1987포스터.jpg" width="200px"></li>
+                    </ul>
+                </div>
+
+                <div class="chart">
+                    <span>왓챠 랭킹
+                        <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
+                    </span>
+                    <ul class="charts">
+                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어스파1 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="resources/images/검사외전포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="resources/images/수상한그녀 포스터.jpeg" width="200px"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="resources/images/블랙위도우 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="resources/images/보헤미안 랩소디 포스터.jpg" width="200px"></li>
+                    </ul>
+                </div>
+
+                <div class="chart">
+                    <span>디즈니+ 랭킹
+                        <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
+                    </span>
+                    <ul class="charts">
+                        <i class="fa-solid fa-1"></i><li><img src="resources/images/백두산 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="resources/images/밀정 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="resources/images/명량 포스터.jpeg" width="200px"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="resources/images/곡성 포스터.jpg" width="200px"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="resources/images/기생충 포스터.jpg" width="200px"></li>
+                    </ul>
+                </div>
+
+
+                <div class="m-recommend">
                 <span>
-                    <p><i class="fa-solid fa-film"></i>회원맞춤 영화추천</p> 
+                    <p><i class="fa-solid fa-film"></i>회원맞춤<br>&nbsp 영화추천</p> 
                 </span>
 
                 <div class="slide_wrapper">
@@ -91,14 +130,17 @@
                         <li><img src="resources/images/명량 포스터.jpeg"></li>
                     </ul>
                 </div>
+                 </div>
                 <p class="controls">
                    
                     <span class="prev">prev</span>
                     <span class="next">next</span>
                 </p>
 
-                <span>
-                    <p><i class="fa-regular fa-bookmark"></i>&nbsp새로운 컨텐츠</p>
+
+                <div class="m-contents">
+                <span >
+                    <p><i class="fa-regular fa-bookmark"></i>&nbsp새로운 <br>&nbsp컨텐츠</p>
                 </span>
 
                 
@@ -115,51 +157,21 @@
                         <li><img src="resources/images/어스파1 포스터.jpg" width="200px" height="300px"></li>
                     </ul>
                 </div>
+                </div>
                 <p class="controls2">
                    
                     <span class="prev2">prev</span>
                     <span class="next2">next</span>
                 </p>
 
-                <div class="chart">
-                    <span>넷플릭스 랭킹</span>
-                    <ul class="charts active">
-                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어벤져스1 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg" width="200px"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/1987포스터.jpg" width="200px"></li>
-                    </ul>
-                </div>
-
-                <div class="chart">
-                    <span>왓챠 랭킹</span>
-                    <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어벤져스1 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg" width="200px"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/1987포스터.jpg" width="200px"></li>
-                    </ul>
-                </div>
-
-                <div class="chart">
-                    <span>디즈니+ 랭킹</span>
-                    <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어벤져스1 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg" width="200px"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg" width="200px"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/1987포스터.jpg" width="200px"></li>
-                    </ul>
-                </div>
+               
 
 
                 
               
                 <div class="community">
                     <span><p><i class="fa-regular fa-comments"></i>&nbsp커뮤니티</p></span>
-        
+                    <a><i class="fa-solid fa-chevron-right"></i></a>
                     <div>
                         <div><img src="resources/images/커뮤니티 글1.png" width="800px"></div>
                         <div><img src="resources/images/커뮤니티 글2.png" width="800px"></div>
@@ -169,8 +181,8 @@
 
                 <div class="review">
 
-                    <span><i class="fa-regular fa-circle-user"></i>회원들의 리뷰</span>
-                   
+                    <span><i class="fa-regular fa-circle-user"></i>회원들의 리뷰</span><i class="fa-solid fa-rotate"></i>
+                    <a><i class="fa-solid fa-rotate-right"></i></a>
 
                     <div>
                         <div><img src="resources/images/리뷰 글1.png" width="800px"></div>
@@ -216,7 +228,7 @@
                     <div class="game">
                         <a href="#"><img src="resources/images/추천영화테스트.png" width="200px"></a>
                     </div>
-                    <div><a class="btn" onclick="top()" id="top"><i class="fa-solid fa-up-long"></i>top</a></div>
+                    <div><a class="btn" name="top"><i class="fa-solid fa-up-long"></i>top</a></div>
                 </div>
 
                 <div>

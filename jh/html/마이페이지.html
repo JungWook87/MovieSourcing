@@ -36,6 +36,8 @@
                                     <div class="info-wrap">
                                         <p class="user-name">
                                             <span>재혁임</span>
+
+                                            <!-- 개인창을 벗어나면 display none 으로 제어 -->
                                             <span><i class="fa-regular fa-pen-to-square"></i></span>
                                         </p>
                                         <p class="user-email"><span>wogur5252@naver.com</span></p>
@@ -70,12 +72,15 @@
                                 <a href="#">내가 쓴 리뷰</a>
                                 <a href="#"><span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
                             </div>
-                            <!-- <hr id="boxLine" color="gray"> -->
+                            <hr id="boxLine" class="boxline" color="gray">
                             <div class="profile-container-box">
                                 <a href="#">커뮤니티 작성글</a>
                                 <a href="#"><span id="communityCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
                             </div>
-                            <!-- <hr id="boxLine" color="gray"> -->
+                            
+                            <hr id="boxLine2" class="boxline" color="gray">
+                            
+                            <!-- 개인창을 벗어나면 display none 으로 제어 -->
                             <div class="profile-container-box" id="unlikeBox">
                                 <a href="#">관심없어요</a>
                                 <a href="#">
@@ -89,13 +94,24 @@
                         <div class="lifemovie-container">
                             <div class="lifemovie-top">
                                 <span>인생영화</span>
+
+                                <!-- 개인창을 벗어나면 display none 으로 제어 -->
                                 <a href="#">관리</a>
                             </div>
                             <div class="lifemovie-bottom">
-                                <div></div>
+
+                                <!-- 타인이 봤을때 없을 경우 -->
+                                <div class="lifemovie-empty-foreign">
+                                    <span>등록된 인생 영화가 없습니다.</span>
+                                </div>
+
+                                <!-- 개인이 봤을때 등록된 인생영화가 없을 경우  -->
                                 <div class="lifemovie-empty"><span>인생영화를 등록해주세요</span></div>
                                 <button class="lifemovie-button">'인생영화' 등록</button>
                                 
+                                <!-- 인생영화 div -->
+                                <!-- 등록된 인생영화 div append -->
+                                <div class="lifemovie-Imgbox"></div>
                             </div>
                             
                         </div>
@@ -140,6 +156,8 @@
         </div>
 
     </div>
+
+    <script src="../js/마이페이지.js"></script>
     
 </body>
 </html>

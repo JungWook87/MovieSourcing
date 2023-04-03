@@ -1,3 +1,12 @@
+const changeObj = {
+    "currentPw" : false,
+    "newPw" : false,
+    "nickname" : false,
+    "introduce" : false
+};
+
+
+
 
 
 const newPw1 = document.getElementById("newPw1");
@@ -41,4 +50,10 @@ $("#introduceArea").on("input",function(){
 
 document.getElementById("saveBtn").addEventListener("click",function(){
 
+    if()
+
 })
+
+
+
+ㅠ

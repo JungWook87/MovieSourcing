@@ -17,6 +17,7 @@
     <title>로그인</title>
 
 </head>
+
 <body>
     <div id="movieSourcing">
         <div id="layout">
@@ -40,15 +41,15 @@
                                     <fieldset id="">
                                         <span>아이디</span>
                                         <div class="id">
-                                            <input type="text" id="id" placeholder="아이디를 입력해주세요">
+                                            <input type="text" id="id" placeholder="아이디를 입력해주세요" spellcheck="false">
                                         </div>
                                         <span>비밀번호</span>
                                         <div class="password">
-                                            <input type="password" id="password" placeholder="비밀번호를 입력해주세요">
+                                            <input type="password" id="password" placeholder="비밀번호를 입력해주세요" spellcheck="false">
                                         </div>
                                         <div class="keepLogin">
-                                            <input type="checkbox" name="keepLogin">
-                                            <label for="keepLogin"><span>로그인 상태 유지</span></label>
+                                            <input type="checkbox" name="keepId" id="keepId">
+                                            <label for="keepId"><span>아이디 저장</span></label>
                                         </div>
                                         <button id="nomalLogin">
                                             <span>로그인</span>
@@ -114,7 +115,7 @@
                 Kakao.API.request({
                 url: '/v2/user/me',
                 success: function (response) {
-                    console.log(response)
+                    console.log(response)n
                 },
                 fail: function (error) {
                     console.log(error)
@@ -174,5 +175,8 @@
         }
     </script>
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+    <script src="../js/로그인.js"></script>
+
 </body>
 </html>

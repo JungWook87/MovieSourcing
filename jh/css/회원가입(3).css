@@ -16,10 +16,21 @@ body {
     background-color: black;
 }
 
+/* 회원가입 인풋 설정 */
 input {
+    border-radius: 5px;
     padding : 0 13px;
+    outline: none;
+}
+input:focus {
+    border : 3px solid rgb(181, 167, 153);
+}
+input::placeholder {
+    font-size: 16px;
 }
 
+
+s
 
 #root {
     position : relative;
@@ -171,7 +182,7 @@ input {
 
 }
 
-#certificationbtn {
+#cBtn {
     margin : auto;
     background-color: rgb(212, 151, 135);
     height : 100%;

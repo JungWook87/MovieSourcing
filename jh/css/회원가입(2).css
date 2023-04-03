@@ -16,9 +16,21 @@ body {
     background-color: black;
 }
 
+/* 회원가입 인풋 설정 */
 input {
+    border-radius: 5px;
     padding : 0 13px;
+    outline: none;
 }
+input:focus {
+    border : 3px solid rgb(255, 234, 213);
+}
+input::placeholder {
+    font-size: 16px;
+}
+
+
+
 
 #root {
     position : relative;
@@ -192,19 +204,6 @@ section {
     font-weight: bold;
     border-radius: 5px;
 }
-
-input::placeholder {
-    font-size: 16px;
-}
-
-input {
-    border-radius: 5px;
-}
-
-input:focus{
-    border: 4px solid rgb(194, 194, 255);
-}
-
 
 .line {
     margin : 40px 0;

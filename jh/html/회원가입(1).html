@@ -8,6 +8,11 @@
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.js" 
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+    crossorigin="anonymous"></script>
+
+
     <title>회원가입(1)</title>
 </head>
 <body>
@@ -39,32 +44,33 @@
                                 </div>
                                 <hr>
                                 <div>
-                                    <input type="checkbox" id="check1"> <span class="info3">[필수] 이용약관에 동의합니다.</span>
+                                    <input type="checkbox" id="check1" name="signCheck"> <span class="info3">[필수] 이용약관에 동의합니다.</span>
                                 </div>
                          
                                 <div>
-                                    <input type="checkbox" id="check2"> <span class="info3">[필수] 개인정보 수집 및 이용에 동의합니다.</span>
+                                    <input type="checkbox" id="check2" name="signCheck"> <span class="info3">[필수] 개인정보 수집 및 이용에 동의합니다.</span>
                                 </div>
                          
                                 <div>
-                                    <input type="checkbox" id="check3"> <span class="info3">[필수] 본인은 만 14세 이상입니다.</span>
+                                    <input type="checkbox" id="check3" name="signCheck"> <span class="info3">[필수] 본인은 만 14세 이상입니다.</span>
                                 </div>
                           
                                 <div>
-                                    <input type="checkbox" id="check4"> <span class="info3">[선택] 시사회 및 이벤트 등 알림 수신에 동의합니다.</span>
+                                    <input type="checkbox" id="check4" name="signCheck"> <span class="info3">[선택] 시사회 및 이벤트 등 알림 수신에 동의합니다.</span>
                                 </div>
                             </div>
                         </div>
                     </section>
                    
                     <section class="nextbox">
-                        <button>다음</button>
+                        <button id="nextBtn">다음</button>
                     </section>
                 </main>
             </div>
         </div>
 
     </div>
+    <script src="/js/회원가입(1).js"></script>
     
 </body>
 </html>

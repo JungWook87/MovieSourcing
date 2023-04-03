@@ -12,6 +12,20 @@ span {
     color: white;
 }
 
+
+/* 회원가입 인풋 설정 */
+input {
+    border-radius: 5px;
+    padding : 0 13px;
+    outline: none;
+}
+input:focus {
+    border : 3px solid rgb(255, 234, 213);
+}
+input::placeholder {
+    font-size: 16px;
+}
+
 #root {
     position : relative;
     min-width : 320px;
@@ -129,7 +143,7 @@ fieldset {
 
 input::placeholder {
     font-size: 16px;
-    padding-left: 15px;
+
 }
 .btnwrap {
     display : flex;
@@ -170,11 +184,13 @@ input::placeholder {
     background-color: rgb(247, 205, 47);
     cursor: pointer;
 }
+
 #kakaoLogin > div > span {
     font-size: 20px;
     color: rgb(57, 41, 41);
     font-weight: bold;
 }
+
 #kakaoLogin > div:nth-of-type(1){
     width: 15%;
     margin: auto 0;

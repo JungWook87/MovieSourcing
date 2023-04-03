@@ -19,7 +19,7 @@
             <div id="root">
                 <header>
                     <div>
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>

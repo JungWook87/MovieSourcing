@@ -110,7 +110,7 @@ function changePwValidate(){
 function secessionValidate(){
 
     const memberPw = document.getElementById("memberPw");
-    const agree = document.getElementById("agree");
+    const deleteid = document.getElementById("deleteid");
 
     // 비밀번호 미작성
     if(memberPw.value.trim().length == 0){
@@ -122,9 +122,9 @@ function secessionValidate(){
     // 약관 동의 체크 여부
     // - 체크박스요소.checked  : 체크 시 true, 해제 시 false 반환
 
-    if( !agree.checked ){ // 체크를 안했을 때
+    if( !deleteid.checked ){ // 체크를 안했을 때
         alert("약관 동의 후 탈퇴 버튼을 클릭해주세요.");
-        agree.focus();
+        deleteid.focus();
         return false;
     }
 

@@ -18,7 +18,7 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -53,7 +53,8 @@
                                 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.
                                 </span>
                                 <br><br><br>
-                       <form action="/member/secession" method="POST" name="myPage-form" onsubmit="return secessionValidate()" >
+           <!-- 폼 임의추가  -->
+                       <form action="${contextPath}/member/secession" method="POST" name="myPage-form" onsubmit="return secessionValidate()" >
                                 <input type="checkbox" id="deleteid"> <span class="deco">안내 사항을 모두 확인하였으며, 이에 동의합니다.</span>
                                 <br><br>
                             </div>
@@ -62,7 +63,8 @@
                    
                     <section class="passwordbox">
                         <div>
-                            <input type="password" class="currentPw" placeholder="비밀번호 확인">
+                        <!-- 인풋 아이디 네임  임의추가  -->
+                            <input type="password" name="memberPw" id="memberPw" class="currentPw" placeholder="비밀번호 확인">
                         </div>
                     </section>
                     <hr class="line" color="gray">

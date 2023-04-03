@@ -23,14 +23,16 @@
             <div id="root">
                 <header>
                     <div>
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
                 </header>
                 <main id="contents">
+                 <form action="myPageChange" method="POST" name="myPage-form" onsubmit="return infoValidate()">
                     <section class="profilebox">
                         <span class="title">프로필수정</span>
+                         
                           <c:if test="${empty loginMember.memberImg}">
                         <div> 
 
@@ -41,7 +43,7 @@
                            </c:if>
                      <c:if test="${!empty loginMember.memberImg}">
                      
-                        <img src="${contextPath}${loginMember.memberImg}" id="profileimg">
+                        <img src="${contextPath}${loginMember.memberImg}" id="profileimg" name="profileimg">
                        </c:if>
                         <a href="#">사진변경</a>
                         <span class="email1">가입시 입력한 email 주소</span>
@@ -53,13 +55,13 @@
                     </section>
                     <section class="passwordbox">
                         <div>
-                            <input type="password" class="currentPw" placeholder="현재 비밀번호">
+                            <input type="password" name = "currentPw" class="currentPw" placeholder="현재 비밀번호">
                         </div>
                         <div>
-                            <input type="password" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
+                            <input type="password" name = "newPw1" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
                         </div>
                         <div class="passwordboxdiv3">
-                            <input type="password" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
+                            <input type="password"name = "newPw2" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
                             <span id="pwCheck"></span>
                         </div> 
                     </section>
@@ -72,7 +74,7 @@
                             <span id="nicknamebite"><span class="nicknameCounter">0</span>/20</span>
                         </div>
                         <div class="nicknameinsert">
-                            <textarea id="nicknameArea" placeholder="바꿔도됩니다"></textarea>
+                            <textarea id="nicknameArea" name = "nicknameArea" placeholder="바꿔도됩니다">${loginMember.memberNick}</textarea>
                         </div>
                        
                     </section>
@@ -82,20 +84,23 @@
                             <span id="introducebite"><span class="introCounter">0</span>/100</span>
                         </div>
                         <div class="introduceinsert">
-                            <textarea name="introduceArea" id="introduceArea" placeholder="아무글이나 적어도 좋습니다."></textarea>
+                            <textarea name="introduceArea" id="introduceArea" placeholder="아무글이나 적어도 좋습니다.">${loginMember.memberIntro}</textarea>
                         </div>
                     </section>
 
                     
-                    <a href="${contextPath}/member/session">회원탈퇴 <i class="fa-solid fa-chevron-right"></i> </a>
+                    <a href="${contextPath}/member/secession">회원탈퇴 <i class="fa-solid fa-chevron-right"></i> </a>
 
 
                     <hr class="line" color="gray">
 
                     <section class="savebox">
                         <button id="saveBtn"><span>저장</span></button>
+                    
                     </section>
+                    
                 </main>
+                  </form>
             </div>
         </div>
 

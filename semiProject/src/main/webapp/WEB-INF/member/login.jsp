@@ -26,7 +26,7 @@
             <div id="root">
                 <header>
                     <div>
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();"  class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="enderMenu">
                                     <div>
-                                        <a href="#"><span>회원가입</span></a>
+                                        <a href="${contextPath}/member/signUp1"><span>회원가입</span></a>
                                     </div>
                                     <div>
                                         <a href="#"><span>아이디</span></a>

@@ -6,7 +6,7 @@
 
 	<!-- 로그인(비밀번호, 탈퇴여부 제외) -->
 	<entry key="login">
-SELECT MEM_NO, MEM_NAME, MEM_EMAIL, MEM_ID, MEM_PW, MEM_IMG,
+SELECT MEM_NO, MEM_EMAIL, MEM_ID, MEM_PW, MEM_IMG,
 MEM_NICK, MEM_BIRTH, MEM_GENDER, MEM_INTRO,
 TO_CHAR(MEM_SIGN_UP_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MEM_SIGN_UP_DATE
 FROM MEMBER
@@ -19,10 +19,24 @@ AND MEM_ESCAPE = 'N'
 	<!-- 회원가입 -->
 	<entry key="signUp">
 		INSERT INTO MEMBER
-		VALUES(SEQ_MEMBER_NO.NEXTVAL , ? , ? , ? , ? , ?, DEFAULT, DEFAULT, DEFAULT)
+		VALUES(SEQ_MEMBERR_NO.NEXTVAL , ? , ? , ? , ? , ? , ?,DEFAULT, DEFAULT,null,null)
+	</entry>
+	
+
+	<!-- 이메일 중복 검사 -->
+	<entry key="iDDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEM_ID = ?
+		AND MEM_ESCAPE = 'N'
 	</entry>
 	
 	
+	<!-- 닉네임 중복 검사 -->
+	<entry key="nicknameDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEM_NICK = ?
+		AND MEM_ESCAPE = 'N'
+	</entry>		
 	
 	<!-- 회원 정보 수정  -->
 	<entry key="updateMember">
@@ -53,21 +67,7 @@ AND MEM_ESCAPE = 'N'
 	</entry>
 	
 	
-	
-	<!-- 이메일 중복 검사 -->
-	<entry key="emailDupCheck">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_EMAIL = ?
-		AND SECESSION_FL = 'N'
-	</entry>
-	
-	
-	<!-- 닉네임 중복 검사 -->
-	<entry key="nicknameDupCheck">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_NICK = ?
-		AND SECESSION_FL = 'N'
-	</entry>
+
 	
 	
 	<!-- 회원 정보 조회 -->

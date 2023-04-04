@@ -221,6 +221,12 @@ section {
     position: relative;
 }
 
+#infoMark {
+    color : white;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
 /* 중간박스 구분선 생성 */
 /* .profile-container-box:nth-of-type(1)::after{
     content: "";
@@ -237,9 +243,17 @@ section {
 .profile-container-box > a > button{
     background-color: rgb(57, 41, 41);
     border-style: none;
-    cursor: pointer;
     margin : 0px 2px;
 }
+
+#genreBox {
+    display : flex;
+}
+.genreDiv {
+    margin : 5px;
+}
+
+
 
 #arrow {
     color : white;
@@ -384,6 +398,8 @@ section {
     font-size: 18px;
     background-color: rgb(83, 83, 115);
 }
+
+
 
 
 .navHeader {

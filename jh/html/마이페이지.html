@@ -28,7 +28,7 @@
                                 <div class="user-wrap">
                                     <div class="avatar-wrap">
                                         <span>
-                                            <i class="fa-solid fa-face-laugh-squint">
+                                            <i class="fa-solid fa-face-laugh-squint" title="프로필수">
                                             </i>
                                         </span>
                                        
@@ -82,11 +82,14 @@
                             
                             <!-- 개인창을 벗어나면 display none 으로 제어 -->
                             <div class="profile-container-box" id="unlikeBox">
-                                <a href="#">관심없어요</a>
-                                <a href="#">
-                                    <button><span class="genre">액션</span></button>
-                                    <button><span class="genre">외국영화</span></button>
-                                    <button><span class="genre">독립영화</span></button>
+                                <div>
+                                    <a href="#">관심없어요</a>
+                                    <a class="fa-solid fa-circle-info" id="infoMark" title="관심없는 장르를 제외해줍니다."></a>
+                                </div>
+                                <a href="#" id="genreBox">
+                                    <div class="genreDiv"><span class="genre">액션</span></div>
+                                    <div class="genreDiv"><span class="genre">외국영화</span></div>
+                                    <div class="genreDiv"><span class="genre">독립영화</span></div>
                                 </a>
                             </div>  
                         </div>

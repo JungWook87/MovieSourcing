@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
     crossorigin="anonymous"></script>
-
+   <%   session.getAttribute("message"); %>
     <title>프로필수정</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
                     </div>
                 </header>
                 <main id="contents">
-                 <form action="myPageChange" method="POST" name="myPage-form" onsubmit="return infoValidate()">
+                 <form action="myPagechangeEnter" method="POST" name="myPage-form" onsubmit="return infoValidate()">
                     <section class="profilebox">
                         <span class="title">프로필수정</span>
                          
@@ -53,18 +53,20 @@
                         <span class="email2">${loginMember.memberEmail}</span>
                         
                     </section>
+                  
                     <section class="passwordbox">
                         <div>
-                            <input type="password" name = "currentPw" class="currentPw" placeholder="현재 비밀번호">
+                            <input type="password" name ="currentPw" class="currentPw" id="currentPw"  placeholder="현재 비밀번호">
                         </div>
                         <div>
-                            <input type="password" name = "newPw1" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
+                            <input type="password" name ="newPw1" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
                         </div>
                         <div class="passwordboxdiv3">
-                            <input type="password"name = "newPw2" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
+                            <input type="password"name ="newPw2" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
                             <span id="pwCheck"></span>
                         </div> 
                     </section>
+                   
                     <script>
   
                     </script>
@@ -95,7 +97,7 @@
                     <hr class="line" color="gray">
 
                     <section class="savebox">
-                        <button id="saveBtn"><span>저장</span></button>
+                        <button id="saveBtn" ><span>저장</span></button>
                     
                     </section>
                     
@@ -106,7 +108,7 @@
 
     </div>
 
-    <script src="${contextPath}/resources//js/myProfileChangePg.js"></script>
+    <script src="${contextPath}/resources/js/member/myProfileChangePg.js"></script>
     
 </body>
 </html>

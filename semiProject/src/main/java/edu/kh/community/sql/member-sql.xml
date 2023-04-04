@@ -6,13 +6,13 @@
 
 	<!-- 로그인(비밀번호, 탈퇴여부 제외) -->
 	<entry key="login">
-SELECT MEM_NO, MEM_EMAIL, MEM_ID, MEM_PW, MEM_IMG,
-MEM_NICK, MEM_BIRTH, MEM_GENDER, MEM_INTRO,
-TO_CHAR(MEM_SIGN_UP_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MEM_SIGN_UP_DATE
-FROM MEMBER
-WHERE MEM_ID = ?
-AND MEM_PW = ?
-AND MEM_ESCAPE = 'N'
+	SELECT MEM_NO, MEM_EMAIL, MEM_ID, MEM_PW, MEM_IMG,
+	MEM_NICK, MEM_BIRTH, MEM_GENDER, MEM_INTRO,
+	TO_CHAR(MEM_SIGN_UP_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MEM_SIGN_UP_DATE
+	FROM MEMBER
+	WHERE MEM_ID = ?
+	AND MEM_PW = ?
+	AND MEM_ESCAPE = 'N'
 	</entry>
 	
 	
@@ -38,15 +38,26 @@ AND MEM_ESCAPE = 'N'
 		AND MEM_ESCAPE = 'N'
 	</entry>		
 	
-	<!-- 회원 정보 수정  -->
-	<entry key="updateMember">
+	<!-- 비밀번호 제외한 나머 정보 수정  -->
+	<entry key="updateElseMember">
 		UPDATE MEMBER SET
-		MEMBER_NICK = ?,
-		MEMBER_TEL = ?,
-		MEMBER_ADDR = ?
-		
-		WHERE MEMBER_NO = ?
+		MEM_NICK = ?,
+		MEM_IMG = ?,
+		MEM_INTRO = ?
+		WHERE MEM_NO = ?
 	</entry>
+	<!-- 비밀번호 포함 정보 수정  -->
+		<entry key="changePwElse">
+		UPDATE MEMBER 
+		SET MEM_PW = ?, 
+		    MEM_NICK = ?, 
+		    MEM_IMG = ?, 
+		    MEM_INTRO = ? 
+		WHERE MEM_NO = ? 
+		AND MEM_PW = ?
+		</entry>
+	
+	
 	
 	
 	<!-- 비밀번호 변경 -->

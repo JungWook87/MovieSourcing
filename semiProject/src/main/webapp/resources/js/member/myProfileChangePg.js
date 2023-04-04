@@ -42,3 +42,34 @@ $("#introduceArea").on("input",function(){
 document.getElementById("saveBtn").addEventListener("click",function(){
 
 })
+
+
+
+$(function(){
+$( '.currentPw').keyup(function(){
+
+$( '.currentPw').val();
+
+$( '.newPw1').keyup(function(){
+
+$( '.newPw1').val();
+
+
+$('.newPw2').keyup(function(){
+
+if($('.currentPw').val() != ""){
+if($('.newPw1').val() != $('.newPw2').val()){
+console.log("틀림");
+console.log("currentPw", $('.currentPw').val());
+}
+else{
+console.log("맞음");
+}
+
+
+
+}
+});
+});
+});
+});

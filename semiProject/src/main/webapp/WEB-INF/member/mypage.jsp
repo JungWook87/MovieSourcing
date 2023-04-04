@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/basic.css">
-    
+    <%   session.getAttribute("message"); %>
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
     <title>마이페이지</title>
@@ -57,7 +57,7 @@
                                         <p class="user-name">
                                           <span>${loginMember.memberNick}</span>  
                                         
-                                          <span> <a href="${contextPath}/member/myPageChange"" ><i class="fa-regular fa-pen-to-square"></i></a></span>
+                                          <span> <a href="${contextPath}/member/myPagechangeEnter"" ><i class="fa-regular fa-pen-to-square"></i></a></span>
                                           
                                         </p>
                                         <p class="user-email"><span>${loginMember.memberEmail}</span></p>

@@ -254,11 +254,54 @@ public class MemberService {
 	}
 
 
-	public Member resetMTable(String memberEmail, String memberEmail2) {
-		// TODO Auto-generated method stub
-		return null;
+
+
+	public int changeElse(Member mem) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.changeElse(conn, mem);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
+
+
+
+
+//	public int changePwElse(String memberPw, String newPw1, String memberImg, String memberNick, String memberIntro,
+//			int memberNo) throws Exception {
+//		
+//		Connection conn = getConnection();
+//		int result = dao.changePwElse(conn, memberPw, newPw1, memberImg,memberNo,memberNick,memberIntro);
+//		
+//		
+//		if(result > 0)	commit(conn);
+//		else			rollback(conn);
+//		
+//		close(conn);
+//		
+//		return result;
+//	}
+
 	
+	
+	public int changePwElse( String newPw1,Member mem) throws Exception {
+		
+		Connection conn = getConnection();
+		int result = dao.changePwElse(conn, newPw1, mem);
+		
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 	
 //	
 //	

@@ -20,8 +20,10 @@ import edu.kh.community.common.wrapper.EncryptWrapper;
 
 @WebFilter(filterName = "encryptFilter", 
 		   urlPatterns = {
-				   		  "/member/signUp", 
-				   		  "/member/myPage/changePw", 
+				   "/member/signUp1",
+				   "/member/signUp2",
+				   "/member/signUp3",
+				   "/member/login",
 						  "/member/myPage/secession"
 				   		  })
 

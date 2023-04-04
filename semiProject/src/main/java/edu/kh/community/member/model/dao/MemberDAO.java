@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -498,8 +499,95 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+
+	public int changeElse(Connection conn, Member mem) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateElseMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberNick());
+			pstmt.setString(2, mem.getMemberImg());
+			pstmt.setString(3, mem.getMemberIntro());
+			pstmt.setInt(	4, mem.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+//
+//	public int changePwElse(Connection conn,String newPw1, String memberImg, int memberNo,
+//			String memberNick, String memberIntro) throws Exception {
+//		int result = 0;
+//	
+//		
+//		try {
+//			
+//			String sql = prop.getProperty("changePwElse");
+//			
+//			pstmt = conn.prepareStatement(sql);
+//			
+//			pstmt.setString(1, newPw1);
+//			pstmt.setString(2,memberNick);
+//			pstmt.setString(3,memberImg);
+//			pstmt.setString(4,memberIntro);
+//			pstmt.setInt(5, memberNo);
+//			pstmt.setString(6, memberPw);
+//			result = pstmt.executeUpdate();
+//
+//		}finally {
+//			// try - finally 왜 사용하는가?
+//			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
+//			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
+//			close(pstmt);
+//		}
+//		
+//		return result;
+//	}
+//	
+//
+//	
+//}
+
+	public int changePwElse(Connection conn,String newPw1, Member mem) throws Exception {
+		int result = 0;
 	
-//	
-//	
+		
+		try {
+			
+			String sql = prop.getProperty("changePwElse");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPw1);
+			pstmt.setString(2, mem.getMemberNick());
+			pstmt.setString(3,mem.getMemberImg());
+			pstmt.setString(4,mem.getMemberIntro());
+			pstmt.setInt(5, mem.getMemberNo());
+			pstmt.setString(6, mem.getMemberPw());
+			result = pstmt.executeUpdate();
+
+		}finally {
+			// try - finally 왜 사용하는가?
+			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
+			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+
 	
 }

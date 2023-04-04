@@ -149,7 +149,7 @@ document.getElementById("select1").addEventListener("click", function(){
     });
 });
 
-
+/*
 
 //  *** 일정 시간 마다 회원 목록 조회 *** 
 
@@ -216,4 +216,4 @@ function selectAll(){ // 회원 전체 조회 함수
     // --> 처음에 함수가 수행되지 않아서 공백인 상태가 있음
 
 })();
-
+*/

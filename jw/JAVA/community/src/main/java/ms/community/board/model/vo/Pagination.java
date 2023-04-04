@@ -1,5 +1,6 @@
 package ms.community.board.model.vo;
 
+
 public class Pagination {
 	// 페이지네이션(페이징 처리)에 필요한 모든 값들을 저장하고 있는 객체
 	
@@ -157,7 +158,6 @@ public class Pagination {
 		// 현재 페이지가 21~30 인 경우 : 21
 		
 		startPage = (currentPage - 1) / pageSize * pageSize + 1;
-		// (22-1) / 10 * 11;
 		
 		
 		

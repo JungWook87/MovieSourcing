@@ -11,18 +11,22 @@
     font-style: normal;
 }
 
+body a {
+	text-decoration: none;
+	color:white;
+}
+
 body {
-    background-color: white;
+    background-color: black;
     margin: 0;
     padding: 0;
-    width: 1500px;
+   /* width: 1500px; */
 }
 
 /* 태그 main */
 main{
-    position: relative;
-    max-width: 800px;
-    min-width: 320px;
+    max-width: 900px;
+    min-width: 600px;
     margin: auto;
     display: flex;
 }
@@ -31,23 +35,33 @@ main{
 .main{
     display: flex;
     flex-basis: 80%;
+    flex-direction: column;
 }
 
 .side{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     flex-basis: 20%;
-}
-
-/* 메인 태그 아래의 메인클랙스 섹션 아래 2개 커뮤니티, 사이드 */
-.community{
-    border : 1px solid black;
     display: flex;
     flex-direction: column;
 }
 
-/* 커뮤니티 div인 2개 자식 */
+@media screen and (max-width: 500px) {
+    .side {
+      display: none;
+    }
+} 
+
+/* 메인 태그 아래의 (메인클랙스 섹션 아래 커뮤니티) 그리고 (사이드) */
+.community{
+    /* border : 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+/* 서치 아레아 */
 .search_area{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     width: 100%;
     margin: 20px auto 20px;
@@ -59,27 +73,35 @@ main{
     margin-left: 20px;
 }
 
-/* 첫번째 div의 자식 중 검색창 */
+
+/* 서치아레아 인풋 */
 #search_bar{
+    background-color: black;
     height: 30px;
     width: 90%;
     border: none;
     border-bottom: 3px solid gray;
     outline: none;
     padding-left: 10px;
+    font-size: 20px;
+    color:white;
 }
 
 /* --------------------------------------------------- */
 
 /* 커뮤 아레아 */
+.boardNo{
+	display: none;
+}
+
 .commu_area{
     display: flex;
     flex-direction: column;
 }
 
 .com_box{
-    background-color: rgb(195, 202, 207);
-    margin: 10px 0;
+    background-color: #2C3333;
+    margin: 20px 0;
     border-radius: 20px;
     padding: 20px;
 }
@@ -89,7 +111,7 @@ main{
 }
 
 /* 커뮤 아레아 아래 컴박스(정보묶음) */
-
+/* 유저에 대한 내용 */
 .com_member{
     display: flex;
     justify-content: space-between;
@@ -103,15 +125,28 @@ main{
     margin: 0 10px;
 }
 
-.com_date{
-    margin: 0 10px;
+.user_pic_nic > a{
+    text-decoration: none;
+    color: white;
+    
 }
 
-/* 컴박스 아래 내용 */
+.com_date{
+    margin: 0 10px;
+    color: white;
+}
+
+/* 컨텐츠 제목 */
+.com_title{
+    color: white;
+}
+
+/* 컨텐츠 내용 */
 /* 불러올 때 subString으로 글자 길이수 잘라서 나오게 하고, 뒤에 '+' ... 붙이기 */
 .com_cont {
     height: 100px;
     overflow: hidden;
+    color: white;
 }
 
 /* 컴박스 썸네일 */
@@ -129,11 +164,82 @@ main{
 /* 조회수 및 리플 */
 .readCnt_replyCnt{
     display: flex;
+    color: white;
 }
 
+.readCnt_replyCnt > div {
+    margin: 0 5px;
+}
+
+.readCnt_replyCnt > div > i{
+    margin: 0 3px;
+}
+
+/* ------------------------------------------------------------------------------------*/
+
+/*페이지네이션*/
+.pagination{
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    color : white;
+    text-decoration: none;
+    /* letter-spacing : -2px; */
+}
+
+/* 현재 페이지 번호 */
+.pagination .current{
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------*/
+
 /* 사이드바 */
+.side-1 {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 100px;
+}
 
+.side-1 > a {
+    padding-left : 30px;
+}
 
+.side-1 > div:last-of-type{
+    display: flex;
+    justify-content: right;
+    padding: 5px;
+}
+
+.side-1 > div:last-of-type > button{
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: transparent;
+    color: white;
+}
 
 
 

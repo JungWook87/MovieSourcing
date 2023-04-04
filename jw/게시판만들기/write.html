@@ -40,19 +40,8 @@
     <script>
         const btn_submit = document.getElementById("btn_submit");
         btn_submit.addEventListener("click", () =>{
-            const id_name = document.getElementById("id_name");
-            const id_password = document.getElementById("id_password");
             const id_subject = document.getElementById("id_subject");
-            if(id_name.value == ''){
-                alert('글쓴이를 입력하세요');
-                id_name.focus();
-                return false;
-            }
-            if(id_password.value == ''){
-                alert('비밀번호를 입력하세요');
-                id_password.focus();
-                return false;
-            }
+
             if(id_subject.value == ''){
                 alert('제목을 입력하세요');
                 id_subject.focus();

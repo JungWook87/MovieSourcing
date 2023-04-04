@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
-<!-- map에 저장된 값을 각각 변수에 저장 -->
-<c:set var="boardName" value="${map.boardName}" />
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="boardList" value="${map.boardList}" />
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,96 +10,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${contextPath}/resources/css/boardList.css">
+    <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
     <title>커뮤니티 게시판</title>
-
-    <link rel="stylesheet" href="${contextPath}/resources/css/main-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/boardList-style.css">
-
-    <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
-        <%-- 검색을 진행한 경우 key, query를 쿼리스트링 형태로 저장한 변수 생성 --%>
-        <c:if test="${!empty param.key}">
-            <c:set var="sURL" value="&key=${param.key}&query=${param.query}" />
+    
+     	<c:if test="${!empty param.key}">
+            <c:set var="sURL" value="&query=${param.query}" />
         </c:if>
 
-        <section class="board-list">
+        <section class="main">
+                        
+            <div class="community">
 
-            <h1 class="board-name">커뮤니티 게시판</h1>
+                <div class="search_area">
 
-            <c:if test="${!empty param.key}">
-                <h3 style="margin-left:30px;"> "${param.query}" 검색 결과  </h3>
-            </c:if>
-
-
-
-            <div class="list-wrapper">
-                <table class="list-table">
+                    <div>
+                        <div class="fa-solid fa-magnifying-glass" style="color: white"></div>
+                        <input type="text" id="search_bar" placeholder="커뮤니티 검색">
+                    </div>
                     
-                    <thead>
-                        <tr>
-                            <th>글번호</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>작성일</th>
-                            <th>조회수</th>
-                        </tr>
-                    </thead>
+                </div>
 
-                    <tbody>
+                <div class="commu_area">
+					<c:choose>
+						<c:when test="${empty boardList}">
+							<h3>게시글이 존재하지 않습니다</h5>
+						</c:when>
+						
+						<c:otherwise>
+							<c:forEach var="board" items="${boardList}">
+								<div class="com_box">
+									
+			                        <div class="com_member">
+			
+			                            <div class="user_pic_nic">
+			
+			                                <a href="#"><img class="memPic" src="${contextPath}${board.memPic}"  style="width:50px; height:30px;"></a>
+			
+			                                <a href="#">${board.memNic}</a>
+			
+			                            </div>
+			
+			                            <div class="com_date">${board.comDate}</div>
+			
+			                        </div>
+			
+			                        <div class="com_title">
+			                            <a href="detail?comNo=${board.comNo}&cp=${pagination.currentPage}">${board.comTitle}</a>
+			                        </div>
+			
+			                        <div class="com_cont">
+			                            <p>
+			                            	<a href="detail?comNo=${board.comNo}&cp=${pagination.currentPage}">${board.comContent}</a>
+			                            </p>
+			                        </div>
 
-                        <c:choose>
-                            <c:when test="${empty boardList}">
-                                <!-- 게시글 목록 조회 결과가 비어있다면 -->
-                                <tr>
-                                    <th colspan="5">게시글이 존재하지 않습니다.</th>
-                                </tr>
-                            </c:when>
-
-                            <c:otherwise>
-                                <!-- 게시글 목록 조회 결과가 비어있지 않다면 -->
-
-                                <!-- 향상된 for문처럼 사용 -->
-                                <c:forEach var="board" items="${boardList}">
-                                    <tr>
-                                        <td>${board.boardNo}</td>
-                                        <td> 
-                                            <c:if test="${!empty board.thumbnail}">
-                                                <img class="list-thumbnail" src="${contextPath}${board.thumbnail}">
-                                            </c:if>  
-
-                                            <a href="detail?no=${board.boardNo}&cp=${pagination.currentPage}&type=${param.type}${sURL}">${board.boardTitle}</a>                           
-                                        </td>
-                                        <td>${board.memberNickname}</td>
-                                        <td>${board.createDate}</td>
-                                        <td>${board.readCount}</td>
-                                    </tr>
-                                </c:forEach>
-
-                            </c:otherwise>
-                        </c:choose>
-                    </tbody>
-                </table>
+                                    <c:if test="${board.thumbnail} != null">
+                                        <div class="com_thunmnail">
+                                            <img src="${board.thumbnail}" class="com_img">
+                                        </div>
+                                     </c:if>
+			
+			                        <div class="readCnt_replyCnt">
+			                            <!-- readCnt -->
+                                        <div>
+                                            <i class="fa-solid fa-eye" id="viewImg"></i>
+                                            ${board.readCount}
+                                        </div>
+                                        <!-- replyCnt -->
+			                            <div>
+                                            <i class="fa-solid fa-pen-nib" id="viewImg"></i>
+                                            ${board.replyCount}
+                                        </div>
+			                        </div>
+			
+			                    </div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>	
+                                
+                </div>    
+                
             </div>
-
-
-            <div class="btn-area">
-
-                <c:if test="${!empty loginMember}">
-                    <!-- /community/board/write -->
-                    <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글쓰기</button>                     
-                </c:if>
-
-            </div>
-
             
             <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="list?type=${param.type}&cp="/>
+                <c:set var="url" value="list"/>
 
 
                 <ul class="pagination">
@@ -135,40 +134,29 @@
 
                 </ul>
             </div>
-
-            <!-- /board/list?type=1&cp=3 -->
-
-            <!-- /board/list?type=1&cp=10 &key=t&query=안녕 -->
-
-            <form action="list" method="get" id="boardSearch" onsubmit="return searchValidate()">
-                <input type="hidden" name="type" value="${param.type}">
-
-                <select name="key" id="search-key">
-                    <option value="t">제목</option>
-                    <option value="c">내용</option>
-                    <option value="tc">제목+내용</tion>
-                    <option value="w">작성자</option>
-                </select>
-
-                <input type="text" name="query"  id="search-query" placeholder="검색어를 입력해주세요.">
-
-                <button>검색</button>
-            </form>
-
+            
         </section>
+        
+        <div class="side">
+            
+            <div class="side-1">
+                <a href="#">
+                    <img src="${contextPath}/resources/images/추천영화테스트.png" width="100%">
+                </a>
+
+                <div>
+                    <button type="button" id="top_btn">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        top
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+		
     </main>
     
-    <div class="modal">
-        <span id="modal-close">&times;</span>
-        <img id="modal-image" src="${contextPath}/resources/images/user.png">
-    </div>
-
-
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
-    <script src="${contextPath}/resources/js/board/board.js"></script>
-
-
-
+    <script src="${contextPath}/resources/js/board/boardList.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --><!-- The contents of this file will be loaded for each web application -->
-<Context workDir="C:\Users\kjo63\OneDrive\바탕 화면\MovieSourcing\jw\JAVA\community\src\main\webapp\WEB-INF\jspwork">
+<Context workDir="C:\MovieSourcing\jw\JAVA\community\src\main\webapp\WEB-INF\jspwork">
 
     <!-- Default set of monitored resources. If one of these changes, the    -->
     <!-- web application will be reloaded.                                   -->
@@ -28,7 +28,7 @@
     <Manager pathname="" />
     -->
     
-        <Resource 
+     <Resource 
       name="jdbc/oracle" 
       auth="Container"
       type="javax.sql.DataSource" 

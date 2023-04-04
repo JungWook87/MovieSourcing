@@ -12,8 +12,13 @@ import lombok.ToString;
 public class Board {
 	
 	private int comNo;
-	private String comTitle;
+	private String memPic; // 이미지
+	private String memNic;
 	private String comDate;
+	private String comTitle;
 	private String comContent;
+	private String thumbnail;
 	private int readCount;
+	private int replyCount;
+	
 }

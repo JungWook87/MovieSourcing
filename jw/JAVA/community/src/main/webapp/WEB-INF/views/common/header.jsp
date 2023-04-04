@@ -61,7 +61,7 @@
 
 <nav>
     <ul>
-        <li><a href="${contextPath}/board/list?type=1">공지사항</a></li>
+        <li><a href="board/list">공지사항</a></li>
 
         <li><a href="${contextPath}/board/list?type=2">자유 게시판</a></li>
 

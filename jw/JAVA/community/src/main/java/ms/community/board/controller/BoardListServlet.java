@@ -35,16 +35,19 @@ public class BoardListServlet extends HttpServlet{
 			// 키는 String 값은 객체형태(여기에 게시번호, 게시글, 작성자 등등)
 			Map<String, Object> map = null;
 			
-			if(req.getParameter("key") == null) { // key는 검색창에서 제목, 내용, 제목+내용, 작성자의 카테고리에 관련된 값
-				map = service.searchBoadList(cp);
+			if(req.getParameter("query") == null) { // key는 검색창에서 제목, 내용, 제목+내용, 작성자의 카테고리에 관련된 값
+				map = service.selectBoadList(cp);
+		
+
 			} else { // 검색 값이 있으면 
-				String key = req.getParameter("key");	//	검색 카테고리(제목, 내용, 등등)
 				String query = req.getParameter("query"); // 검색 내용, 검색 값
 				
-				map = service.searchBoadList(cp, key, query);
+				map = service.selectBoadList(cp, query);
 			}
 			
 			req.setAttribute("map", map);
+			
+			// 검색 없는 목록 객체 반환까지 완,, 검색 있는 목록 객체 반환 작성 필요, jsp 작성 필요
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/boardList.jsp");
 			

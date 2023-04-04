@@ -8,6 +8,10 @@
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
     <title>개별영화페이지</title>
 </head>
 <body>
@@ -64,9 +68,9 @@
                                 </table>
                             </div>
                             <div class="genreBox">
-                                <div><span id="genre">#로맨스</span></div>
-                                <div><span id="genre">#스릴러</span></div>
-                                <div><span id="genre">#드라마</span></div>
+                                <div><span class="genreSpan">#로맨스</span></div>
+                                <div><span class="genreSpan">#스릴러</span></div>
+                                <div><span class="genreSpan">#드라마</span></div>
                             </div>
                             <div class="scoreBox">
                                 <div id="scoreBar">
@@ -190,6 +194,7 @@
                                 </span>
                             </div>
                         </div>
+                       
                     </div>
                     <div class="recommendContainer">
                         <span class="bold2">이런영화는 어때요??</span> 
@@ -232,6 +237,46 @@
             </div>
         </div>
 
+    </div>
+
+    <div id="reviewOverlay">
+        <div id="reviewWriteBox">
+            <div id="modalTitle"    >
+                <span>리뷰를 작성해주세요</span>
+            </div>
+            <div id="modalScore">
+                <div>
+                    <span>별점 평가</span>
+                </div>
+                <div>
+                    <form name="myform" id="myform" method="post" action="./save">
+                        <fieldset>
+                            <label for="rate1">⭐</label><input type="radio" name="rating" value="1" id="rate1">
+                            <label for="rate2">⭐</label><input type="radio" name="rating" value="2" id="rate2">
+                            <label for="rate3">⭐</label><input type="radio" name="rating" value="3" id="rate3">
+                            <label for="rate4">⭐</label><input type="radio" name="rating" value="4" id="rate4">
+                            <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5">
+                        </fieldset>
+                    </form>
+                    
+                </div>
+
+            </div>
+            <div id="modalDiv1">
+                <div id="modalDiv2">
+                    <div >
+                        <span>간단히 작성해 보세요</span>
+                    </div>
+                    <div>
+                        <span id="reviewCounter">0</span>
+                        <span>/100</span>
+                    </div>
+                </div>
+                <div>
+                    <textarea name="review" id="reviewArea" spellcheck="false" ></textarea>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="../js/개별영화페이지.js"></script>

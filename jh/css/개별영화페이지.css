@@ -323,11 +323,12 @@ pre {
 }
 
 .reviewbox {
-    margin : 10px 0;
-    background-color: rgb(26, 26, 34);
+    margin : 15px 0;
+    background-color: rgb(41, 41, 57);
     padding : 20px;
     display : flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .reviewInfo {
@@ -380,6 +381,7 @@ pre {
     margin: auto;
     margin-left: 4px;
 }
+
 .recommendContainer {
     display : flex;
     flex-direction: column;
@@ -392,6 +394,15 @@ pre {
     margin: 5px;
 
 }
+
+
+
+
+
+
+
+
+/* 네비 */
 
 .navHeader {
     position: fixed;
@@ -447,3 +458,108 @@ pre {
 
 
 
+
+/* 리뷰모달창 */
+
+#reviewOverlay {
+    width : 100%;
+    height : 100%;
+    position : absolute;
+    
+    display : none;
+
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+
+    background-color: rgb(171, 145, 145, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+
+    left: 0;
+    top: 0;
+}
+
+#reviewWriteBox {
+    width : 800px;
+  
+    
+    border-radius: 15px;
+    padding : 15px;
+
+    margin : 0 auto 100px;
+
+    position : relative;
+    display : flex;
+    flex-direction: column;
+
+    top : 420px;
+
+    background-color: rgba(42, 49, 59, 0.98);   
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);   
+}
+
+#modalTitle{
+    display: flex;
+    margin : 0 auto 20px;
+}
+#modalTitle > span {
+    font-size: 20px;
+    color: rgb(215, 238, 250);
+
+}
+
+#modalDiv1 > div {
+    display : flex;
+    justify-content: space-between;
+    margin : 5px 0 ;
+}
+
+#reviewArea {
+    margin : 10px 0;
+    width : 100%;
+    height : 120px;
+    padding :10px;
+    font-size: 20px;
+    color: rgb(212, 219, 221);
+    background-color: rgb(86, 93, 98);
+    outline : none;
+    border-style: none;
+    border-radius: 10px;
+}
+
+textarea:focus {
+    border-style: none;
+}
+
+
+/* 별점스타일 */
+
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    border: 0; /* 필드셋 테두리 제거 */
+}
+#myform input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+#myform label{
+    font-size: 3em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+
+#myform label:hover{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 뒤에오는 이모지들 */
+}
+
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}

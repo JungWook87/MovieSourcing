@@ -22,6 +22,10 @@ body {
     background-color: black;
 }
 
+.contents-wrap > div > a:hover > span {
+    color: rgb(177, 177, 222);
+}
+
 #contents {
     position : relative;
     min-width : 320px;
@@ -217,24 +221,39 @@ section {
     position: relative;
 }
 
+#infoMark {
+    color : white;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
 /* 중간박스 구분선 생성 */
-.profile-container-box:nth-of-type(1)::after{
+/* .profile-container-box:nth-of-type(1)::after{
     content: "";
     width: 100%;
     height: 1px;
     background-color: gray;
     position: absolute;
     bottom : -20px;
-}
+} */
+
 
 
 
 .profile-container-box > a > button{
     background-color: rgb(57, 41, 41);
     border-style: none;
-    cursor: pointer;
     margin : 0px 2px;
 }
+
+#genreBox {
+    display : flex;
+}
+.genreDiv {
+    margin : 5px;
+}
+
+
 
 #arrow {
     color : white;
@@ -248,8 +267,15 @@ section {
 
 /* display : none으로 제어 */
 #unlikeBox {
-    display : none;
 }
+.boxline {
+    width : 95%;
+    margin: 0 auto;
+}
+#boxLine2 {
+    display : flex;
+}
+
 .profile-container-box:nth-of-type(2)::after{
     content: "";
     width: 100%;
@@ -269,6 +295,8 @@ section {
     background-color: rgb(83, 83, 115);
     color: white;
 }   
+
+/* 인생영화 */
 
 .lifemovie-container {
 
@@ -295,6 +323,18 @@ section {
     align-items: center;
 
 }
+
+.lifemovie-empty-foreign {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+
+.lifemovie-empty-foreign > span {
+    color : gray;
+    font-weight: bold;
+}
+
 
 .lifemovie-empty {
     margin-top: 120px;
@@ -360,6 +400,8 @@ section {
 }
 
 
+
+
 .navHeader {
     position: fixed;
     left: 0;
@@ -404,3 +446,12 @@ section {
 
 
 
+/* 밑줄추가 */
+
+.profile-container-box > a:hover{
+    text-decoration: underline;    
+}
+
+.profile-container-box > a:hover > span {
+    text-decoration: underline;
+}

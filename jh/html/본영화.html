@@ -11,6 +11,7 @@
     <title>본영화</title>
 </head>
 <body>
+ 
     <div id="movieSourcing">
         <div id="layout">
             <div id="root">
@@ -38,12 +39,14 @@
                                     <div><span id="movieName">박쥐</span></div>
                                     <div><span id="date">2018.06.24</span></div>
                                     <div class="score"> 
-                                        <span id="score">관객평점 4.8/5.0</span>
+                                        <span id="score">관객평점 <span id="movieScore">4.8</span>/5.0</span>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <i class="fa-regular fa-circle-xmark" id="watchedDelete"></i>
+                            <div id="watchedMenu">
+                                <a class="fa-regular fa-circle-xmark" id="watchedDelete"></a>
+
+                                <a class="fa-solid fa-ellipsis-vertical" id="watchedDot"></a>
                             </div>
                         </div>
                         
@@ -70,14 +73,27 @@
                         </a>
                     </nav>
                 </header>
-                <!-- <div id="popUp">
-                    <div></div>
-                    <div></div>
-                </div> -->
+                
             </div>
         </div>
 
     </div>
+
+    <div id="modalOverlay" class="modal">
+        <div id="modalMenu">
+            <div>
+
+            </div>
+            <div>   
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+
+
+        </div>
+    </div>
+    
     
     <script src="/js/본영화.js"></script>
 

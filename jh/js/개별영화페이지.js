@@ -39,3 +39,24 @@ if (score2 >= 4.0){
 } else if (score2 < 2.0) {
     scoreLight2.style.backgroundColor = "red";
 }
+
+
+
+const reviewWrite = document.getElementById("reviewWrite");
+const reviewOverlay = document.getElementById("reviewOverlay");
+const reviewWriteBox = document.getElementById("reviewWriteBox");
+const nav = document.getElementsByClassName("nav");
+
+reviewWrite.addEventListener("click", e => {
+    reviewOverlay.style.display = "flex";
+    reviewOverlay.style.position = "fixed";
+    // nav[0].style.display = "none";
+})
+
+
+// 리뷰모달 작성글 숫자
+
+$("#reviewArea").on("input",function(){
+    
+    $("#reviewCounter").text($(this).val().length);
+})

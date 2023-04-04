@@ -131,10 +131,57 @@ section {
     color : rgb(184, 174, 174);
 }
 
+#watchedMenu {
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 #watchedDelete {
     color: rgb(105, 95, 95);
     font-size: 30px;
     cursor: pointer;
+}
+
+#watchedDot {
+    margin: 0 auto 5px;
+    margin-left: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#modalOverlay {
+    width: 100%;
+    height : 100%;
+    position :absolute;
+    display : none;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(171, 145, 145, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+
+    left: 0;
+    top: 0;
+}
+
+#modalMenu {
+    display: flex;
+    width : 500px;
+    height : 300px;
+    margin : auto;
+    background-color: rgba(110, 60, 60, 0.813);
+
+    position: relative;
+    padding: 10px;
+
+    border-radius: 30px;
+
 }
 
 

@@ -13,11 +13,26 @@ janr.forEach((btn)=>{
         
     })
 })
-// 버튼 클릭시 클래스 추가, 제거 하는법 추가하기
+
 
 const homebutton = document.getElementById("homebutton");
 
 homebutton.addEventListener("click", function() {
     window.open("semi-main.html", "_self");
 
+});
+
+
+
+//top 버튼 클릭시 위로 이동
+$(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.elw').addClass('on');
+    }else {
+        $('.elw').removeClass('on');
+    }
+});
+
+$('.elw').click(function() {
+    window.scrollTo({top : 0, behavior: 'smooth'});
 });

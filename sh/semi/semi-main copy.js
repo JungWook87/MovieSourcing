@@ -8,7 +8,9 @@ janrbutton.addEventListener("click", function() {
     window.open("semi-mlist.html", "_self");
 });
 
-
+$('#janrbutton').click(function() {
+    window.open('semi-mlist.html','_self');
+});
 
 
 
@@ -61,8 +63,8 @@ function makeClone1() {
     updateWidth1();
     setInitialPos1();
     setTimeout(function() {
-       slides.classList.add('animated');
-       
+        slides.classList.add('animated');
+        
     },100);
 }
        
@@ -307,7 +309,7 @@ let chart = document.querySelectorAll('.chart');
 $('.rotate').click(function() {
 
     chart[showNum].classList.remove("active");
-
+    
     showNum++;
 
     if(showNum == 3){

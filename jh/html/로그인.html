@@ -101,21 +101,21 @@
         </div>
 
     </div>
-
-    <script src="/js/로그인.js"></script>
+    
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script>    
-        Kakao.init('b1d9a2e7a04258418caf62b1eca84f41');
-        console.log(Kakao.isInitialized()); 
+    <script>
 
+        Kakao.init('2cd68f6b3dd2e3d977f01b981ff6b610');
+        console.log(Kakao.isInitialized()); 
+        //카카오로그인
         document.getElementById("kakaoLogin")
-        .addEventListener("click", function kakaoLogin() {
+        .addEventListener("click",function kakaoLogin() {
             Kakao.Auth.login({
             success: function (response) {
                 Kakao.API.request({
                 url: '/v2/user/me',
                 success: function (response) {
-                    console.log(response)n
+                    console.log(response)
                 },
                 fail: function (error) {
                     console.log(error)
@@ -127,6 +127,7 @@
             },
             })
         })
+    
         document.getElementById("logout")
         .addEventListener("click", function kakaoLogout() {
             if (Kakao.Auth.getAccessToken()) {
@@ -143,38 +144,6 @@
             }
         }  )
     </script>
-
-    <script>
-        function init() {
-            gapi.load('auth2', function() {
-                gapi.auth2.init();
-                options = new gapi.auth2.SigninOptionsBuilder();
-                options.setPrompt('select_account');
-                options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-                gapi.auth2.getAuthInstance().attachClickHandler('googleLogin', options, onSignIn, onSignInFailure);
-            })
-        }
-        
-        function onSignIn(googleUser) {
-            var access_token = googleUser.getAuthResponse().access_token
-            $.ajax({
-                url: 'https://people.googleapis.com/v1/people/me'
-                 , data: {personFields:'birthdays', key:'AIzaSyAR3Snhp3uGfBQ0Sw_Bfa82gwbpqr_cFRE', 'access_token': access_token}
-                , method:'GET'
-            })
-            .done(function(e){
-               var profile = googleUser.getBasicProfile();
-                console.log(profile)
-            })
-            .fail(function(e){
-                console.log(e);
-            })
-        }
-        function onSignInFailure(t){		
-            console.log(t);
-        }
-    </script>
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
     <script src="../js/로그인.js"></script>
 

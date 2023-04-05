@@ -35,26 +35,8 @@
                         <a href="#">사진변경</a>
                         <span class="email1">가입시 입력한 email 주소</span>
                         <span class="email2">wogur5252@naver.com</span>
-                        
                     </section>
 
-                    <!-- 비밀번호 수정 -->
-                    <!-- 현재비밀번호 + 비밀번호 수정확인 -->
-                    <section class="passwordbox">
-                        <div>
-                            <input type="password" class="currentPw" placeholder="현재 비밀번호">
-                        </div>
-                        <div>
-                            <input type="password" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
-                        </div>
-                        <div class="passwordboxdiv3">
-                            <input type="password" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
-                            <span id="pwCheck"></span>
-                        </div> 
-                    </section>
-                    <script>
-  
-                    </script>
                     <section class="nicknamebox">
                         <div class="nicknamebar">
                             <span class="leftpadding">닉네임</span>
@@ -63,8 +45,8 @@
                         <div class="nicknameinsert">
                             <textarea id="nicknameArea" placeholder="바꿔도됩니다"></textarea>
                         </div>
-                       
                     </section>
+
                     <section class="introducebox">
                         <div class="introducebar">
                             <span class="leftpadding">소개글</span>
@@ -74,9 +56,15 @@
                             <textarea name="introduceArea" id="introduceArea" placeholder="아무글이나 적어도 좋습니다."></textarea>
                         </div>
                     </section>
-
                     
-                    <a href="#">회원탈퇴 <i class="fa-solid fa-chevron-right"></i> </a>
+                    <div id="aDiv">
+                        <a href="#" id="changeA" class="aStyle">
+                            비밀번호 변경 <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                        <a href="#" id="byeA" class="aStyle">
+                            회원탈퇴 <i class="fa-solid fa-chevron-right"></i> 
+                        </a>    
+                    </div>
 
 
                     <hr class="line" color="gray">
@@ -88,6 +76,32 @@
             </div>
         </div>
 
+    </div>
+
+    <div id="newPwOverlay" class="newPwOverlay">
+        <!-- 비밀번호 수정 -->
+        <!-- 현재비밀번호 + 비밀번호 수정확인 -->
+
+        <div class="passwordbox">
+            <div id="modalTitle">
+                <span>
+                    비밀번호 수정
+                </span>
+            </div>
+            <div>
+                <input type="password" class="currentPw" id="currentPw" placeholder="현재 비밀번호">
+            </div>
+            <div>
+                <input type="password" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
+            </div>
+            <div class="passwordboxdiv3">
+                <input type="password" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
+                <span id="pwCheck"></span>
+            </div> 
+            <button id="changeBtn"> 
+                <span>수 정</span>
+            </button>
+        </div>
     </div>
 
     <script src="/js/프로필수정.js"></script>

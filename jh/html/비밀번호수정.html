@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/비밀번호수정.css">
+    
+    <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
+    <title>프로필수정</title>
+</head>
+<body>
+    <div id="movieSourcing">
+        <div id="layout">
+            <div id="root">
+                <header class="backpageHeader">
+                    <div classs="backpageDiv">
+                        <a href="#" class="backpage">
+                            <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
+                        </a>
+                    </div>
+                </header>
+                <main id="contents">
+                    <div>
+                        <span>비밀번호 변경</span>
+                    </div>
+                    <!-- 비밀번호 수정 -->
+                    <!-- 현재비밀번호 + 비밀번호 수정확인 -->
+                    <section class="passwordbox">
+                        
+                        <span>현재 사용 중인 비밀번호</span>
+                        
+                        <div>
+                            <input type="password" class="currentPw" placeholder="현재 비밀번호">
+                        </div>
+                        <div>
+                            <input type="password" class="newPw1" id="newPw1" placeholder="변경할 비밀번호">
+                        </div>
+                        <div class="passwordboxdiv3">
+                            <input type="password" class="newPw2" id="newPw2" placeholder="변경할 비밀번호 확인">
+                            <span id="pwCheck"></span>
+                        </div> 
+                    </section>  
+                   
+                    <section class="savebox">
+                        <button id="saveBtn"><span>변 경</span></button>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/비밀번호수정.js"></script>
+    
+</body>
+</html>

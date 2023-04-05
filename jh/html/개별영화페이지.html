@@ -239,28 +239,22 @@
 
     </div>
 
-    <div id="reviewOverlay">
+    <div id="reviewOverlay" class="reviewOverlay">
         <div id="reviewWriteBox">
-            <div id="modalTitle"    >
+            <div id="modalTitle">
                 <span>리뷰를 작성해주세요</span>
             </div>
             <div id="modalScore">
                 <div>
                     <span>별점 평가</span>
                 </div>
-                <div>
-                    <form name="myform" id="myform" method="post" action="./save">
-                        <fieldset>
-                            <label for="rate1">⭐</label><input type="radio" name="rating" value="1" id="rate1">
-                            <label for="rate2">⭐</label><input type="radio" name="rating" value="2" id="rate2">
-                            <label for="rate3">⭐</label><input type="radio" name="rating" value="3" id="rate3">
-                            <label for="rate4">⭐</label><input type="radio" name="rating" value="4" id="rate4">
-                            <label for="rate5">⭐</label><input type="radio" name="rating" value="5" id="rate5">
-                        </fieldset>
-                    </form>
-                    
+                <div id="starBox">
+                    <span class="star">
+                        ★★★★★
+                        <span>★★★★★</span>
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                    </span>
                 </div>
-
             </div>
             <div id="modalDiv1">
                 <div id="modalDiv2">
@@ -274,6 +268,9 @@
                 </div>
                 <div>
                     <textarea name="review" id="reviewArea" spellcheck="false" ></textarea>
+                </div>
+                <div>
+                    <button id="reviewSubmit"><span>저 장</span></button>
                 </div>
             </div>
         </div>

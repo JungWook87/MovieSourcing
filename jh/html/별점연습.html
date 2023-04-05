@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
+
+    <style>
+.rating {
+  display: inline-block;
+  font-size: 0;
+}
+
+.star {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0l2.477 5.097 5.523.803-3.993 3.893.942 5.48-4.949-2.606-4.949 2.606.942-5.48-3.993-3.893 5.523-.803z"/></svg>') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.star.active, .star.active ~ .star, .star.active ~ .star.half {
+  background-color: #FFD700;
+  color: #FFD700;
+}
+
+.star.half {
+  background-position: 0 50%;
+}
+
+.star.inactive {
+  background-color: #ccc;
+  color: #ccc;
+}
+
+.star.inactive.half {
+  background-position: 0 50%;
+}
+
+    </style>
+</head>
+<body>
+    <div class="rating">
+        <i class="star" data-value="0.5"></i>
+        <i class="star" data-value="1.0"></i>
+        <i class="star" data-value="1.5"></i>
+        <i class="star" data-value="2.0"></i>
+        <i class="star" data-value="2.5"></i>
+        <i class="star" data-value="3.0"></i>
+        <i class="star" data-value="3.5"></i>
+        <i class="star" data-value="4.0"></i>
+        <i class="star" data-value="4.5"></i>
+        <i class="star" data-value="5.0"></i>
+      </div>
+      
+
+
+      <script>
+   $(function() {
+  $('.star').click(function() {
+    $(this).siblings('.star').addBack().removeClass('active half').addClass('inactive');
+    $(this).prevAll('.star').addBack().removeClass('inactive').addClass('active');
+    if ($(this).attr('data-value') % 1 !== 0) {
+      $(this).prev().removeClass('inactive').addClass('half');
+    }
+  });
+});
+
+      </script>
+
+    
+</body>
+</html>

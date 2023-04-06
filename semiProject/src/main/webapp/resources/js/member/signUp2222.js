@@ -31,7 +31,7 @@ document.getElementById("iddupcheck")
                 }
             },
             error : function(){
-                cosole.log("뭐임?");
+                console.log("뭐임?");
             }
         })
         alert("사용가능한 아이디입니다.");
@@ -49,8 +49,8 @@ document.getElementById("namedupcheck")
     const nickRegEx = /^[가-힣a-zA-Z0-9]{2,15}$/;
     if(nickRegEx.test(nickname.value)){
         $.ajax({
-            url : "nicknameDupcheck",
-            data : {"membeNickname" : nickname.value},
+            url : "nicknameDupCheck",
+            data : {"memberNick" : nickname.value},
             type : "GET",
             success : function(nickResult){
                 if(nickResult == 1 ){ // 중복
@@ -61,7 +61,7 @@ document.getElementById("namedupcheck")
                 }
             },
             error : function(){
-                cosole.log("왜이럼?");
+                console.log("왜이럼?");
             }
 
         })
@@ -145,7 +145,6 @@ function signUpValidate() {
     }
     return true;
 }
-
 $(document).ready(function() {
     $("form").submit(function() {
         if(!$("input[name='gender']:checked").val()) {

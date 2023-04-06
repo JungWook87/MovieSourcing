@@ -81,13 +81,7 @@ public class MemberDAO {
 				loginMember.setMemberSignUpDate(rs.getString("MEM_SIGN_UP_DATE") );
 				
 			}
-//			SELECT MEM_NO,MEM_NAME,MEM_EMAIL,MEM_ID,MEM_PW,MEM_IMG,
-//			MEM_NICK, MEM_BIRTH, MEM_GENDER,MEM_INTRO,
-//				TO_CHAR(MEM_SIGN_UP_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MEM_SIGN_UP_DATE
-//			FROM MEMBER
-//			WHERE MEM_ID = ?
-//			AND MEM_PW = ?
-//			AND MEM_ESCAPE = 'N'
+
 			
 		} finally {
 			close(rs);
@@ -133,72 +127,73 @@ public class MemberDAO {
 		return result;
 	}
 
-//
-//
-//	/** 회원 정보 수정 DAO
-//	 * @param conn
-//	 * @param mem
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int updateMember(Connection conn, Member mem) throws Exception{
-//		int result = 0;
-//		
-//		try {
-//			String sql = prop.getProperty("updateMember");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, mem.getMemberNickname());
-//			pstmt.setString(2, mem.getMemberTel());
-//			pstmt.setString(3, mem.getMemberAddress());
-//			pstmt.setInt(	4, mem.getMemberNo());
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		}finally {
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
-//
-//
-//
-//	/** 비밀번호 변경 DAO
-//	 * @param conn
-//	 * @param currentPw
-//	 * @param newPw
-//	 * @param memberNo
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int changePw(Connection conn, String currentPw, String newPw, int memberNo) throws Exception {
-//		int result = 0;
-//		
-//		try {
-//			
-//			String sql = prop.getProperty("changePw");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, newPw);
-//			pstmt.setInt(2, memberNo);
-//			pstmt.setString(3, currentPw);
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		}finally {
-//			// try - finally 왜 사용하는가?
-//			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
-//			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
-//
-//
+
+	
+	
+	
+	
+	public int changeElse(Connection conn, Member mem) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateElseMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberNick());
+			pstmt.setString(2, mem.getMemberImg());
+			pstmt.setString(3, mem.getMemberIntro());
+			pstmt.setInt(	4, mem.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	
+	
+
+	/** 비밀번호 변경 DAO
+	 * @param conn
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changePw(Connection conn, String memberPw, String newPw1, int memberNo) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("changePw");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPw1);
+			pstmt.setInt(2, memberNo);
+			pstmt.setString(3, memberPw);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			// try - finally 왜 사용하는가?
+			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
+			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
 
 
 	/** 회원 탈퇴 DAO
@@ -502,29 +497,6 @@ public class MemberDAO {
 
 
 
-	public int changeElse(Connection conn, Member mem) throws Exception{
-		
-		int result = 0;
-		
-		try {
-			String sql = prop.getProperty("updateElseMember");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, mem.getMemberNick());
-			pstmt.setString(2, mem.getMemberImg());
-			pstmt.setString(3, mem.getMemberIntro());
-			pstmt.setInt(	4, mem.getMemberNo());
-			
-			result = pstmt.executeUpdate();
-			
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
-
 
 //
 //	public int changePwElse(Connection conn,String newPw1, String memberImg, int memberNo,
@@ -560,34 +532,8 @@ public class MemberDAO {
 //	
 //}
 
-	public int changePwElse(Connection conn,String newPw1, Member mem) throws Exception {
-		int result = 0;
-	
-		
-		try {
-			
-			String sql = prop.getProperty("changePwElse");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, newPw1);
-			pstmt.setString(2, mem.getMemberNick());
-			pstmt.setString(3,mem.getMemberImg());
-			pstmt.setString(4,mem.getMemberIntro());
-			pstmt.setInt(5, mem.getMemberNo());
-			pstmt.setString(6, mem.getMemberPw());
-			result = pstmt.executeUpdate();
 
-		}finally {
-			// try - finally 왜 사용하는가?
-			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
-			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
-			close(pstmt);
-		}
-		
-		return result;
-	}
-	
+
 
 	
 }

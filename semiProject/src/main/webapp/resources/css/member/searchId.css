@@ -16,22 +16,6 @@ body {
     background-color: black;
 }
 
-/* 회원가입 인풋 설정 */
-input {
-    border-radius: 5px;
-    padding : 0 13px;
-    outline: none;
-}
-input:focus {
-    border : 3px solid rgb(181, 167, 153);
-}
-input::placeholder {
-    font-size: 16px;
-}
-
-
-s
-
 #root {
     position : relative;
     min-width : 320px;
@@ -41,11 +25,10 @@ s
 #contents {
     position : relative;
     min-width : 320px;
-    background-color: black;
-}
-
-#contents {
     max-width: 700px;
+
+    background-color: black;
+    
     margin : 0 auto;
     box-sizing: border-box;
     overflow : hidden;
@@ -83,12 +66,7 @@ section {
     font-size: 20px;
 }
 
-#Font {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.signup {
+.idSearch {
     display : flex;
     text-align: center;
     margin : 16px auto 30px;
@@ -101,27 +79,19 @@ section {
 }
 
 .infomation {
-    padding : 40px 15%;
+    padding : 30px 30px;
     margin : 8px 0;
     border-radius: 15px;
     background-color:  rgb(57, 41, 41);
 
 }
-
-input {
-    border-radius: 5px;
-}
-
 .infomation > div {
     display : flex;
     flex-direction: column;
     margin : 15px 0;
 }
 
-.emailSpan {
-    display : flex;
-    justify-content: space-between;
-}
+
 .email{
     margin : 10px 0; 
     display : flex;
@@ -131,81 +101,16 @@ input {
 .email > input {
     width : 100%;
     height : 50px;
-    
+    margin-right: 5%;
     font-size: 20px;
     font-weight: bold;
-}
-
-
-
-.cNumberBox {
-    display : flex;
-    flex-direction: column;
-    text-align: center;
-    width : 150px;
-    margin-left: 10px;
-
-}
-
-#cNumberBtn {
-    margin : auto;
-    background-color: rgb(175, 161, 158);
-    height : 100%;
-    width : 100%;
     border-radius: 5px;
-    border-style: none;
-    cursor: pointer;
-}
-
-
-
-.certification{
-    margin : 10px 0; 
-    display : flex;
-    justify-content: space-between;
-}
-
-.certification > input {
-    width : 100%;
-    height : 50px;
-    
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.certificationbox {
-    display : flex;
-    flex-direction: column;
-    text-align: center;
-    width : 150px;
-    margin-left: 10px;
-
-}
-
-#cBtn {
-    margin : auto;
-    background-color: rgb(212, 151, 135);
-    height : 100%;
-    width : 100%;
-    border-radius: 5px;
-    border-style: none;
-    cursor: pointer;
-}
-
-#cMessage {
-    font-size: 16px;
-    color : red;
-}
-
-
-button > span {
-    font-size: 16px;
-    font-weight: bold;
 }
 
 
 input::placeholder {
     font-size: 16px;
+    padding-left: 15px;
 }
 
 hr {
@@ -230,8 +135,4 @@ hr {
     border-radius: 15px;
     font-weight: bold;
     cursor: pointer;
-}
-
-.savebox > button > span {
-    font-size: 22px;
 }

@@ -122,11 +122,11 @@ public class MemberService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int idDupCheck(String memberId) throws Exception {
+	public int idDupCheck(String memberEmail) throws Exception {
 		
 		Connection conn = getConnection(); // DBCP 에서 만들어둔 커넥션 얻어오기
 		
-		int result = dao.idDupCheck(conn, memberId);
+		int result = dao.idDupCheck(conn, memberEmail);
 		
 		close(conn); 
 		
@@ -152,6 +152,32 @@ public class MemberService {
 		
 		// 결과 반환
 		return result;
+	}
+	
+	
+	/** 인증 번호 DB 추가 Service
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertCertification(String inputEmail, String cNumber) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		// 1) 입력한 이메일과 일치하는 값이 있으면 수정(UPDATE)
+		int emailResult = dao.updateCertification(conn, inputEmail, cNumber);
+		
+		// 2) 일치하는 이메일이 없는겨우 -> 처음으로 인증번호를 발급 받음 -> 삽입(INSERT)
+		if( emailResult == 0 ) {
+			emailResult = dao.insertCertification(conn, inputEmail, cNumber);
+		}
+		
+		if(emailResult > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		return emailResult;
 	}
 
 //
@@ -207,31 +233,8 @@ public class MemberService {
 //		return result;
 //	}
 //
-//
-//	/** 인증 번호 DB 추가 Service
-//	 * @param inputEmail
-//	 * @param cNumber
-//	 * @return
-//	 * @throws Exception
-//	 */
-//	public int insertCertification(String inputEmail, String cNumber) throws Exception {
-//		
-//		Connection conn = getConnection();
-//		
-//		// 1) 입력한 이메일과 일치하는 값이 있으면 수정(UPDATE)
-//		int result = dao.updateCertification(conn, inputEmail, cNumber);
-//		
-//		// 2) 일치하는 이메일이 없는겨우 -> 처음으로 인증번호를 발급 받음 -> 삽입(INSERT)
-//		if( result == 0 ) {
-//			result = dao.insertCertification(conn, inputEmail, cNumber);
-//		}
-//		
-//		if(result > 0)	commit(conn);
-//		else			rollback(conn);
-//		
-//		close(conn);
-//		return result;
-//	}
+
+
 
 
 	

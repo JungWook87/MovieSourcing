@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/member/signUp1.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" 
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+    crossorigin="anonymous"></script>
+
 
     <title>회원가입(1)</title>
 </head>
@@ -19,7 +24,7 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="javascript:window.history.back();" class="backpage">
+                        <a href="#" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -31,7 +36,6 @@
                     </section>
                     <section class="infomationbox">
                         <div class="info">
-                         <form action="${contextPath}/member/signUp2">
                             <div class="infobox">
                                 <span class="info1">약관동의</span>
                                 <div>
@@ -43,33 +47,35 @@
                                 </div>
                                 <hr>
                                 <div>
-                                    <input type="checkbox" id="check1"> <span class="info3">[필수] 이용약관에 동의합니다.</span>
+                                    <input type="checkbox" id="check1" name="signCheck"> <span class="info3">[필수] 이용약관에 동의합니다.</span>
                                 </div>
                          
                                 <div>
-                                    <input type="checkbox" id="check2"> <span class="info3">[필수] 개인정보 수집 및 이용에 동의합니다.</span>
+                                    <input type="checkbox" id="check2" name="signCheck"> <span class="info3">[필수] 개인정보 수집 및 이용에 동의합니다.</span>
                                 </div>
                          
                                 <div>
-                                    <input type="checkbox" id="check3"> <span class="info3">[필수] 본인은 만 14세 이상입니다.</span>
+                                    <input type="checkbox" id="check3" name="signCheck"> <span class="info3">[필수] 본인은 만 14세 이상입니다.</span>
                                 </div>
                           
                                 <div>
-                                    <input type="checkbox" id="check4"> <span class="info3">[선택] 시사회 및 이벤트 등 알림 수신에 동의합니다.</span>
+                                    <input type="checkbox" id="check4" name="signCheck"> <span class="info3">[선택] 시사회 및 이벤트 등 알림 수신에 동의합니다.</span>
                                 </div>
                             </div>
                         </div>
                     </section>
                    
                     <section class="nextbox">
-                        <button>다음</button>
+                 
+                        <button id="nextBtn">다음</button>
+                       
                     </section>
-                     </form>
                 </main>
             </div>
         </div>
 
     </div>
-      <script src="${contextPath}/resources/js/member/signUp1.js"></script>
+    <script src="${contextPath}/resources/js/member/signUp1.js"></script>
+    
 </body>
 </html>

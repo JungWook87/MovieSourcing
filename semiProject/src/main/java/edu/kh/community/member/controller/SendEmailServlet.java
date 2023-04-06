@@ -147,7 +147,7 @@ public class SendEmailServlet extends HttpServlet{
 			
 			//										sysdate
 			// 인증번호를 받은 이메일, 인증번호, 인증번호 발급 시간  -> DB 삽입
-			//int result = new MemberService().insertCertification(inputEmail, cNumber);
+			int emailResult = new MemberService().insertCertification(inputEmail, cNumber);
 
 
 			resp.getWriter().print("");

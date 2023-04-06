@@ -403,33 +403,33 @@ public class MemberDAO {
 //		return result;
 //	}
 //
-//
-//	/** 인증번호, 발급일 수정 DAO
-//	 * @param conn
-//	 * @param inputEmail
-//	 * @param cNumber
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int updateCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
-//		int result = 0;
-//		
-//		try {
-//			String sql = prop.getProperty("updateCertification");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, cNumber);
-//			pstmt.setString(2, inputEmail);
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		}finally {
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
+
+	/** 인증번호, 발급일 수정 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
+		int emailResult = 0;
+		
+		try {
+			String sql = prop.getProperty("updateCertification");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cNumber);
+			pstmt.setString(2, inputEmail);
+			
+			emailResult = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return emailResult;
+	}
 	
 	/** 인증번호 생성 DAO
 	 * @param conn
@@ -439,7 +439,7 @@ public class MemberDAO {
 	 * @throws Exception
 	 */
 	public int insertCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
-		int result = 0;
+		int emailResult = 0;
 		
 		try {
 			String sql = prop.getProperty("insertCertification");
@@ -449,13 +449,13 @@ public class MemberDAO {
 			pstmt.setString(1, inputEmail);
 			pstmt.setString(2, cNumber);
 			
-			result = pstmt.executeUpdate();
+			emailResult = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result;
+		return emailResult;
 	}
 
 	
@@ -495,42 +495,6 @@ public class MemberDAO {
 		return result;
 	}
 
-
-
-
-//
-//	public int changePwElse(Connection conn,String newPw1, String memberImg, int memberNo,
-//			String memberNick, String memberIntro) throws Exception {
-//		int result = 0;
-//	
-//		
-//		try {
-//			
-//			String sql = prop.getProperty("changePwElse");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, newPw1);
-//			pstmt.setString(2,memberNick);
-//			pstmt.setString(3,memberImg);
-//			pstmt.setString(4,memberIntro);
-//			pstmt.setInt(5, memberNo);
-//			pstmt.setString(6, memberPw);
-//			result = pstmt.executeUpdate();
-//
-//		}finally {
-//			// try - finally 왜 사용하는가?
-//			// ->  try 구문에서 JDBC 관련 예외가 발생하더라도
-//			//    사용중이던 JDBC 객체 자원을 무조건 반환하기 위해서
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
-//	
-//
-//	
-//}
 
 
 

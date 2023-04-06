@@ -77,6 +77,12 @@
         </div>
 
     </div>
+     <script>
+     var message = '<%= session.getAttribute("message") %>'; 
+  if (message) {
+	  alert(message); 
+  }
+  </script>
     <script src="${contextPath}/resources/js/member/myPage.js"></script>
 </body>
 </html>

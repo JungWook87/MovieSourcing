@@ -31,6 +31,18 @@
 	</entry>
 	
 	
+	
+		<!-- 이메일 중복 검사 -->
+	<entry key="idSearch">
+		SELECT MEM_ID  
+		FROM MEMBER
+		WHERE MEM_EMAIL = ?
+		AND MEM_ESCAPE = 'N'
+	</entry>
+	
+	
+	
+	
 	<!-- 닉네임 중복 검사 -->
 	<entry key="nicknameDupCheck">
 		SELECT COUNT(*) FROM MEMBER

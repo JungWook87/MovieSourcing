@@ -114,7 +114,7 @@ function secessionValidate(){
 
     // 비밀번호 미작성
     if(memberPw.value.trim().length == 0){
-        alert("비밀번호를 입력해주세요.");
+        alert("비밀번호를 입력해주세요!.");
         memberPw.focus();
         return false;
     }
@@ -241,4 +241,6 @@ document.getElementById("delete-image").addEventListener("click", function(){
     }
 
 });
+
+
 

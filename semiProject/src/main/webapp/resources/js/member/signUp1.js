@@ -56,7 +56,7 @@ const nextBtn = document.getElementById("nextBtn");
 
 nextBtn.addEventListener("click", function(){
     if($("#checkAll").is(":checked")){
-        alert("페이지이동");
+        location.href = "signUp2";
     } else {
         alert("이용약관을 동의해주세요.");
     }

@@ -38,3 +38,8 @@ div.addEventListener("input", () => {
         document.getElementById("placeholder_div").innerText = "";
     }
 })
+
+if(div.innerText != ""){
+	document.getElementById("placeholder_div").innerText = "";
+}
+

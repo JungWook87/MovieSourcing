@@ -304,7 +304,13 @@ header  > div:nth-child(4){
     width: 100%;
     display: flex;
     margin-bottom: 10px;
+    padding-bottom: 5px;
    
+   
+}
+.community1 {
+    border-bottom: 1px solid white;
+    box-shadow:0px 5px 5px -2px rgb(90, 18, 7);
 }
 
 
@@ -380,8 +386,23 @@ header  > div:nth-child(4){
 }
 
 /*div배치 고치기*/
-.review-content  div {
+.review-content > div {
+   text-align: center; 
+   border: 1px solid white;
+   border-radius: 20px;
+   margin-left: 20px;
+   box-shadow: 2px 2px 2px 2px rgb(90, 18, 7);
+   height: 300px;
+   padding: 20px 20px;
 }
+.userimg2 {
+   
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+
 
 
 
@@ -536,8 +557,17 @@ footer p a {
     align-items: center;
     height: 40px;
     width: 200px;
-    background-color: rgb(41, 39, 39);
+    
+    border: 1px solid white;
+    box-shadow: 2px 2px 2px 2px rgb(90, 18, 7);
     border-radius: 10px;
+}
+.favorite > div {
+    margin-left: 20px;
+}
+.favorite >span {
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .btn {

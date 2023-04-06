@@ -34,21 +34,26 @@
                             </button >
                         </div>
 
-                        <!-- 이거 누르면 수정, 삭제, 신고 버튼 활성화 -->
-                        <input id="communityDotImg" type="checkbox">
-                        <label class="fa-solid fa-ellipsis-vertical" for="menu" id="communityDotImg"></label>
-                        <nav id="main_nav">
-                            <ul>
-                                <li><a href="#">html</a></li>
-                                <li><a href="#">css</a></li>
-                                <li><a href="#">Java</a></li>
-                                <li><a href="#">jQuery</a></li>
-                            </ul>
-                         </nav>
+                        <!-- 수정, 삭제, 신고 메뉴 -->
+                        <div class="UD_menu">
 
-                        <div id="communityDot">
-                            <button class="fa-solid fa-ellipsis-vertical" id="communityDotImg"></button>
+                            <!-- 클릭시 나오는 메뉴 -->
+                            <div id="popup_menu">
+                                <ul class="popup_main_menu">
+                                    <!-- session 이용하여 회원 정보 일치시 수정 삭제 버튼 보이고 아니면 안보이게 -->
+                                    <li><a href="write?mode=update&comNo=${detail.comNo}">수정</a></li>
+                                    <li><a href="">삭제</a></li>
+                                    <li><a href="">신고</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- ... 보이는 메뉴 -->
+                            <button id="communityDotImg" class="fa-solid fa-ellipsis-vertical"></button>
+                            <!-- <input id="communityDotImg" type="checkbox">
+                            <label class="fa-solid fa-ellipsis-vertical" for="communityDotImg" id="communityDotImg"></label> -->
+                            
                         </div>
+
                     </div>
 
                     <!-- 커뮤니티  -->
@@ -138,6 +143,6 @@
         </div>
     </div>
 
-    <script href="../../../resources/js/board/boardDetail.js"></script>
+    <script src="${contextPath}/resources/js/board/boardDetail.js"></script>
 </body>
 </html>

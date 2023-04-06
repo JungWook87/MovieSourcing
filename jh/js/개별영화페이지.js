@@ -40,7 +40,7 @@ if (score2 >= 4.0){
     scoreLight2.style.backgroundColor = "red";
 }
 
-
+// 모달창 변수 선언
 
 const reviewWrite = document.getElementById("reviewWrite");
 const reviewOverlay = document.getElementById("reviewOverlay");
@@ -60,3 +60,21 @@ $("#reviewArea").on("input",function(){
     
     $("#reviewCounter").text($(this).val().length);
 })
+
+// 별점 모달
+const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+    console.log(target.value*0.5);
+}
+
+
+// 모달 오버레이 클릭시
+
+reviewOverlay.addEventListener("click", e => {
+    const evTarget = e.target;
+        if(evTarget.classList.contains("reviewOverlay")){
+            reviewOverlay.style.display = "none ";
+        }
+
+})
+

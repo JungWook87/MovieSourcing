@@ -462,9 +462,10 @@ pre {
 /* 리뷰모달창 */
 
 #reviewOverlay {
-    width : 100%;
+    min-width : 650px;
+    width: 100%;
     height : 100%;
-    position : absolute;
+    position : relative;
     
     display : none;
 
@@ -477,14 +478,13 @@ pre {
     -webkit-backdrop-filter: blur(1.5px);
     backdrop-filter: blur(1.5px);
 
-    left: 0;
-    top: 0;
+    left: 0 ;
+    top:  0 ;
 }
 
 #reviewWriteBox {
-    width : 800px;
-  
-    
+    width : 100%;
+    max-width: 800px;
     border-radius: 15px;
     padding : 15px;
 
@@ -504,11 +504,12 @@ pre {
 
 #modalTitle{
     display: flex;
-    margin : 0 auto 20px;
+    margin : 0 auto 10px;
 }
 #modalTitle > span {
     font-size: 20px;
     color: rgb(215, 238, 250);
+    font-weight: bold;
 
 }
 
@@ -538,28 +539,54 @@ textarea:focus {
 
 /* 별점스타일 */
 
-#myform fieldset{
-    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
-    border: 0; /* 필드셋 테두리 제거 */
-}
-#myform input[type=radio]{
-    display: none; /* 라디오박스 감춤 */
-}
-#myform label{
-    font-size: 3em; /* 이모지 크기 */
-    color: transparent; /* 기존 이모지 컬러 제거 */
-    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+#modalScore {
+    display :flex;
+    flex-direction: column;
 }
 
-#myform label:hover{
-    text-shadow: 0 0 0 #a00; /* 마우스 호버 */
-}
-#myform label:hover ~ label{
-    text-shadow: 0 0 0 #a00; /* 마우스 호버 뒤에오는 이모지들 */
+#starBox {
+    display : flex;
+    justify-content: center;
+    margin: auto;
 }
 
-#myform fieldset{
-    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
-    direction: rtl; /* 이모지 순서 반전 */
-    border: 0; /* 필드셋 테두리 제거 */
+.star {
+    margin: auto;
+    position: relative;
+    font-size: 32px;
+    color: #ddd;
+  }
+  
+  .star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .star span {
+    width: 0;
+    position: absolute;
+    left: 0;
+    color: rgb(229, 112, 44);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+#reviewSubmit {
+    background-color: rgb(50, 98, 139);
+    border-radius: 10px;
+    width : 80%;
+    height: 40px;
+    margin: 0 auto;
+    color : white;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
 }
+
+

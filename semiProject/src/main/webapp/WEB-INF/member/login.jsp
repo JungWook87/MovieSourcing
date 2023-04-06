@@ -84,7 +84,7 @@
                                         <a href="${contextPath}/member/signUp1"><span>회원가입</span></a>
                                     </div>
                                     <div>
-                                        <a href="#"><span>아이디</span></a>
+                                        <a href="searchId"><span>아이디</span></a>
                                         <span> |</span>
                                         <a href="#"><span>비밀번호찾기</span></a>
                                     </div>

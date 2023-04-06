@@ -1,8 +1,6 @@
 package edu.kh.community.member.controller;
 
 import java.io.IOException;
-
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +10,19 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.community.member.model.service.MemberService;
 import edu.kh.community.member.model.vo.Member;
-import oracle.net.aso.c;
 
-@WebServlet("/member/myPagechangeEnter")
-public class MyPageChangePwServlet extends HttpServlet{
+/**
+ * Servlet implementation class PwChangeServlet
+ */
+@WebServlet("/member/pw")
+public class PwChangeServlet extends HttpServlet {
 
-	
+       
+  
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "/WEB-INF/member/myProfileChangePg.jsp";
-		req.getRequestDispatcher(path).forward(req, resp);
+		
 	}
 	
 	
@@ -32,52 +33,52 @@ public class MyPageChangePwServlet extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 	
-		String memberImg = req.getParameter("profileimg");		
-		String memberNick = req.getParameter("nicknameArea");
-		String memberIntro = req.getParameter("introduceArea");
 	
+		String memberPw = 	req.getParameter("currentPw");
+		String newPw1 =  req.getParameter("newPw1");
+		
+	
+		
+		
+
+		
 		// ** 로그인 회원 번호 얻어오기 **
-Member loginMember = (Member)( session.getAttribute("loginMember") ) ;
+		Member loginMember = (Member)( session.getAttribute("loginMember") ) ;
 		
 		int memberNo = loginMember.getMemberNo(); // 로그인 회원 번호
-		
 	
-		MemberService service = new MemberService();
-		Member mem = new Member();
-		req.setAttribute("loginMember", mem); 
+	
+	
 		
-			try {
-			
-				mem.setMemberNo(memberNo);
-				mem.setMemberImg(memberImg);
-				mem.setMemberNick(memberNick);
-				mem.setMemberIntro(memberIntro);
-			
-				
-				session.setAttribute("loginMember", mem);
 
-				int result = service.changeElse(mem);
-				System.out.println();
+		
+			
+			try {
 				
-				String path = null; 
+				MemberService service = new MemberService();
+				Member mem = new Member();
+				int result = service.changePw(memberPw, newPw1, memberNo);	
+		
+			
+			
 				
-				if(result > 0) { 
+				String path = null; // 리다이렉트 주소
 				
-					session.setAttribute("message", "변경 성공!" );
+				if(result > 0) { // 성공
 					
-				
-					path = "MyPageEnter";
+					session.setAttribute("message", "비밀번호 외 모두 변경 성공!" );
+					
+						path = "MyPageEnter";
 					
 					session.getAttribute("loginMember");
 				
+				} else { // 실패
 					
-				} else {
-					session.setAttribute("message", "변경 실패 " );
+					session.setAttribute("message", "현재 비밀번호가 일치하지 않습니다" );
 					
 					
 					path ="myPagechangeEnter";
-					
-					
+					session.getAttribute("loginMember");
 					
 				}
 				
@@ -94,7 +95,10 @@ Member loginMember = (Member)( session.getAttribute("loginMember") ) ;
 			
 			
 			
-			
+		}
+		
+		
+
 	
 	}
 	
@@ -102,6 +106,3 @@ Member loginMember = (Member)( session.getAttribute("loginMember") ) ;
 	
 	
 	
-	
-	
-}

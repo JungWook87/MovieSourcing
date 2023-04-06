@@ -26,7 +26,7 @@ public class SendEmailServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		String inputEmail = req.getParameter("inputEmail"); // 입력 받은 이메일
+		String inputEmail = req.getParameter("memberEmail"); // 입력 받은 이메일
 	
 		String subject = "[Commnity 프로젝트] 회원 가입 이메일 인증번호"; // 제목
 		

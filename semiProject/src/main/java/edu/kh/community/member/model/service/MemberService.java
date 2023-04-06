@@ -61,49 +61,46 @@ public class MemberService {
 	}
 
 
-//	
-//	
-//	
-//	/** 회원 정보 수정 Service
-//	 * @param mem
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int updateMember(Member mem) throws Exception{
-//		
-//		Connection conn = getConnection();
-//		
-//		int result = dao.updateMember(conn, mem);
-//		
-//		if(result > 0)	commit(conn);
-//		else			rollback(conn);
-//		
-//		close(conn);
-//		
-//		return result;
-//	}
-//
-//
-//	/** 비밀번호 변경 Service
-//	 * @param currentPw
-//	 * @param newPw
-//	 * @param memberNo
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int changePw(String currentPw, String newPw, int memberNo) throws Exception {
-//		
-//		Connection conn = getConnection(); // DBCP에서 얻어옴
-//		
-//		int result = dao.changePw(conn, currentPw, newPw, memberNo);
-//		
-//		if(result > 0)	commit(conn);
-//		else			rollback(conn);
-//		
-//		close(conn);
-//		
-//		return result;
-//	}
+
+	
+	
+
+	public int changeElse(Member mem) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.changeElse(conn, mem);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	
+	
+	
+	/** 비밀번호 변경 Service
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changePw(String memberPw, String newPw1, int memberNo) throws Exception {
+		
+		Connection conn = getConnection(); // DBCP에서 얻어옴
+		
+		int result = dao.changePw(conn, memberPw, newPw1, memberNo);
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 
 	public int secession(int memberNo, String memberPw) throws Exception{
 		Connection conn = getConnection(); // DBCP에서 얻어옴
@@ -256,19 +253,6 @@ public class MemberService {
 
 
 
-	public int changeElse(Member mem) throws Exception{
-		Connection conn = getConnection();
-		
-		int result = dao.changeElse(conn, mem);
-		
-		if(result > 0)	commit(conn);
-		else			rollback(conn);
-		
-		close(conn);
-		
-		return result;
-	}
-
 
 
 
@@ -287,21 +271,6 @@ public class MemberService {
 //		return result;
 //	}
 
-	
-	
-	public int changePwElse( String newPw1,Member mem) throws Exception {
-		
-		Connection conn = getConnection();
-		int result = dao.changePwElse(conn, newPw1, mem);
-		
-		
-		if(result > 0)	commit(conn);
-		else			rollback(conn);
-		
-		close(conn);
-		
-		return result;
-	}
 	
 //	
 //	

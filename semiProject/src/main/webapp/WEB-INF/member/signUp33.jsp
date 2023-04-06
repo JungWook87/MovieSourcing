@@ -23,11 +23,12 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
                 </header>
+                	<form action="signUp3" method="POST">
                 <main id="contents">
                     <section class="signup">
                         <span class="top">회원 가입</span>
@@ -42,9 +43,9 @@
                                 </div>
                                 
                                 <div class="email">
-                                    <input type="text" id="email" placeholder="이메일 주소를 입력해주세요">
+                                    <input type="text" id="email" name = "email" placeholder="이메일 주소를 입력해주세요">
                                     <div class="cNumberBox">
-                                        <button id="cNumberBtn"><span>인증번호받기</span></button>
+                                        <button type = "button" id="cNumberBtn"><span>인증번호받기</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                                 <div class="certification">
                                     <input type="text" id="cNumber" placeholder="인증번호 숫자 6자리">
                                     <div class="certificationbox">
-                                        <button id="cBtn"><span >번호인증</span></button>
+                                        <button type = "button"  id="certificationbtn"><span >번호인증</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +70,9 @@
                     <section class="savebox">
                         <button><span>완료</span></button>
                     </section>
+                   
                 </main>
+                 </form>
             </div>
         </div>
 

@@ -46,27 +46,18 @@
 		MEM_INTRO = ?
 		WHERE MEM_NO = ?
 	</entry>
-	<!-- 비밀번호 포함 정보 수정  -->
-		<entry key="changePwElse">
-		UPDATE MEMBER 
-		SET MEM_PW = ?, 
-		    MEM_NICK = ?, 
-		    MEM_IMG = ?, 
-		    MEM_INTRO = ? 
-		WHERE MEM_NO = ? 
-		AND MEM_PW = ?
-		</entry>
-	
-	
-	
-	
+
 	<!-- 비밀번호 변경 -->
 	<entry key="changePw">
 		UPDATE MEMBER SET
-		MEMBER_PW = ?
-		WHERE MEMBER_NO = ?
-		AND MEMBER_PW = ?
+		MEM_PW = ?
+		WHERE MEM_NO = ?
+		AND MEM_PW = ?
 	</entry>
+	
+	
+	
+	
 	
 	
 	<!-- 회원 탈퇴 -->

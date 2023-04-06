@@ -43,27 +43,6 @@ public class SignUp2Servlet extends HttpServlet{
 		 
 		
 		
-		
-		
-		
-		
-			
-			// String.join("구분자", 배열)
-			// -> 배열 요소를 하나의 문자열로 반환
-			//    요소 사이에 "구분자" 추가
-		
-		
-		
-		// 파라미터를 하나의 Member 객체에 저장
-//		Member mem = new Member();
-//	
-//		
-//		mem.setMemberId(memberId);
-//		mem.setMemberPw(memberPw);
-//		mem.setMemberNick(memberNick);
-//		mem.setMemberGender(memberGender);
-//		mem.setMemberBirth(memberBirth);
-
 		HttpSession session = req.getSession();
 		
 	

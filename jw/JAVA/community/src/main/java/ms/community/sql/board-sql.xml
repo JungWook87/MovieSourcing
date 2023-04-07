@@ -55,7 +55,10 @@
 		WHERE COM_NO = ?
 	</entry>
 	
-
+	<entry key="updateBoardDetail">
+		UPDATE COMMUNITY_TABLE SET COM_TITLE = ?, COM_CONTENT = ?
+		WHERE COM_NO = ?
+	</entry>
 	
 	
 	

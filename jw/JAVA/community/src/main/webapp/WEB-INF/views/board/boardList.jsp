@@ -64,17 +64,13 @@
 			                            <a href="detail?comNo=${board.comNo}&cp=${pagination.currentPage}">${board.comTitle}</a>
 			                        </div>
 			
-			                        <div class="com_cont">
-			                            <p>
-			                            	<a href="detail?comNo=${board.comNo}&cp=${pagination.currentPage}">${board.comContent}</a>
-			                            </p>
+			                        <div class="com_cont" id="com_cont">
+			                            <a href="detail?comNo=${board.comNo}&cp=${pagination.currentPage}">${board.comContent}</a>
 			                        </div>
 
-                                    <c:if test="${board.thumbnail} != null">
-                                        <div class="com_thunmnail">
-                                            <img src="${board.thumbnail}" class="com_img">
-                                        </div>
-                                     </c:if>
+                                    <div class="com_thunmnail">
+                                        <img src="">
+                                    </div>
 			
 			                        <div class="readCnt_replyCnt">
 			                            <!-- readCnt -->
@@ -101,7 +97,7 @@
             <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="list"/>
+                <c:set var="url" value="list?cp="/>
 
 
                 <ul class="pagination">

@@ -67,4 +67,27 @@ public class BoardService {
 		return null;
 	}
 
+
+	public BoardDetail updateDetail(BoardDetail updateDetail) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.updateBoardDetail(conn, updateDetail);
+		
+		if(result == 0) conn.rollback();
+		else conn.commit();
+		
+		BoardDetail boardDetail = null;
+
+		if(result != 0) {
+			
+			boardDetail = dao.selectBoardDetail(conn, updateDetail.getComNo());
+			
+		}
+		
+		close(conn);
+		
+		return boardDetail;
+	}
+
 }

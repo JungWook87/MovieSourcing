@@ -180,4 +180,26 @@ public class BoardDAO {
 		return boardDetail;
 	}
 
+
+
+	public int updateBoardDetail(Connection conn, BoardDetail updateDetail) throws Exception{
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("updateBoardDetail");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateDetail.getComTitle());
+			pstmt.setString(2, updateDetail.getComContent());
+			pstmt.setInt(3, updateDetail.getComNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

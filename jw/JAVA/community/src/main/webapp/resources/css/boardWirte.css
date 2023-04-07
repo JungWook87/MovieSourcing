@@ -81,6 +81,7 @@ button:hover, button:focus {
   border-bottom: 1px solid white;
   font-size: 100%;
   color: whitesmoke;
+  
 }
 
 ::placeholder{
@@ -96,6 +97,10 @@ button:hover, button:focus {
   outline: none;
   caret-color: white;
   color: whitesmoke;
+}
+
+#input_div:empty:before {
+  content: attr(placeholder);
 }
 
 #input_div > img{

@@ -12,9 +12,9 @@ janr.forEach((btn)=>{
         }
         
     })
-})
+});
 
-
+//홈 버튼 클릭시 홈 으로 화면 이동
 const homebutton = document.getElementById("homebutton");
 
 homebutton.addEventListener("click", function() {
@@ -25,14 +25,16 @@ homebutton.addEventListener("click", function() {
 
 
 //top 버튼 클릭시 위로 이동
-$(window).scroll(function() {
-    if($(this).scrollTop() > 100) {
-        $('.elw').addClass('on');
-    }else {
-        $('.elw').removeClass('on');
-    }
-});
-
+/*
 $('.elw').click(function() {
     window.scrollTo({top : 0, behavior: 'smooth'});
+});
+*/
+
+//search box 초기화
+var searchtext = document.querySelector('.search-txt');
+
+searchtext.addEventListener('blur', function() {
+
+    searchtext.value= "";
 });

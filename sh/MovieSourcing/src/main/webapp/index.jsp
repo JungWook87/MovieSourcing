@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../semi/semi-main copy.css">
+    <link rel="stylesheet" href="${contextPath}/resource/css/semi-maincopy.css">
     <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
     <title>semi-main</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -16,23 +18,23 @@
 
                 <div class="main-image">
                     <ul class="main-slides">
-                        <li><img src="../semi/image/bg_1.jpg" ></li>
-                        <li><img src="../semi/image/bg_1.jpg" ></li>
-                        <li><img src="../semi/image/bg_1.jpg" ></li>
+                        <li><img src="${contextPath}/resource/image/bg_1.jpg" ></li>
+                        <li><img src="${contextPath}/resource/image/bg_1.jpg" ></li>
+                        <li><img src="${contextPath}/resource/image/bg_1.jpg" ></li>
                     </ul>
                 </div>
             
 
                 <div>
-                    <a href="#"><img src="../semi/image/LogoMakr-9dgAJM.png" name="home-logo"></a>
+                    <a href="#"><img src="${contextPath}/resource/image/LogoMakr-9dgAJM.png" name="home-logo"></a>
                 </div>
 
                 <div>
                     <ul class="home-nav">
                         <li><a href="#" id="homebutton">홈</a></li>
-                        <li><a href="#" id="janrbutton">장르 검색</a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">추천 시뮬레이션</a></li>
+                        <li><a href="${contextPath}/mlist.jsp" id="janrbutton">장르 검색</a></li>
+                        <li><a href="${contextPath}/footer.jsp">커뮤니티</a></li>
+                        <li><a href="${contextPath}/header.jsp">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
                         <li><a href="#" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
@@ -68,11 +70,11 @@
 
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="../semi/image/어벤져스1 포스터.jpg"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="../semi/image/어스파2 포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="../semi/image/최종병기 활 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="../semi/image/트랜스포머 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="../semi/image/1987포스터.jpg"></li>
+                        <i class="fa-solid fa-1"></i><li><img src="${contextPath}/resource/image/어벤져스1 포스터.jpg"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="${contextPath}/resource/image/어스파2 포스터.jpg"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="${contextPath}/resource/image/최종병기 활 포스터.jpeg"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="${contextPath}/resource/image/트랜스포머 포스터.jpg"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="${contextPath}/resource/image/1987포스터.jpg"></li>
                     </ul>
                 </div>
 
@@ -81,11 +83,11 @@
                         <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="../semi/image/어스파1 포스터.jpg"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="../semi/image/검사외전포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="../semi/image/수상한그녀 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="../semi/image/블랙위도우 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="../semi/image/보헤미안 랩소디 포스터.jpg"></li>
+                        <i class="fa-solid fa-1"></i><li><img src="${contextPath}/resource/image/어스파1 포스터.jpg"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="${contextPath}/resource/image/검사외전포스터.jpg"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="${contextPath}/resource/image/수상한그녀 포스터.jpeg"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="${contextPath}/resource/image/블랙위도우 포스터.jpg"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="${contextPath}/resource/image/보헤미안 랩소디 포스터.jpg"></li>
                     </ul>
                 </div>
 
@@ -94,11 +96,11 @@
                         <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="../semi/image/백두산 포스터.jpg"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="../semi/image/밀정 포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="../semi/image/명량 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="../semi/image/곡성 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="../semi/image/기생충 포스터.jpg"></li>
+                        <i class="fa-solid fa-1"></i><li><img src="${contextPath}/resource/image/백두산 포스터.jpg"></li>
+                        <i class="fa-solid fa-2"></i><li><img src="${contextPath}/resource/image/밀정 포스터.jpg"></li>
+                        <i class="fa-solid fa-3"></i><li><img src="${contextPath}/resource/image/명량 포스터.jpeg"></li>
+                        <i class="fa-solid fa-4"></i><li><img src="${contextPath}/resource/image/곡성 포스터.jpg"></li>
+                        <i class="fa-solid fa-5"></i><li><img src="${contextPath}/resource/image/기생충 포스터.jpg"></li>
                     </ul>
                 </div>
 
@@ -110,14 +112,14 @@
 
                 <div class="slide_wrapper">
                     <ul class="slides">
-                        <li><img src="../semi/image/1987포스터.jpg"></li>
-                        <li><img src="../semi/image/검사외전포스터.jpg"></li>
-                        <li><img src="../semi/image/겨울왕국1 포스터.jpg"></li>
-                        <li><img src="../semi/image/곡성 포스터.jpg"></li>
-                        <li><img src="../semi/image/공조 포스터.jpg"></li>
-                        <li><img src="../semi/image/기생충 포스터.jpg"></li>
-                        <li><img src="../semi/image/마스터 포스터.jpg"></li>
-                        <li><img src="../semi/image/명량 포스터.jpeg"></li>
+                        <li><img src="${contextPath}/resource/image/1987포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/검사외전포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/겨울왕국1 포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/곡성 포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/공조 포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/기생충 포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/마스터 포스터.jpg"></li>
+                        <li><img src="${contextPath}/resource/image/명량 포스터.jpeg"></li>
                     </ul>
                 </div>
                  </div>
@@ -137,14 +139,14 @@
                 <div class="slide_wrapper2">
                     
                     <ul class="slides2">
-                        <li><img src="../semi/image/밀정 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/백두산 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/범죄도시1 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/보헤미안 랩소디 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/블랙위도우 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/설국열차 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/수상한그녀 포스터.jpeg" width="200px" height="300px"></li>
-                        <li><img src="../semi/image/어스파1 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/밀정 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/백두산 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/범죄도시1 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/보헤미안 랩소디 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/블랙위도우 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/설국열차 포스터.jpg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/수상한그녀 포스터.jpeg" width="200px" height="300px"></li>
+                        <li><img src="${contextPath}/resource/image/어스파1 포스터.jpg" width="200px" height="300px"></li>
                     </ul>
                 </div>
                 </div>
@@ -164,10 +166,10 @@
                     <a><i class="fa-solid fa-chevron-right"></i></a>
 
                     <div class="community1">
-                        <div><img src="../semi/image/곡성 포스터.jpg"></div>
+                        <div><img src="${contextPath}/resource/image/곡성 포스터.jpg"></div>
                         <div>
                             <div class="user">
-                                <img src="../semi/image/백두산 포스터.jpg" id="userimg1" class="userimg">
+                                <img src="${contextPath}/resource/image/백두산 포스터.jpg" id="userimg1" class="userimg">
                                 <span class="userInfo">
                                     <span class="userNick" id="userNick1">누누</span>
                                     <span class="date" id="date1">20230404</span>
@@ -183,10 +185,10 @@
                     </div>
 
                     <div class="community2">
-                        <div><img src="../semi/image/곡성 포스터.jpg"></div>
+                        <div><img src="${contextPath}/resource/image/곡성 포스터.jpg"></div>
                         <div>
                             <div class="user">
-                                <img src="../semi/image/백두산 포스터.jpg" id="userimg2" class="userimg">
+                                <img src="${contextPath}/resource/image/백두산 포스터.jpg" id="userimg2" class="userimg">
                                 <span class="userInfo">
                                     <span class="userNick" id="userNick2">누누</span>
                                     <span class="date" id="date2">20230404</span>
@@ -210,7 +212,7 @@
                     <div class="review-content">
                         <div>
                             <div class="r-user">
-                                <img src="../semi/image/검사외전포스터.jpg" class="userimg2">
+                                <img src="${contextPath}/resource/image/검사외전포스터.jpg" class="userimg2">
                                 <span>회원이름</span>
                             </div>
 
@@ -224,7 +226,7 @@
                         
                         <div>
                             <div class="r-user">
-                                <img src="../semi/image/검사외전포스터.jpg" class="userimg2">
+                                <img src="${contextPath}/resource/image/검사외전포스터.jpg" class="userimg2">
                                 <span>회원이름</span>
                             </div>
 
@@ -238,7 +240,7 @@
 
                         <div>
                             <div class="r-user">
-                                <img src="../semi/image/검사외전포스터.jpg" class="userimg2">
+                                <img src="${contextPath}/resource/image/검사외전포스터.jpg" class="userimg2">
                                 <span>회원이름</span>
                             </div>
 
@@ -252,7 +254,7 @@
 
                         <div>
                             <div class="r-user">
-                                <img src="../semi/image/검사외전포스터.jpg" class="userimg2">
+                                <img src="${contextPath}/resource/image/검사외전포스터.jpg" class="userimg2">
                                 <span>회원이름</span>
                             </div>
 
@@ -275,20 +277,20 @@
                     <h4 style="color: white ; ">누누님의 인생영화</h4>
                     <div class="f-mlist1">
                        
-                        <div><img src="../semi/image/블랙위도우 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/1987포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/어스파2 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/보헤미안 랩소디 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/검사외전포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/블랙위도우 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/1987포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/어스파2 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/보헤미안 랩소디 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/검사외전포스터.jpg" width="130px"></div>
                     </div>
                     <h4 style="color: white;">나나님의 인생영화</h4>
                     <div class="f-mlist2">
                         
-                        <div><img src="../semi/image/블랙위도우 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/1987포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/어스파2 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/보헤미안 랩소디 포스터.jpg" width="130px"></div>
-                        <div><img src="../semi/image/검사외전포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/블랙위도우 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/1987포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/어스파2 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/보헤미안 랩소디 포스터.jpg" width="130px"></div>
+                        <div><img src="${contextPath}/resource/image/검사외전포스터.jpg" width="130px"></div>
 
                     </div>
                     </div>
@@ -306,7 +308,7 @@
                 <div class="side-1">
             
                     <div class="game">
-                        <a href="#"><img src="../semi/image/추천영화테스트.png" width="200px"></a>
+                        <a href="#"><img src="${contextPath}/resource/image/추천영화테스트.png" width="200px"></a>
                     </div>
                     <div><a class="btn" name="top"><i class="fa-solid fa-up-long"></i>top</a></div>
                 </div>
@@ -334,7 +336,7 @@
 
     </footer>
 
-    <script src="../semi/semi-main copy.js"></script>
+    <script src="${contextPath}/resource/js/semi-main copy.js"></script>
 
   
 </body>

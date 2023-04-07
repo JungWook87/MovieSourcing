@@ -6,6 +6,9 @@ body {
     background-color: black;
     width: 1920px;
 }
+main {
+    width: 100vw;
+}
 div {
    
 }
@@ -23,7 +26,8 @@ main {
     flex-basis: 15%;
 }
 header {
-    margin: 20px;
+    margin-top: 50px;
+
     display: flex;
 }
 header > div:nth-child(1){
@@ -118,7 +122,7 @@ header > div:nth-child(3){
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    padding: 20px;
+    padding: 0px 100px
 }
 .main > div:nth-child(1) ul  {
     justify-content: center;
@@ -130,18 +134,50 @@ header > div:nth-child(3){
 }
 .main > div:nth-child(1) ul li a {
     text-decoration: none;
+    font-weight: bold;
     color: white;
 }
+#janr  ul {
+    position: relative;
+}
+#janr >ul:nth-child(1) p {
+    position: absolute;
+    top: 35%;
+    left: 0%;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 2px 2px 2px rgb(90, 18, 7);;
+    padding-left: 50px;
+}
+.janr-name2 {
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    top: 10%;
+    left: 5%;
+}
+.janr-name3 {
+    position: absolute;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    top: 10%;
+    left: 5%;
+}
+/*장르 사이 구분선*/
 .hr {
     color: white;
 }
+
 .mlist > div {
     display: flex;
     justify-content: center;
     align-items: center;  
     color: white;
     margin: 0;
-    padding: 0px 20px;
+    padding: 0px 10px;
 }
 .mlist > div a {
     font-size: 13px;
@@ -169,6 +205,9 @@ header > div:nth-child(3){
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.mlist img {
+    width: 130px;
 }
 footer {
     height: 200px;
@@ -210,21 +249,29 @@ footer p a {
 .home-nav > li:nth-child(1) {
   margin-left: 60px;
 }
+
+/*버튼 css*/
 .content button {
     width: 100px;
     height: 40px;
     border-radius: 10px;
-    background-color:  rgb(73, 73, 88);
+    border: 1px solid white;
+    box-shadow: 2px 2px 2px 2px rgb(90, 18, 7);
     color: white;
+    background-color: black;
     font-weight: bold;
-    border: 1px solid rgb(73, 73, 88);
     font-size: 15px;
 }
+
+/*버튼 올리면 커서 변경*/
 .btn {
     cursor: pointer;
 }
+
+/*버튼 클릭시 생상 변경, 그림자 삭제*/
 .btn.active {
-    background-color: rgb(59, 59, 134);
+    background-color: rgb(51, 51, 73);
+    box-shadow: none;
 }
 
 
@@ -293,6 +340,33 @@ a:hover {
 }
 
 
+.home-nav2 {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.home-nav2 a {
+    color: white;
+    padding: 52px;
+    font-size: 25px;
+}
+
+  /*1200이하시 nav 아이콘 변경*/
+@media screen and (max-width : 1500px) {
+
+.home-nav {
+    display: none;
+}
+.head-right {
+    display: none;
+}
+.home-nav2 {
+    display: flex;
+}
+.home-nav2 a:hover {
+    color: red;
+}
+}
 
 
 

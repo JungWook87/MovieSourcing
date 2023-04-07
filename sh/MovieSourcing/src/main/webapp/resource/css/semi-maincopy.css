@@ -16,9 +16,6 @@ body {
     padding: 0;
     position: relative;
 }
-main {
-  
-}
 
 
 img {
@@ -232,7 +229,7 @@ header  > div:nth-child(4){
     padding: 10px 20px;
     margin: 0 20px;
     font-size: 15px;
-    box-shadow: 3px 2px 4px #f20;;
+    box-shadow: 3px 2px 4px #f20;
     cursor: pointer;
 }
 .controls span.prev, .controls2 span.prev2{right:calc(100% + 50px);}
@@ -679,3 +676,6 @@ footer p a {
     }
   }
 
+  a:hover {
+    cursor: pointer;
+}

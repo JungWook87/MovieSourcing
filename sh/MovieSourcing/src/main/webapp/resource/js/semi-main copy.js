@@ -1,15 +1,15 @@
 
 
 
-
+//장르버튼 클릭시 이동
 const janrbutton = document.getElementById("janrbutton");
 
 janrbutton.addEventListener("click", function() {
-    window.open("semi-mlist.html", "_self");
+    window.open("mlist.jsp", "_self");
 });
 
 $('#janrbutton').click(function() {
-    window.open('semi-mlist.html','_self');
+    window.open('mlist.jsp','_self');
 });
 
 
@@ -269,25 +269,6 @@ mslides.addEventListener('mouseleave', function() {
 });
 
 
-
-
-
-
-
-// 인기순위 슬라이드 실험
-
-
-/*function chart() {
-    let chart = document.querySelectorAll(".charts");
-
-    for(let i=0; i<chart.length; i++) {
-        chart[i].toggleAttribute('active');
-    }
-    setTimeout()
-}
-*/
-
-
 //top 버튼 클릭시 위로 이동
 $(window).scroll(function() {
     if($(this).scrollTop() > 100) {
@@ -318,4 +299,12 @@ $('.rotate').click(function() {
 
     chart[showNum].classList.add("active");
  
+});
+
+// seatchbox 초기화
+var searchtext = document.querySelector('.search-txt');
+
+searchtext.addEventListener('blur', function() {
+
+    searchtext.value= "";
 });

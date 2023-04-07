@@ -25,7 +25,6 @@ body {
 
 
 #contents {
-    position : relative;
     min-width : 500px;
     background-color: black;
     max-width: 800px;
@@ -42,6 +41,7 @@ body {
     border-radius: 30px;
     width: 100%;
     margin : 10px auto;
+    position: relative;
 }
 
 #communityBar {
@@ -120,8 +120,12 @@ body {
 #communityContents {
     display : flex;
     flex-direction: column;
-    padding : 30px 25px;
-    padding-bottom: 150px;
+    /* padding : 30px 25px; */
+    /* padding-bottom: 150px; */
+}
+
+#communityContents > *{
+    margin: 0 30px;
 }
 
 #mainContent {
@@ -129,14 +133,16 @@ body {
     flex-direction: column;
 }
 
+#contentInfo{
+    display : flex; 
+    justify-content: space-between;
+    margin-top: 40px !important;
+}
+
 #mainContent > div {
     margin : 10px 0;
 }
 
-#contentInfo{
-    display : flex; 
-    justify-content: space-between;
-}
 
 .contentSubject {
     font-size: 22px;
@@ -147,12 +153,16 @@ body {
 #contentAll {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 #contentAll {
     color :rgb(203, 203, 206);
-    height: 250px;
+    height: auto;
+    min-height:250px;
+}
+
+#contentAll img {
+	width : 60%;
 }
 
 .contentImg {
@@ -232,8 +242,6 @@ body {
 }
 
 #replyInputDiv {
-    position : fixed;
-    bottom : 0;
     background-color: rgb(125, 120, 113);
     display : flex;
     justify-content: space-between;
@@ -247,16 +255,16 @@ body {
 
 
 #replyInput{
-    height : 30px;
     background-color: transparent;
     border-style: none;
     padding-left: 15px;
     font-size: 20px;
     outline : none;
     width : 100%;
-    overflow :hidden ;
-
+    overflow :visible;
     color : white;
+    height: auto;
+    max-height: 70px;
 }
 
 #replyInput::placeholder {
@@ -269,6 +277,9 @@ body {
     border-radius: 8px;
     border-style: none;
     background-color: rgb(193, 160, 147);
+    height: 30px;
+    display: flex;
+    justify-content: center;
 }
 #replyBtn > span {
     font-size: 16px;

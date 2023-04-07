@@ -7,7 +7,7 @@ input_img_btn.addEventListener('click', function () {
 });
 
 
-const div = document.getElementById('input_div');
+const input_div = document.getElementById('input_div');
 
 // input 요소에 change 이벤트 핸들러 등록
 input.addEventListener('change', () => {
@@ -24,22 +24,70 @@ reader.addEventListener('load', () => {
     image.src = reader.result;
 
     // 이미지 파일 추가
-    div.appendChild(image);
+    input_div.appendChild(image);
 });
 
 // 파일을 Data URL로 읽기
 reader.readAsDataURL(file);
 });
 
-div.addEventListener("input", () => {
-    if(div.innerText == ""){
-        document.getElementById("placeholder_div").innerText = "여기에 내용을 입력해 주세요.";
-    } else{
-        document.getElementById("placeholder_div").innerText = "";
-    }
-})
 
-if(div.innerText != ""){
-	document.getElementById("placeholder_div").innerText = "";
+/* 안내문구 */
+
+
+/* -------------------------------------- */
+/* div에 작성된 내용 보내기 */
+
+const form = document.getElementById("communityUpdateForm");
+
+form.addEventListener("submit", () => {
+	const input_div_content = input_div.innerHTML;
+	const input_bar_hidden = document.createElement("input");
+	
+	input_bar_hidden.setAttribute("type", "hidden");
+	input_bar_hidden.setAttribute("name", "comContent");
+	input_bar_hidden.setAttribute("value", input_div_content);
+	form.appendChild(input_bar_hidden);
+	
+});
+
+
+// 게시글 작성 유효성 검사
+function writeValidate(){
+    const input_title = document.getElementById("input_title");
+    const input_div = document.getElementById("input_div");
+
+    if(input_title.value.trim().length == 0){
+        alert("제목을 입력해주세요!!!");
+        input_title.value = "";
+        input_title.focus();
+        return false;
+    }
+
+    if(input_div.innerText.trim().length == 0){
+        alert("내용을 입력해주세요!!!");
+        input_div.value = "";
+        input_div.focus();
+        return false;
+    }
+
+    return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

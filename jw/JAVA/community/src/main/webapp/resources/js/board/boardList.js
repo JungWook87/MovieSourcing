@@ -1,20 +1,17 @@
-// // var mql = window.matchMedia("screen and (min-width: 500px)");
 
-// windonw.addEventListener('resize', function() {
-//     if(window.innerWidth <= 600){
-//         document.getElementsByClassName("side")[0].style.display = 'none';
-//     } else {
-//         document.getElementsByClassName("side")[0].style.display = 'flex';
-//     }
-// })
+const com_cont = document.getElementsByClassName("com_cont");
 
-// var mql = window.matchMedia("screen and (max-width: 500px)");
+for(let i = 0; i < 10; i++){
+    com_cont[i].addEventListener("click", () => {
+        com_cont[i].firstElementChild.click();
+    })
+    
+    if(com_cont[i].getElementsByTagName("a")[0].getElementsByTagName("img")[0] != null){
+        const img = com_cont[i].getElementsByTagName("a")[0].getElementsByTagName("img")[0].getAttribute("src");
+        const com_thunmnail = document.getElementsByClassName("com_thunmnail");
+        com_thunmnail[i].getElementsByTagName("img")[0].setAttribute("src", img);
+    }
 
-// mql.addListener(function(e) {
-// 	if(e.matches) {
-// 		console.log('모바일 화면 입니다.');
-// 	} else {
-// 		console.log('데스크탑 화면 입니다.');
-// 	}
-// });
+}
+
 

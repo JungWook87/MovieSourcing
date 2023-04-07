@@ -29,7 +29,8 @@
                     <!-- 상단 커뮤니티 단추 -->
                     <div id="communityBar">
                         <div id="communityHomeBtn">
-                            <button class="fa-solid fa-house" id="comHomeImg" onClick="history.back();">
+                            <button class="fa-solid fa-house" id="comHomeImg" type="button" 
+                            onClick="location.href='list'">
                                 <span>커뮤니티</span>
                             </button >
                         </div>
@@ -74,7 +75,7 @@
                             </div>
 
                             <div id="contentAll">
- 								<p>${detail.comContent}</p>
+ 								${detail.comContent}
                             </div>
     
                             <div id="countDiv">
@@ -122,20 +123,15 @@
 						</c:if>
 
                         <hr id="line">
-
-                        <div id="nextContentBox">
-
-
+					
+						<div id="replyInputDiv">
+                            <textarea name="replyInput" id="replyInput" cols="34" rows="1"
+                            spellcheck="false" placeholder="댓글을 작성해 주세요"
+                            style="resize: none;"></textarea>
+                            <button id="replyBtn" onclick="replysubmit()"><span>등록</span></button>
                         </div>
 
-
                     </div>
-                    
-                    <div id="replyInputDiv">
-                        <input type="text" id="replyInput" placeholder="댓글을 작성해 주세요" spellcheck="false"        >
-                        <button id="replyBtn"><span>등록</span></button>
-                    </div>
-
                     
                 </main>
 

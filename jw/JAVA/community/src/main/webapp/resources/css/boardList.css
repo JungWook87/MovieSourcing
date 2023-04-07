@@ -25,8 +25,8 @@ body {
 
 /* 태그 main */
 main{
-    max-width: 900px;
-    min-width: 600px;
+    max-width: 800px;
+    min-width: 500px;
     margin: auto;
     display: flex;
 }
@@ -104,6 +104,15 @@ main{
     margin: 20px 0;
     border-radius: 20px;
     padding: 20px;
+    width: 100%;
+}
+
+#com_cont{
+    cursor: pointer;
+}
+
+.com_box img{
+    width: 100%;
 }
 
 .com_box > div{
@@ -138,7 +147,13 @@ main{
 
 /* 컨텐츠 제목 */
 .com_title{
-    color: white;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.com_title a{
+    color: rgb(176, 167, 167);
+
 }
 
 /* 컨텐츠 내용 */
@@ -149,12 +164,18 @@ main{
     color: white;
 }
 
+.com_cont img{
+    display: none;
+}
+
 /* 컴박스 썸네일 */
 .com_thunmnail{
     height: 200px;
     overflow: hidden;
     display: flex;
     align-items: center;
+    height: auto;
+    max-height: 300px;
 }
 
 .com_img{

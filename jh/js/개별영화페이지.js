@@ -56,10 +56,29 @@ reviewWrite.addEventListener("click", e => {
 
 // 리뷰모달 작성글 숫자
 
+const reviewSubmit = document.getElementById("reviewSubmit");
+const reviewObj = {
+    "reviewCheck" : false
+}
+
+
 $("#reviewArea").on("input",function(){
-    
     $("#reviewCounter").text($(this).val().length);
+    if($("#reviewCounter").text($(this).val().length)<=100){
+        reviewObj.reviewCheck = true;
+    } else {
+        reviewObj.reviewCheck = false;
+    }
 })
+
+reviewSubmit.addEventListener("click", function(){
+    if(reviewObj.reviewCheck) {
+        
+    } else {
+        alert("100자이내로 작성해주세요")
+    }
+})
+
 
 // 별점 모달
 const drawStar = (target) => {

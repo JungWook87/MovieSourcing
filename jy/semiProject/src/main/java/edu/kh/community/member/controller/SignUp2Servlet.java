@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
+import edu.kh.community.common.MyRenamePolicy;
 import edu.kh.community.member.model.service.MemberService;
 import edu.kh.community.member.model.vo.Member;
 
@@ -29,15 +32,32 @@ public class SignUp2Servlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		
+		
+		  int maxSize = 1024*1024*5;
+			
+			String root = getServletContext().getRealPath("/");
+			
+			
+			String folderPath = "resources/images/memberProfile/";
+			
+			
+			String filePath = root + folderPath;
+		
+			String encoding = "UTF-8";
+			
+			
+			MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
+			String memberImg = folderPath + mpReq.getFilesystemName("memberImg");
 		// 파라미터를 모두 변수에 저장
-		String memberId = req.getParameter("id");
-		String memberPw = req.getParameter("pw1");
-		String memberNick = req.getParameter("nickname");
-		String memberGender = req.getParameter("gender");
+		String memberId = mpReq.getParameter("id");
+		String memberPw = mpReq.getParameter("pw1");
+		String memberNick = mpReq.getParameter("membeNickname");
+		String memberGender = mpReq.getParameter("gender");
 		
 		
-		String year =  req.getParameter("yy");
-		String month =  req.getParameter("mm");
+		String year =  mpReq.getParameter("yy");
+		String month =  mpReq.getParameter("mm");
 		
 		String memberBirth = year + "-" + month;
 		 

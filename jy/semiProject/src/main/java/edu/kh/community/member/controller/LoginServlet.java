@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet{
 				
 				
 				
-			
+				alertAndGo(resp, "로그인 성", req.getContextPath());
 				
 				// 회원 정보 Session 세팅
 				session.setAttribute("loginMember", loginMember);
@@ -137,9 +137,9 @@ public class LoginServlet extends HttpServlet{
 				
 			} else { // 실패
 				
-				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+				//session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 				session.setAttribute("loginMember", loginMember);
-		
+				alertAndGo(resp, "아이디 또는 비밀번호가 일치하지 않습니다.", req.getContextPath());
 				
 			
 			
@@ -182,7 +182,7 @@ public class LoginServlet extends HttpServlet{
 			// ex) 팝콘 주세요  ->   팝콘 파는 위치를 알려줌 ->  (클) 팝콘 파는 곳으로 이동
 			//		    클		          캐셔(Servlet)           클라이언트의 다른 주소 재요청
 			
-			resp.sendRedirect( req.getContextPath() );
+			//resp.sendRedirect( req.getContextPath() );
 			// req.getContextPath() : 최상위 주소 (/community)
 			
 			// forward
@@ -194,6 +194,19 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 	
+	}
+	
+	
+	public static void alertAndGo(HttpServletResponse response, String message, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+message+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 }

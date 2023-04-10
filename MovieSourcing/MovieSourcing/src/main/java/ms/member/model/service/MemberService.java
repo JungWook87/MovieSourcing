@@ -1,5 +1,6 @@
 package ms.member.model.service;
 
+
 import static ms.common.JDBCTemplate.*;
 
 import java.sql.Connection;
@@ -182,7 +183,7 @@ public class MemberService {
 	 * @return member
 	 * @throws Exception
 	 */
-	public Member searchId(String memberEmail) throws Exception{
+	public String searchId(String memberEmail) throws Exception{
 		// TODO Auto-generated method stub		Connection conn = getConnection(); // DBCP 에서 만들어둔 커넥션 얻어오기
 		
 		
@@ -190,13 +191,13 @@ public class MemberService {
 		Connection conn = getConnection();
 		
 		// DAO 수행
-		Member member  = dao.searchId(conn, memberEmail);
+		String memberId  = dao.searchId(conn, memberEmail);
 		
 		// Connection 반환
 		close(conn);
 		
 		// 결과 반환
-		return member;
+		return memberId;
 	}
 
 	
@@ -224,7 +225,32 @@ public class MemberService {
 
 	
 	
-	
+
+	/** 인증 번호 DB 추가 Service
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertCertification(String inputEmail, String cNumber) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		// 1) 입력한 이메일과 일치하는 값이 있으면 수정(UPDATE)
+		int result = dao.updateCertification(conn, inputEmail, cNumber);
+		
+		// 2) 일치하는 이메일이 없는겨우 -> 처음으로 인증번호를 발급 받음 -> 삽입(INSERT)
+		if( result == 0 ) {
+			result = dao.insertCertification(conn, inputEmail, cNumber);
+		}
+		
+		if(result > 0)	commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		return result;
+	}
+
 	
 	
 	
@@ -296,31 +322,6 @@ public class MemberService {
 //		return result;
 //	}
 //
-//
-//	/** 인증 번호 DB 추가 Service
-//	 * @param inputEmail
-//	 * @param cNumber
-//	 * @return
-//	 * @throws Exception
-//	 */
-//	public int insertCertification(String inputEmail, String cNumber) throws Exception {
-//		
-//		Connection conn = getConnection();
-//		
-//		// 1) 입력한 이메일과 일치하는 값이 있으면 수정(UPDATE)
-//		int result = dao.updateCertification(conn, inputEmail, cNumber);
-//		
-//		// 2) 일치하는 이메일이 없는겨우 -> 처음으로 인증번호를 발급 받음 -> 삽입(INSERT)
-//		if( result == 0 ) {
-//			result = dao.insertCertification(conn, inputEmail, cNumber);
-//		}
-//		
-//		if(result > 0)	commit(conn);
-//		else			rollback(conn);
-//		
-//		close(conn);
-//		return result;
-//	}
 
 
 

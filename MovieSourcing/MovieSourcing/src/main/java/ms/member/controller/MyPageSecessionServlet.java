@@ -1,6 +1,7 @@
 package ms.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class MyPageSecessionServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String path = "/WEB-INF/member/memberDelete.jsp";
+		String path = "/WEB-INF/views/member/memberDelete.jsp";
 	
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
@@ -48,10 +49,7 @@ public class MyPageSecessionServlet extends HttpServlet{
 		
 		try {
 			MemberService service = new MemberService();
-			
-			System.out.println(memberNo);
-			System.out.println(memberPw);
-			
+	
 			int result = service.secession(memberNo, memberPw);
 			
 			
@@ -70,7 +68,8 @@ public class MyPageSecessionServlet extends HttpServlet{
 				
 				session = req.getSession(); // 무효화 후 새로 생성된 세션 얻어오기
 				
-				session.setAttribute("message", "탈퇴 되었습니다.");
+				alertAndGo(resp, "탈퇴 되었습니다.",req.getContextPath());
+				
 				
 				path = req.getContextPath(); // 메인 페이지
 				
@@ -83,17 +82,11 @@ public class MyPageSecessionServlet extends HttpServlet{
 				
 				
 			} else {
-				session.setAttribute("message", "비밀번호가 일치하지 않습니다.");
 				
-				// 절대 경로
-				//path = req.getContextPath() + "/member/myPage/secession";
-				
-				// 상대 경로
-				path = "secession";
+				alertAndGo(resp, "비밀번호가 일치하지 않습니다.","secession");
+			
 				
 			}
-			
-			resp.sendRedirect(path);
 			
 			
 		}catch (Exception e) {
@@ -103,6 +96,17 @@ public class MyPageSecessionServlet extends HttpServlet{
 	}
 	
 	
+	public static void alertAndGo(HttpServletResponse response, String message, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+message+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	
 	

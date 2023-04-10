@@ -23,7 +23,7 @@
 	<!-- 회원가입 -->
 	<entry key="signUp">
 		INSERT INTO MEMBER
-		VALUES(SEQ_MEMBERR_NO.NEXTVAL , ? , ? , ? , ? , ? , ?,DEFAULT, DEFAULT,null,null)
+		VALUES(SEQ_MEMBERR_NO.NEXTVAL , ? , ? , ? , ? , ? , ?,DEFAULT, DEFAULT,null,?)
 	</entry>
 	
 	

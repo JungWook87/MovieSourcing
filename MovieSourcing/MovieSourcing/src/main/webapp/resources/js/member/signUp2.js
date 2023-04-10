@@ -42,15 +42,15 @@ document.getElementById("iddupcheck")
 })
 
 // 닉네임 중복체크
-const nickname = document.getElementById("nickname");
+const membeNickname = document.getElementById("membeNickname");
 
 document.getElementById("namedupcheck")
 .addEventListener("click",function(){
     const nickRegEx = /^[가-힣a-zA-Z0-9]{2,15}$/;
-    if(nickRegEx.test(nickname.value)){
+    if(nickRegEx.test(membeNickname.value)){
         $.ajax({
             url : "nicknameDupcheck",
-            data : {"membeNickname" : nickname.value},
+            data : {"membeNickname" : membeNickname.value},
             type : "GET",
             success : function(nickResult){
                 if(nickResult == 1 ){ // 중복

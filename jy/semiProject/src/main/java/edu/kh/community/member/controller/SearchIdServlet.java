@@ -1,6 +1,8 @@
 package edu.kh.community.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,31 +28,65 @@ public class SearchIdServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String memberEmail = request.getParameter("eamil");
+
+		String inputEmail = request.getParameter("email"); // 입력 받은 이메일
+		
+		MemberService service = new MemberService();
+		 
+		
 		HttpSession session = request.getSession();
 		
 		
-		try {
-			MemberService service = new MemberService();
-	
 		
-			Member member = service.searchId(memberEmail);
+	try {
+		
+			 
+		String memberId = service.searchId(inputEmail);
+		System.out.println(memberId);
+		PrintWriter out = response.getWriter();
+		if(memberId==null) {
+			int emailResult = 0;
+			 out.print("Fail");
+			 out.flush();
+			    out.close();
+			System.out.println("emailResult" + emailResult);
+			session.setAttribute("emailResult",emailResult);
+			response.sendRedirect("sendIdEmail");
+		}else {
+			int emailResult = 1;
+			out.print("Success");
+			 out.flush();
+			    out.close();
+			session.setAttribute("inputEmail",inputEmail);
+			session.setAttribute("emailResult",emailResult);
+			session.setAttribute("memberId",memberId);
+			response.sendRedirect("sendIdEmail");
+		}
+		
+
 			
-			if(member == null) {
-				System.out.println("없음");
+		}catch(Exception e) {
+			e.printStackTrace();
 			
-			}else {
-				System.out.println("있음");
-				
-				
-			}
-	
-	
-	
-	
-	}catch(Exception e) {
-		e.printStackTrace();
-	}
+		}
 		
 	}
+	
+
+	public static void alertAndGo(HttpServletResponse response, String message, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+message+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+	
+	
+	
+	
+	
 }

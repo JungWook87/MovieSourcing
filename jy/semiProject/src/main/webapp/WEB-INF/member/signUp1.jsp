@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/member/signUp1.css">
-    
+     <script src="https://code.jquery.com/jquery-3.6.0.js" 
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+    crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
 
     <title>회원가입(1)</title>
@@ -62,7 +64,7 @@
                     </section>
                    
                     <section class="nextbox">
-                        <button>다음</button>
+                        <button id="nextbox">다음</button>
                     </section>
                      </form>
                 </main>

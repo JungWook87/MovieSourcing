@@ -18,7 +18,7 @@
 
 </head>
 <body>
- <form action="" method="POST">
+ <form action="" method="POST" encType="multipart/form-data">
     <div id="movieSourcing">
         <div id="layout">
             <div id="root">
@@ -62,7 +62,7 @@
                             <div class="nicknamewrap">
                                 <span>닉네임</span>
                                 <div class="nicknameinput">
-                                    <input type="text" id="nickname" name = "nickname" placeholder="한글 영어 숫자로 12자이내로 정해주세요" spellcheck="false">
+                                    <input type="text" id="membeNickname" name = "membeNickname" placeholder="한글 영어 숫자로 12자이내로 정해주세요" spellcheck="false">
                                     <div class="dupcheckbox">
                                         <button type = "button" class="dupcheck" id="namedupcheck"><span>중복확인</span></button>
                                     </div>
@@ -75,7 +75,7 @@
                                     <label for="F"><span>여성</span></label> <input type="radio" name="gender" id="woman"  value="F" onclick="fnRadioName();">
                                 </div>
                                 <div>
-                                    <input type="file">
+                                    <input type="file" name = "memberImg">
                                 </div>
 
                             </div>

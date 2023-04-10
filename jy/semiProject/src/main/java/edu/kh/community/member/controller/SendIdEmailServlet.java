@@ -1,6 +1,7 @@
 package edu.kh.community.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.kh.community.member.model.service.MemberService;
+import edu.kh.community.member.model.vo.Member;
 
 @WebServlet("/member/sendIdEmail")
 public class SendIdEmailServlet extends HttpServlet{
@@ -29,11 +31,12 @@ public class SendIdEmailServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession sessions = req.getSession();
 		
-		String inputEmail =(String) sessions.getAttribute("memberEmail");
-				//"jinijnleelee@gmail.com";
-		System.out.println(inputEmail);
-		
-		String memberId = 	(String) sessions.getAttribute("members");
+
+		int emailResult = (int )sessions.getAttribute("result");
+		System.out.println("emailResult" + emailResult);
+		String memberId = 	(String) sessions.getAttribute("memberId");
+		String inputEmail = (String) sessions.getAttribute("inputEmail");
+	
 	
 		String subject = "[Commnity 프로젝트] 아이디찾기 메일입니다"; // 제목
 		
@@ -70,6 +73,9 @@ public class SendIdEmailServlet extends HttpServlet{
 
 		
 		try {
+			
+			
+
 			// 메일 세션 생성
 			Session session = Session.getDefaultInstance(props);
 
@@ -88,37 +94,10 @@ public class SendIdEmailServlet extends HttpServlet{
 			Multipart mParts = new MimeMultipart();
 			MimeBodyPart mTextPart = new MimeBodyPart();
 
-			
-			
-			// 메일에 출력할 텍스트
-			StringBuffer sb = new StringBuffer(); // 가변성 문자열 저장 객체
-			sb.append("<h3>[Community 프로젝트] 가입하신 아이디 입니다</h3>\n");
-			sb.append("<h3>아이디 : <span style='color:red'>"+ memberId +"</span></h3>\n");
-			
-			//sb.append("<img src='https://cdn.wikifarmer.com/wp-content/uploads/2022/02/%ED%94%8C%EB%9F%BC%EB%B0%94%EA%B3%A0.jpg'>");
-			
-
-			String mailContent = sb.toString(); // 문자열로 반환
-			
 			// 메일 콘텐츠 - 내용 , 메일인코딩, "html" 추가 시 HTML 태그가 해석됨
-			mTextPart.setText(mailContent, "UTF-8", "html");
-			mParts.addBodyPart(mTextPart);
+	
 
 			
-			// 메일 콘텐츠 지정
-			message.setContent(mParts);
-
-			
-			
-			// MIME 타입 설정 (이메일 내용이 깨질 때 사용)
-			/*MailcapCommandMap MailcapCmdMap = (MailcapCommandMap) CommandMap.getDefaultCommandMap();
-			MailcapCmdMap.addMailcap("text/html;; x-java-content-handler=com.sun.mail.handlers.text_html");
-			MailcapCmdMap.addMailcap("text/xml;; x-java-content-handler=com.sun.mail.handlers.text_xml");
-			MailcapCmdMap.addMailcap("text/plain;; x-java-content-handler=com.sun.mail.handlers.text_plain");
-			MailcapCmdMap.addMailcap("multipart/*;; x-java-content-handler=com.sun.mail.handlers.multipart_mixed");
-			MailcapCmdMap.addMailcap("message/rfc822;; x-java-content-handler=com.sun.mail.handlers.message_rfc822");
-			CommandMap.setDefaultCommandMap(MailcapCmdMap);*/
-
 			
 			// 메일 발송
 			Transport t = session.getTransport("smtp");
@@ -128,17 +107,36 @@ public class SendIdEmailServlet extends HttpServlet{
 			
 			//										sysdate
 			// 인증번호를 받은 이메일, 인증번호, 인증번호 발급 시간  -> DB 삽입
-			int emailResult = 1;
+			//int emailResult = 1;
 
 
 			resp.getWriter().print("");
 		//	req.getRequestDispatcher("/WEB-INF/member/index.jsp").forward(req, resp);
 		
 			
+	
 			
 			
+			// 메일에 출력할 텍스트
+			StringBuffer sb = new StringBuffer(); // 가변성 문자열 저장 객체
+			sb.append("<h3>[Community 프로젝트] 가입하신 아이디 입니다</h3>\n");
+			sb.append("<h3>아이디 : <span style='color:red'>" + memberId +"</span></h3>\n");
+			
+			//sb.append("<img src='https://cdn.wikifarmer.com/wp-content/uploads/2022/02/%ED%94%8C%EB%9F%BC%EB%B0%94%EA%B3%A0.jpg'>");
 			
 
+			String mailContent = sb.toString(); // 문자열로 반환
+			
+			mTextPart.setText(mailContent, "UTF-8", "html");
+			mParts.addBodyPart(mTextPart);
+
+			
+			// 메일 콘텐츠 지정
+			message.setContent(mParts);
+			
+			
+			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -150,8 +148,5 @@ public class SendIdEmailServlet extends HttpServlet{
 	
 		
 	}
-	
-	
-	
 	
 }

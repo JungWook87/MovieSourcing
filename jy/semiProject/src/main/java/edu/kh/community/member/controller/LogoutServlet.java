@@ -1,6 +1,7 @@
 package edu.kh.community.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,12 +42,23 @@ public class LogoutServlet extends HttpServlet{
 		// 1) forward : 로그아웃 응답 화면을 만든다 (부적절)
 		// 2) redirect : 메인페이지 재요청 (이거다!)
 			//			메인페이지 == 최상위 주소(/community)로 요청했을 때 화면
-		
-		resp.sendRedirect( req.getContextPath() );
+		alertAndGo(resp, "로그아웃 하셨습니다", req.getContextPath());
+		//resp.sendRedirect( req.getContextPath() );
 		
 	}
 	
 	
+	public static void alertAndGo(HttpServletResponse response, String message, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+message+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	
 }

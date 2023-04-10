@@ -121,7 +121,7 @@ public class MemberDAO {
 			pstmt.setString(5, mem.getMemberBirth());
 				
 			pstmt.setString(6, mem.getMemberGender());
-			
+			pstmt.setString(7, mem.getMemberImg());
 			
 			result = pstmt.executeUpdate();
 			
@@ -403,9 +403,9 @@ public class MemberDAO {
 	 * @return member
 	 * @throws Exception
 	 */
-	public Member searchId(Connection conn, String memberEmail) throws Exception{
+	public String searchId(Connection conn, String memberEmail) throws Exception{
 		
-		Member member = null;
+		String memberId = null;
 		try {
 			String sql = prop.getProperty("searchId");
 			
@@ -419,8 +419,8 @@ public class MemberDAO {
 				
 				
 			
-				member = new Member();
-				member.setMemberId(rs.getString("MEM_ID"));
+				
+				memberId = rs.getString("MEM_ID");
 				
 				
 				
@@ -433,12 +433,37 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		return member; // null 또는 Member 객체 주소
+		return memberId; // null 또는 Member 객체 주소
 	}
 
 
 
-	
+	/** 인증번호, 발급일 수정 DAO
+	 * @param conn
+	 * @param inputEmail
+	 * @param cNumber
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateCertification");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cNumber);
+			pstmt.setString(2, inputEmail);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
@@ -543,33 +568,8 @@ public class MemberDAO {
 //		return result;
 //	}
 //
-//
-//	/** 인증번호, 발급일 수정 DAO
-//	 * @param conn
-//	 * @param inputEmail
-//	 * @param cNumber
-//	 * @return result
-//	 * @throws Exception
-//	 */
-//	public int updateCertification(Connection conn, String inputEmail, String cNumber) throws Exception {
-//		int result = 0;
-//		
-//		try {
-//			String sql = prop.getProperty("updateCertification");
-//			
-//			pstmt = conn.prepareStatement(sql);
-//			
-//			pstmt.setString(1, cNumber);
-//			pstmt.setString(2, inputEmail);
-//			
-//			result = pstmt.executeUpdate();
-//			
-//		}finally {
-//			close(pstmt);
-//		}
-//		
-//		return result;
-//	}
+
+
 
 
 

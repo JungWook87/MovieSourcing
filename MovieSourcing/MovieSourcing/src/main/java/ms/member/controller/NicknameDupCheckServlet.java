@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ms.member.model.service.MemberService;
 
-// 닉네임 중복 검사(AJAX)
+//닉네임 중복 검사(AJAX)
 @WebServlet("/member/nicknameDupCheck")
 public class NicknameDupCheckServlet extends HttpServlet{
 	
@@ -18,7 +18,7 @@ public class NicknameDupCheckServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// 파라미터 얻어오기(data 속성의 값)
-		String memberNick = req.getParameter("memberNick");
+		String memberNick = req.getParameter("membeNickname");
 		
 		try {
 			MemberService service = new MemberService();

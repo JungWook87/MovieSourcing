@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name ="google-signin-client_id" 
     content="935814438564-8ocf3d4e2vsp790u21l0vctt9qahq9bj.apps.googleusercontent.com">
-    <link rel="stylesheet" href="${contextPath}/resources/css/member/login.css">
+    <link rel="stylesheet" href="../resources/css/member/login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" 
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
     crossorigin="anonymous"></script>
@@ -105,7 +106,7 @@
 
     </div>
 
-    <script src="${contextPath}/resources/js/member/login.js"></script>
+    <script src="../resources/js/member/login.js"></script>
     
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>    

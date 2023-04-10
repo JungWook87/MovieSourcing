@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import ms.member.model.service.MemberService;
 import ms.member.model.vo.Member;
 
@@ -19,25 +21,43 @@ public class SignUp2Servlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		String path = "/WEB-INF/member/signUp2.jsp";
+		String path = "/WEB-INF/views/member/signUp2.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 	
 	
 
+
 	// POST 방식 요청 시 회원가입 서비스 수행
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		
+		
+		  int maxSize = 1024*1024*5;
+			
+			String root = getServletContext().getRealPath("/");
+			
+			
+			String folderPath = "resources/images/memberProfile/";
+			
+			
+			String filePath = root + folderPath;
+		
+			String encoding = "UTF-8";
+			
+			
+			MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new ms.common.MyRenamePolicy());
+			String memberImg = folderPath + mpReq.getFilesystemName("memberImg");
 		// 파라미터를 모두 변수에 저장
-		String memberId = req.getParameter("id");
-		String memberPw = req.getParameter("pw1");
-		String memberNick = req.getParameter("nickname");
-		String memberGender = req.getParameter("gender");
+		String memberId = mpReq.getParameter("id");
+		String memberPw = mpReq.getParameter("pw1");
+		String memberNick = mpReq.getParameter("membeNickname");
+		String memberGender = mpReq.getParameter("gender");
 		
 		
-		String year =  req.getParameter("yy");
-		String month =  req.getParameter("mm");
+		String year =  mpReq.getParameter("yy");
+		String month =  mpReq.getParameter("mm");
 		
 		String memberBirth = year + "-" + month;
 		 
@@ -52,10 +72,9 @@ public class SignUp2Servlet extends HttpServlet{
 		session.setAttribute("memberGender",memberGender);
 		session.setAttribute("memberBirth",memberBirth);
 	
-		String path = "/WEB-INF/member/signUp3.jsp";
+		String path = "/WEB-INF/views/member/signUp3.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 
 	}
 }
 	
-

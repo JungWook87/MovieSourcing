@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>movie-sql.xml</comment>
+	
+	<!-- 댓글 목록 조회 -->
+	<entry key="movieInfo">
+		SELECT * FROM MOVIE_INFORMATION_TABLE WHERE MOVIE_NO = ?
+	</entry>
+	
+	<!--  피디 조회 -->
+	<entry key="pdSelect">
+		SELECT PD_NAME, PD_PICTURE FROM PD
+		JOIN PD_MOVIE USING(PD_NO)
+		JOIN MOVIE_INFORMATION_TABLE mit USING(MOVIE_NO)
+		WHERE MOVIE_NO = ?
+	</entry>
+	
+	<!-- 배우 조회 -->
+	<entry key="actSelect">
+		SELECT ACTOR_NAME, ACTOR_PICTURE FROM ACTOR
+		JOIN ACTOR_MOVIE USING(ACTOR_NO)
+		JOIN MOVIE_INFORMATION_TABLE mit USING(MOVIE_NO)
+		WHERE MOVIE_NO = ?
+	</entry>	
+	
+	<!-- 장르 조회 -->
+	<entry key="genreSelect">
+		SELECT GENRE FROM GENRE 
+		JOIN GENRE_MOVIE USING(GENRE_NO)
+		JOIN MOVIE_INFORMATION_TABLE mit USING(MOVIE_NO)
+		WHERE MOVIE_NO = ?
+	</entry>	
+	
+</properties>

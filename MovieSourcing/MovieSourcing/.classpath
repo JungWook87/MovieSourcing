@@ -9,5 +9,15 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/cos.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/gson-2.9.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/lombok.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/ojdbc11-21.5.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/taglibs-standard-jstlel-1.2.5.jar"/>
+	<classpathentry kind="lib" path="/Users/ijin/Documents/tools/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>

@@ -23,16 +23,16 @@ public class SignUp3Servlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
-		String memberEmail = req.getParameter("email");
+		String memberEmail = req.getParameter("memberEmail");
 		String memberId = 	(String) session.getAttribute("memberId");
 		String memberPw = (String) session.getAttribute("memberPw");
 		String memberNick = (String) session.getAttribute("memberNick");
 		String memberGender = (String) session.getAttribute("memberGender");
 		String memberBirth = (String) session.getAttribute("memberBirth");
+		String memberImg = (String) session.getAttribute("memberImg");
 		
 		
-		
-		
+		try {
 		
 		// 파라미터를 하나의 Member 객체에 저장
 		Member mem = new Member();
@@ -43,11 +43,11 @@ public class SignUp3Servlet extends HttpServlet{
 		mem.setMemberNick(memberNick);
 		mem.setMemberBirth(memberBirth);
 		mem.setMemberGender(memberGender);
-		
+		mem.setMemberImg(memberImg);
 
 		
 		
-		try {
+	
 			
 			MemberService service = new MemberService();
 			
@@ -60,16 +60,17 @@ public class SignUp3Servlet extends HttpServlet{
 			
 			if(result > 0) { // 성공
 				
-				
+				alertAndGo(resp, "회원 가입 성공!!", req.getContextPath());
 			
-				session.setAttribute("message", "회원 가입 성공!!");
+			
 				
 			}else { // 실패
-				session.setAttribute("message", "회원 가입 실패...");
+				alertAndGo(resp, "회원 가입 실패!", req.getContextPath());
 				
 			}
 			
-			resp.sendRedirect( req.getContextPath() );
+			//req.getRequestDispatcher("req.getContextPath()").forward(req, resp);
+			
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -79,7 +80,17 @@ public class SignUp3Servlet extends HttpServlet{
 	}
 	
 	
-	
+	public static void alertAndGo(HttpServletResponse response, String message, String url) {
+	    try {
+	        response.setContentType("text/html; charset=utf-8");
+	        PrintWriter w = response.getWriter();
+	        w.write("<script>alert('"+message+"');location.href='"+url+"';</script>");
+	        w.flush();
+	        w.close();
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	
 }

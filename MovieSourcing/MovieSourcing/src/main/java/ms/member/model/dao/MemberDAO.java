@@ -466,6 +466,49 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+
+	public Member kakaoLogin(Connection conn, String memberEmail) throws SQLException {
+		// TODO Auto-generated method stub
+		Member loginMember = null; // 결과 저장용 변수
+		
+		try {
+			// SQL 얻어오기
+			String sql = prop.getProperty("kakaoLogin");
+			
+			// PreparedStatment 생성 및 SQL 적재
+			pstmt = conn.prepareStatement(sql);
+						
+			pstmt.setString(1, memberEmail);
+			
+			// SQL 수행
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				
+				loginMember = new Member();
+				
+				loginMember.setMemberNo( rs.getInt("MEM_NO"));
+				loginMember.setMemberEmail(	rs.getString("MEM_EMAIL")  );
+				loginMember.setMemberId(	rs.getString("MEM_ID")  );
+				loginMember.setMemberPw(	rs.getString("MEM_PW")  );
+				loginMember.setMemberImg(	rs.getString("MEM_IMG")  );
+				loginMember.setMemberNick(	rs.getString("MEM_NICK")  );
+				loginMember.setMemberBirth(	rs.getString("MEM_BIRTH")  );
+				loginMember.setMemberGender(	rs.getString("MEM_GENDER")  );
+				loginMember.setMemberIntro(	rs.getString("MEM_INTRO")  );
+				loginMember.setMemberSignUpDate(rs.getString("MEM_SIGN_UP_DATE") );
+				
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return loginMember;
+	}
 	
 	
 	

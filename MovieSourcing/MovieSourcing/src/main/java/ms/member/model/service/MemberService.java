@@ -4,6 +4,7 @@ package ms.member.model.service;
 import static ms.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import ms.member.model.dao.MemberDAO;
@@ -249,6 +250,21 @@ public class MemberService {
 		
 		close(conn);
 		return result;
+	}
+
+
+
+
+	public Member kakaoLogin(String memberEmail) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		Connection conn = getConnection();
+		
+		Member loginMember = dao.kakaoLogin(conn, memberEmail);
+		
+		close(conn);
+		
+		return loginMember;
 	}
 
 	

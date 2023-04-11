@@ -286,6 +286,12 @@ td > span{
     background: rgb(57, 41, 41);
     border-radius: 6px;
 }
+
+.preview{
+	font:inherit;
+	line-height: 30px;
+}
+
 pre {
     font-weight: 500;
     color :rgb(255, 255, 255);
@@ -306,6 +312,8 @@ pre {
     width : 100%;
     border-radius: 50%;
     margin-bottom: 10px;
+    min-height : 130px;
+    min-width : 100px;
 }
 .everyone {
     margin : 10px;
@@ -313,13 +321,19 @@ pre {
     justify-content: space-between;
 }
 
-.reviewContainer {
-
-}
-
 .review1 {
     display : flex;
     justify-content: space-between;
+}
+
+#firstReview{
+	text-align: center;
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+    background-color: #976464;
+    line-height: 60px;
+    border-radius: 20px;
 }
 
 .reviewbox {
@@ -363,7 +377,12 @@ pre {
     background-color: white;
 }
 
-#userScore1 {
+.userScoreBox {
+    margin: auto;
+    margin-left: 4px;
+}
+
+.userScore{
     margin: auto;
     margin-left: 4px;
 }

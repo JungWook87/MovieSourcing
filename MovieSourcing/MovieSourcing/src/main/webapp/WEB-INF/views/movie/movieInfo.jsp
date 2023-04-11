@@ -3,6 +3,8 @@
 
 <c:set var="movieInfo" value="${map.movieInfo}" />
 <c:set var="moviePeople" value="${map.moviePeople}" />
+<c:set var="movieReview" value="${map.movieReview}" />
+<c:set var="movieRecommend" value="${map.movieRecommend}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +36,7 @@
                 <main id="contents">
                     <div class="mainContainer">
                         <div class="poster">
-                            <img id=posterImg src="${movieInfo.moviePoster}"></img>
+                            <img id=posterImg src="${contextPath}${movieInfo.moviePoster}"></img>
                         </div>
                         <div class="movieInfoBox">
                             <div class="checkBox">
@@ -47,11 +49,11 @@
                             </div>
                             <div class="titleBox">
                                 <div>
-                                    <span id="movieTitle">${movieInfo.movieTitle}"</span>
+                                    <span id="movieTitle">${movieInfo.movieTitle}</span>
                                 </div>
                             </div>
-                            <div id="engBar"><span id="engTitle">${movieInfo.movieEngTitle}"</span><span> |</span>
-                                <span id="openDate">${movieInfo.movieOpenDate}"</span>
+                            <div id="engBar"><span id="engTitle">${movieInfo.movieEngTitle}</span><span> |</span>
+                                <span id="openDate">${movieInfo.movieOpenDate}</span>
                             </div>
                             <div>
                                 <table>
@@ -77,7 +79,7 @@
                             <div class="genreBox">
                                 <div><span class="genreSpan">#${movieInfo.movieGenre[0]}</span></div>
                                 <div><span class="genreSpan">#${movieInfo.movieGenre[1]}</span></div>
-                                <div><span class="genreSpan">#${movieInfo.movieGenre[3]}</span></div>
+                                <div><span class="genreSpan">#${movieInfo.movieGenre[2]}</span></div>
                             </div>
                             <div class="scoreBox">
                                 <div id="scoreBar">
@@ -91,7 +93,7 @@
                             </div>
                             <div class="writeBox">
                                 <button id="lifeMovie">'인생영화'설정</button>
-                                <button id="reviewWrite">리뷰쓰기</button>
+                                <button id="reviewWrite" type="button">리뷰쓰기</button>
                             </div>
                             
                         </div>
@@ -110,27 +112,27 @@ ${movieInfo.moviePreview}
                             <!-- 개별 배우 박스 -->
                             
                             <a class="actorbox" href="#">
-                                <div><img src="${contextPath}/resources/images/img_pd/" id="directorBox"></div>
+                                <div><img src="${contextPath}${moviePeople.pdPicture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.pdName}</span>
                                 <span>감독</span>
                             </a>
                             <a class="actorbox" href="#">
-                                <div><img src="${moviePeople.act1Picture}" id="directorBox"></div>
+                                <div><img src="${contextPath}${moviePeople.act1Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act1}</span>
                                 <span>배우</span>
                             </a>
                             <a class="actorbox" href="#">
-                                <div><img src="${moviePeople.act2Picture}" id="directorBox"></div>
+                                <div><img src="${contextPath}${moviePeople.act2Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act2}</span>
                                 <span>배우</span>
                             </a>
                             <a class="actorbox" href="#"> 
-                                <div><img src="${moviePeople.act3Picture}" id="directorBox"></div>
+                                <div><img src="${contextPath}${moviePeople.act3Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act3}</span>
                                 <span>배우</span>
                             </a>
                             <a class="actorbox" href="#">
-                                <div><img src="${moviePeople.act4Picture}" id="directorBox"></div>
+                                <div><img src="${contextPath}${moviePeople.act4Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act4}</span>
                                 <span>배우</span>
                             </a>
@@ -141,92 +143,71 @@ ${movieInfo.moviePreview}
                             <span class="bold2">회원들의 리뷰</span> 
                             <a href="#">더보기</a>
                         </div>
-                        <div class="reviewbox">
-                            <div class="reviewInfo">
-                                <div>
-                                    <div>
-                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg">
-                                        </i>
-                                        <span id="userName">한현</span>
-                                    </div>
-                                    <div id="scoreLight1"></div>
-                               
-                                    <div id="userScore1">
-                                        <span id="userScore1">4.5</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span>3주전</span>
-                                </div>
-                            </div>
-                            <div class="reviewContent">
-                                <span id="reviewContent">원래는 4.0였다. 박찬욱 특유의 뒤틀린 유머나 수위 높은 장면이 없는 게 좋으면서도 아쉬워지는 부분이었는데, 안개가 울려퍼지자 우는 탕웨이를 보며 0.5를 매꾸기로 했다.
-                                </span>
-                            </div>
-                        </div>
-                        <div class="reviewbox">
-                            <div class="reviewInfo">
-                                <div>
-                                    <div>
-                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg">
-                                        </i>
-                                        <span id="userName">Konauki</span>
-                                    </div>
-                                    <div id="scoreLight2"></div>
-                               
-                                    <div id="userScore2">
-                                        <span id="userScore2">1.5</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span>오늘</span>
-                                </div>
-                            </div>
-                            <div class="reviewContent">
-                                <span  id="reviewContent">
-                                    영화가 쓸데없이 넘 어려움
-                                </span>
-                            </div>
-                        </div>
-                       
+                        
+                        <c:choose>
+                        	<c:when test="${empty movieReview}">
+                        		<h3 id="firstReview">첫 리뷰의 주인공이 되어보세요</h3>
+                        	</c:when>
+                        	
+                        	<c:otherwise>
+	                        	<c:forEach var="review" items="${movieReview}">
+	                        	
+			                        <div class="reviewbox">
+			                            <div class="reviewInfo">
+			                                <div>
+			                                    <div>
+			                                    	<c:choose>
+			                                    		<c:when test="${empty review.memPic}">
+					                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg">
+					                                        </i>
+				                                        </c:when>
+				                                        
+				                                        <c:otherwise>
+				                                        	<img src="${contextPath}${review.memPic}">
+				                                        </c:otherwise>
+			                                        </c:choose>
+			                                        <span id="userName">${review.memNic}</span>
+			                                    </div>
+			                                    <div id="scoreLight1"></div>
+			                               
+			                                    <div class="userScoreBox">
+			                                        <span class="userScore">${review.reviewScore}</span>
+			                                    </div>
+			                                </div>
+			                                <div>
+			                                    <span>${review.reviewDate}</span>
+			                                </div>
+			                            </div>
+			                            <div class="reviewContent">
+			                                <span id="reviewContent">
+			                                	${review.reviewContent}
+			                                </span>
+			                            </div>
+			                        </div>
+			                        
+	                       		</c:forEach>
+                       		</c:otherwise>
+                       	</c:choose>
+                       	
                     </div>
+                    
                     <div class="recommendContainer">
                         <span class="bold2">이런영화는 어때요??</span> 
                         <div class="everyone">
-                            <a href="#" class="recommendMovieBox">
-                                <img src="/이미지/같은 장르.jpg" id="recommendMovie">
+                            <a href="movieInfo?movieNo=${movieRecommend[0].movieNo}" class="recommendMovieBox">
+                                <img src="${contextPath}${movieRecommend[0].moviePoster}" id="recommendMovie">
                             </a>
-                            <a href="#" class="recommendMovieBox">
-                                <img src="/이미지/감독영화.jpg" id="recommendMovie">
+                            <a href="movieInfo?movieNo=${movieRecommend[1].movieNo}" class="recommendMovieBox">
+                                <img src="${contextPath}${movieRecommend[1].moviePoster}" id="recommendMovie">
                             </a>
-                            <a href="#" class="recommendMovieBox"> 
-                                <img src="/이미지/주연영화.jpg" id="recommendMovie">  
+                            <a href="movieInfo?movieNo=${movieRecommend[2].movieNo}" class="recommendMovieBox"> 
+                                <img src="${contextPath}${movieRecommend[2].moviePoster}" id="recommendMovie">  
                             </a>
-                            <a href="#" class="recommendMovieBox">    
-                                <img src="/이미지/같은 장르 (2).jpg" id="recommendMovie">  
+                            <a href="movieInfo?movieNo=${movieRecommend[3].movieNo}" class="recommendMovieBox">    
+                                <img src="${contextPath}${movieRecommend[3].moviePoster}" id="recommendMovie">  
                             </a>
                         </div>
                 </main>
-                <header class="navHeader">
-                    <nav class="nav">
-                        <a href="#" class="home">
-                            <i class="fa-solid fa-house"></i>
-                            <span>홈</span>
-                        </a>
-                        <a href="#" class="community">
-                            <i class="fa-solid fa-comments"></i>
-                            <span>커뮤니티</span>
-                        </a>
-                        <a href="#" class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>탐색</span>
-                        </a>
-                        <a href="#" class="mypage">
-                            <i class="fa-solid fa-user"></i>
-                            <span>마이페이지</span>
-                        </a>
-                    </nav>
-                </header>
                 
             </div>
         </div>
@@ -270,5 +251,6 @@ ${movieInfo.moviePreview}
     </div>
     
     <script src="${contextPath}/resources/js/movie/movieInfo.js"></script>
+	
 </body>
 </html>

@@ -1,1 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>mlist-sql.xml</comment>
+	
+	<entry key="selectAll">
+		SELECT MOVIE_TITLE, MOVIE_GRADE, MOVIE_POSTER, GENRE, MOVIE_NATIONAL, MOVIE_NO
+		FROM MOVIE_INFORMATION_TABLE
+		JOIN GENRE_MOVIE USING(MOVIE_NO)
+		JOIN GENRE USING(GENRE_NO)
+	</entry>
+
+
+</properties>

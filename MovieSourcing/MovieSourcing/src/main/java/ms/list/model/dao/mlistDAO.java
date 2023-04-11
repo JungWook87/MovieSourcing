@@ -1,10 +1,14 @@
 package ms.list.model.dao;
 
 import static ms.common.JDBCTemplate.*;
+
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import ms.list.model.vo.movie;
@@ -21,6 +25,8 @@ public class mlistDAO {
 			prop = new Properties();
 			
 			String filePath = mlistDAO.class.getResource("/ms/sql/mlist-sql.xml").getPath();
+			prop.loadFromXML(new FileInputStream(filePath));
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -29,37 +35,41 @@ public class mlistDAO {
 	
 
 	
-	public movie selectAll(Connection conn) throws Exception{
+	public List<movie> selectAll(Connection conn) throws Exception{
 		
-		movie m = null;
-		
+		List<movie> mlist = new ArrayList<>();
 		
 		try {
-			
 			String sql = prop.getProperty("selectAll");
 			
-			pstmt = conn.prepareStatement(sql);
+			stmt = conn.createStatement();
 			
-			rs = pstmt.executeQuery();
+			rs = stmt.executeQuery(sql);
 			
-			if(rs.next()) {
-				m = new movie();
+			
+			while(rs.next()) {
 				
-				m.setMovieNo(rs.getInt(0));
-				m.setMovieTitle(rs.getString(0));
-				m.setMovieJanr(rs.getString(0));
-				m.setMovieGrade(rs.getString(0));
-				m.setNational(rs.getString(0));
+				int movieNo = rs.getInt("MOVIE_NO");
+				String movieTitle = rs.getString("MOVIE_TITLE");
+				String movieGrade = rs.getString("MOVIE_GRADE");
+				String movieJanr = rs.getString("GENRE");
+				String national = rs.getString("MOVIE_NATIONAL");
+				String moviePoster = rs.getString("MOVIE_POSTER");
+				
+				mlist.add(new movie(movieNo, movieTitle, movieGrade, movieJanr, national, moviePoster));
+				
 			}
+			
+			
 			
 		}finally {
 			close(rs);
-			close(pstmt);
+			close(stmt);
+			
 		}
 		
-		return m;
+		return mlist;
 	}
-	
 	
 	
 }

@@ -16,6 +16,8 @@ import ms.board.model.dao.BoardDAO;
 import static ms.common.JDBCTemplate.*;
 import ms.movie.model.vo.MovieInfo;
 import ms.movie.model.vo.MoviePeople;
+import ms.movie.model.vo.MovieRecommend;
+import ms.movie.model.vo.MovieReview;
 
 public class MovieInfoDAO {
 	
@@ -77,8 +79,10 @@ public class MovieInfoDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, movieNo);
 			
+			rs = pstmt.executeQuery();
 			
 			List<String> genre = new ArrayList<>();
+			
 			while(rs.next()) {
 				String genreTemp = rs.getString(1);
 				
@@ -124,8 +128,6 @@ public class MovieInfoDAO {
 				String actor = rs.getString(1);
 				String actorPicture = rs.getString(2);
 				
-				System.out.println("actor : " + actor); 
-				
 				act.add(actor);
 				actPicture.add(actorPicture);
 			}
@@ -147,6 +149,113 @@ public class MovieInfoDAO {
 		}
 		
 		return moviePeople;
+	}
+
+	/** 리뷰
+	 * @param conn
+	 * @param movieNo
+	 * @return
+	 */
+	public List<MovieReview> movieReview(Connection conn, int movieNo) throws Exception {
+		
+		List<MovieReview> movieReview = new ArrayList<>();
+		
+		MovieReview temp = null;
+		
+		try {
+			
+			String sql = prop.getProperty("movieReview");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, movieNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				temp = new MovieReview(movieNo, rs.getInt(2), rs.getString(3), rs.getString(4), 
+						rs.getInt(5), rs.getString(6), rs.getString(7));
+				
+				movieReview.add(temp);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return movieReview;
+	}
+
+	public List<MovieRecommend> movieRecommend(Connection conn, List<String> movieRecommendList) throws Exception {
+		
+		List<MovieRecommend> tempList = new ArrayList<>();
+		List<MovieRecommend> movieRecommend = new ArrayList<>();
+		
+		try {
+			
+			String sql = "";
+			
+			int num = movieRecommendList.size();
+			
+			switch(num) {
+				case 1 :  
+					sql = prop.getProperty("movieRecommend1");
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, movieRecommendList.get(0));
+					break;
+					
+				case 2 :
+					sql = prop.getProperty("movieRecommend2");
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, movieRecommendList.get(0));
+					pstmt.setString(2, movieRecommendList.get(1));
+					break;
+			
+				case 3 : 
+					sql = prop.getProperty("movieRecommend3");
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, movieRecommendList.get(0));
+					pstmt.setString(2, movieRecommendList.get(1));
+					pstmt.setString(3, movieRecommendList.get(2));
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MovieRecommend temp = new MovieRecommend();
+				
+				temp.setMovieNo(rs.getInt(1));
+				temp.setMoviePoster(rs.getString(2));
+				
+				tempList.add(temp);
+			}
+
+			
+			int[] randomNum = new int[4];
+			for(int i = 0; i < 4; i++) {
+				int tempNum = (int)(Math.random() * tempList.size());
+				
+				randomNum[i] = tempNum;
+				
+				for(int j = 0; j < i; j++) {
+					if(randomNum[i] == randomNum[j]) {
+						i--;
+					}
+				}
+				
+			}
+			
+			movieRecommend.add(tempList.get(randomNum[0]));
+			movieRecommend.add(tempList.get(randomNum[1]));
+			movieRecommend.add(tempList.get(randomNum[2]));
+			movieRecommend.add(tempList.get(randomNum[3]));
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return movieRecommend;
 	}
 
 	

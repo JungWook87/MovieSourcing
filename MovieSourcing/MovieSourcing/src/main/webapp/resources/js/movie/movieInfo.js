@@ -1,3 +1,5 @@
+console.log("movieInfo js 들어옴")
+
 const watchedText = document.getElementById("watchedText");
 
 document.getElementById("toggle1").addEventListener("click",function(){
@@ -10,35 +12,33 @@ document.getElementById("toggle1").addEventListener("click",function(){
     }
 })
 
-const scoreLight1 = document.getElementById("scoreLight1");
-var userScore1 = document.getElementById("userScore1").innerText;
-var score1 = Number(userScore1);
-
-
-if (score1 >= 4.0){
-    scoreLight1.style.backgroundColor = "springgreen";
-} else if (score1 >= 3.0 && score1 < 4.0) {
-    scoreLight1.style.backgroundColor = "yellow";
-} else if ( score1 >= 2.0 && score1 < 3.0 ) {
-    scoreLight1.style.backgroundColor = "white";
-} else if (score1 < 2.0) {
-    scoreLight1.style.backgroundColor = "red";
+/*
+if(!movieReview){
+	console.log("비어있음")
+} else{
+	
+	const userScore = document.getElementsByClassName("userScore1");
+	const scoreLight1 = document.getElementById("scoreLight1");
+	var userScore1 = document.getElementById("userScore1").innerText;
+	var score1 = Number(userScore1);
+	
+	for(let i = 0; i < userScore.length; i++){
+		
+		if (score1 >= 4.0){
+		    scoreLight1.style.backgroundColor = "springgreen";
+		} else if (score1 >= 3.0 && score1 < 4.0) {
+		    scoreLight1.style.backgroundColor = "yellow";
+		} else if ( score1 >= 2.0 && score1 < 3.0 ) {
+		    scoreLight1.style.backgroundColor = "white";
+		} else if (score1 < 2.0) {
+		    scoreLight1.style.backgroundColor = "red";
+		}
+	}
 }
-
-const scoreLight2 = document.getElementById("scoreLight2");
-var userScore2 = document.getElementById("userScore2").innerText;
-var score2 = Number(userScore2);
+*/
+	
 
 
-if (score2 >= 4.0){
-    scoreLight2.style.backgroundColor = "springgreen";
-} else if (score2 >= 3.0 && score2 < 4.0) {
-    scoreLight2.style.backgroundColor = "yellow";
-} else if ( score2 >= 2.0 && score2 < 3.0 ) {
-    scoreLight2.style.backgroundColor = "white";
-} else if (score2 < 2.0) {
-    scoreLight2.style.backgroundColor = "red";
-}
 
 // 모달창 변수 선언
 
@@ -47,7 +47,7 @@ const reviewOverlay = document.getElementById("reviewOverlay");
 const reviewWriteBox = document.getElementById("reviewWriteBox");
 const nav = document.getElementsByClassName("nav");
 
-reviewWrite.addEventListener("click", e => {
+reviewWrite.addEventListener("click", function() {
     reviewOverlay.style.display = "flex";
     reviewOverlay.style.position = "fixed";
     // nav[0].style.display = "none";

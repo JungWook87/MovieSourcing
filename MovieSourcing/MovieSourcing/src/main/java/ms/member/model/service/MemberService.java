@@ -4,7 +4,6 @@ package ms.member.model.service;
 import static ms.common.JDBCTemplate.*;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import ms.member.model.dao.MemberDAO;
@@ -255,16 +254,118 @@ public class MemberService {
 
 
 
-	public Member kakaoLogin(String memberEmail) throws SQLException {
-		// TODO Auto-generated method stub
+	/** 본 영화 삽입
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int watchedMovieInsert(int memNo, int movieNo) {
+
+		Connection conn = getConnection();
+		
+		int result = 0;
+
+		try {
+			
+			result = dao.watchedMovieInsert(conn, memNo, movieNo);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+
+
+
+	/** 본 영화 삭제
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int watchedMovieDelete(int memNo, int movieNo) {
+		
+		int result = 0;
 		
 		Connection conn = getConnection();
 		
-		Member loginMember = dao.kakaoLogin(conn, memberEmail);
+		try {
+			
+			result = dao.watchedMovieDelete(conn, memNo, movieNo);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
 		
-		close(conn);
+		return result;
+	}
+
+
+
+
+	/** 보고싶은 영화 삽입
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieInsert(int memNo, int movieNo) {
+		int result = 0;
 		
-		return loginMember;
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.wannaMovieInsert(conn, memNo, movieNo);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+
+	/** 보고 싶은 영화 삭제
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieDelete(int memNo, int movieNo) {
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.wannaMovieDelete(conn, memNo, movieNo);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
 	}
 
 	

@@ -466,6 +466,116 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+
+	/** 본 영화 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int watchedMovieInsert(Connection conn, int memNo, int movieNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("watchedMovieInsert");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 본 영화 삭제
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int watchedMovieDelete(Connection conn, int memNo, int movieNo) throws Exception {
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("watchedMovieDelete");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 보고싶은 영화 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieInsert(Connection conn, int memNo, int movieNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("wannaMovieInsert");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 보고 싶은 영화 삭제
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieDelete(Connection conn, int memNo, int movieNo) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("wannaMovieDelete");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

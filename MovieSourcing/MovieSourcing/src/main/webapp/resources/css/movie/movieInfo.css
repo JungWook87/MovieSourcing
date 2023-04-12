@@ -230,11 +230,14 @@ td > span{
     width : 25%;
     display : flex;
     justify-content: center;
+    margin-left: 25px;
+    margin-top: 8px;
 }
-#wannasee > a {
+#wannaheart {
     margin : auto;
-    color: pink;
+    color: white;
     font-size: 35px;
+    cursor: pointer;
 }
 
 .writeBox {

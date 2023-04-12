@@ -41,7 +41,6 @@
                     </div>
                     
                     <button type="button" onclick="location.href='write?mode=insert'" id="writeBtn">글쓰기</button>
-                    
                 </div>
 
                 <div class="commu_area">

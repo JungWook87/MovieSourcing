@@ -197,6 +197,8 @@ public class MovieInfoDAO {
 			
 			int num = movieRecommendList.size();
 			
+			pstmt = null;
+			
 			switch(num) {
 				case 1 :  
 					sql = prop.getProperty("movieRecommend1");
@@ -212,6 +214,14 @@ public class MovieInfoDAO {
 					break;
 			
 				case 3 : 
+					sql = prop.getProperty("movieRecommend3");
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, movieRecommendList.get(0));
+					pstmt.setString(2, movieRecommendList.get(1));
+					pstmt.setString(3, movieRecommendList.get(2));
+					break;
+					
+				default : 
 					sql = prop.getProperty("movieRecommend3");
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, movieRecommendList.get(0));
@@ -257,6 +267,8 @@ public class MovieInfoDAO {
 		
 		return movieRecommend;
 	}
+
+
 
 	
 	

@@ -1,3 +1,4 @@
+console.log("signUp1js 들어옴");
 
 const check1 = document.getElementById("check1");
 const check2 = document.getElementById("check2");
@@ -52,6 +53,18 @@ if(check4.checked){
     signCheckList.check4a = false;
 }
 
+
+function nextMove(){
+	 if($("#checkAll").is(":checked")){
+        alert("페이지이동");
+        return true;
+    } else {
+        alert("이용약관을 동의해주세요.");
+        
+        return false;
+    }
+}
+/*
 const nextBtn = document.getElementById("nextBtn");
 
 nextBtn.addEventListener("click", function(){
@@ -61,3 +74,4 @@ nextBtn.addEventListener("click", function(){
         alert("이용약관을 동의해주세요.");
     }
 }) 
+*/

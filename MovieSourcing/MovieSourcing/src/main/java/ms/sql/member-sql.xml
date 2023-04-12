@@ -163,4 +163,32 @@
 
 
 
+	<!-- 본 영화 삽입 -->
+	<entry key="watchedMovieInsert">
+		INSERT INTO WATCHED_MOVIE 
+		VALUES(? , ?)
+	</entry>
+	
+	<!-- 본 영화 삭제 -->
+	<entry key="watchedMovieDelete">
+		DELETE FROM WATCHED_MOVIE
+		WHERE MEM_NO = ?
+		AND MOVIE_NO = ?
+	</entry>	
+	
+	
+	<!-- 보고싶은 영화 삽입 -->
+	<entry key="wannaMovieInsert">
+		INSERT INTO SELECT_MOVIE 
+		VALUES(? , ?)
+	</entry>
+	
+	<!-- 보고싶은 영화 삭제 -->
+	<entry key="wannaMovieDelete">
+		DELETE FROM SELECT_MOVIE
+		WHERE MEM_NO = ?
+		AND MOVIE_NO = ?
+	</entry>	
+
+
 </properties>

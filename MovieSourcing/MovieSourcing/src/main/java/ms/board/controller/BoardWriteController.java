@@ -54,6 +54,7 @@ public class BoardWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String mode = req.getParameter("mode");
+		int memNo = Integer.parseInt(req.getParameter("memNo"));
 		
 		try {
 			
@@ -69,6 +70,7 @@ public class BoardWriteController extends HttpServlet {
 				updateDetail.setComNo(comNo);
 				updateDetail.setComTitle(comTitle);
 				updateDetail.setComContent(comContent);
+				updateDetail.setMemNo(memNo);
 				
 				BoardDetail boardDetail = service.updateDetail(updateDetail);
 				
@@ -84,6 +86,7 @@ public class BoardWriteController extends HttpServlet {
 				BoardDetail insertBoard = new BoardDetail();
 				insertBoard.setComTitle(comTitle);
 				insertBoard.setComContent(comContent);
+				insertBoard.setMemNo(memNo);
 				// 유저 닉 정보 불러오기 필요
 				
 				BoardDetail boardDetail = service.insertDetail(insertBoard);

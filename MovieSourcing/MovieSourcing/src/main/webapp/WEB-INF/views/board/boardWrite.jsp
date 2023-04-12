@@ -49,6 +49,7 @@
             </div>
             <input name="comNo" style="display:none;" value="${detail.comNo}">
             <input name="mode" style="display:none;" value="${mode}">
+            <input name="memNo" style="display:none;" value="${loginMember.memberNo}">
         </form>
     </section>  
 

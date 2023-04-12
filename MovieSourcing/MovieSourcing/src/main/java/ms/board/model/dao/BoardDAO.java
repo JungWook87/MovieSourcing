@@ -98,7 +98,6 @@ public class BoardDAO {
 				board.setComDate(rs.getString("COM_DATE"));
 				board.setComTitle(rs.getString("COM_TITLE"));
 				board.setComContent(rs.getString("COM_CONTENT"));
-				board.setThumbnail(rs.getString("THUMBNAIL"));
 				board.setReadCount(rs.getInt("READ_COUNT"));
 				board.setReplyCount(rs.getInt("REPLY_COUNT"));
 				
@@ -271,7 +270,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, insertBoard.getComTitle());
 			//pstmt.setInt(2, insertBoard.getMemNo());
-			pstmt.setInt(2, 1);
+			pstmt.setInt(2, insertBoard.getMemNo());
 			pstmt.setString(3, insertBoard.getComContent());
 			
 			result = pstmt.executeUpdate();

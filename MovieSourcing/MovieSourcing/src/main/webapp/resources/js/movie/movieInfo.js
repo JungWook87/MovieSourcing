@@ -2,15 +2,112 @@ console.log("movieInfo js 들어옴")
 
 const watchedText = document.getElementById("watchedText");
 
-document.getElementById("toggle1").addEventListener("click",function(){
-    if(toggle1.checked == true) {
-        watchedText.innerText = "본 영화에요";
-        watchedText.style.color = "springgreen";
-    } else{
-        watchedText.innerText = "못 본 영화에요";
-        watchedText.style.color = "rgb(214, 211, 206)";
-    }
+document.getElementById("toggle1").addEventListener("click", function(){
+        document.getElementById("submit1").click()
+});
+
+function submit_1(loginMemberNo, movieNo){
+	
+	if(!loginMemberNo){
+		
+		window.alert("로그인을 해주세요");
+		toggle1.checked = false;
+		
+		return false;
+	} else{
+		
+		if(toggle1.checked == true) {
+	        watchedText.innerText = "본 영화에요";
+	        watchedText.style.color = "springgreen";
+	        
+	        const mode = "insert";
+	        
+			$.ajax({
+				 url : "watchedMovie",
+				 data : {"memNo" : loginMemberNo,
+				 		"movieNo" : movieNo,
+				 		"mode" : mode
+				 },
+				 type : "GET",
+				 dataType : "JSON"
+			 });
+			 
+	         return false;
+	    } else{
+	        watchedText.innerText = "못 본 영화에요";
+	        watchedText.style.color = "rgb(214, 211, 206)";
+	        
+	        const mode = "delete";
+			$.ajax({
+				 url : "watchedMovie",
+				 data : {"memNo" : loginMemberNo,
+				 		"movieNo" : movieNo,
+				 		"mode" : mode
+				 },
+				 type : "GET",
+				 dataType : "JSON"
+			 });
+			
+			 return false;
+		}
+		
+	}
+	return false;
+}
+
+
+const wannaheart = document.getElementById("wannaheart");
+
+wannaheart.addEventListener("click", function(){
+	document.getElementById("submit2").click()
 })
+
+function submit_2(loginMemberNo, movieNo){
+	if(!loginMemberNo){
+		window.alert("로그인을 해주세요");
+		return false;
+	} else{
+		if(wannaheart.style.color == "white"){
+			wannaheart.style.color = "pink";
+			const mode = "insert";
+			
+			$.ajax({
+				url : "wannaMovie",
+				data : {"memNo" : loginMemberNo,
+						"movieNo" : movieNo,
+						"mode" : mode
+				},
+				type : "GET",
+				dataType : "JSON"
+			});
+			
+		} else{
+			wannaheart.style.color = "white";
+			
+			const mode = "delete";
+			
+			$.ajax({
+				url : "wannaMovie",
+				data : {"memNo" : loginMemberNo,
+						"movieNo" : movieNo,
+						"mode" : mode
+				},
+				type : "GET",
+				dataType : "JSON"
+			});
+			
+			
+			
+		}
+		return false;
+	}
+}
+
+
+
+
+
+
 
 /*
 if(!movieReview){
@@ -48,6 +145,8 @@ const reviewWriteBox = document.getElementById("reviewWriteBox");
 const nav = document.getElementsByClassName("nav");
 
 reviewWrite.addEventListener("click", function() {
+	
+	
     reviewOverlay.style.display = "flex";
     reviewOverlay.style.position = "fixed";
     // nav[0].style.display = "none";

@@ -41,11 +41,15 @@
                         <div class="movieInfoBox">
                             <div class="checkBox">
                                 <div></div>
-                                <span id="watchedText">못 본 영화에요</span>
-                                <div class="toggle">
-                                    <input type="checkbox" name="toggle1" id="toggle1" value="1">
-                                    <label for="toggle1">스위치</label>
-                                </div>
+                                <form action="#" onsubmit="return submit_1('${loginMember.memberNo}', 
+                                '${movieInfo.movieNo}')">
+	                                <span id="watchedText">못 본 영화에요</span>
+	                                <div class="toggle">
+	                                    <input type="checkbox" name="toggle1" id="toggle1" value="1">
+	                                    <label for="toggle1">스위치</label>
+	                                    <input type="submit" id="submit1">
+	                                </div>
+                                </form>
                             </div>
                             <div class="titleBox">
                                 <div>
@@ -65,10 +69,30 @@
                                         <td><span>배우</span></td>
                                         <td>
                                             <span id="actor">${moviePeople.act1}</span>
-                                            <span id="actor">${moviePeople.act2}</span>
-                                            <span id="actor">${moviePeople.act3}</span>
-                                            <span id="actor">${moviePeople.act4}</span>
                                         </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                    	<td>
+                                    	</td>
+                                    	<td>
+                                    		<span id="actor">${moviePeople.act2}</span>
+                                    	</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                    	<td>
+                                    	</td>
+                                    	<td>
+                                    		<span id="actor">${moviePeople.act3}</span>
+                                    	</td>
+                                    </tr>
+                                    <tr>
+                                    	<td>
+                                    	</td>
+                                    	<td>
+                                    		<span id="actor">${moviePeople.act4}</span>
+                                    	</td>
                                     </tr>
                                     <tr>
                                         <td><span>등급</span></td>
@@ -85,11 +109,16 @@
                                 <div id="scoreBar">
                                     <div id="score"><span id="scoreComment">${movieInfo.movieScore}</span></div>
                                 </div>
-                                <div id="wannasee">
-                                    <a href="#" class="fa-solid fa-heart">
-                                        <i ></i>
-                                    </a>
-                                </div>
+                                
+                                <form action="#" onsubmit="return submit_2('${loginMember.memberNo}','${movieInfo.movieNo}')">
+	                                <div id="wannasee">
+	                                    <div class="fa-solid fa-heart" " id="wannaheart"></div>
+	                                    <input type="submit" id="submit2" style="display:none">
+	                                </div>
+                                </form>
+                                
+                                
+
                             </div>
                             <div class="writeBox">
                                 <button id="lifeMovie">'인생영화'설정</button>
@@ -251,6 +280,7 @@ ${movieInfo.moviePreview}
     </div>
     
     <script src="${contextPath}/resources/js/movie/movieInfo.js"></script>
+
 	
 </body>
 </html>

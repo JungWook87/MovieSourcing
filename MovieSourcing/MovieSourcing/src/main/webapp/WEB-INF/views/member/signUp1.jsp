@@ -11,6 +11,10 @@
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
 
+	 <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
     <title>회원가입(1)</title>
 </head>
 <body>
@@ -31,7 +35,7 @@
                     </section>
                     <section class="infomationbox">
                         <div class="info">
-                         <form action="${contextPath}/member/signUp2">
+                         <form action="${contextPath}/member/signUp2" onsubmit="return nextMove()">
                             <div class="infobox">
                                 <span class="info1">약관동의</span>
                                 <div>
@@ -62,7 +66,7 @@
                     </section>
                    
                     <section class="nextbox">
-                        <button>다음</button>
+                        <button id="nextBtn">다음</button>
                     </section>
                      </form>
                 </main>

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/semi-mlist.css">
     <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>seml-mlist</title>
 </head>
 <body>
@@ -57,33 +58,33 @@
                     
                     <ul>
                         <p name="janr-name">장르</p>
-                        <li><button href="#" id="action" class="btn" onclick="janrclick()">액션</button></li> <li><button href="#" class="btn" id="pan">판타지</button></li> <li><button href="#" class="btn" id="criminal">범죄</button></li>
-                        <li><button href="#" id="sf" class="btn">SF</button></li> <li><button href="#" class="btn" id="thril">스릴러</button></li> <li><button href="#" class="btn" id="comedy">코미디</button></li>
-                        <li><button href="#" id="drama"class="btn">드라마</button></li> <li><button href="#" class="btn" id="horror">공포(호러)</button></li> <li><button href="#" class="btn" id="animation">애니메이션</button></li>
-                        <li><button href="#" id="melo" class="btn">멜로/로맨스</button></li> <li><button href="#" class="btn" id="mist">미스터리</button></li> <li><button href="#" class="btn" id="family">가족</button></li>
-                        <li><button href="#" id="adven" class="btn">어드벤처</button></li> <li><button href="#" class="btn" id="war">전쟁</button></li> <li><button href="#" class="btn" id="etc">기타</button></li>
+                        <li><button type="button" value="가족" class="btn">가족</button></li> <li><button type="button" class="btn" value="미스터리">미스터리</button></li> <li><button type="button" class="btn" value="애니메이션">애니메이션</button></li>
+                        <li><button type="button" value="공포" class="btn">공포</button></li> <li><button type="button" class="btn" value="범죄">범죄</button></li> <li><button type="button" class="btn" value="액션">액션</button></li>
+                        <li><button type="button" value="드라마" class="btn">드라마</button></li> <li><button type="button" class="btn" value="판타지">판타지</button></li> <li><button type="button" class="btn" value="어드벤처">어드벤처</button></li>
+                        <li><button type="button" value="멜로/로맨스" class="btn">멜로/로맨스</button></li> <li><button type="button" class="btn" value="코미디">코미디</button></li> <li><button type="button" class="btn" value="전쟁">전쟁</button></li>
+                        <li><button type="button" value="SF" class="btn">SF</button></li> <li><button type="button" class="btn" value="스릴러">스릴러</button></li> <li><button type="button" class="btn" value="기타">기타</button></li>
                     </ul>
 
                     <hr class="hr">
 
                     <ul>
                         <p class="janr-name2">국가</p>
-                        <li><button href="#" id="korea" class="btn">한국</button></li>
-                        <li><button href="#" id="america" class="btn">미국</button></li>
-                        <li><button href="#" id="japan" class="btn">일본</button></li>
-                        <li><button href="#" id="china" class="btn">중국</button></li>
-                        <li><button href="#" id="etc2" class="btn">기타</button></li>
+                        <li><button type="button" id="korea" class="btn">한국</button></li>
+                        <li><button type="button" id="america" class="btn">미국</button></li>
+                        <li><button type="button" id="japan" class="btn">일본</button></li>
+                        <li><button type="button" id="china" class="btn">중국</button></li>
+                        <li><button type="button" id="etc2" class="btn">기타</button></li>
                     </ul>
 
                     <hr class="hr">
 
                     <ul>
                         <p class="janr-name3">연령</p>
-                        <li><button href="#" class="btn" id="all">전체 관람가</button></li>
-                        <li><button href="#" class="btn" id="12y">12세 이상</button></li>
-                        <li><button href="#" class="btn" id="15y">15세 이상</button></li>
-                        <li><button href="#" class="btn" id="19y">청소년 관람불가</button></li>
-                        <li><button href="#" class="btn" id="etc3">기타</button></li>
+                        <li><button type="button" class="btn" id="all">전체 관람가</button></li>
+                        <li><button type="button" class="btn" id="12y">12세 이상</button></li>
+                        <li><button type="button" class="btn" id="15y">15세 이상</button></li>
+                        <li><button type="button" class="btn" id="19y">청소년 관람불가</button></li>
+                    
 
                     </ul>
                     
@@ -91,21 +92,15 @@
 
                 </div >
                 
-					<c:forEach var="mlist" items="${mlist}" varstatus="i">
-						<c:choose>
-							<c:when test="${mlist[i.count].movieNo}">
-			                <div class="mlist">
-			                    <div>
-			                        <div><a href="movieInfo"><img src="${contextPath}/resource/image/검사외전포스터.jpg" width="130px"><br><h3>어메이징 스파이더맨1</h3></a><br><p>장르/개봉연도</p></div>
-			                        <div><a href="#"><img src="${contextPath}/resource/image/겨울왕국1 포스터.jpg" width="130px"><br><h3>검사외전</h3></a><br><p>장르/개봉연도</p></div>
-			                        <div><a href="#"><img src="${contextPath}/resource/image/곡성 포스터.jpg" width="130px"><br><h3>설국열차</h3></a><br><p>장르/개봉연도</p></div>
-			                        <div><a href="#"><img src="${contextPath}/resource/image/공조 포스터.jpg" width="130px"><br><h3>겨울왕국1</h3></a><br><p>장르/개봉연도</p></div>
-			                        <div><a href="#"><img src="${contextPath}/resource/image/기생충 포스터.jpg" width="130px"><br><h3>곡성</h3></a><br><p>장르/개봉연도</p></div>
-			                    </div>
-		              	 	 </div>
-		              	 	 </c:when>
-	              	 	 </c:choose>
-                	</c:forEach>
+					
+			    <div class="mlist">
+			        <div>
+                        <c:forEach var="mlist" items="${mlist}">
+			                <div><a href="movieInfo"><img src="${contextPath}${mlist.moviePoster}" width="130px"><br><h3><c:out value="${mlist.movieTitle}"/></h3></a><br><p><c:out value="${mlist.national}/${mlist.movieGrade}"/></p></div>
+                        </c:forEach>
+                    </div>
+		        </div>
+            </div>   	
 
             <div class="side">
                 <div class="side-1">

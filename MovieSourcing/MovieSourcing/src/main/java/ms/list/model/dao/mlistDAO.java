@@ -52,11 +52,10 @@ public class mlistDAO {
 				int movieNo = rs.getInt("MOVIE_NO");
 				String movieTitle = rs.getString("MOVIE_TITLE");
 				String movieGrade = rs.getString("MOVIE_GRADE");
-				String movieJanr = rs.getString("GENRE");
 				String national = rs.getString("MOVIE_NATIONAL");
 				String moviePoster = rs.getString("MOVIE_POSTER");
 				
-				mlist.add(new movie(movieNo, movieTitle, movieGrade, movieJanr, national, moviePoster));
+				mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster));
 				
 			}
 			
@@ -69,6 +68,39 @@ public class mlistDAO {
 		}
 		
 		return mlist;
+	}
+
+
+
+	public List<movie> search(Connection conn) {
+		
+		List<movie> mlist = new ArrayList<>();
+		
+		try {
+			
+			String sql = prop.getProperty("search");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, input);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				
+				
+				
+				
+				
+			}
+			
+		}finally {
+			
+			
+		}
+		
+		return null;
 	}
 	
 	

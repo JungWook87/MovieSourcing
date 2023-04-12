@@ -7,19 +7,17 @@ public class movie {
 	private int movieNo;
 	private String movieTitle;
 	private String movieGrade;
-	private String movieJanr;
 	private String national;
 	private String moviePoster;
 	
 	public movie() {}
 	
 	
-	public movie(int movieNo, String movieTitle, String movieGrade, String movieJanr, String national, String moviePoster) {
+	public movie(int movieNo, String movieTitle, String movieGrade, String national, String moviePoster) {
 		
 		this.movieNo = movieNo;
 		this.movieTitle = movieTitle;
 		this.movieGrade = movieGrade;
-		this.movieJanr = movieJanr;
 		this.national = national;
 		this.moviePoster = moviePoster;
 	}
@@ -55,14 +53,6 @@ public class movie {
 	}
 
 
-	public String getMovieJanr() {
-		return movieJanr;
-	}
-
-
-	public void setMovieJanr(String movieJanr) {
-		this.movieJanr = movieJanr;
-	}
 
 
 	public String getNational() {

@@ -38,3 +38,35 @@ searchtext.addEventListener('blur', function() {
 
     searchtext.value= "";
 });
+
+
+//검색필터 (진행중)
+
+
+const input = document.getElementsByClassName('btn');
+
+$('.btn').click(function() {
+    var kind = $(this).val();
+
+    $.ajax({
+        
+        url : "/list/Search",
+        data : {"mlist" : input.value},
+        type : "GET",
+        dataType : "JSON",
+
+        success : function() {
+
+        }else {
+
+        },
+        error : function() {
+            
+        }
+        
+
+
+
+    })
+});
+

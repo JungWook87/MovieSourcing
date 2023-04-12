@@ -64,7 +64,7 @@
 
                             <div class="btnwrap">
                                 
-                                <div id="kakaoLogin">
+                                <div id="kakaoLoginBtn">
                                     <div>
                                         <i class="fa-solid fa-comment" id="kakaoImg"></i>
                                     </div>
@@ -109,78 +109,97 @@
     <script src="../resources/js/member/login.js"></script>
     
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script>    
     
-    
-        Kakao.init('b1d9a2e7a04258418caf62b1eca84f41');
-        console.log(Kakao.isInitialized()); 
-
-        document.getElementById("kakaoLogin")
-        .addEventListener("click", function kakaoLogin() {
-            Kakao.Auth.login({
-            success: function (response) {
-                Kakao.API.request({
-                url: '/v2/user/me',
-                success: function (response) {
-                    console.log(response)
-                },
-                fail: function (error) {
-                    console.log(error)
-                },
-                })
-            },
-            fail: function (error) {
-                console.log(error)
-            },
-            })
-        })
-        document.getElementById("logout")
-        .addEventListener("click", function kakaoLogout() {
-            if (Kakao.Auth.getAccessToken()) {
-            Kakao.API.request({
-                url: '/v1/user/unlink',
-                success: function (response) {
-                    console.log(response)
-                },
-                fail: function (error) {
-                console.log(error)
-                },
-            })
-            Kakao.Auth.setAccessToken(undefined)
-            }
-        }  )
-    </script>
-
     <script>
-        function init() {
-            gapi.load('auth2', function() {
-                gapi.auth2.init();
-                options = new gapi.auth2.SigninOptionsBuilder();
-                options.setPrompt('select_account');
-                options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-                gapi.auth2.getAuthInstance().attachClickHandler('googleLogin', options, onSignIn, onSignInFailure);
-            })
-        }
-        
-        function onSignIn(googleUser) {
-            var access_token = googleUser.getAuthResponse().access_token
-            $.ajax({
-                url: 'https://people.googleapis.com/v1/people/me'
-                 , data: {personFields:'birthdays', key:'AIzaSyAR3Snhp3uGfBQ0Sw_Bfa82gwbpqr_cFRE', 'access_token': access_token}
-                , method:'GET'
-            })
-            .done(function(e){
-               var profile = googleUser.getBasicProfile();
-                console.log(profile)
-            })
-            .fail(function(e){
-                console.log(e);
-            })
-        }
-        function onSignInFailure(t){		
-            console.log(t);
-        }
+
+   	Kakao.init('f72ad10408e611f4a24827bd881110dc');
+   	console.log(Kakao.isInitialized());
+   	
+   	let email = null;
+   	
+   	//카카오로그인
+   	document.getElementById("kakaoLoginBtn")
+   	.addEventListener("click",function kakaoLogin() {
+   		
+   	    Kakao.Auth.login({
+   	    	
+   	    success: function (response) {
+   	        Kakao.API.request({
+   	        url: '/v2/user/me',
+   	        success: function (response) {
+   	            console.log(response.kakao_account.email);
+   	        	 
+   	            email = response.kakao_account.email;
+   	            
+   	            console.log(email);
+   	            
+
+   	        },
+   	        fail: function (error) {
+   	            console.log(error)
+   	        },
+   	        })
+   	    },
+   	    fail: function (error) {
+   	        console.log(error)
+   	    },
+   	    })
+   	    
+   	})
+   	
+
+   	$.ajax({
+         url : "kakaoLogin",
+         data : { "email" : email },
+         type : "GET",
+         success : function(loginMember) {
+             if(loginMember != null) {
+                 alert("로그인 성공");
+               
+             } else {
+                 alert("등록된 회원 정보가 없습니다.");
+                    
+             }},
+         error : function(){
+             console.log("안됨");
+         } 
+     })  
+
+   
+   	
+
+   	
+   	document.getElementById("logout")
+   	.addEventListener("click", function kakaoLogout() {
+   	    if (Kakao.Auth.getAccessToken()) {
+   	    Kakao.API.request({
+   	        url: '/v1/user/unlink',
+   	        success: function (response) {
+   	            console.log(response)
+   	        },
+   	        fail: function (error) {
+   	        console.log(error)
+   	        },
+   	    })
+   	    Kakao.Auth.setAccessToken(undefined)
+   	    alert("로그아웃댐")
+   	    }
+   	}  )
+
+   	document.getElementById("kakaoLoginBtn")
+   	.addEventListener("click",function kakaoLogin() {
+   	    if (Kakao.Auth.getAccessToken()){
+   	        alert("이미 로그인된 아이디입니다.")
+   	    }
+   	})
+   	
+   	
+   	
+   	
+	      
     </script>
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+   	
+    
+    
 </body>
 </html>

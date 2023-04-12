@@ -13,16 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import ms.list.model.service.mlistService;
 import ms.list.model.vo.movie;
 
-@WebServlet("/list/msList")
-public class MlistServlet extends HttpServlet {
-	
+
+@WebServlet("/list/Search")
+public class SearchServlet extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		mlistService service = new mlistService();
 		
 		try {
 			
-			List<movie> mlist = service.selectMlist();
+			List<movie> mlist = service.search();
 			
 			req.setAttribute("mlist", mlist);
 			
@@ -30,16 +32,13 @@ public class MlistServlet extends HttpServlet {
 			
 			dispatcher.forward(req, resp);
 			
-		}catch(Exception e) {
 			
+		}catch(Exception e) {
 			e.printStackTrace();
 			
 		}
 		
 		
 	}
-	
-
-	
 	
 }

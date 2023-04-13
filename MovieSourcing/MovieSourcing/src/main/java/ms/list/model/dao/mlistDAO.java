@@ -73,7 +73,7 @@ public class mlistDAO {
 
 
 
-	public List<movie> searchjanr(Connection conn, String input) throws Exception {
+	public List<movie> searchjanr(Connection conn, String input1) throws Exception {
 		
 		List<movie> mlist = new ArrayList<>();
 		
@@ -87,14 +87,22 @@ public class mlistDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, input);
+			pstmt.setString(1, input1);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				mlist = (List<movie>) new movie();
 				
 				
+				
+				int movieNo = rs.getInt("MOVIE_NO");
+				String movieTitle = rs.getString("MOVIE_TITLE");
+				String movieGrade = rs.getString("MOVIE_GRADE");
+				String national = rs.getString("MOVIE_NATIONAL");
+				String moviePoster = rs.getString("MOVIE_POSTER");
+				String movieJanr = rs.getString("GENRE");
+				
+				mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster, movieJanr));
 				
 				
 				
@@ -103,11 +111,12 @@ public class mlistDAO {
 			}
 			
 		}finally {
-			
+			close(pstmt);
+			close(rs);
 			
 		}
 		
-		return null;
+		return mlist;
 	}
 	
 	

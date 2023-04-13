@@ -58,11 +58,11 @@
                     
                     <ul>
                         <p name="janr-name">장르</p>
-                        <li><button type="button" value="가족" class="janr-btn">가족</button></li> <li><button type="button" class="btn" value="미스터리">미스터리</button></li> <li><button type="button" class="btn" value="애니메이션">애니메이션</button></li>
-                        <li><button type="button" value="공포" class="janr-btn">공포</button></li> <li><button type="button" class="btn" value="범죄">범죄</button></li> <li><button type="button" class="btn" value="액션">액션</button></li>
-                        <li><button type="button" value="드라마" class="janr-btn">드라마</button></li> <li><button type="button" class="btn" value="판타지">판타지</button></li> <li><button type="button" class="btn" value="어드벤처">어드벤처</button></li>
-                        <li><button type="button" value="멜로/로맨스" class="janr-btn">멜로/로맨스</button></li> <li><button type="button" class="btn" value="코미디">코미디</button></li> <li><button type="button" class="btn" value="전쟁">전쟁</button></li>
-                        <li><button type="button" value="SF" class="janr-btn">SF</button></li> <li><button type="button" class="btn" value="스릴러">스릴러</button></li> <li><button type="button" class="btn" value="기타">기타</button></li>
+                        <li><button type="button" onclick="clickjanr(this)" value="가족" class="janr-btn">가족</button></li> <li><button type="button" class="btn" value="미스터리">미스터리</button></li> <li><button type="button" class="btn" value="애니메이션">애니메이션</button></li>
+                        <li><button type="button" onclick="clickjanr(this)" value="공포" class="janr-btn">공포</button></li> <li><button type="button" class="btn" value="범죄">범죄</button></li> <li><button type="button" class="btn" value="액션">액션</button></li>
+                        <li><button type="button" onclick="clickjanr(this)" value="드라마" class="janr-btn">드라마</button></li> <li><button type="button" class="btn" value="판타지">판타지</button></li> <li><button type="button" class="btn" value="어드벤처">어드벤처</button></li>
+                        <li><button type="button" onclick="clickjanr(this)" value="멜로/로맨스" class="janr-btn">멜로/로맨스</button></li> <li><button type="button" class="btn" value="코미디">코미디</button></li> <li><button type="button" class="btn" value="전쟁">전쟁</button></li>
+                        <li><button type="button" onclick="clickjanr(this)" value="SF" class="janr-btn">SF</button></li> <li><button type="button" class="btn" value="스릴러">스릴러</button></li> <li><button type="button" class="btn" value="기타">기타</button></li>
                     </ul>
 
                     <hr class="hr">

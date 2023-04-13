@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import ms.list.model.service.mlistService;
 import ms.list.model.vo.movie;
 
-@WebServlet("/list/msList")
+@WebServlet("/msList")
 public class MlistServlet extends HttpServlet {
 	
 	@Override

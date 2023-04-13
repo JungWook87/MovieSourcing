@@ -1,5 +1,4 @@
-console.log("js 들어옴");
-console.log(movie[0].movieNo);
+console.log("js 들어옴")
 
 const janr = document.querySelectorAll('.btn');
 
@@ -46,8 +45,42 @@ searchtext.addEventListener('blur', function() {
 //검색필터 (진행중)
 
 
-const input1 = document.getElementsByClassName('janr-btn');
+
 const input2 = document.getElementsByClassName("nation-btn");
 const input3 = document.getElementsByClassName("grade-btn");
 
 
+
+
+
+function clickjanr(input1) {
+    console.log(input1.value)
+	const current = document.getElementById('contents');
+	
+    $.ajax({
+
+        url : "Searchjanr",
+        data : {"input1" : input1.value},
+        type : "GET",
+        datatype : "JSON",
+        
+        success : function(mlist) {
+	
+			console.log(mlist);
+
+            if(mlist != null) {
+				current.style.display= none;
+			}
+        },
+        
+         error: function(request, status, error) {
+			console.log("ajax 에러발생");
+			console.log("상태코드 : " + request.status); // 404, 500
+        }
+
+    });
+
+
+
+
+};

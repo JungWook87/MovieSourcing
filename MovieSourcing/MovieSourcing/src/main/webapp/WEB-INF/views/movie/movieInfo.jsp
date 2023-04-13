@@ -139,7 +139,7 @@
 
                             </div>
                             <div class="writeBox">
-                                <button id="lifeMovie">'인생영화'설정</button>
+                                <button id="lifeMovie" type="button" style="background-color: rgb(41, 128, 185);">'인생영화'설정</button>
                                 <button id="reviewWrite" type="button">리뷰쓰기</button>
                             </div>
                             
@@ -178,7 +178,7 @@ ${movieInfo.moviePreview}
                                 <span id="director">${moviePeople.act3}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.ac41No}">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act4No}">
                                 <div><img src="${contextPath}${moviePeople.act4Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act4}</span>
                                 <span>배우</span>

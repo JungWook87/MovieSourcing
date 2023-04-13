@@ -1,3 +1,6 @@
+console.log("js 들어옴");
+console.log(movie[0].movieNo);
+
 const janr = document.querySelectorAll('.btn');
 
 janr.forEach((btn)=>{
@@ -43,30 +46,8 @@ searchtext.addEventListener('blur', function() {
 //검색필터 (진행중)
 
 
-const input = document.getElementsByClassName('btn');
+const input1 = document.getElementsByClassName('janr-btn');
+const input2 = document.getElementsByClassName("nation-btn");
+const input3 = document.getElementsByClassName("grade-btn");
 
-$('.btn').click(function() {
-    var kind = $(this).val();
-
-    $.ajax({
-        
-        url : "/list/Search",
-        data : {"mlist" : input.value},
-        type : "GET",
-        dataType : "JSON",
-
-        success : function() {
-
-        }else {
-
-        },
-        error : function() {
-            
-        }
-        
-
-
-
-    })
-});
 

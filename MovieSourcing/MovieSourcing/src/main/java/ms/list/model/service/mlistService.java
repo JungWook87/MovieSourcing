@@ -29,13 +29,5 @@ public class mlistService {
 		return mlist;
 	}
 	
-	public List<movie> search() throws Exception {
-		Connection conn = getConnection();
-		
-		List<movie> mlist = dao.search(conn);
-		
-		close(conn);
-		
-		return mlist;
-	}
+
 }

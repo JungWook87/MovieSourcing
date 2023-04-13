@@ -14,23 +14,19 @@ import ms.list.model.service.mlistService;
 import ms.list.model.vo.movie;
 
 
-@WebServlet("/list/Search")
-public class SearchServlet extends HttpServlet {
+@WebServlet("/list/Searchjanr")
+public class SearchjanrServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		mlistService service = new mlistService();
 		
+		String janr = req.getParameter("input1");
+			
 		try {
 			
-			List<movie> mlist = service.search();
-			
-			req.setAttribute("mlist", mlist);
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/mlist.jsp");
-			
-			dispatcher.forward(req, resp);
+
 			
 			
 		}catch(Exception e) {

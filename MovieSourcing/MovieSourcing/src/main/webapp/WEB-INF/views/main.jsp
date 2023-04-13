@@ -35,7 +35,7 @@
                         <li><a href="main" id="homebutton">홈</a></li>
                         <li><a href="list/msList" id="janrbutton">장르 검색</a></li>
                         <li><a href="MovieSourcing/boardList">커뮤니티</a></li>
-                        <li><a href="#">추천 시뮬레이션</a></li>
+                        <li><a href="simulation/simulEnter">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
                         <li><a href="main" id="homebutton"><i class="fa-solid fa-house"></i></a></li>

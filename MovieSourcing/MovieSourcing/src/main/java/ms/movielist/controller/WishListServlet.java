@@ -16,7 +16,7 @@ import ms.movielist.model.service.MovieListService;
 import ms.movielist.model.vo.ListMemberInfo;
 import ms.movielist.model.vo.MovieListInfo;
 
-@WebServlet("/member/wishList")
+@WebServlet("/movielist/wishList")
 public class WishListServlet extends HttpServlet{
 
 	@Override
@@ -40,7 +40,7 @@ public class WishListServlet extends HttpServlet{
 			
 			req.setAttribute("map", map);
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INf/views/movie/wishList.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/wishList.jsp");
 			
 			dispatcher.forward(req, resp);
 			

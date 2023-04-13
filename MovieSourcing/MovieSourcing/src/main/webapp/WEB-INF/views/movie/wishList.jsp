@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,8 +82,8 @@
         </div>
 
     </div>
-
-    <!-- 모달창 -->
+<!-- 
+    모달창
     <div id="modalOverlay" class="modal">
         <div id="modalMenu">
             <div>
@@ -93,10 +97,10 @@
 
 
         </div>
-    </div>
+    </div> -->
     
     
-    <script src="/js/찜영화.js"></script>
+    <script src="${contextPath}/resources/js/movie/wishList.js"></script>
 
 </body>
 </html>

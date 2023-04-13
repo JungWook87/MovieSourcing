@@ -98,7 +98,7 @@
                     <section class="under">
 
                     </section>
-                    <button id="logout">로그아웃</button>
+<!--                     <button id="logout">로그아웃</button> -->
                    
                 </main>
             </div>
@@ -147,56 +147,6 @@
    	    
    	})
    	
-
-   	$.ajax({
-         url : "kakaoLogin",
-         data : { "email" : email },
-         type : "GET",
-         success : function(loginMember) {
-             if(loginMember != null) {
-                 alert("로그인 성공");
-               
-             } else {
-                 alert("등록된 회원 정보가 없습니다.");
-                    
-             }},
-         error : function(){
-             console.log("안됨");
-         } 
-     })  
-
-   
-   	
-
-   	
-   	document.getElementById("logout")
-   	.addEventListener("click", function kakaoLogout() {
-   	    if (Kakao.Auth.getAccessToken()) {
-   	    Kakao.API.request({
-   	        url: '/v1/user/unlink',
-   	        success: function (response) {
-   	            console.log(response)
-   	        },
-   	        fail: function (error) {
-   	        console.log(error)
-   	        },
-   	    })
-   	    Kakao.Auth.setAccessToken(undefined)
-   	    alert("로그아웃댐")
-   	    }
-   	}  )
-
-   	document.getElementById("kakaoLoginBtn")
-   	.addEventListener("click",function kakaoLogin() {
-   	    if (Kakao.Auth.getAccessToken()){
-   	        alert("이미 로그인된 아이디입니다.")
-   	    }
-   	})
-   	
-   	
-   	
-   	
-	      
     </script>
    	
     

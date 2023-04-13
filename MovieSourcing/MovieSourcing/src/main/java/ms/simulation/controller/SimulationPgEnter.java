@@ -21,12 +21,11 @@ public class SimulationPgEnter extends HttpServlet {
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  this.doPost(request, response);
 		
-		
+			request.getRequestDispatcher("/WEB-INF/views/simulation/simulIndex.jsp").forward(request, response);
 		}
 	
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession();
 	
-			request.getRequestDispatcher("/WEB-INF/views/simulation/simulIndex.jsp").forward(request, response);
-}
+		
 }

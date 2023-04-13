@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+     <%@ page import="ms.movie.model.vo.MovieInfo" %>
+     
+     
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +14,6 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/semiQue.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/semiAns.css"> 
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/animation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
@@ -105,34 +99,39 @@
             <div class="test_finall_main">
                 <div class="arrow">
                 </div>
-                
-               
+               <% String posterUrl=(String)request.getAttribute("posterUrl");%> 
+
+
+ 
+              <% MovieInfo movie= (MovieInfo)request.getAttribute("movie");%> 
+<%= movie %>
+ 
+            
 
           
                
                 <div class="resultParent">
-                    <div class="resultText"></div>
-                <div class="resultname" id="resultSort">
-               
-
+             <!--        <div class="resultText"></div>
+               <div class="resultname" id="resultSort">
+            
+ -->
                    
-                </div>
- <img id=posterImg src="${contextPath}/${movie.moviePoster[2]}"></img>
- 
-                <div class="progressBarContainer">
+            
+ 	
+ 			
+ 			   <img src='${contextPath}${movie.moviePoster}'  id="movieImg"  alt="Movie Poster" width="300">
+               <!--  <div class="progressBarContainer" >
 			    <div class="progressBar"></div>
-</div>
+					</div> -->
 
                 <div class="resultImg" id="resultSort">
-                    <div class="resultText" id="resultSort">
-                    
-                </div>
+                    <div class="resultText" id="resultSort"></div>
                 <!-- <div class="resultDesc">
 
                 </div> -->
                 
             </div>
-           
+               </div>
                 <div class="arrow">
                 </div>
             </div>

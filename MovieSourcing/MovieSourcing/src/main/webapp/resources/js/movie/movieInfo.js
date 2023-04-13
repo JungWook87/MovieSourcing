@@ -1,4 +1,10 @@
-console.log("movieInfo js 들어옴")
+console.log("movieInfo js 들어옴");
+
+if(loginCheck == 1){
+	console.log("로그인 확인");
+} else{
+	console.log("로그인 안됨");
+}
 
 const watchedText = document.getElementById("watchedText");
 
@@ -12,6 +18,7 @@ function submit_1(loginMemberNo, movieNo){
 		
 		window.alert("로그인을 해주세요");
 		toggle1.checked = false;
+		location.href = "/MovieSourcing/member/login";
 		
 		return false;
 	} else{
@@ -65,6 +72,8 @@ wannaheart.addEventListener("click", function(){
 function submit_2(loginMemberNo, movieNo){
 	if(!loginMemberNo){
 		window.alert("로그인을 해주세요");
+		location.href = "/MovieSourcing/member/login";
+		
 		return false;
 	} else{
 		if(wannaheart.style.color == "white"){
@@ -103,6 +112,24 @@ function submit_2(loginMemberNo, movieNo){
 	}
 }
 
+
+const lifeMovie = document.getElementById("lifeMovie");
+
+lifeMovie.addEventListener("click", function(){
+	console.log("클릭됨1");
+	if(loginCheck != 1){	
+		window.alert("로그인을 해주세요");
+		location.href = "/MovieSourcing/member/login";
+	} else{
+		if(lifeMovie.style.backgroundColor == "rgb(41, 128, 185)"){
+			console.log("클릭됨2");
+			lifeMovie.style.backgroundColor = "red";
+		} else {
+			console.log("조건 안먹히면 여기라도");
+		}
+		lifeMovie.style.backgroundColor
+ 	}
+})
 
 
 

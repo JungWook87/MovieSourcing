@@ -245,7 +245,7 @@ td > span{
     display : flex;
 }
 #lifeMovie {
-    background-color: rgb(41, 128, 185);
+    /*background-color: rgb(41, 128, 185);*/
     border-radius: 10px;
     width : 50%;
     height: 60px;

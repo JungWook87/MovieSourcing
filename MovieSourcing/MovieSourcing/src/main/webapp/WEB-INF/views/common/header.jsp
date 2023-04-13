@@ -29,6 +29,5 @@
 
     
     </header>
-    <script src="/semi/header.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package ms.main.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,27 +15,26 @@ import javax.servlet.http.HttpServletResponse;
 import ms.main.model.service.MainService;
 
 
-@WebServlet(urlPatterns = {"/main", "/MovieSourcing/main"})
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
+	
+	private MainService mainService;
+	public MainServlet() {
+		this.mainService = new MainService();
+	}
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		try {
 			
-			MainService service = new MainService();
+			req.setAttribute("result", mainService.selectMainContent());
 			
-			service.selectDB();
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
-			
-			dispatcher.forward(req, resp);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jspwork/main.jsp");
+			dispatcher.forward(req, res);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	
-		
-		
 	}
-
 }

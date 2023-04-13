@@ -22,6 +22,10 @@
 
     <title>개별영화페이지</title>
 </head>
+<script>const contextPath = "${contextPath}"</script>
+
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
 <body>
     <div id="movieSourcing">
         <div id="layout">
@@ -34,6 +38,20 @@
                     </div>
                 </header>
                 <main id="contents">
+                <c:choose>
+                	<c:when test="${!empty loginMember}">
+	                	<script> const loginCheck = 1; </script>
+	                	<input style="display:none" value="${loginMember.memberNo}" id="memNo">
+	                	<input style="display:none" value="${movieInfo.movieNo}" id="movieNo">
+	                </c:when>
+	                
+	                <c:otherwise>
+						<script> const loginCheck = 0; </script>                
+	                </c:otherwise>
+                
+                </c:choose>
+                
+ 
                     <div class="mainContainer">
                         <div class="poster">
                             <img id=posterImg src="${contextPath}${movieInfo.moviePoster}"></img>
@@ -112,7 +130,7 @@
                                 
                                 <form action="#" onsubmit="return submit_2('${loginMember.memberNo}','${movieInfo.movieNo}')">
 	                                <div id="wannasee">
-	                                    <div class="fa-solid fa-heart" " id="wannaheart"></div>
+	                                    <div class="fa-solid fa-heart"  id="wannaheart"></div>
 	                                    <input type="submit" id="submit2" style="display:none">
 	                                </div>
                                 </form>
@@ -140,27 +158,27 @@ ${movieInfo.moviePreview}
                         <div class="everyone">
                             <!-- 개별 배우 박스 -->
                             
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="pdMovie?pdNo=?${moviePeople.pdNo}">
                                 <div><img src="${contextPath}${moviePeople.pdPicture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.pdName}</span>
                                 <span>감독</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act1No}">
                                 <div><img src="${contextPath}${moviePeople.act1Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act1}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act2No}">
                                 <div><img src="${contextPath}${moviePeople.act2Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act2}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#"> 
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act3No}"> 
                                 <div><img src="${contextPath}${moviePeople.act3Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act3}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.ac41No}">
                                 <div><img src="${contextPath}${moviePeople.act4Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act4}</span>
                                 <span>배우</span>
@@ -279,8 +297,9 @@ ${movieInfo.moviePreview}
         </div>
     </div>
     
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
     <script src="${contextPath}/resources/js/movie/movieInfo.js"></script>
 
-	
 </body>
 </html>

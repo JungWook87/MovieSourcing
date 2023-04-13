@@ -299,16 +299,24 @@ footer p a {
   }
    
   
-  
      .movieImg {
+    
           float:left; 
           width:200px; 
           height:100px; 
        }
           
      #resultImg {
-         display: inline-block;
+     position:absolute;
+      margin-left:60px;
+     float:left;
+    display: inline-block;
     width: 200px;
     height: 100px;
     margin-left: 10px;
+     }
+     
+     
+     #resultSort{
+     margin-left: 50px;
      }

@@ -99,39 +99,17 @@
             <div class="test_finall_main">
                 <div class="arrow">
                 </div>
-               <% String posterUrl=(String)request.getAttribute("posterUrl");%> 
-
-
- 
-              <% MovieInfo movie= (MovieInfo)request.getAttribute("movie");%> 
-<%= movie %>
- 
-            
-
-          
-               
+           
                 <div class="resultParent">
-             <!--        <div class="resultText"></div>
-               <div class="resultname" id="resultSort">
-            
- -->
-                   
-            
+               </div>
  	
  			
  			   <img src='${contextPath}${movie.moviePoster}'  id="movieImg"  alt="Movie Poster" width="300">
-               <!--  <div class="progressBarContainer" >
-			    <div class="progressBar"></div>
-					</div> -->
-
                 <div class="resultImg" id="resultSort">
                     <div class="resultText" id="resultSort"></div>
-                <!-- <div class="resultDesc">
-
-                </div> -->
-                
+                  
             </div>
-               </div>
+            
                 <div class="arrow">
                 </div>
             </div>

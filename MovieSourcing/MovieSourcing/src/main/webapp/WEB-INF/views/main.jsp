@@ -79,7 +79,7 @@
 
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><a href="MovieSourcing/movieInfo?movieNo=1"><img src="resources/images/어벤져스1 포스터.jpg"></a></li>
+                        <i class="fa-solid fa-1"></i><li><a href="movie/movieInfo?movieNo=1"><img src="resources/images/어벤져스1 포스터.jpg"></a></li>
                         <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg"></li>
                         <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg"></li>
                         <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg"></li>

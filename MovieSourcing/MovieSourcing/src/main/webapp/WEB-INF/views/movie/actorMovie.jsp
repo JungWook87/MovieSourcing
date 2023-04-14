@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/movieList.css">
+    <link rel="stylesheet" href="../css/배우영화.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
@@ -28,7 +28,7 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="javascript:window.history.back();" class="backpage">
+                        <a href="#" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -49,41 +49,43 @@
                         </div>
                         <div id="selectedMovie">
                            
-                   			<div id="listBox">
-                                <a href="#" id="movieListLink">
-                                    <div>
-                                        <img src="/이미지/같은 장르.jpg" alt="#" id="listPoster">
-                                    </div>
-                                    <div>
-                                        <span id="movieTitle">존 윅</span>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <i class="fa-solid fa-circle" id="scoreCircle"></i>
-                                            <span id="movieScore">8.3</span>    
-                                        </div>
-                                        <div>
-                                            <span><i class="fa-solid fa-ellipsis-vertical" id="menu"></i></span>
-                                        </div>
-                                        
-                                    </div>
+                           <c:foreach var="movieList" items="$(movieListInfo)">
+                           		<div>
                                     
-                                </a>
-                            </div>
-                           
+                                </div>
+                           </c:foreach>
+
 
                         </div>
                     </div>
                    
                 </main>
 
-               
+                <!-- 하단 네비 -->
+                <header class="navHeader">
+                    <nav class="nav">
+                        <a href="#" class="home">
+                            <i class="fa-solid fa-house"></i>
+                            <span>홈</span>
+                        </a>
+                        <a href="#" class="community">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>커뮤니티</span>
+                        </a>
+                        <a href="#" class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>탐색</span>
+                        </a>
+                        <a href="#" class="mypage">
+                            <i class="fa-solid fa-user"></i>
+                            <span>마이페이지</span>
+                        </a>
+                    </nav>
+                </header>  
             </div>
         </div>
-    </div>   
-    
-    
-    <script src="../js/movieList.js"></script>
-    
+    </div>    
+    <script src="/js/본영화.js"></script>
+
 </body>
 </html>

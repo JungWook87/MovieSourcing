@@ -107,9 +107,12 @@
                         </div>
 
                         <div class="profile-container2">
-                            <div class="profile-container-box">
-                                <a href="#">내가 쓴 리뷰</a>
-                                <a href="#"><span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
+                            <div class="profile-container-box"  style=" cursor: pointer;" 
+                            onclick="location.href='${contextPath}/movielist/reviewList?memberNo=${loginMember.memberNo}'">
+                                <a href="#">작성한 리뷰</a>
+                                <a href="#">
+                                <span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i>
+                                </a>
                             </div>
                             <hr id="boxLine" class="boxline" color="gray">
                             <div class="profile-container-box">

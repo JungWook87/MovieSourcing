@@ -125,7 +125,7 @@
                             </div>
                             <div class="scoreBox">
                                 <div id="scoreBar">
-                                    <div id="score"><span id="scoreComment">${movieInfo.movieScore}</span></div>
+                                    <div id="score" style="background-color: springgreen; color:black; width:10%"><span id="scoreComment">${movieInfo.movieScore}</span></div>
                                 </div>
                                 
                                 <form action="#" onsubmit="return submit_2('${loginMember.memberNo}','${movieInfo.movieNo}')">
@@ -194,11 +194,12 @@ ${movieInfo.moviePreview}
                         <c:choose>
                         	<c:when test="${empty movieReview}">
                         		<h3 id="firstReview">첫 리뷰의 주인공이 되어보세요</h3>
+                        		<script>const movieReview = false; </script>
                         	</c:when>
                         	
                         	<c:otherwise>
 	                        	<c:forEach var="review" items="${movieReview}">
-	                        	
+	                        	<script>const movieReview = true;</script>
 			                        <div class="reviewbox">
 			                            <div class="reviewInfo">
 			                                <div>
@@ -215,10 +216,10 @@ ${movieInfo.moviePreview}
 			                                        </c:choose>
 			                                        <span id="userName">${review.memNic}</span>
 			                                    </div>
-			                                    <div id="scoreLight1"></div>
+			                                    <div class="scoreLight"></div>
 			                               
 			                                    <div class="userScoreBox">
-			                                        <span class="userScore">${review.reviewScore}</span>
+			                                        <span class="userScore">${review.reviewScore}</span>	
 			                                    </div>
 			                                </div>
 			                                <div>
@@ -273,7 +274,8 @@ ${movieInfo.moviePreview}
                     <span class="star">
                         ★★★★★
                         <span>★★★★★</span>
-                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10"
+                        id="starScore">
                     </span>
                 </div>
             </div>
@@ -291,7 +293,7 @@ ${movieInfo.moviePreview}
                     <textarea name="review" id="reviewArea" spellcheck="false" ></textarea>
                 </div>
                 <div>
-                    <button id="reviewSubmit"><span>저 장</span></button>
+                    <button type="button" id="reviewSubmit"><span>저 장</span></button>
                 </div>
             </div>
         </div>

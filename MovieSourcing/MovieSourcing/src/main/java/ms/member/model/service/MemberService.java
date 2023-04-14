@@ -368,6 +368,39 @@ public class MemberService {
 		return result;
 	}
 
+
+
+
+	/** 회원의 인생 영화 삽입
+	 * @param memNo
+	 * @param movieNo
+	 * @param mode 
+	 * @return
+	 */
+	public int lifeMovie(int memNo, int movieNo, String mode) {
+		
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.lifeMovie(conn, memNo, movieNo, mode);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		
+		return result;
+	}
+
 	
 	
 	

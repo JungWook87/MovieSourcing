@@ -67,9 +67,11 @@ function clickjanr(input1) {
         success : function(mlist) {
 	
 			console.log(mlist);
+			console.log(mlist);
+			
 
             if(mlist != null) {
-				current.style.display= none;
+				
 			}
         },
         

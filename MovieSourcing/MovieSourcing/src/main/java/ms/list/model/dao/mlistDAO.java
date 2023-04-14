@@ -91,7 +91,7 @@ public class mlistDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				
 				
 				

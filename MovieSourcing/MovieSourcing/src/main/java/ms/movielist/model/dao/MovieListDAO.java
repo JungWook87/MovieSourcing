@@ -286,4 +286,48 @@ public class MovieListDAO {
 		return wishList;
 	}
 
+
+	public int deleteWatchedList(Connection conn, int movieNo, int memberNo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteWatchedList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deleteWishList(Connection conn, int movieNo, int memberNo) throws SQLException {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteWishList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+
 }

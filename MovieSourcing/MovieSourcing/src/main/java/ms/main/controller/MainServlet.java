@@ -1,9 +1,6 @@
 package ms.main.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,11 +27,15 @@ public class MainServlet extends HttpServlet {
 			
 			req.setAttribute("result", mainService.selectMainContent());
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jspwork/main.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
 			dispatcher.forward(req, res);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	
+		
+		
 	}
+
 }

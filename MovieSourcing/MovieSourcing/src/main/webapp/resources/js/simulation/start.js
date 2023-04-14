@@ -3,24 +3,8 @@ const qna = document.querySelector("#qna");
 const simul_count_num = document.querySelector("#simul_count_num");
 const movieRightBtn = document.querySelector(".movie_recommend_right_btn");
 
-$.ajax({
-			url : `/MovieSourcing/simulation/proseeServlet`,  // ./ 현재경로표시
-			type : "get",
-			data : 'index=11',
-			dataType: 'json',
-	
-			success : function(data) { // Ajax 목적 : data를 얻기 위함
-				console.log(data.moviePoster);
-		
-		
-			},
-			error : function(request,status,error) {
-				alert("code:"+request.status+"\n"+"error:"+error);
-				console.log("code:"+request.status+"\n"+"error:"+error);
-			}
-		});
 
-//let graphElement = document.getElementById(`graph-${index}`);
+
 const result = document.querySelector("#result");
 
 const endPoint = 12;
@@ -45,133 +29,84 @@ function calResult(){
   }
 
   return top3
-  
-//찾은걸 리턴 
-
-
-
 
 
 } 
 
 
 
-/*
-
-function setResult() {
-  let top3 = calResult();
-  let imgDiv = document.querySelector('.resultImg');
-
-
-  for (let i = 0; i < top3.length; i++) {
-    let index = top3[i].index;
-    let value = top3[i].value;
-//3순위 찾은걸 돌리면서 출력할 내용 지정해서 출력해줌
-    let resultText = document.createElement('div');
-    resultText.innerHTML = `${i+1}위: 선택 횟수 ${value}, 인덱스 ${index}`;
-    ajaxt(value, index);
-    imgDiv.appendChild(resultText);
-//	let graphElement = document.getElementById(`graph-${index}`);//id부여한 인덱스 그래
-    let graphContainer = document.createElement('div');
-    graphContainer.classList.add('graph-container');
-    graphContainer.id = `graph-${index}`; // 인덱스에 따른 고유한 id 부여
-    let canvas = document.createElement('canvas');
-    canvas.width = 60;
-    canvas.height = 40;
-    graphContainer.appendChild(canvas);
-    imgDiv.appendChild(graphContainer);
-//막대그래프 생성 
-    let ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'green';
-    ctx.fillRect(0, 0, value * 6, 40);
-//막대그래프 사이즈와 디자인 
-    let percentText = document.createElement('div');
-    percentText.innerHTML = `${value*10}%`;
-    percentText.style.display = 'inline-block';
-    percentText.style.marginLeft = '10px';
-    percentText.style.fontSize = '20px';
-    graphContainer.appendChild(percentText);
-    resultText.style.color = 'white';
-    percentText.style.color = 'white';
-    //퍼센테이지 화면에 뿌림
-    
-    
-    
-
-  }
-  
-//  ajaxSelect();
- // ajaxt(value, index);
-
-}
-
-
-*/
-function setResult() {
-  let top3 = calResult();
-  let imgDiv = document.querySelector('.resultImg');
-
-  for (let i = 0; i < top3.length; i++) {
-    let index = top3[i].index;
-    let value = top3[i].value;
-    
-    let resultText = document.createElement('div');
-    resultText.innerHTML = `${i+1}위: 선택 횟수 ${value}, 인덱스 ${index}`;
-    imgDiv.appendChild(resultText);
-    
-    let graphContainer = document.createElement('div');
-    graphContainer.classList.add('graph-container');
-    graphContainer.id = `graph-${index}`;
-    
-    let canvas = document.createElement('canvas');
-    canvas.width = 60;
-    canvas.height = 40;
-    graphContainer.appendChild(canvas);
-    
-    imgDiv.appendChild(graphContainer);
-
-    let ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'green';
-    ctx.fillRect(0, 0, value * 6, 40);
-
-    let percentText = document.createElement('div');
-    percentText.innerHTML = `${value*10}%`;
-    percentText.style.display = 'inline-block';
-    percentText.style.marginLeft = '10px';
-    percentText.style.fontSize = '20px';
-    resultText.style.color = 'white';
-    percentText.style.color = 'white';
-    graphContainer.appendChild(percentText);
-    
-    
-
-    
-	    // 클릭 이벤트 핸들러 등록
-	    graphContainer.addEventListener('click', function() {
-	
-   		
-   		$.ajax({
-			url : `/MovieSourcing/simulation/proseeServlet`,  // ./ 현재경로표시
-			type : "get",
-			data : `index=${index}`,
-			dataType: 'json',
-	
-			success : function(data) { // Ajax 목적 : data를 얻기 위함
-				console.log(data);
-				$('#movieImg').attr('src', `/MovieSourcing`+data.moviePoster);
-		
-			},
-			error : function(request,status,error) {
-				alert("code:"+request.status+"\n"+"error:"+error);
-				console.log("code:"+request.status+"\n"+"error:"+error);
-			}
-		});
-
+    // 클릭 이벤트 핸들러 등록
    
+  function setResult() {
+  let top3 = calResult();
+  let imgDiv = document.querySelector('.resultImg');
+
+  for (let i = 0; i < top3.length; i++) {
+    let index = top3[i].index;
+    let value = top3[i].value;
+    let genreName = '';
+
+    // 장르 이름 가져오기
+    $.ajax({
+      url: `/MovieSourcing/simulation/SimulGenreNameServlet`,
+      type: 'get',
+      
+      data: `index=${index}`,
+       async: false,
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+        genreName = data;
+
+        // 결과 텍스트 추가
+        let resultText = document.createElement('div');
+        resultText.innerHTML = `${i+1}위:  ${genreName}`;
+        resultText.style.color = 'white';
+        imgDiv.appendChild(resultText);
+
+        // 그래프 추가
+        let graphContainer = document.createElement('div');
+        graphContainer.classList.add('graph-container');
+        graphContainer.id = `graph-${index}`;
+
+        let progressBar = document.createElement('progress');
+        progressBar.classList.add('progress-bar');
+        progressBar.setAttribute('max', '10');
+        progressBar.setAttribute('value', `${value}`);
+
+        let percentText = document.createElement('div');
+        percentText.classList.add('percent-text');
+        percentText.innerHTML = `${value*10}%`;
+        percentText.style.color = 'white';
+
+        graphContainer.appendChild(progressBar);
+        graphContainer.appendChild(percentText);
+        imgDiv.appendChild(graphContainer);
+
+        // 클릭 이벤트 핸들러 등록
+        graphContainer.addEventListener('click', function() {
+          $.ajax({
+            url: `/MovieSourcing/simulation/proseeServlet`,
+            type: 'get',
+            data: `index=${index}`,
+            dataType: 'json',
+            success: function(data) {
+              console.log(data);
+              $('#movieImg').attr('src', `/MovieSourcing${data.moviePoster}`);
+            },
+            error: function(request, status, error) {
+              console.log('code:' + request.status + '\n' + 'error:' + error);
+            }
+          });
+        });
+      },
+      error: function(request, status, error) {
+        console.log('code:' + request.status + '\n' + 'error:' + error);
+      }
     });
   }
-  
 }
+
 
 
 function goResult(){

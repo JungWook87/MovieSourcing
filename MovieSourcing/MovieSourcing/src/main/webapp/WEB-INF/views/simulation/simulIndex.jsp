@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
      <%@ page import="ms.movie.model.vo.MovieInfo" %>
      
      
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,7 @@
  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
   
-    <title>��ȭ ���� �׽�Ʈ</title>
+    <title>영화 성향 테스트</title>
 </head>
 <body>
 
@@ -33,10 +32,10 @@
 
             <div>
                 <ul class="home-nav">
-                    <li><a href="#">Ȩ</a></li>
-                    <li><a href="#">�帣 �˻�</a></li>
-                    <li><a href="#">Ŀ�´�Ƽ</a></li>
-                    <li><a href="#">��õ �ùķ��̼�</a></li>
+                    <li><a href="#">홈</a></li>
+                    <li><a href="#">장르 검색</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="#">추천 시뮬레이션</a></li>
                 </ul>
             </div>
 
@@ -44,7 +43,7 @@
 
                 <div class="search-box">
                 
-                <input type="text" class="search-txt" placeholder="��ȭ����,����,���" >
+                <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
                 <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                 </div>
 
@@ -58,9 +57,9 @@
         <section class="main">
             <div class="test_main">
                
-                <img src="${contextPath}/resources/images/��õ��ȭ�׽�Ʈ.png" class="test_main_img"  >
+                <img src="${contextPath}/resources/images/추천영화테스트.png" class="test_main_img"  >
                 
-            <div class="test_start_btn" onclick="begin()">�ùķ��̼� ����<img src="${contextPath}/resources/images/play (1).png" class="test_start_btn_img"></div>
+            <div class="test_start_btn" onclick="begin()">시뮬레이션 시작<img src="${contextPath}/resources/images/play (1).png" class="test_start_btn_img"></div>
         </div>
              
             
@@ -95,7 +94,7 @@
 
 
         <section id="result">
-            <p class="main_Center">����� ���� ������ ��ȭ��??</p>
+            <p class="main_Center">당신을 위한 오늘의 영화는??</p>
             <div class="test_finall_main">
                 <div class="arrow">
                 </div>
@@ -104,7 +103,7 @@
                </div>
  	
  			
- 			   <img src='${contextPath}${movie.moviePoster}'  id="movieImg"  alt="Movie Poster" width="300">
+ 			   <img src='${contextPath}${movie.moviePoster}'  width='300px' id="movieImg"  alt="Movie Poster" >
                 <div class="resultImg" id="resultSort">
                     <div class="resultText" id="resultSort"></div>
                   
@@ -124,10 +123,10 @@
 
     </main>
     <footer>
-        <p><a href="#">�̿���</a></p>
-        <p><a href="#">��������ó����ħ</a></p>
-        <p><a href="#">��������</a></p>
-        <p><a href="#">(��)KH</a></p>
+        <p><a href="#">이용약관</a></p>
+        <p><a href="#">개인정보처리방침</a></p>
+        <p><a href="#">고객센터</a></p>
+        <p><a href="#">(주)KH</a></p>
     </footer>
     
 </body>

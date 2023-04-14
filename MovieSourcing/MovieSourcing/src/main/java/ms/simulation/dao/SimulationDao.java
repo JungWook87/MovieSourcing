@@ -25,7 +25,6 @@ public class SimulationDao {
 	
 	private Properties prop;
 	
-	
 
 
 	public SimulationDao() {
@@ -70,74 +69,6 @@ public class SimulationDao {
 
 
 
-//	public MovieInfo getRandomMovieByGenre(Connection conn, int selectedGenre) throws SQLException {
-//	    MovieInfo movie = null;
-//	    PreparedStatement pstmt = null;
-//	    ResultSet rs = null;
-//
-//	    try {
-//	        String sql = prop.getProperty("randommovie");
-//	        pstmt = conn.prepareStatement(sql);
-//	        pstmt.setInt(1, selectedGenre);
-//	        rs = pstmt.executeQuery();
-//	        if (rs.next()) {
-//	            movie = new MovieInfo();
-//	            movie.setMovieNo(rs.getInt("MOVIE_NO"));
-//	            movie.setMovieTitle(rs.getString("MOVIE_TITLE"));
-//	            movie.setMovieEngTitle(rs.getString("MOVIE_ENG_TITLE"));
-//	           // movie.setMovieTime(rs.getString("MOVIE_TIME"));
-//	            movie.setMovieOpenDate(rs.getString("MOVIE_OPEN_DATE"));
-//	            //movie.setMovieScore(rs.getDouble("MOVIE_SCORE"));
-//	            movie.setMovieNational(rs.getString("MOVIE_NATIONAL"));
-//	            movie.setMovieGrade(rs.getString("MOVIE_GRADE"));
-//	            movie.setMoviePoster(rs.getString("MOVIE_POSTER"));
-//	            movie.setMoviePreview(rs.getString("MOVIE_PREVIEW"));
-//	        }
-//	    } finally {
-//	        close(rs);
-//	        close(pstmt);
-//	    }
-//
-//	    return movie;
-//	}
-
-	
-	
-	
-//	public List<MovieInfo> getRandomMoviesByGenre(Connection conn, int selectedGenre) throws Exception{
-//		
-//		List<MovieInfo> movieList = new ArrayList<>();
-//		
-//		
-//		try {
-//			String sql = prop.getProperty("randommovie");
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1,selectedGenre );
-//			rs = pstmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				MovieInfo movie = new MovieInfo();
-//				movie.setMovieNo(rs.getInt("MOVIE_NO"));
-//				movie.setMovieTitle(rs.getString("MOVIE_TITLE"));
-//				movie.setMovieEngTitle(rs.getString("MOVIE_ENG_TITLE"));
-//				movie.setMovieTime(rs.getInt("MOVIE_TIME"));
-//				movie.setMovieOpenDate(rs.getString("MOVIE_OPEN_DATE"));
-//				movie.setMovieScore(rs.getInt("MOVIE_SCORE"));
-//				movie.setMovieNational(rs.getString("MOVIE_NATIONAL"));
-//				movie.setMovieGrade(rs.getString("MOVIE_GRADE"));
-//				movie.setMoviePoster(rs.getString("MOVIE_POSTER"));
-//				movie.setMoviePreview(rs.getString("MOVIE_PREVIEW"));
-//				movieList.add(movie);
-//			 }
-//		    } finally {
-//		        close(rs);
-//		        close(pstmt);
-//		    }
-//
-//		    return movieList;
-//		}
-//
-//
 
 	public MovieInfo movieInfo(Connection conn, int selectedGenre) throws Exception{
 	MovieInfo movie = new MovieInfo();
@@ -172,28 +103,26 @@ public class SimulationDao {
 			}
 
 
-
-	public String getRandomMoviePosterByGenre(Connection conn, int selectedGenre) throws Exception{
-		  String moviePoster = null;
-		  
+	public String getGenreName(Connection conn, int selectedGenre) throws Exception{
+		String getGenreName = null ;
 		  
 		  try {
 				
-			String sql = prop.getProperty("RandamMoviePoster");
+			String sql = prop.getProperty("genreName");
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,selectedGenre );
 			
 			rs = pstmt.executeQuery();
 			  if (rs.next()) {
-	                moviePoster = rs.getString("MOVIE_POSTER");
+				  getGenreName = rs.getString("GENRE");
 			  }
 		    } finally {
 		        close(rs);
 		        close(pstmt);
 		    }
 
-		    return moviePoster;
+		    return getGenreName;
 		}
 
 }

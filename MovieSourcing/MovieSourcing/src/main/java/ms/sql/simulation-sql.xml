@@ -35,5 +35,13 @@ FROM (
 )
 WHERE RN = 1
 	</entry>	
+	
+	
+	
+	<entry key="genreName">
+	SELECT GENRE
+	FROM GENRE
+	WHERE GENRE_NO = ?
+	</entry>	
 
 </properties>

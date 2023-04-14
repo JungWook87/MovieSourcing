@@ -22,4 +22,10 @@ public class MoviePeople {
 	private String act3Picture;
 	private String act4Picture;
 	
+	private int pdNo;
+	private int act1No;
+	private int act2No;
+	private int act3No;
+	private int act4No;
+	
 }

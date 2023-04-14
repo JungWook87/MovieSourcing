@@ -19,7 +19,7 @@ import ms.movie.model.vo.MoviePeople;
 import ms.movie.model.vo.MovieRecommend;
 import ms.movie.model.vo.MovieReview;
 
-@WebServlet("/MovieSourcing/movieInfo")
+@WebServlet("/movieInfo")
 public class MovieInfoServlet extends HttpServlet{
 	
 	@Override
@@ -54,7 +54,7 @@ public class MovieInfoServlet extends HttpServlet{
 			map.put("moviePeople", moviePeople);
 			map.put("movieReview", movieReview);
 			map.put("movieRecommend", movieRecommend);
-			
+
 			req.setAttribute("map", map);
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/movieInfo.jsp");

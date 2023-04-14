@@ -13,6 +13,7 @@ import ms.board.model.service.BoardService;
 import ms.board.model.vo.BoardDetail;
 
 
+
 @WebServlet("/MovieSourcing/write")
 public class BoardWriteController extends HttpServlet {
 	
@@ -67,6 +68,7 @@ public class BoardWriteController extends HttpServlet {
 				BoardService service = new BoardService();
 				
 				BoardDetail updateDetail = new BoardDetail();
+				
 				updateDetail.setComNo(comNo);
 				updateDetail.setComTitle(comTitle);
 				updateDetail.setComContent(comContent);

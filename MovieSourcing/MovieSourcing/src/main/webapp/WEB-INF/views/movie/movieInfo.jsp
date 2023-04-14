@@ -22,6 +22,10 @@
 
     <title>개별영화페이지</title>
 </head>
+<script>const contextPath = "${contextPath}"</script>
+
+<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
 <body>
     <div id="movieSourcing">
         <div id="layout">
@@ -34,6 +38,20 @@
                     </div>
                 </header>
                 <main id="contents">
+                <c:choose>
+                	<c:when test="${!empty loginMember}">
+	                	<script> const loginCheck = 1; </script>
+	                	<input style="display:none" value="${loginMember.memberNo}" id="memNo">
+	                	<input style="display:none" value="${movieInfo.movieNo}" id="movieNo">
+	                </c:when>
+	                
+	                <c:otherwise>
+						<script> const loginCheck = 0; </script>                
+	                </c:otherwise>
+                
+                </c:choose>
+                
+ 
                     <div class="mainContainer">
                         <div class="poster">
                             <img id=posterImg src="${contextPath}${movieInfo.moviePoster}"></img>
@@ -107,12 +125,12 @@
                             </div>
                             <div class="scoreBox">
                                 <div id="scoreBar">
-                                    <div id="score"><span id="scoreComment">${movieInfo.movieScore}</span></div>
+                                    <div id="score" style="background-color: springgreen; color:black; width:10%"><span id="scoreComment">${movieInfo.movieScore}</span></div>
                                 </div>
                                 
                                 <form action="#" onsubmit="return submit_2('${loginMember.memberNo}','${movieInfo.movieNo}')">
 	                                <div id="wannasee">
-	                                    <div class="fa-solid fa-heart" " id="wannaheart"></div>
+	                                    <div class="fa-solid fa-heart"  id="wannaheart"></div>
 	                                    <input type="submit" id="submit2" style="display:none">
 	                                </div>
                                 </form>
@@ -121,7 +139,7 @@
 
                             </div>
                             <div class="writeBox">
-                                <button id="lifeMovie">'인생영화'설정</button>
+                                <button id="lifeMovie" type="button" style="background-color: rgb(41, 128, 185);">'인생영화'설정</button>
                                 <button id="reviewWrite" type="button">리뷰쓰기</button>
                             </div>
                             
@@ -140,27 +158,27 @@ ${movieInfo.moviePreview}
                         <div class="everyone">
                             <!-- 개별 배우 박스 -->
                             
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="pdMovie?pdNo=?${moviePeople.pdNo}">
                                 <div><img src="${contextPath}${moviePeople.pdPicture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.pdName}</span>
                                 <span>감독</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act1No}">
                                 <div><img src="${contextPath}${moviePeople.act1Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act1}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act2No}">
                                 <div><img src="${contextPath}${moviePeople.act2Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act2}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#"> 
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act3No}"> 
                                 <div><img src="${contextPath}${moviePeople.act3Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act3}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="#">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act4No}">
                                 <div><img src="${contextPath}${moviePeople.act4Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act4}</span>
                                 <span>배우</span>
@@ -176,11 +194,12 @@ ${movieInfo.moviePreview}
                         <c:choose>
                         	<c:when test="${empty movieReview}">
                         		<h3 id="firstReview">첫 리뷰의 주인공이 되어보세요</h3>
+                        		<script>const movieReview = false; </script>
                         	</c:when>
                         	
                         	<c:otherwise>
 	                        	<c:forEach var="review" items="${movieReview}">
-	                        	
+	                        	<script>const movieReview = true;</script>
 			                        <div class="reviewbox">
 			                            <div class="reviewInfo">
 			                                <div>
@@ -197,10 +216,10 @@ ${movieInfo.moviePreview}
 			                                        </c:choose>
 			                                        <span id="userName">${review.memNic}</span>
 			                                    </div>
-			                                    <div id="scoreLight1"></div>
+			                                    <div class="scoreLight"></div>
 			                               
 			                                    <div class="userScoreBox">
-			                                        <span class="userScore">${review.reviewScore}</span>
+			                                        <span class="userScore">${review.reviewScore}</span>	
 			                                    </div>
 			                                </div>
 			                                <div>
@@ -255,7 +274,8 @@ ${movieInfo.moviePreview}
                     <span class="star">
                         ★★★★★
                         <span>★★★★★</span>
-                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10"
+                        id="starScore">
                     </span>
                 </div>
             </div>
@@ -273,14 +293,15 @@ ${movieInfo.moviePreview}
                     <textarea name="review" id="reviewArea" spellcheck="false" ></textarea>
                 </div>
                 <div>
-                    <button id="reviewSubmit"><span>저 장</span></button>
+                    <button type="button" id="reviewSubmit"><span>저 장</span></button>
                 </div>
             </div>
         </div>
     </div>
     
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
     <script src="${contextPath}/resources/js/movie/movieInfo.js"></script>
 
-	
 </body>
 </html>

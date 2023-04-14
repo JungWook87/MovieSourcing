@@ -45,4 +45,34 @@
 		WHERE MEM_NO = ?
 	</entry>
 	
+	<entry key="wishList">
+		SELECT MOVIE_NO, MOVIE_TITLE, MOVIE_OPEN_DATE, MOVIE_POSTER, MOVIE_SCORE 
+		FROM MOVIE_INFORMATION_TABLE
+		JOIN SELECT_MOVIE USING(MOVIE_NO)
+		WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="deleteWatchedList">
+		DELETE FROM WATCHED_MOVIE
+		WHERE MEM_NO = ? AND MOVIE_NO = ?
+	</entry>
+	
+	<entry key="deleteWishList">
+		DELETE FROM SELECT_MOVIE
+		WHERE MEM_NO = ? AND MOVIE_NO = ?
+	</entry>
+	
+	<entry key="reviewList">
+		SELECT MEM_NO, MOVIE_NO, MOVIE_POSTER, MOVIE_TITLE, REVIEW_CONTENT , REVIEW_SCORE , REVIEW_DATE
+		FROM REVIEW 
+		JOIN MOVIE_INFORMATION_TABLE USING(MOVIE_NO)
+		WHERE MEM_NO = ?
+	</entry>
+	
+	
+	
+	
+	
+	
+	
 </properties>

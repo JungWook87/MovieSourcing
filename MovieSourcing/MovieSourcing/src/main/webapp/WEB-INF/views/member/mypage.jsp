@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +13,7 @@
     
     <title>마이페이지</title>
 </head>
+
 <body>
     <div id="movieSourcing">
         <div id="layout">
@@ -90,11 +91,11 @@
                     <!-- 카운트 -->
                     <section class="contents-wrap">
                         <div class="profile-count-container">
-                            <a href="${contextPath}/movielist/wishList?memberNo=${loginmember.memberNo}" >
+                            <a href="${contextPath}/movielist/wishList?memberNo=${loginMember.memberNo}" >
                                 <span id="wannaseeCount" class="countSpan">0</span>
                                 <span>찜</span>
                             </a>
-                            <a href="${contextPath}/movielist/watchedList?memberNo=${loginmember.memberNo}">
+                            <a href="${contextPath}/movielist/watchedList?memberNo=${loginMember.memberNo}">
                                 <span id="watchedCount" class="countSpan">0</span>
                                 <span>본 영화</span>
                             </a>
@@ -106,9 +107,12 @@
                         </div>
 
                         <div class="profile-container2">
-                            <div class="profile-container-box">
-                                <a href="#">내가 쓴 리뷰</a>
-                                <a href="#"><span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
+                            <div class="profile-container-box"  style=" cursor: pointer;" 
+                            onclick="location.href='${contextPath}/movielist/reviewList?memberNo=${loginMember.memberNo}'">
+                                <a href="#">작성한 리뷰</a>
+                                <a href="#">
+                                <span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i>
+                                </a>
                             </div>
                             <hr id="boxLine" class="boxline" color="gray">
                             <div class="profile-container-box">

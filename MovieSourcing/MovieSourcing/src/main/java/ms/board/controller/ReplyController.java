@@ -30,6 +30,7 @@ public class ReplyController extends HttpServlet {
 		System.out.println("replyContent : " + replyContent);
 		System.out.println("comNo : " + comNo);
 		
+		
 		reply.setComNo(comNo);
 		reply.setMemNic(memNic);
 		reply.setMemNo(memNo);

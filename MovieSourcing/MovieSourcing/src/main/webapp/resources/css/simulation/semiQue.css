@@ -297,3 +297,18 @@ footer p a {
     width: 200px;
     padding: 0px;
   }
+   
+  
+  
+     .movieImg {
+          float:left; 
+          width:200px; 
+          height:100px; 
+       }
+          
+     #resultImg {
+         display: inline-block;
+    width: 200px;
+    height: 100px;
+    margin-left: 10px;
+     }

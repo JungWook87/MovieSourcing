@@ -3,15 +3,30 @@ const qna = document.querySelector("#qna");
 const simul_count_num = document.querySelector("#simul_count_num");
 const movieRightBtn = document.querySelector(".movie_recommend_right_btn");
 
+$.ajax({
+			url : `/MovieSourcing/simulation/proseeServlet`,  // ./ 현재경로표시
+			type : "get",
+			data : 'index=11',
+			dataType: 'json',
+	
+			success : function(data) { // Ajax 목적 : data를 얻기 위함
+				console.log(data.moviePoster);
+		
+		
+			},
+			error : function(request,status,error) {
+				alert("code:"+request.status+"\n"+"error:"+error);
+				console.log("code:"+request.status+"\n"+"error:"+error);
+			}
+		});
 
-
-
+//let graphElement = document.getElementById(`graph-${index}`);
 const result = document.querySelector("#result");
 
 const endPoint = 12;
 
 const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0 , 0 , 0];
-var jsonGenre = JSON.stringify(select);
+//ßvar jsonGenre = JSON.stringify(select);
 function calResult(){
  
   let copySelect = select.slice();
@@ -41,7 +56,7 @@ function calResult(){
 
 
 
-
+/*
 
 function setResult() {
   let top3 = calResult();
@@ -54,9 +69,9 @@ function setResult() {
 //3순위 찾은걸 돌리면서 출력할 내용 지정해서 출력해줌
     let resultText = document.createElement('div');
     resultText.innerHTML = `${i+1}위: 선택 횟수 ${value}, 인덱스 ${index}`;
-     ajaxt(value, index);
+    ajaxt(value, index);
     imgDiv.appendChild(resultText);
-	let graphElement = document.getElementById(`graph-${index}`);//id부여한 인덱스 그래
+//	let graphElement = document.getElementById(`graph-${index}`);//id부여한 인덱스 그래
     let graphContainer = document.createElement('div');
     graphContainer.classList.add('graph-container');
     graphContainer.id = `graph-${index}`; // 인덱스에 따른 고유한 id 부여
@@ -82,16 +97,81 @@ function setResult() {
     
     
     
-    
 
   }
   
 //  ajaxSelect();
+ // ajaxt(value, index);
 
 }
 
 
+*/
+function setResult() {
+  let top3 = calResult();
+  let imgDiv = document.querySelector('.resultImg');
 
+  for (let i = 0; i < top3.length; i++) {
+    let index = top3[i].index;
+    let value = top3[i].value;
+    
+    let resultText = document.createElement('div');
+    resultText.innerHTML = `${i+1}위: 선택 횟수 ${value}, 인덱스 ${index}`;
+    imgDiv.appendChild(resultText);
+    
+    let graphContainer = document.createElement('div');
+    graphContainer.classList.add('graph-container');
+    graphContainer.id = `graph-${index}`;
+    
+    let canvas = document.createElement('canvas');
+    canvas.width = 60;
+    canvas.height = 40;
+    graphContainer.appendChild(canvas);
+    
+    imgDiv.appendChild(graphContainer);
+
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 0, value * 6, 40);
+
+    let percentText = document.createElement('div');
+    percentText.innerHTML = `${value*10}%`;
+    percentText.style.display = 'inline-block';
+    percentText.style.marginLeft = '10px';
+    percentText.style.fontSize = '20px';
+    resultText.style.color = 'white';
+    percentText.style.color = 'white';
+    graphContainer.appendChild(percentText);
+    
+    
+
+    
+	    // 클릭 이벤트 핸들러 등록
+	    graphContainer.addEventListener('click', function() {
+	
+   		
+   		$.ajax({
+			url : `/MovieSourcing/simulation/proseeServlet`,  // ./ 현재경로표시
+			type : "get",
+			data : `index=${index}`,
+			dataType: 'json',
+	
+			success : function(data) { // Ajax 목적 : data를 얻기 위함
+				console.log(data);
+				$('#movieImg').attr('src', `/MovieSourcing`+data.moviePoster);
+		
+			},
+			error : function(request,status,error) {
+				alert("code:"+request.status+"\n"+"error:"+error);
+				console.log("code:"+request.status+"\n"+"error:"+error);
+			}
+		});
+
+   
+    });
+  }
+  
+}
 
 
 function goResult(){
@@ -164,7 +244,6 @@ function addAnswer(answerText,qIdx, idx){
 
     }, false);
 }
-
 function goNext(qIdx){
     if(qIdx === endPoint){
       goResult();
@@ -197,7 +276,6 @@ function goNext(qIdx){
    
    }
 
-
 function begin(){
     main.style.WebkitAnimation = "fadeOut 1s";
     main.style.animation = "fadeOut 1s";
@@ -213,16 +291,6 @@ function begin(){
       goNext(qIdx);
     }, 450);
   }
-  movieRightBtn.addEventListener('click',function(){
-
-//결과값이 같은 장르의 영화이미지를 가져와 랜덤으로 뿌려주면서 슬라이드로 보여줌 는 아직 못함
-//실제로는 sql로 조인해서 가져와야하는건데 그걸 임의로 어떻게 구현.....할까요?
-  
-    
-
-  });
-  
-  
   
 
      
@@ -273,9 +341,3 @@ function ajaxt(value, index) {
 
 
 
-let graphElement1 = document.getElementById(`graph-${1}`);
-
-graphElement1.addEventListener('click', function() {
-	
-	
-	

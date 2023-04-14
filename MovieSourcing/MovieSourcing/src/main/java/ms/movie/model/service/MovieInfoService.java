@@ -7,6 +7,7 @@ import java.util.List;
 
 import ms.movie.model.dao.MovieInfoDAO;
 import ms.movie.model.vo.MovieInfo;
+import ms.movie.model.vo.MovieInfoCheck;
 import ms.movie.model.vo.MoviePeople;
 import ms.movie.model.vo.MovieRecommend;
 import ms.movie.model.vo.MovieReview;
@@ -113,6 +114,33 @@ public class MovieInfoService {
 		}
 		
 		return movieRecommend;
+	}
+
+
+
+	/** 영화 정보창 회원 셋팅
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public MovieInfoCheck movieInfoCheck(int memNo, int movieNo) {
+		
+		MovieInfoCheck movieInfoCheck = null;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			movieInfoCheck = dao.movieInfoCheck(conn, memNo, movieNo);
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return movieInfoCheck;
 	}
 
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>movie-sql.xml</comment>
+	
+	<!-- 감독으로 검색 -->
+	<entry key="pdMovieList">
+		SELECT MOVIE_NO, MOVIE_TITLE, MOVIE_POSTER, MOVIE_SCORE  
+		FROM MOVIE_INFORMATION_TABLE
+		JOIN PD_MOVIE USING(MOVIE_NO)
+		WHERE PD_NO = ?
+	</entry>
+	<!-- 배우로 검색 -->
+	<entry key="actorMovieList">
+		SELECT MOVIE_NO, MOVIE_TITLE, MOVIE_POSTER, MOVIE_SCORE  
+		FROM MOVIE_INFORMATION_TABLE
+		JOIN PD_MOVIE USING(MOVIE_NO)
+		WHERE ACTOR_NO = ?
+	</entry>
+	<!-- 배우 -->
+	<entry key="actorInfo">
+		SELECT ACTOR_NO, ACTOR_NAME, ACTOR_PICTURE 
+		FROM ACTOR
+		WHERE ACTOR_NO = ?
+	</entry>
+	<!-- 감독 -->
+	<entry key="pdInfo">
+		SELECT PD_NO, PD_PICTURE, PD_PICTURE 
+		FROM PD
+		WHERE PD_NO = ?
+	</entry>
+	
+	<!-- 멤버닉네임 정보 -->
+	<entry key="memberName">
+		SELECT MEM_NO, MEM_NICK
+		FROM "MEMBER" 
+		WHERE MEM_NO = ?
+	</entry>
+	<!-- 해당 멤버의 본 영화 -->
+	<entry key="watchedList">
+		SELECT MOVIE_NO, MOVIE_TITLE, MOVIE_OPEN_DATE, MOVIE_POSTER, MOVIE_SCORE 
+		FROM MOVIE_INFORMATION_TABLE
+		JOIN WATCHED_MOVIE USING(MOVIE_NO)
+		WHERE MEM_NO = ?
+	</entry>
+	
+</properties>

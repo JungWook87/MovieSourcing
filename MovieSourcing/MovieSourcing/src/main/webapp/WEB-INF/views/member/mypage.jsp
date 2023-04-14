@@ -90,11 +90,11 @@
                     <!-- 카운트 -->
                     <section class="contents-wrap">
                         <div class="profile-count-container">
-                            <a href="#" >
+                            <a href="${contextPath}/movielist/wishList?memberNo=${loginmember.memberNo}" >
                                 <span id="wannaseeCount" class="countSpan">0</span>
                                 <span>찜</span>
                             </a>
-                            <a href="#">
+                            <a href="${contextPath}/movielist/watchedList?memberNo=${loginmember.memberNo}">
                                 <span id="watchedCount" class="countSpan">0</span>
                                 <span>본 영화</span>
                             </a>

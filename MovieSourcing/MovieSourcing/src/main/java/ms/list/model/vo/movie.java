@@ -1,6 +1,14 @@
 package ms.list.model.vo;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor // 기본 생성자
 
 public class movie {
 
@@ -9,72 +17,21 @@ public class movie {
 	private String movieGrade;
 	private String national;
 	private String moviePoster;
+	private String movieJanr;
 	
-	public movie() {}
 	
 	
-	public movie(int movieNo, String movieTitle, String movieGrade, String national, String moviePoster) {
-		
+	
+	public movie(int movieNo, String movieTitle, String movieGrade, String national, String moviePoster,
+			String movieJanr) {
+		super();
 		this.movieNo = movieNo;
 		this.movieTitle = movieTitle;
 		this.movieGrade = movieGrade;
 		this.national = national;
 		this.moviePoster = moviePoster;
+		this.movieJanr = movieJanr;
 	}
 
-
-	public int getMovieNo() {
-		return movieNo;
-	}
-
-
-	public void setMovieNo(int movieNo) {
-		this.movieNo = movieNo;
-	}
-
-
-	public String getMovieTitle() {
-		return movieTitle;
-	}
-
-
-	public void setMovieTitle(String movieTitle) {
-		this.movieTitle = movieTitle;
-	}
-
-
-	public String getMovieGrade() {
-		return movieGrade;
-	}
-
-
-	public void setMovieGrade(String movieGrade) {
-		this.movieGrade = movieGrade;
-	}
-
-
-
-
-	public String getNational() {
-		return national;
-	}
-
-
-	public void setNational(String national) {
-		this.national = national;
-	}
-
-
-	public String getMoviePoster() {
-		return moviePoster;
-	}
-
-
-	public void setMoviePoster(String moviePoster) {
-		this.moviePoster = moviePoster;
-	}
-
-	
-	
 	
 }

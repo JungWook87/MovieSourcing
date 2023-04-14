@@ -468,46 +468,153 @@ public class MemberDAO {
 	}
 
 
-
-	public Member kakaoLogin(Connection conn, String memberEmail) throws SQLException {
-		// TODO Auto-generated method stub
-		Member loginMember = null; // 결과 저장용 변수
+	/** 본 영화 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int watchedMovieInsert(Connection conn, int memNo, int movieNo) throws Exception {
+		
+		int result = 0;
 		
 		try {
-			// SQL 얻어오기
-			String sql = prop.getProperty("kakaoLogin");
 			
-			// PreparedStatment 생성 및 SQL 적재
+			String sql = prop.getProperty("watchedMovieInsert");
+			
 			pstmt = conn.prepareStatement(sql);
-						
-			pstmt.setString(1, memberEmail);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
 			
-			// SQL 수행
-			rs = pstmt.executeQuery();
+			result = pstmt.executeUpdate();
 			
-			if( rs.next() ) {
-				
-				loginMember = new Member();
-				
-				loginMember.setMemberNo( rs.getInt("MEM_NO"));
-				loginMember.setMemberEmail(	rs.getString("MEM_EMAIL")  );
-				loginMember.setMemberId(	rs.getString("MEM_ID")  );
-				loginMember.setMemberPw(	rs.getString("MEM_PW")  );
-				loginMember.setMemberImg(	rs.getString("MEM_IMG")  );
-				loginMember.setMemberNick(	rs.getString("MEM_NICK")  );
-				loginMember.setMemberBirth(	rs.getString("MEM_BIRTH")  );
-				loginMember.setMemberGender(	rs.getString("MEM_GENDER")  );
-				loginMember.setMemberIntro(	rs.getString("MEM_INTRO")  );
-				loginMember.setMemberSignUpDate(rs.getString("MEM_SIGN_UP_DATE") );
-				
-			}
-		} finally {
-			close(rs);
+		}finally {
 			close(pstmt);
 		}
 		
+		return result;
+	}
+
+
+
+	/** 본 영화 삭제
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int watchedMovieDelete(Connection conn, int memNo, int movieNo) throws Exception {
+		int result = 0;
 		
-		return loginMember;
+		try {
+			
+			String sql = prop.getProperty("watchedMovieDelete");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 보고싶은 영화 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieInsert(Connection conn, int memNo, int movieNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("wannaMovieInsert");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 보고 싶은 영화 삭제
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public int wannaMovieDelete(Connection conn, int memNo, int movieNo) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("wannaMovieDelete");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 회원의 인생 영화 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param movieNo
+	 * @param mode 
+	 * @return
+	 */
+	public int lifeMovie(Connection conn, int memNo, int movieNo, String mode) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			if(mode.equals("insert")) {
+				
+				String sql = prop.getProperty("lifeMovieInsert");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, memNo);
+				pstmt.setInt(2, movieNo);
+				
+				result = pstmt.executeUpdate();
+				
+			} else {
+				
+				String sql = prop.getProperty("lifeMovieDelete");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, memNo);
+				pstmt.setInt(2, movieNo);
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	

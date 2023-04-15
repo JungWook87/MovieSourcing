@@ -14,5 +14,11 @@ for(let i = 0; i < 10; i++){
 
 }
 
-
-
+document.getElementById("writeBtn").addEventListener("click", function(){
+	if(loginCheck !=  1){
+		window.alert("로그인을 해주세요");
+		location.href = "/MovieSourcing/member/login";
+	} else{
+		location.href='write?mode=insert';
+	}
+})

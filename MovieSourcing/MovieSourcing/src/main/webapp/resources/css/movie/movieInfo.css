@@ -339,6 +339,20 @@ pre {
     border-radius: 20px;
 }
 
+.reviewContainer > div{
+	display: none;
+}
+
+
+.reviewContainer > div:first-of-type{
+	display : flex;
+	margin-bottom: 30px;
+}
+
+.reviewContainer > div:nth-of-type(2), div:nth-of-type(3), div:nth-of-type(4) {
+	display:block;
+}
+
 .reviewbox {
     margin : 15px 0;
     background-color: rgb(41, 41, 57);
@@ -346,7 +360,9 @@ pre {
     display : flex;
     flex-direction: column;
     border-radius: 10px;
+    word-break: break-all;
 }
+
 
 .reviewInfo {
     display : flex;
@@ -356,7 +372,22 @@ pre {
 .reviewInfo > div {
     display : flex;
     text-align: center;
+    align-items: center;	
 }
+
+#user{
+	display:flex;
+	width : 100px;
+}
+
+#user > img {
+	width : 20%;
+	border-radius: 100%;	
+}
+
+#user > span {
+	margin-left: 10px;
+} 
 
 #userName {
     font-weight: bold;
@@ -371,9 +402,8 @@ pre {
 .reviewContent {
     margin : 10px;
 }
-.scoreLight1 {
+.scoreLight {
     margin: auto;
-    margin-left: 20px;
     border-radius: 50%;
     width : 17px;
     height : 17px;
@@ -383,6 +413,7 @@ pre {
 .userScoreBox {
     margin: auto;
     margin-left: 4px;
+    display:flex;
 }
 
 .userScore{
@@ -390,19 +421,6 @@ pre {
     margin-left: 4px;
 }
 
-#scoreLight2 {
-    margin: auto;
-    margin-left: 20px;
-    border-radius: 50%;
-    width : 17px;
-    height : 17px;
-    background-color: white;
-}
-
-#userScore2 {
-    margin: auto;
-    margin-left: 4px;
-}
 
 .recommendContainer {
     display : flex;
@@ -416,7 +434,6 @@ pre {
     margin: 5px;
 
 }
-
 
 
 
@@ -610,5 +627,67 @@ textarea:focus {
     border-style: none;
     cursor: pointer;
 }
+
+
+#reviewDotImgI{
+	margin-letf : 10px;
+	color : white;
+	font-size:20px;
+	cursor:pointer;
+}
+
+.hidden_checkbox{
+    position: absolute;
+    left: -9999px;
+}
+
+#popup_menu{
+    display: none;
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    margin-left: 17%;
+    border: solid 0.1rem;
+    border-radius: 1rem;
+    background-color: rgb(41, 41, 57);
+    font-size: 1.3rem;
+    z-index: 1;
+    right: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup_menu li {
+    list-style: none;
+    margin: 5px;
+}
+
+.reviewDotImgWrapper{
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

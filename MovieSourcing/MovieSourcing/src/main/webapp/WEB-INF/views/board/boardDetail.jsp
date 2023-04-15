@@ -20,6 +20,20 @@
     <title>커뮤니티페이지</title>
 </head>
 <body>
+
+	<c:choose>
+		<c:when test="${!empty loginMember}">
+			<script> const loginCheck = 1; </script>
+			<input style="display:none" value="${loginMember.memberNo}" id="memNo">
+			<input style="display:none" value="${movieInfo.movieNo}" id="movieNo">
+		</c:when>
+		
+		<c:otherwise>
+			<script> const loginCheck = 0; </script>                
+		</c:otherwise>
+	</c:choose>
+
+
     <div id="movieSourcing">
         <div id="layout">
             <div id="root">
@@ -90,39 +104,53 @@
                         <hr id="line">
 
                         <!-- 댓글 -->
-                        <div id="reply">
-                           <div id="replyBar">
-                               <span id="replySpan">댓글</span> 
-                               <span id="replyCount">${detail.replyCount}</span>
-                           </div>
-	                    </div>   
-	                    
-						<c:if test ="${!empty detail.replyList}">
-							<c:forEach var="i" begin="0" end="${fn:length(detail.replyList)-1}">
-									<div id="replyBox">
-										<div id="replyInfo">
-											<div>
-												<p>${detail.replyList[i].memNic}</p>
+                        <div id="replyContainer">
+	                        <div id="reply">
+	                           <div id="replyBar">
+	                               <span id="replySpan">댓글</span> 
+	                               <span id="replyCount">${detail.replyCount}</span>
+	                           </div>
+		                    </div>   
+		                    
+							<c:if test ="${!empty detail.replyList}">
+								<c:forEach var="i" begin="0" end="${fn:length(detail.replyList)-1}">
+										<div id="replyBox">
+											<div id="replyInfo">
+												<div>
+													<p>${detail.replyList[i].memNic}</p>
+												</div>
+												
+												<div>
+												    <span id="howlong">${detail.replyList[i].replyDate}</span>
+												    <label style="position: relative;">
+				                                   	 	<input id="replyDotImg" type="checkbox"  value="${review.memNo}"
+				                                    	class="hidden_checkbox">
+				                                    	<i class="fa-solid fa-ellipsis-vertical" id="replyDotImgI"></i>
+						                    			<div id="replyPopup_menu" >
+							                                <ul class="replyPopup_main_menu">
+							                                    <!-- session 이용하여 회원 정보 일치시 수정 삭제 버튼 보이고 아니면 안보이게 -->
+							                                    <li><a href="#" onclick="replyUpdate();" value="${detail.memNo}">수정</a></li>
+							                                    <li><a href="#" onclick="replyDelete();" value="${detail.memNo}">삭제</a></li>
+							                                    <li><a href="#">신고</a></li>
+							                                </ul>
+							                            </div>
+				                                    </label>
+												</div>
 											</div>
 											
-											<div>
-											    <span id="howlong">${detail.replyList[i].replyDate}</span>
+											<div id="replyContent">
+												<span>${detail.replyList[i].replyContent}</span>
 											</div>
+											
 										</div>
-										
-										<div id="replyContent">
-											<span>${detail.replyList[i].replyContent}</span>
-										</div>
-										
-									</div>
-							</c:forEach>         
-						</c:if>
+								</c:forEach>         
+							</c:if>
 						<c:if test="${empty detail.replyList}">
 							<div id="replyBox-1">
 								<p>처음으로 댓글을 달아보세요</p>
 							</div>
 						</c:if>
-
+						</div>
                         <hr id="line">
 					
 						<div id="replyInputDiv">
@@ -142,9 +170,20 @@
 
     <script src="${contextPath}/resources/js/board/boardDetail.js"></script>
     
+    <%
+	  // loginMember가 세션에 존재하는지 확인
+	  Object loginMember = session.getAttribute("loginMember");
+	%>
+    
     <script>
-    	const comNo = ${detail.comNo}
-    	// const memNo = "세션에서 멤 넘버 가져오기"
+		const comNo = ${detail.comNo};
+ 	  	let loginMemNo = null;
+ 	  	let loginMemNic = null;
+ 	  	
+ 	  	<% if (loginMember != null) { %>
+			loginMemNo = ${loginMember.memberNo};
+	 	    loginMemNic = '${loginMember.memberNick}';
+	 	<% } %>
     </script>
 </body>
 </html>

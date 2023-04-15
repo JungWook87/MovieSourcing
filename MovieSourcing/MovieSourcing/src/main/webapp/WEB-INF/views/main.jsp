@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/semi-main.css">
+    <link rel="stylesheet" href="resources/css/semi-main.css">
     <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
     <title>semi-main</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -19,29 +20,29 @@
 
                 <div class="main-image">
                     <ul class="main-slides">
-                        <li><img src="${contextPath}/resources/images/bg_1.jpg" ></li>
-                        <li><img src="${contextPath}/resources/images/bg_1.jpg" ></li>
-                        <li><img src="${contextPath}/resources/images/bg_1.jpg" ></li>
+                        <li><img src="resources/images/bg_1.jpg" ></li>
+                        <li><img src="resources/images/bg_1.jpg" ></li>
+                        <li><img src="resources/images/bg_1.jpg" ></li>
                     </ul>
                 </div>
             
 
                 <div>
-                    <a href="${contextPath}"><img src="${contextPath}/resources/images/img_etc/moviesourcing.png" name="home-logo"></a>
+                    <a href="#"><img src="resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
                 </div>
 
                 <div>
                     <ul class="home-nav">
-                        <li><a href="main" id="homebutton">홈</a></li>
-                        <li><a href="list/msList" id="janrbutton">장르 검색</a></li>
-                        <li><a href="MovieSourcing/boardList">커뮤니티</a></li>
-                        <li><a href="simulation/simulEnter">추천 시뮬레이션</a></li>
+                        <li><a href="#" id="homebutton">홈</a></li>
+                        <li><a href="#" id="janrbutton">장르 검색</a></li>
+                        <li><a href="#">커뮤니티</a></li>
+                        <li><a href="#">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
-                        <li><a href="main" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="list/msList" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                        <li><a href="MovieSourcing/boardList"><i class="fa-solid fa-comments"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-trophy"></i></a></li>
+                        <li><a href="#" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="#" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a><i class="fa-solid fa-comments"></i></a></li>
+                        <li><a><i class="fa-solid fa-trophy"></i></a></li>
                     </ul>
                 </div>
 
@@ -52,38 +53,27 @@
                     <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
                     <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                     </div>
-                    
-                    <c:choose>
-						<c:when test="${ loginMember.memberId== null }">
-		                    <div><a href="member/login"><i class="fa-solid fa-heart"></i></a></div>
-		                    <div><a href="member/login"><i class="fa-solid fa-user"></i></a></div>
-						</c:when>
-						
-						<c:otherwise>
-							<div><a href="member/MyPageEnter" ><i class="fa-solid fa-heart"></i></a></div>
-							<div> <a href="member/MyPageEnter" ><i class="fa-solid fa-user"></i></a></div>
-						</c:otherwise>
-					</c:choose>
-					
+
+                    <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
+                    <div><a href="#"><i class="fa-solid fa-user"></i></a></div>
+
                 </div>
+
           
         </header>
 
-        <section class="main">
+        <section class="main">s
 
             <!-- 영화 정보 -->
             <div class="movie">
                 <div class="chart active">
                     <span><i class="fa-solid fa-trophy"></i>&nbsp넷플릭스 랭킹&nbsp
                         <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
-
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><a href="${contextPath}/movieInfo?movieNo=1"><img src="resources/images/어벤져스1 포스터.jpg"></a></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/1987포스터.jpg"></li>
+                  	<c:forEach var="v" items="${result.netflixList}" varStatus="vs">
+                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}"></a></li>
+                    </c:forEach>
                     </ul>
                 </div>
 
@@ -92,11 +82,9 @@
                         <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="resources/images/어스파1 포스터.jpg"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/검사외전포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/수상한그녀 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/블랙위도우 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/보헤미안 랩소디 포스터.jpg"></li>
+                    <c:forEach var="v" items="${result.watchaList}" varStatus="vs">
+                        <i class="fa-solid fa-${vs.count}"></i><li>><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                    </c:forEach>
                     </ul>
                 </div>
 
@@ -105,11 +93,9 @@
                         <a class="rotate"><i class="fa-solid fa-rotate-right"></i></a>
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><img src="resources/images/백두산 포스터.jpg"></li>
-                        <i class="fa-solid fa-2"></i><li><img src="resources/images/밀정 포스터.jpg"></li>
-                        <i class="fa-solid fa-3"></i><li><img src="resources/images/명량 포스터.jpeg"></li>
-                        <i class="fa-solid fa-4"></i><li><img src="resources/images/곡성 포스터.jpg"></li>
-                        <i class="fa-solid fa-5"></i><li><img src="resources/images/기생충 포스터.jpg"></li>
+                    <c:forEach var="v" items="${result.disneyPlusList}" varStatus="vs">
+                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                    </c:forEach>
                     </ul>
                 </div>
 
@@ -121,19 +107,13 @@
 
                 <div class="slide_wrapper">
                     <ul class="slides">
-                        <li><img src="resources/images/1987포스터.jpg"></li>
-                        <li><img src="resources/images/검사외전포스터.jpg"></li>
-                        <li><img src="resources/images/겨울왕국1 포스터.jpg"></li>
-                        <li><img src="resources/images/곡성 포스터.jpg"></li>
-                        <li><img src="resources/images/공조 포스터.jpg"></li>
-                        <li><img src="resources/images/기생충 포스터.jpg"></li>
-                        <li><img src="resources/images/마스터 포스터.jpg"></li>
-                        <li><img src="resources/images/명량 포스터.jpeg"></li>
+                    <c:forEach var="v" items="${result.recommandList}" varStatus="vs">
+                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                    </c:forEach>
                     </ul>
                 </div>
                  </div>
                 <p class="controls">
-                   
                     <span class="prev">prev</span>
                     <span class="next">next</span>
                 </p>
@@ -148,69 +128,35 @@
                 <div class="slide_wrapper2">
                     
                     <ul class="slides2">
-                        <li><img src="resources/images/밀정 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/백두산 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/범죄도시1 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/보헤미안 랩소디 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/블랙위도우 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/설국열차 포스터.jpg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/수상한그녀 포스터.jpeg" width="200px" height="300px"></li>
-                        <li><img src="resources/images/어스파1 포스터.jpg" width="200px" height="300px"></li>
+                    <c:forEach var="v" items="${result.newList}" varStatus="vs">
+                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                    </c:forEach>
                     </ul>
                 </div>
                 </div>
                 <p class="controls2">
-                   
                     <span class="prev2">prev</span>
                     <span class="next2">next</span>
                 </p>
-
-               
-
-
-                
-              
                 <div class="community">
                     <span><p><i class="fa-regular fa-comments"></i>&nbsp커뮤니티</p></span>
                     <a><i class="fa-solid fa-chevron-right"></i></a>
-
+				<c:forEach var="v" items="${result.communityList}" varStatus="vs">
                     <div class="community1">
-                        <div><img src="resources/images/곡성 포스터.jpg"></div>
+                        <div>${v.movieTitle}</div>
                         <div>
                             <div class="user">
-                                <img src="resources/images/백두산 포스터.jpg" id="userimg1" class="userimg">
+                                <img src="${v.memImg}" id="userimg1" class="userimg">
                                 <span class="userInfo">
-                                    <span class="userNick" id="userNick1">누누</span>
-                                    <span class="date" id="date1">20230404</span>
+                                    <span class="userNick" id="userNick1">${v.memNick}</span>
+                                    <span class="date" id="date1">${v.comDate}</span>
                                 </span>
                             </div>
-                            
-                            <p>단순한 호기심으로 봤는데 타짜 감독이 이런 잡탕영화를 만들어 내다니
-                                잡탕도 이런 잡탕이 없다
-                            </p>
-
+                            <p>${v.comContent}</p>
                         </div>
                         
                     </div>
-
-                    <div class="community2">
-                        <div><img src="resources/images/곡성 포스터.jpg"></div>
-                        <div>
-                            <div class="user">
-                                <img src="resources/images/백두산 포스터.jpg" id="userimg2" class="userimg">
-                                <span class="userInfo">
-                                    <span class="userNick" id="userNick2">누누</span>
-                                    <span class="date" id="date2">20230404</span>
-                                </span>
-                            </div>
-                            
-                            <p>단순한 호기심으로 봤는데 타짜 감독이 이런 잡탕영화를 만들어 내다니
-                                잡탕도 이런 잡탕이 없다
-                            </p>
-
-                        </div>
-                        
-                    </div>
+                </c:forEach>
                 </div>
 
                 <div class="review">
@@ -219,62 +165,18 @@
                     <a><i class="fa-solid fa-rotate-right"></i></a>
 
                     <div class="review-content">
+                    <c:forEach var="v" items="${result.reviewList}" varStatus="vs">
                         <div>
                             <div class="r-user">
-                                <img src="resources/images/검사외전포스터.jpg" class="userimg2">
-                                <span>회원이름</span>
+                                <img src="${v.memImg}" class="userimg2">
+                                <span>${v.memNick}</span>
                             </div>
-
-                            <span>영화 이름</span>
-
-                            <div>평점</div>
-
-                            <span>평</span>
+                            <span>${v.movieTitle}</span>
+                            <div>${v.reviewScore}</div>
+                            <span>${v.reviewContent}</span>
 
                         </div>
-                        
-                        <div>
-                            <div class="r-user">
-                                <img src="resources/images/검사외전포스터.jpg" class="userimg2">
-                                <span>회원이름</span>
-                            </div>
-
-                            <span>영화 이름</span>
-
-                            <div>평점</div>
-
-                            <span>평</span>
-
-                        </div>
-
-                        <div>
-                            <div class="r-user">
-                                <img src="resources/images/검사외전포스터.jpg" class="userimg2">
-                                <span>회원이름</span>
-                            </div>
-
-                            <span>영화 이름</span>
-
-                            <div>평점</div>
-
-                            <span>평</span>
-
-                        </div>
-
-                        <div>
-                            <div class="r-user">
-                                <img src="${contextPath}/resources/images/검사외전포스터.jpg" class="userimg2">
-                                <span>회원이름</span>
-                            </div>
-
-                            <span>영화 이름</span>
-
-                            <div>평점</div>
-
-                            <span>평</span>
-                            
-                        </div>
-
+                    </c:forEach>
                     </div>
 
                 </div>
@@ -285,31 +187,18 @@
                     <a class="f-rotate"><i class="fa-solid fa-rotate-right"></i></a>
                     <h4 style="color: white ; ">누누님의 인생영화</h4>
                     <div class="f-mlist1">
-                       
-                        <div><img src="resources/images/블랙위도우 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/1987포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/어스파2 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/보헤미안 랩소디 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/검사외전포스터.jpg" width="130px"></div>
+                   	<c:forEach var="v" items="${result.lifeList1}" varStatus="vs">
+                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
+                    </c:forEach>
                     </div>
                     <h4 style="color: white;">나나님의 인생영화</h4>
                     <div class="f-mlist2">
-                        
-                        <div><img src="resources/images/블랙위도우 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/1987포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/어스파2 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/보헤미안 랩소디 포스터.jpg" width="130px"></div>
-                        <div><img src="resources/images/검사외전포스터.jpg" width="130px"></div>
-
+                    <c:forEach var="v" items="${result.lifeList2}" varStatus="vs">
+                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
+                    </c:forEach>
                     </div>
                     </div>
                 </div>
-
-
-
-               </fieldset>
-
-
             </div>
 
             <!-- 시뮬,인기검색어 -->
@@ -338,10 +227,9 @@
         <p><a href="#">개인정보처리방침</a></p>
         <p><a href="#">고객센터</a></p>
         <p><a href="#">(주)KH</a></p>
-
     </footer>
 
-    <script src="${contextPath}/resources/js/semi-main.js"></script>
+    <script src="resources/js/semi-main.js"></script>
 
   
 </body>

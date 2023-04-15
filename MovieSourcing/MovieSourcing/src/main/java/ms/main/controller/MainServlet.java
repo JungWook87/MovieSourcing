@@ -27,7 +27,7 @@ public class MainServlet extends HttpServlet {
 			
 			req.setAttribute("result", mainService.selectMainContent());
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jspwork/main.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
 			dispatcher.forward(req, res);
 			
 		} catch(Exception e) {

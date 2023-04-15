@@ -58,32 +58,32 @@
                     
                     <ul>
                         <p name="janr-name">장르</p>
-                        <li><button type="button" value="가족" class="btn">가족</button></li> <li><button type="button" class="btn" value="미스터리">미스터리</button></li> <li><button type="button" class="btn" value="애니메이션">애니메이션</button></li>
-                        <li><button type="button" value="공포" class="btn">공포</button></li> <li><button type="button" class="btn" value="범죄">범죄</button></li> <li><button type="button" class="btn" value="액션">액션</button></li>
-                        <li><button type="button" value="드라마" class="btn">드라마</button></li> <li><button type="button" class="btn" value="판타지">판타지</button></li> <li><button type="button" class="btn" value="어드벤처">어드벤처</button></li>
-                        <li><button type="button" value="멜로/로맨스" class="btn">멜로/로맨스</button></li> <li><button type="button" class="btn" value="코미디">코미디</button></li> <li><button type="button" class="btn" value="전쟁">전쟁</button></li>
-                        <li><button type="button" value="SF" class="btn">SF</button></li> <li><button type="button" class="btn" value="스릴러">스릴러</button></li> <li><button type="button" class="btn" value="기타">기타</button></li>
+                        <li><button type="button" value="가족" class="janr-btn">가족</button></li> <li><button type="button" class="btn" value="미스터리">미스터리</button></li> <li><button type="button" class="btn" value="애니메이션">애니메이션</button></li>
+                        <li><button type="button" value="공포" class="janr-btn">공포</button></li> <li><button type="button" class="btn" value="범죄">범죄</button></li> <li><button type="button" class="btn" value="액션">액션</button></li>
+                        <li><button type="button" value="드라마" class="janr-btn">드라마</button></li> <li><button type="button" class="btn" value="판타지">판타지</button></li> <li><button type="button" class="btn" value="어드벤처">어드벤처</button></li>
+                        <li><button type="button" value="멜로/로맨스" class="janr-btn">멜로/로맨스</button></li> <li><button type="button" class="btn" value="코미디">코미디</button></li> <li><button type="button" class="btn" value="전쟁">전쟁</button></li>
+                        <li><button type="button" value="SF" class="janr-btn">SF</button></li> <li><button type="button" class="btn" value="스릴러">스릴러</button></li> <li><button type="button" class="btn" value="기타">기타</button></li>
                     </ul>
 
                     <hr class="hr">
 
                     <ul>
                         <p class="janr-name2">국가</p>
-                        <li><button type="button" id="korea" class="btn">한국</button></li>
-                        <li><button type="button" id="america" class="btn">미국</button></li>
-                        <li><button type="button" id="japan" class="btn">일본</button></li>
-                        <li><button type="button" id="china" class="btn">중국</button></li>
-                        <li><button type="button" id="etc2" class="btn">기타</button></li>
+                        <li><button type="button" value="한국" id="korea" class="nation-btn">한국</button></li>
+                        <li><button type="button" value="미국" id="america" class="nation-btn">미국</button></li>
+                        <li><button type="button" value="일본" id="japan" class="nation-btn">일본</button></li>
+                        <li><button type="button" value="중국" id="china" class="nation-btn">중국</button></li>
+                        <li><button type="button" value="기타" id="etc2" class="nation-btn">기타</button></li>
                     </ul>
 
                     <hr class="hr">
 
                     <ul>
                         <p class="janr-name3">연령</p>
-                        <li><button type="button" class="btn" id="all">전체 관람가</button></li>
-                        <li><button type="button" class="btn" id="12y">12세 이상</button></li>
-                        <li><button type="button" class="btn" id="15y">15세 이상</button></li>
-                        <li><button type="button" class="btn" id="19y">청소년 관람불가</button></li>
+                        <li><button type="button" class="grade-btn" value="전체 관람가" id="all">전체 관람가</button></li>
+                        <li><button type="button" class="grade-btn" value="12세 이상" id="12y">12세 이상</button></li>
+                        <li><button type="button" class="grade-btn" value="15세 이상" id="15y">15세 이상</button></li>
+                        <li><button type="button" class="grade-btn" value="청소년 관람불가" id="19y">청소년 관람불가</button></li>
                     
 
                     </ul>
@@ -96,7 +96,9 @@
 			    <div class="mlist">
 			        <div>
                         <c:forEach var="mlist" items="${mlist}">
-			                <div><a href="movieInfo"><img src="${contextPath}${mlist.moviePoster}" width="130px"><br><h3><c:out value="${mlist.movieTitle}"/></h3></a><br><p><c:out value="${mlist.national}/${mlist.movieGrade}"/></p></div>
+                        	
+			                <div><a href="movieInfo" id="contents"><img src="${contextPath}${mlist.moviePoster}" width="130px"><br><h3><c:out value="${mlist.movieTitle}"/></h3></a><br><p><c:out value="${mlist.national}/${mlist.movieGrade}"/></p></div>
+                        	
                         </c:forEach>
                     </div>
 		        </div>
@@ -114,7 +116,21 @@
             </div>
 
         </section>
-
+        
+        <c:set var="movie" value="${mlist}"></c:set>
+	<script>
+		
+			const test = [
+				{testNo : 1, testName : 'test1'},
+				{testNo : 2, testName : 'test2'}
+			
+			];
+				
+		console.log("test:::" + test);
+		console.log("movie:::" + movie.movieNo);
+		console.log("movie:::",movie);
+		
+	</script>
 
 
     </main>

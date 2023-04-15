@@ -20,6 +20,18 @@
 	
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	
+	<c:choose>
+		<c:when test="${!empty loginMember}">
+			<script> const loginCheck = 1; </script>
+			<input style="display:none" value="${loginMember.memberNo}" id="memNo">
+			<input style="display:none" value="${movieInfo.movieNo}" id="movieNo">
+		</c:when>
+		
+		<c:otherwise>
+			<script> const loginCheck = 0; </script>                
+		</c:otherwise>
+	</c:choose>
+	
     <main>
     	<c:if test="${!empty boardDeleteMsg}">
     		<script> alert("게시글 삭제 성공")</script>
@@ -40,7 +52,7 @@
                         <input type="text" id="search_bar" placeholder="커뮤니티 검색">
                     </div>
                     
-                    <button type="button" onclick="location.href='write?mode=insert'" id="writeBtn">글쓰기</button>
+                    <button type="button"  id="writeBtn">글쓰기</button>
                 </div>
 
                 <div class="commu_area">

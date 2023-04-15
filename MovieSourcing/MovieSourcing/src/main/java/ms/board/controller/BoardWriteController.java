@@ -13,7 +13,8 @@ import ms.board.model.service.BoardService;
 import ms.board.model.vo.BoardDetail;
 
 
-@WebServlet("/MovieSourcing/write")
+
+@WebServlet("/write")
 public class BoardWriteController extends HttpServlet {
 	
 	// 나중에 필터 걸어서 로그인이 안되어 있으면 메인으로 이동하게 설정해야 함(로그인필터)
@@ -67,6 +68,7 @@ public class BoardWriteController extends HttpServlet {
 				BoardService service = new BoardService();
 				
 				BoardDetail updateDetail = new BoardDetail();
+				
 				updateDetail.setComNo(comNo);
 				updateDetail.setComTitle(comTitle);
 				updateDetail.setComContent(comContent);

@@ -199,7 +199,7 @@ public class BoardDAO {
 				boardReply.setReplyNo(rs.getInt("COM_COMMENT_NO"));
 				boardReply.setReplyContent(rs.getString("COM_COMMENT_CONTENT"));
 				boardReply.setMemNic(rs.getString("MEM_NICK"));
-				boardReply.setReplyDate(rs.getString("COM_COMMENT_DATE"));
+				boardReply.setReplyDate(rs.getString("COM_COMMENT_DATE_CHAR"));
 				
 				boardReplyList.add(boardReply);
 			}

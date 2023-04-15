@@ -21,5 +21,27 @@
     	WHERE ROWNUM = 1)
 	</entry>	
 	
+	
+	
+	
+	<entry key="RandamMoviePoster">
+	SELECT MOVIE_NO, MOVIE_POSTER
+FROM (
+  SELECT MOVIE_NO, MOVIE_POSTER, ROW_NUMBER() OVER (ORDER BY DBMS_RANDOM.VALUE) AS RN
+  FROM MOVIE_INFORMATION_TABLE
+  JOIN GENRE_MOVIE USING (MOVIE_NO)
+  JOIN GENRE USING (GENRE_NO)
+  WHERE GENRE_NO = ?
+)
+WHERE RN = 1
+	</entry>	
+	
+	
+	
+	<entry key="genreName">
+	SELECT GENRE
+	FROM GENRE
+	WHERE GENRE_NO = ?
+	</entry>	
 
 </properties>

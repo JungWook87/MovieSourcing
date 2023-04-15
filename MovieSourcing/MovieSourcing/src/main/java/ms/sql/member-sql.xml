@@ -93,6 +93,13 @@
 	
 	
 	
+		<entry key="changeElseNoImg">
+		UPDATE MEMBER SET
+		MEM_NICK = ?,
+	
+		MEM_INTRO = ?
+		WHERE MEM_NO = ?
+	</entry>
 	
 	
 	
@@ -194,6 +201,19 @@
 	<!-- 보고싶은 영화 삭제 -->
 	<entry key="wannaMovieDelete">
 		DELETE FROM SELECT_MOVIE
+		WHERE MEM_NO = ?
+		AND MOVIE_NO = ?
+	</entry>	
+	
+	<!-- 인생 영화 삽입 -->
+	<entry key="lifeMovieInsert">
+		INSERT INTO LIFE_MOVIE 
+		VALUES(? , ?)
+	</entry>
+	
+	<!-- 인생 영화 삭제 -->
+	<entry key="lifeMovieDelete">
+		DELETE FROM LIFE_MOVIE
 		WHERE MEM_NO = ?
 		AND MOVIE_NO = ?
 	</entry>	

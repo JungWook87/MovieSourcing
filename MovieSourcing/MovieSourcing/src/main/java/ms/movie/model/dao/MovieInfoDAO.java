@@ -15,10 +15,15 @@ import static ms.common.JDBCTemplate.*;
 import ms.board.model.dao.BoardDAO;
 import static ms.common.JDBCTemplate.*;
 import ms.movie.model.vo.MovieInfo;
+import ms.movie.model.vo.MovieInfoCheck;
 import ms.movie.model.vo.MoviePeople;
 import ms.movie.model.vo.MovieRecommend;
 import ms.movie.model.vo.MovieReview;
 
+/**
+ * @author kjo63
+ *
+ */
 public class MovieInfoDAO {
 	
 	private Statement stmt;
@@ -35,7 +40,7 @@ public class MovieInfoDAO {
 
 			prop = new Properties();
 			
-			String filePath = BoardDAO.class.getResource("/ms/sql/movie-sql.xml").getPath();
+			String filePath = MovieInfoDAO.class.getResource("/ms/sql/movie-sql.xml").getPath();
 			prop.loadFromXML(new FileInputStream(filePath));
 			
 		} catch (IOException e) {
@@ -113,6 +118,7 @@ public class MovieInfoDAO {
 			if(rs.next()) {
 				moviePeople.setPdName(rs.getString(1));
 				moviePeople.setPdPicture(rs.getString(2));
+				moviePeople.setPdNo(rs.getInt(3));
 			}
 			
 			sql = prop.getProperty("actSelect");
@@ -123,13 +129,16 @@ public class MovieInfoDAO {
 			
 			List<String> act = new ArrayList<>();
 			List<String> actPicture = new ArrayList<>();
+			List<Integer> actNo = new ArrayList<>();
 			
 			while(rs.next()) {
 				String actor = rs.getString(1);
 				String actorPicture = rs.getString(2);
+				int actorNo = rs.getInt(3);
 				
 				act.add(actor);
 				actPicture.add(actorPicture);
+				actNo.add(actorNo);
 			}
 			
 			
@@ -142,6 +151,11 @@ public class MovieInfoDAO {
 			moviePeople.setAct2Picture(actPicture.get(1));
 			moviePeople.setAct3Picture(actPicture.get(2));
 			moviePeople.setAct4Picture(actPicture.get(3));
+			
+			moviePeople.setAct1No(actNo.get(0));
+			moviePeople.setAct2No(actNo.get(1));
+			moviePeople.setAct3No(actNo.get(2));
+			moviePeople.setAct4No(actNo.get(3));
 			
 		} finally {
 			close(rs);
@@ -250,6 +264,7 @@ public class MovieInfoDAO {
 				for(int j = 0; j < i; j++) {
 					if(randomNum[i] == randomNum[j]) {
 						i--;
+						break;
 					}
 				}
 				
@@ -266,6 +281,150 @@ public class MovieInfoDAO {
 		}
 		
 		return movieRecommend;
+	}
+
+	public MovieInfoCheck movieInfoCheck(Connection conn, int memNo, int movieNo) throws Exception {
+		
+		MovieInfoCheck movieInfoCheck = new MovieInfoCheck();
+		
+		try {
+			
+			String sql = prop.getProperty("watchedMovie");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo); 
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int result = rs.getInt(1);
+				
+				if(result != 0) movieInfoCheck.setWatchedMovie("true");
+			}
+			
+			sql = prop.getProperty("wannaMovie");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo); 
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int result = rs.getInt(1);
+				
+				if(result != 0) movieInfoCheck.setWannaMovie("true");
+			}
+			
+			
+			sql = prop.getProperty("lifeMovie");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, movieNo); 		
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int result = rs.getInt(1);
+				
+				if(result != 0) movieInfoCheck.setLifeMovie("true");
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return movieInfoCheck;
+	}
+
+	/** 영화정보창 리뷰 삽입 삭제
+	 * @param conn
+	 * @param movieReview
+	 * @param mode
+	 * @return
+	 */
+	public int movieReviewIUD(Connection conn, MovieReview movieReview, String mode) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			
+			if(mode.equals("insert")) {
+				String sql = prop.getProperty("movieReviewInsert");
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				pstmt.setString(3, movieReview.getReviewContent());
+				pstmt.setInt(4, movieReview.getReviewScore());
+				
+				result = pstmt.executeUpdate();
+				
+			} else if(mode.equals("update")) {
+				
+				String sql = prop.getProperty("movieReviewUpdate");
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(3, movieReview.getReviewContent());
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				
+				result = pstmt.executeUpdate();
+				
+			}else {
+				String sql = prop.getProperty("movieReviewDelete");
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				
+				result = pstmt.executeUpdate();
+				
+			}
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 영화 리뷰 더보기 리스트
+	 * @param conn
+	 * @param movieNo
+	 * @return
+	 */
+	public List<MovieReview> movieReviewList(Connection conn, int movieNo) throws Exception {
+
+		List<MovieReview> movieReviewList = new ArrayList<>();
+		
+		try {
+			
+			String sql = prop.getProperty("movieReviewList");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, movieNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int memNo = rs.getInt(1);
+				String reviewContent = rs.getString(2);
+				String reviewDate = rs.getString(3);
+				String movieTitle = rs.getString(4);
+				int reviewScore = rs.getInt(5);
+				String memPic = rs.getString(6);
+				String memNic = rs.getString(7);
+				
+				movieReviewList.add(new MovieReview(movieNo, memNo, reviewContent, reviewDate, movieTitle, reviewScore, memPic, memNic));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return movieReviewList;
 	}
 
 

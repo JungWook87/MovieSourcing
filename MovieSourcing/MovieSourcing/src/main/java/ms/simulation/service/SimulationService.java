@@ -16,7 +16,7 @@ import ms.simulation.dao.SimulationDao;
 public class SimulationService {
 	
 
-	
+
 	
 	private SimulationDao dao = new SimulationDao();
 
@@ -39,16 +39,12 @@ public class SimulationService {
 
 
 
-	public MovieInfo getRandomMovieByGenre(int selectedGenre) throws Exception{
-		Connection conn = getConnection();
-		MovieInfo movies = dao.getRandomMovieByGenre(conn, selectedGenre);
-		  
-		    return movies;
-		    
+
+
 	
-	}
-
-
+	
+	
+	
 
 
 	public MovieInfo movieInfo(int selectedGenre) {
@@ -56,11 +52,11 @@ public class SimulationService {
 		
 	SimulationDao dao = new SimulationDao();
 		
-		MovieInfo movieInfo = null;
+		MovieInfo movie = null;
 		
 		try {
 			
-			movieInfo = dao.movieInfo(conn, selectedGenre);
+			movie = dao.movieInfo(conn, selectedGenre);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -68,8 +64,30 @@ public class SimulationService {
 			close(conn);
 		}
 		
-		return movieInfo;
+		return movie;
 	}
+
+
+
+
+
+	public String getGenreName(int selectedGenre) {
+		Connection conn = getConnection();
+		String getGenreName = null ;
+		SimulationDao dao = new SimulationDao();
+	try {
+			
+		getGenreName  = dao.getGenreName (conn, selectedGenre);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			close(conn);
+		}
+		
+		return getGenreName;
+	}
+
 
 }
 

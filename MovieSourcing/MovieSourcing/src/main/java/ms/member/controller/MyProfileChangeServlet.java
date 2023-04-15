@@ -37,27 +37,101 @@ public class MyProfileChangeServlet extends HttpServlet{
 	// post방식 요청 : 프로필 수정 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		  int maxSize = 1024*1024*5;
+			
+			String root = getServletContext().getRealPath("/");
+			
+			
+			String folderPath = "resources/images/memberProfile/";
+			
+			
+			String filePath = root + folderPath;
 		
+			String encoding = "UTF-8";
+			
+			
+			MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new ms.common.MyRenamePolicy());
+			String img1 = mpReq.getFilesystemName("profileImage");
+			String memberImg = folderPath + mpReq.getFilesystemName("profileImage");
+			
+			System.out.println("id : " + memberImg);
 		HttpSession session = req.getSession();
 	
-		String memberImg = req.getParameter("profileimg");		
-		String memberNick = req.getParameter("nicknameArea");
-		String memberIntro = req.getParameter("introduceArea");
+			
+		String memberNick = mpReq.getParameter("nicknameArea");
+		String memberIntro = mpReq.getParameter("introduceArea");
 	
 		// ** 로그인 회원 번호 얻어오기 **
 		Member loginMember = (Member)( session.getAttribute("loginMember") ) ;
 		
 		int memberNo = loginMember.getMemberNo(); // 로그인 회원 번호
 		String memberEmail  = loginMember.getMemberEmail();
-	
+		String memberimg2  = loginMember.getMemberImg();
 		MemberService service = new MemberService();
 		Member mem = new Member();
 		req.setAttribute("loginMember", mem); 
 		
 		
+		if(img1== null || img1.length()==0 || img1.trim().isEmpty() )  {
+			
 		
+			
+			
+			
+			try {
+			
+				mem.setMemberNo(memberNo);
+				mem.setMemberNick(memberNick);
+				mem.setMemberIntro(memberIntro);
+				mem.setMemberEmail(memberEmail);
+				mem.setMemberImg(memberimg2);
+				
+				session.setAttribute("loginMember", mem);
+
+				int result = service.changeElseNoImg(mem);
+				System.out.println();
+				
+				String path = null; 
+				
+				if(result > 0) { 
+					
+					alertAndGo(resp, "변경 성공", "MyPageEnter");
+					
+					session.getAttribute("loginMember");
+				
+					
+				} else {
+					
+					
+					alertAndGo(resp, "변경 실패", "myPagechangeEnter");
+				
+					
+				}
 		
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+	
+	
+	
+			
+			
+			
+			
+			
+		}else {
+			
+			
+			
+			
+			
+			
+			
+			
+
 			try {
 			
 				mem.setMemberNo(memberNo);
@@ -96,6 +170,35 @@ public class MyProfileChangeServlet extends HttpServlet{
 			
 	
 	}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	
 	

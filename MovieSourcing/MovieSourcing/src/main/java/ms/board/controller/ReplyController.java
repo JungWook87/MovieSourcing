@@ -14,7 +14,7 @@ import ms.board.model.service.ReplyService;
 import ms.board.model.vo.BoardDetail;
 import ms.board.model.vo.Reply;
 
-@WebServlet("/MovieSourcing/reply")
+@WebServlet("/reply")
 public class ReplyController extends HttpServlet {
 	
 	@Override
@@ -22,13 +22,16 @@ public class ReplyController extends HttpServlet {
 		
 		int comNo = Integer.parseInt(req.getParameter("comNo"));
 		String replyContent = req.getParameter("content");
-		String memNic = "tester";
-		int memNo = 1;
+		String memNic = req.getParameter("loginMemNic");
+		int memNo = Integer.parseInt(req.getParameter("loginMemNo"));
+		
+		String mode = req.getParameter("mode");
 		
 		Reply reply = new Reply();
 		
 		System.out.println("replyContent : " + replyContent);
 		System.out.println("comNo : " + comNo);
+		
 		
 		reply.setComNo(comNo);
 		reply.setMemNic(memNic);
@@ -37,7 +40,7 @@ public class ReplyController extends HttpServlet {
 		
 		ReplyService replyService = new ReplyService();
 		
-		String msg = replyService.insertReply(reply);
+		String msg = replyService.replyIUD(reply, mode);
 		
 		req.setAttribute("msg", msg);
 		

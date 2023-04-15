@@ -7,6 +7,7 @@ import java.util.List;
 
 import ms.movie.model.dao.MovieInfoDAO;
 import ms.movie.model.vo.MovieInfo;
+import ms.movie.model.vo.MovieInfoCheck;
 import ms.movie.model.vo.MoviePeople;
 import ms.movie.model.vo.MovieRecommend;
 import ms.movie.model.vo.MovieReview;
@@ -113,6 +114,88 @@ public class MovieInfoService {
 		}
 		
 		return movieRecommend;
+	}
+
+
+
+	/** 영화 정보창 회원 셋팅
+	 * @param memNo
+	 * @param movieNo
+	 * @return
+	 */
+	public MovieInfoCheck movieInfoCheck(int memNo, int movieNo) {
+		
+		MovieInfoCheck movieInfoCheck = null;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			movieInfoCheck = dao.movieInfoCheck(conn, memNo, movieNo);
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		
+		return movieInfoCheck;
+	}
+
+
+
+	/** 영화정보창 리뷰 삽입 삭제
+	 * @param movieReview
+	 * @param mode
+	 * @return
+	 */
+	public int movieReviewIUD(MovieReview movieReview, String mode) {
+
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.movieReviewIUD(conn, movieReview, mode);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 영화 리뷰 더보기 리스트
+	 * @param movieNo
+	 * @return
+	 */
+	public List<MovieReview> movieReviewList(int movieNo) {
+		
+		List<MovieReview> movieReviewList = null;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			movieReviewList = dao.movieReviewList(conn, movieNo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		
+		return movieReviewList;
 	}
 
 

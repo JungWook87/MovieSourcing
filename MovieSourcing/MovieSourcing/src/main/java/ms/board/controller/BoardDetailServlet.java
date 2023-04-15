@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import ms.board.model.service.BoardService;
 import ms.board.model.vo.BoardDetail;
 
-@WebServlet("/MovieSourcing/detail")
+@WebServlet("/detail")
 public class BoardDetailServlet extends HttpServlet{
 	
 	@Override

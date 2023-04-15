@@ -32,18 +32,57 @@ function resize(obj){
 
 function replysubmit(){
 	
-    $.ajax({
-        url : "reply",
-        data : {"comNo" : comNo,
-        		"content" : $("#replyInput").val()
-        		//"userNic" : "로그인닉값"
-        		},
-        type : "GET",
-        dataType : "JSON",
-        success : function(result){
-			 document.location.reload();
-		}
-    })
+	if(loginCheck !=  1){
+		window.alert("로그인을 해주세요");
+		location.href = "/MovieSourcing/member/login";
+	} else{
+	    $.ajax({
+	        url : "reply",
+	        data : {"comNo" : comNo,
+	        		"content" : $("#replyInput").val(),
+	        		"loginMemNo" : loginMemNo,
+	        		"loginMemNic" : loginMemNic,
+	        		"mode" : "mode"
+	        		},
+	        type : "GET",
+	        dataType : "JSON",
+	        success : function(result){
+				 document.location.reload();
+			}
+	    })
+	    
+	    window.location.reload();
+	}
     
-    window.location.reload();
 };
+
+var replyDotImgIs = document.querySelectorAll("#replyDotImgI");
+const replyDotImg = document.querySelectorAll("#replyDotImg");
+const replyPopup_menus = document.querySelectorAll("#replyPopup_menu");
+
+for (var i = 0; i < replyDotImgIs.length; i++) {
+  replyDotImgIs[i].addEventListener('click', function() {
+    var index = Array.prototype.indexOf.call(replyDotImgIs, this);
+	
+	replyDotImg[index].click();
+	
+	replyDotImg[index].addEventListener("click", function(){
+		if(replyPopup_menus[index].style.display == "none"){
+			replyPopup_menus[index].style.display = "flex";
+		} else{
+			replyPopup_menus[index].style.display = "none";
+		}
+		
+	})
+	
+  });
+}
+
+
+
+
+
+
+
+
+

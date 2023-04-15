@@ -491,3 +491,14 @@ section {
 .profile-container-box > a:hover > span {
     text-decoration: underline;
 }
+
+
+
+
+
+/* 프로필 이미지 */
+.profileImg{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}

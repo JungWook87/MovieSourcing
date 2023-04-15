@@ -30,21 +30,24 @@
                         </a>
                     </div>
                 </header>
-                <form action="myPagechangeEnter" method="POST">
+                <form action="myPagechangeEnter" method="POST"  enctype="multipart/form-data" >
                 <main id="contents">
                     <section class="profilebox">
                         <span class="title">프로필수정</span>
                         <div> 
                          <c:if test="${empty loginMember.memberImg}">
-                            <i class="fa-solid fa-face-laugh-squint" 
-                            id="profileimg" name = "profileimg"></i>
+                         
+                          <img src="${contextPath}/resources/images/user.png" class="profileImg"  name = "profileimg"  id="profileimg">
+                           
                              </c:if>
                           <c:if test="${!empty loginMember.memberImg}">
-                             <i class="fa-solid fa-face-laugh-squint" 
-                            id="profileimg" name = "profileimg"></i>
+                     <img  src="${contextPath}/${loginMember.memberImg}" class="profileImg"  name = "profileimg"  id="profileimg">
                              </c:if>    
                         </div>
-                        <a href="#">사진변경</a>
+                     
+                        <a href="#"><label for="input-image">사진변경</a></label>
+                          <input type="file" name="profileImage" id="input-image" accept="image/*">
+                          
                         <span class="email1">가입시 입력한 email 주소</span>
                         <span class="email2">${loginMember.memberEmail}</span>
                     </section>

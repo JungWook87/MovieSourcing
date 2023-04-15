@@ -1,3 +1,6 @@
+
+
+
 #qna{
 display: none;
 
@@ -6,6 +9,8 @@ display: none;
 
 * {
     box-sizing: border-box;
+  
+ 
    
 }
 body {
@@ -80,21 +85,24 @@ header > div:nth-child(3){
     justify-content: center;
 }
 .test_page{
-    margin-left: 81px;
+    margin-left: 30px;
     justify-content: center;
+     width: 1000px;
 }
  .simul_total_num{
+  font-family: 'Gowun Dodum', sans-serif;
     font-size: 25px;
     color:rgb(211, 84, 0);
     
 }
 
 .simulation_top{
+	 font-family: 'Gowun Dodum', sans-serif;
     text-align: right;
     margin-right: 120px;
 }
 .simulation_text{
-  
+   font-family: 'Gowun Dodum', sans-serif;
     font-size: 25px;
     color: rgb(255, 255, 255);
     padding-left: 650px;
@@ -105,6 +113,7 @@ header > div:nth-child(3){
 
 
 .question_number{
+	 font-family: 'Gowun Dodum', sans-serif;
     font-size: 48px;
     color: rgb(255, 255, 255);
  
@@ -119,19 +128,26 @@ header > div:nth-child(3){
 
 
 .question_p{
-    /* font-family: 'Nanum Pen Script', cursive; */
-    font-family: 'Poor Story', cursive;
-    padding: 40px;
+    font-family: 'Gowun Dodum', sans-serif;
+    
+    
+      display : flex;
+  justify-content : center;
+  align-items : center;
+  
     margin-top: 50px;
     margin-left: 100px;
+    
     border: 1px solid black;
     background-color: rgb(33, 33, 33);
+    
     text-align:center;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.8em;
     border-radius: 45px;
     color: rgb(255, 255, 255);
     font-weight: bold;
+    height: 300px;
     width: 80%;
    
   
@@ -139,13 +155,17 @@ header > div:nth-child(3){
 }
 
 .answerList{
-    font-family: 'Poor Story', cursive;
-    border-radius: 30px;
+    font-family: 'Gowun Dodum', sans-serif;
+    border-radius: 10px;
     text-align: center;
     line-height: 2.4em;
-    color: rgb(255, 255, 255);
-    font-size: 24px;
-    background-color: rgb(230, 126, 34);
+ 
+  color: rgb(33, 33, 33);
+    font-size: 20px;
+ 
+   background-color: #eeeeeed4;
+   
+   
     font-weight: bold;
     width: 80%;
     margin-top: 30px;
@@ -297,18 +317,54 @@ footer p a {
     width: 200px;
     padding: 0px;
   }
-   
-  
   
      .movieImg {
+    
           float:left; 
-          width:200px; 
+       
           height:100px; 
        }
           
      #resultImg {
-         display: inline-block;
-    width: 200px;
+     position:absolute;
+      margin-left:60px;
+     float:left;
+    display: inline-block;
+    width: 300px;
     height: 100px;
     margin-left: 10px;
      }
+     
+     
+     #resultSort{
+     margin-left: 50px;
+     }
+     
+     
+ .graph-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ccc;
+  margin-left: 10px;
+  margin :20px;
+}
+
+.progress {
+  width: 0;
+  border-radius: 10px;
+  color: #f20000;
+  transition: width 0.3s ease-in-out;
+}
+
+.percent-text {
+  margin-left: 10px;
+  font-size: 20px;
+}
+

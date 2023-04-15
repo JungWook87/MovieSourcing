@@ -1,12 +1,22 @@
 package ms.member.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import ms.member.model.service.MyPageService;
+import ms.member.model.vo.LifeMovieVO;
+import ms.member.model.vo.MemberCount;
+
 
 /**
  * 마이페이지 들어가는 서블렛
@@ -26,7 +36,33 @@ public class MyPageEnter extends HttpServlet {
 	
 	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession();
-	
-			request.getRequestDispatcher("/WEB-INF/views/member/mypage.jsp").forward(request, response);
-}
+		
+		 try {
+			 
+			int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+			
+			MyPageService service = new MyPageService();
+			
+			// 관심없어요 리뷰 커뮤니티 찜 본영화 순			
+			List<MemberCount> memberCount = service.memberCount(memberNo);
+			
+			List<LifeMovieVO> lifeMovieList = service.lifeMovie(memberNo);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("memberNo", memberNo);
+			map.put("memberCount", memberCount);
+			map.put("lifeMovieList", lifeMovieList);
+			
+			request.setAttribute("map",map);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/mypage.jsp");
+			
+			dispatcher.forward(request, response);
+		 
+		 } catch (Exception e) {
+				e.printStackTrace();
+		 }
+			
+	 }
 }

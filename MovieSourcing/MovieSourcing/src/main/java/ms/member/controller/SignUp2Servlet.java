@@ -71,10 +71,9 @@ public class SignUp2Servlet extends HttpServlet{
 		session.setAttribute("memberNick",memberNick);
 		session.setAttribute("memberGender",memberGender);
 		session.setAttribute("memberBirth",memberBirth);
-	
+		session.setAttribute("memberImg",memberImg);
 		String path = "/WEB-INF/views/member/signUp3.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 
 	}
 }
-	

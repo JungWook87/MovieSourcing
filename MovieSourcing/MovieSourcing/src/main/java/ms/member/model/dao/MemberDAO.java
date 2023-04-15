@@ -619,6 +619,32 @@ public class MemberDAO {
 	
 	
 	
+	
+
+	public int changeElseNoImg(Connection conn, Member mem) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("changeElseNoImg");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberNick());
+			pstmt.setString(2, mem.getMemberIntro());
+			pstmt.setInt(	3, mem.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
 //
 //	/** 회원 정보 조회 DAO
 //	 * @param conn

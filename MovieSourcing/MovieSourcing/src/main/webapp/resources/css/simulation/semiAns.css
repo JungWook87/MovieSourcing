@@ -1,12 +1,14 @@
+
 #result{
     display: none;
 }
 
 
 
-* {
+* {	
    
     box-sizing: border-box;
+   
 }
 
 body {
@@ -87,7 +89,11 @@ header>div:nth-child(3) {
 }
 
 
-
+.result {
+   
+   
+ 
+}
 
 
 .test_finall_main {
@@ -102,7 +108,7 @@ header>div:nth-child(3) {
 
 
 .main_Center {
-  
+  font-family: 'Gowun Dodum', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;

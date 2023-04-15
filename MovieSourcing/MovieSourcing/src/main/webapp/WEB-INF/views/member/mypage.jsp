@@ -34,17 +34,16 @@
                                         <c:if test="${empty loginMember.memberImg}">
                                             <span>
                                            
-                                                <i class="fa-solid fa-face-laugh-squint" title="프로필수">
-                                                </i>
+                                              <img src="${contextPath}/resources/images/user.png" class="profileImg">
      										
-                                            
+                                           
                                             </span>
                                             </c:if>
                                             
                                             <c:if test="${!empty loginMember.memberImg}">
                                             <span>
                                            
-                                                
+                                                 <img src="${contextPath}/${loginMember.memberImg}" class="profileImg">
      										
                                             
                                             </span>

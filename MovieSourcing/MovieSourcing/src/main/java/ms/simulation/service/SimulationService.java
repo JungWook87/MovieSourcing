@@ -37,31 +37,10 @@ public class SimulationService {
 	}
 
 
-//
-//
-//	public MovieInfo getRandomMovieByGenre(int selectedGenre) throws Exception{
-//		Connection conn = getConnection();
-//		MovieInfo movies = dao.getRandomMovieByGenre(conn, selectedGenre);
-//		  
-//		    return movies;
-//		    
-//	
-//	}
 
 
-//	
-//	
-//	
-//	public List<MovieInfo> getRandomMoviesByGenre(int selectedGenre) throws Exception {
-//		Connection conn = getConnection();
-//		List<MovieInfo> movieList = dao.getRandomMoviesByGenre(conn,selectedGenre);
-//		Collections.shuffle(movieList);
-//		return movieList;
-//	}
-//	
-//	
-//	
-//	
+
+
 	
 	
 	
@@ -89,18 +68,16 @@ public class SimulationService {
 	}
 
 
-	
-	
-	
-	
-	
-	public String getRandomMoviePosterByGenre(int selectedGenre) {
+
+
+
+	public String getGenreName(int selectedGenre) {
 		Connection conn = getConnection();
-		String getRandomMoviePosterByGenre = null ;
+		String getGenreName = null ;
 		SimulationDao dao = new SimulationDao();
-		try {
+	try {
 			
-			getRandomMoviePosterByGenre  = dao.getRandomMoviePosterByGenre (conn, selectedGenre);
+		getGenreName  = dao.getGenreName (conn, selectedGenre);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -108,8 +85,9 @@ public class SimulationService {
 			close(conn);
 		}
 		
-		return getRandomMoviePosterByGenre;
+		return getGenreName;
 	}
+
 
 }
 

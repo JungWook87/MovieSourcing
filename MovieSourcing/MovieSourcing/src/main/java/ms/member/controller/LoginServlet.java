@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet{
 				
 				
 				
-				alertAndGo(resp, "로그인 성", req.getContextPath());
+				alertAndGo(resp, "로그인 성공", req.getContextPath());
 				
 				// 회원 정보 Session 세팅
 				session.setAttribute("loginMember", loginMember);

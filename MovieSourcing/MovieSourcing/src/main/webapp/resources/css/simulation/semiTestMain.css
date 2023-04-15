@@ -76,6 +76,7 @@ header > div:nth-child(3){
 }
 .test_main_img{
   margin-left: -100px;
+ 	 height: 700px;
 }
 .testpage_link{
     position: absolute; 
@@ -84,9 +85,9 @@ header > div:nth-child(3){
 .test_start_btn{
     
     cursor: pointer;
-    width: 650px;
+    width: 600px;
     height: 93px;
-   
+   	
     position: absolute;
     border-radius: 30px;
     text-align: center;
@@ -96,12 +97,12 @@ header > div:nth-child(3){
     box-shadow: none;
     background-color: rgb(226, 147, 139);
     font-weight: bold;
-    margin-top: 750px;
+    margin-top: 600px;
 }
 .test_start_btn_img{
     position: absolute;
     top: 14.5px;
-    left: 548.984px;
+    left: 500px;
     width: 64px;
     height: 64px;
     

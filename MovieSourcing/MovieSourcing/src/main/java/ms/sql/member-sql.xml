@@ -93,6 +93,13 @@
 	
 	
 	
+		<entry key="changeElseNoImg">
+		UPDATE MEMBER SET
+		MEM_NICK = ?,
+	
+		MEM_INTRO = ?
+		WHERE MEM_NO = ?
+	</entry>
 	
 	
 	

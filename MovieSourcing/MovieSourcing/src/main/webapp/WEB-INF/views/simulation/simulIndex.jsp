@@ -1,26 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-     <%@ page import="ms.movie.model.vo.MovieInfo" %>
-     
-     
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/semiTestMain.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/semiQue.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/semiAns.css"> 
     <link rel="stylesheet" href="${contextPath}/resources/css/simulation/animation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <script src="https://kit.fontawesome.com/0041fb1dcb.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+	 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+   
   
-    <title>øµ»≠ º∫«‚ ≈◊Ω∫∆Æ</title>
+    <title>ÏòÅÌôî ÏÑ±Ìñ• ÌÖåÏä§Ìä∏</title>
 </head>
 <body>
 
@@ -28,15 +25,15 @@
         <header>
 
             <div>
-                <a href="#"><img src="${contextPath}/resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
+               <a href="/MovieSourcing/main"><img src="${contextPath}/resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
             </div>
 
             <div>
                 <ul class="home-nav">
-                    <li><a href="#">»®</a></li>
-                    <li><a href="#">¿Â∏£ ∞Àªˆ</a></li>
-                    <li><a href="#">ƒøπ¬¥œ∆º</a></li>
-                    <li><a href="#">√ﬂ√µ Ω√πƒ∑π¿Ãº«</a></li>
+                       <li><a href="/MovieSourcing/main">Ìôà</a></li>
+                    <li><a href="#">Ïû•Î•¥ Í≤ÄÏÉâ</a></li>
+                    <li><a href="#">Ïª§ÎÆ§ÎãàÌã∞</a></li>
+                    <li><a href="#">Ï∂îÏ≤ú ÏãúÎÆ¨Î†àÏù¥ÏÖò</a></li>
                 </ul>
             </div>
 
@@ -44,13 +41,20 @@
 
                 <div class="search-box">
                 
-                <input type="text" class="search-txt" placeholder="øµ»≠¡¶∏Ò,∞®µ∂,πËøÏ" >
+                <input type="text" class="search-txt" placeholder="ÏòÅÌôîÏ†úÎ™©,Í∞êÎèÖ,Î∞∞Ïö∞" >
                 <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                 </div>
-
-                <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
-                <div><a href="#"><i class="fa-solid fa-user"></i></a></div>
-
+   <c:choose>
+						<c:when test="${ loginMember.memberId== null }">
+		                    <div><a href="${contextPath}/member/login"><i class="fa-solid fa-heart"></i></a></div>
+		                    <div><a href="${contextPath}/member/login"><i class="fa-solid fa-user"></i></a></div>
+						</c:when>
+						
+						<c:otherwise>
+							<div><a href="${contextPath}/member/MyPageEnter" ><i class="fa-solid fa-heart"></i></a></div>
+							<div> <a href="${contextPath}/member/MyPageEnter" ><i class="fa-solid fa-user"></i></a></div>
+						</c:otherwise>
+					</c:choose>
             </div>
 
         </header>
@@ -58,9 +62,9 @@
         <section class="main">
             <div class="test_main">
                
-                <img src="${contextPath}/resources/images/√ﬂ√µøµ»≠≈◊Ω∫∆Æ.png" class="test_main_img"  >
+               <img src="${contextPath}/resources/images/Ï∂îÏ≤úÏòÅÌôîÌÖåÏä§Ìä∏.png" class="test_main_img"  >
                 
-            <div class="test_start_btn" onclick="begin()">Ω√πƒ∑π¿Ãº« Ω√¿€<img src="${contextPath}/resources/images/play (1).png" class="test_start_btn_img"></div>
+             <div class="test_start_btn" onclick="begin()">START<img src="${contextPath}/resources/images/play (1).png" class="test_start_btn_img"></div>
         </div>
              
             
@@ -71,7 +75,7 @@
             
             <div class="test_page">
                 <div class="simulation_top">
-                    <span id="simul_count_num" ></span><span class="simul_total_num">/12</span>
+                    <span id="simul_count_num" ></span><span class="simul_total_num">/10</span>
                 </div>
              <div class="status">
                 <div class="statusBar">
@@ -88,69 +92,47 @@
             </div>
         
         </div>
-
-            
+      
        
         </section>
 
-
-        <section id="result">
-            <p class="main_Center">¥ÁΩ≈¿ª ¿ß«— ø¿¥√¿« øµ»≠¥¬??</p>
+              <section id="result">
+            <p class="main_Center">ÎãπÏã†ÏùÑ ÏúÑÌïú Ïò§ÎäòÏùò ÏòÅÌôîÎäî?</p>
             <div class="test_finall_main">
+            
                 <div class="arrow">
                 </div>
-               <% String posterUrl=(String)request.getAttribute("posterUrl");%> 
-
-
- 
-              <% MovieInfo movie= (MovieInfo)request.getAttribute("movie");%> 
-<%= movie %>
- 
-            
-
-          
-               
+           
                 <div class="resultParent">
-             <!--        <div class="resultText"></div>
-               <div class="resultname" id="resultSort">
-            
- -->
-                   
-            
+               </div>
  	
  			
- 			   <img src='${contextPath}${movie.moviePoster}'  id="movieImg"  alt="Movie Poster" width="300">
-               <!--  <div class="progressBarContainer" >
-			    <div class="progressBar"></div>
-					</div> -->
-
+ 			   <a href="${contextPath}/movieInfo?movieNo=${movie.movieNo}" id="movieImgEnter">
+ 			   <img src='${contextPath}${movie.moviePoster}'  width='300px' id="movieImg"  alt="Movie Poster" >
+ 			   </a>
                 <div class="resultImg" id="resultSort">
                     <div class="resultText" id="resultSort"></div>
-                <!-- <div class="resultDesc">
-
-                </div> -->
-                
+                  
             </div>
-               </div>
+            
                 <div class="arrow">
                 </div>
             </div>
 
         </section>
-        <script src="${contextPath}/resources/js/simulation/data.js" charset="utf-8"></script>
+  <script src="${contextPath}/resources/js/simulation/data.js" charset="utf-8"></script>
         <script src="${contextPath}/resources/js//simulation/start.js" charset="utf-8"></script>
      
 
 
 
-
     </main>
     <footer>
-        <p><a href="#">¿ÃøÎæ‡∞¸</a></p>
-        <p><a href="#">∞≥¿Œ¡§∫∏√≥∏ÆπÊƒß</a></p>
-        <p><a href="#">∞Ì∞¥ºæ≈Õ</a></p>
-        <p><a href="#">(¡÷)KH</a></p>
+        <p><a href="#">Ïù¥Ïö©ÏïΩÍ¥Ä</a></p>
+        <p><a href="#">Í∞úÏù∏Ï†ïÎ≥¥Ï≤òÎ¶¨Î∞©Ïπ®</a></p>
+        <p><a href="#">Í≥†Í∞ùÏÑºÌÑ∞</a></p>
+        <p><a href="#">(Ï£º)KH</a></p>
     </footer>
     
 </body>
-</html>
+</html></html>

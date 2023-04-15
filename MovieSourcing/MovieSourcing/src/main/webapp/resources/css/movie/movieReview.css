@@ -96,6 +96,10 @@ section {
     flex-direction: column;
 }
 
+.reviewbox * {
+
+}
+
 .review1 {
     display : flex;
     justify-content: space-between;
@@ -123,6 +127,7 @@ section {
 .reviewInfo {
     display : flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 #reviewName {
@@ -134,9 +139,10 @@ section {
     border-radius: 4px;
     border: 1px solid rgb(207, 200, 200);
     padding : 4px 8px;
+    margin-left: 5px;
 }
 
-#scoreLight {
+.scoreLight {
     margin: auto;
     margin-left: 20px;
     border-radius: 50%;
@@ -145,11 +151,14 @@ section {
     background-color: white;
 }
 
-#userScore {
+.userScore {
     margin: auto;
     margin-left: 4px;
 }
 
+#reviewContent{
+	word-break: break-all;
+}
 
 .navHeader {
     position: fixed;
@@ -194,5 +203,9 @@ section {
     font-size: 12px;
 }
 
-
+#profileImg {
+    border-radius: 50%;
+    font-size: 24px;
+    color: white;
+}
 

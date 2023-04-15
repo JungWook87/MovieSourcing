@@ -34,7 +34,7 @@ public class ReplyDAO {
 	}
 	
 
-	public int insertReply(Connection conn, Reply reply) throws Exception{
+	public int replyIUD(Connection conn, Reply reply, String mode) throws Exception{
 		int result = 0;
 
 		try {

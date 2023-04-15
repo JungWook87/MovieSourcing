@@ -145,4 +145,59 @@ public class MovieInfoService {
 
 
 
+	/** 영화정보창 리뷰 삽입 삭제
+	 * @param movieReview
+	 * @param mode
+	 * @return
+	 */
+	public int movieReviewIUD(MovieReview movieReview, String mode) {
+
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.movieReviewIUD(conn, movieReview, mode);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return result;
+	}
+
+
+
+	/** 영화 리뷰 더보기 리스트
+	 * @param movieNo
+	 * @return
+	 */
+	public List<MovieReview> movieReviewList(int movieNo) {
+		
+		List<MovieReview> movieReviewList = null;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			movieReviewList = dao.movieReviewList(conn, movieNo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		
+		return movieReviewList;
+	}
+
+
+
 }

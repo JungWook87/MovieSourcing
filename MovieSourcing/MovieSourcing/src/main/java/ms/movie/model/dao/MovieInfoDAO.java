@@ -20,6 +20,10 @@ import ms.movie.model.vo.MoviePeople;
 import ms.movie.model.vo.MovieRecommend;
 import ms.movie.model.vo.MovieReview;
 
+/**
+ * @author kjo63
+ *
+ */
 public class MovieInfoDAO {
 	
 	private Statement stmt;
@@ -260,6 +264,7 @@ public class MovieInfoDAO {
 				for(int j = 0; j < i; j++) {
 					if(randomNum[i] == randomNum[j]) {
 						i--;
+						break;
 					}
 				}
 				
@@ -330,6 +335,96 @@ public class MovieInfoDAO {
 		}
 		
 		return movieInfoCheck;
+	}
+
+	/** 영화정보창 리뷰 삽입 삭제
+	 * @param conn
+	 * @param movieReview
+	 * @param mode
+	 * @return
+	 */
+	public int movieReviewIUD(Connection conn, MovieReview movieReview, String mode) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			
+			if(mode.equals("insert")) {
+				String sql = prop.getProperty("movieReviewInsert");
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				pstmt.setString(3, movieReview.getReviewContent());
+				pstmt.setInt(4, movieReview.getReviewScore());
+				
+				result = pstmt.executeUpdate();
+				
+			} else if(mode.equals("update")) {
+				
+				String sql = prop.getProperty("movieReviewUpdate");
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(3, movieReview.getReviewContent());
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				
+				result = pstmt.executeUpdate();
+				
+			}else {
+				String sql = prop.getProperty("movieReviewDelete");
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, movieReview.getMovieNo());
+				pstmt.setInt(2, movieReview.getMemNo());
+				
+				result = pstmt.executeUpdate();
+				
+			}
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 영화 리뷰 더보기 리스트
+	 * @param conn
+	 * @param movieNo
+	 * @return
+	 */
+	public List<MovieReview> movieReviewList(Connection conn, int movieNo) throws Exception {
+
+		List<MovieReview> movieReviewList = new ArrayList<>();
+		
+		try {
+			
+			String sql = prop.getProperty("movieReviewList");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, movieNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int memNo = rs.getInt(1);
+				String reviewContent = rs.getString(2);
+				String reviewDate = rs.getString(3);
+				String movieTitle = rs.getString(4);
+				int reviewScore = rs.getInt(5);
+				String memPic = rs.getString(6);
+				String memNic = rs.getString(7);
+				
+				movieReviewList.add(new MovieReview(movieNo, memNo, reviewContent, reviewDate, movieTitle, reviewScore, memPic, memNic));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return movieReviewList;
 	}
 
 

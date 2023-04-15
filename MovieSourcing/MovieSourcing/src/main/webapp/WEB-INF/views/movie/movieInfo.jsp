@@ -188,26 +188,25 @@ ${movieInfo.moviePreview}
                     <div class="reviewContainer">
                         <div class="review1"> 
                             <span class="bold2">회원들의 리뷰</span> 
-                            <a href="#">더보기</a>
+                            <a href="${contextPath}/movieReviewList?movieNo=${movieInfo.movieNo}">더보기</a>
                         </div>
                         
                         <c:choose>
                         	<c:when test="${empty movieReview}">
                         		<h3 id="firstReview">첫 리뷰의 주인공이 되어보세요</h3>
-                        		<script>const movieReview = false; </script>
+                        		<script> movieReview = false; </script>
                         	</c:when>
                         	
                         	<c:otherwise>
-	                        	<c:forEach var="review" items="${movieReview}">
 	                        	<script>const movieReview = true;</script>
+	                        	<c:forEach var="review" items="${movieReview}">
 			                        <div class="reviewbox">
 			                            <div class="reviewInfo">
 			                                <div>
-			                                    <div>
+			                                    <div id="user">
 			                                    	<c:choose>
 			                                    		<c:when test="${empty review.memPic}">
-					                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg">
-					                                        </i>
+					                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg"></i>
 				                                        </c:when>
 				                                        
 				                                        <c:otherwise>
@@ -216,15 +215,30 @@ ${movieInfo.moviePreview}
 			                                        </c:choose>
 			                                        <span id="userName">${review.memNic}</span>
 			                                    </div>
-			                                    <div class="scoreLight"></div>
+			                                    <div class="scoreLight" style="background-color:springgreen"></div>
 			                               
 			                                    <div class="userScoreBox">
-			                                        <span class="userScore">${review.reviewScore}</span>	
+			                                        <span class="userScore">${review.reviewScore / 2}</span>	
 			                                    </div>
 			                                </div>
-			                                <div>
-			                                    <span>${review.reviewDate}</span>
+			                                <div class="reviewDotImgWrapper"> 
+			                                <span  style="margin-right : 20px">${review.reviewDate}</span>
+			                                    <label>
+			                                   	 	<input id="reviewDotImg" type="checkbox"  value="${review.memNo}"
+			                                    	class="hidden_checkbox">
+			                                    	<i class="fa-solid fa-ellipsis-vertical" id="reviewDotImgI"></i>
+			                                    </label>
+				                    			<div id="popup_menu" >
+					                                <ul class="popup_main_menu">
+					                                    <!-- session 이용하여 회원 정보 일치시 수정 삭제 버튼 보이고 아니면 안보이게 -->
+					                                    <li><a href="movieReview?mode=update&movieNo=${movieInfo.movieNo}&memNo=${review.memNo}">수정</a></li>
+					                                    <li><a href="movieReview?mode=delete&comNo=${detail.comNo}">삭제</a></li>
+					                                    <li><a href="">신고</a></li>
+					                                </ul>
+					                            </div>
 			                                </div>
+			                                
+			                                
 			                            </div>
 			                            <div class="reviewContent">
 			                                <span id="reviewContent">

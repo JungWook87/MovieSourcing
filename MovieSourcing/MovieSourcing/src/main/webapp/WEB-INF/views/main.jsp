@@ -33,13 +33,13 @@
                 <div>
                     <ul class="home-nav">
                         <li><a href="main" id="homebutton">홈</a></li>
-                        <li><a href="list/msList" id="janrbutton">장르 검색</a></li>
+                        <li><a href="${contextPath}/msList" id="janrbutton">장르 검색</a></li>
                         <li><a href="MovieSourcing/boardList">커뮤니티</a></li>
                         <li><a href="simulation/simulEnter">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
                         <li><a href="main" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="list/msList" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="${contextPath}/msList" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                         <li><a href="MovieSourcing/boardList"><i class="fa-solid fa-comments"></i></a></li>
                         <li><a href="#"><i class="fa-solid fa-trophy"></i></a></li>
                     </ul>
@@ -79,7 +79,7 @@
 
                     </span>
                     <ul class="charts">
-                        <i class="fa-solid fa-1"></i><li><a href="${contextPath}/movieInfo?movieNo=1"><img src="resources/images/어벤져스1 포스터.jpg"></a></li>
+                        <i class="fa-solid fa-1"></i><li><a href="MovieSourcing/movieInfo?movieNo=1"><img src="resources/images/어벤져스1 포스터.jpg"></a></li>
                         <i class="fa-solid fa-2"></i><li><img src="resources/images/어스파2 포스터.jpg"></li>
                         <i class="fa-solid fa-3"></i><li><img src="resources/images/최종병기 활 포스터.jpeg"></li>
                         <i class="fa-solid fa-4"></i><li><img src="resources/images/트랜스포머 포스터.jpg"></li>

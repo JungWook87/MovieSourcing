@@ -125,7 +125,7 @@
                             </div>
                             <div class="scoreBox">
                                 <div id="scoreBar">
-                                    <div id="score" style="background-color: springgreen; color:black; width:10%"><span id="scoreComment">${movieInfo.movieScore}</span></div>
+                                    <div id="score"><span id="scoreComment">${movieInfo.movieScore}</span></div>
                                 </div>
                                 
                                 <form action="#" onsubmit="return submit_2('${loginMember.memberNo}','${movieInfo.movieNo}')">
@@ -139,7 +139,7 @@
 
                             </div>
                             <div class="writeBox">
-                                <button id="lifeMovie" type="button" style="background-color: rgb(41, 128, 185);">'인생영화'설정</button>
+                                <button id="lifeMovie">'인생영화'설정</button>
                                 <button id="reviewWrite" type="button">리뷰쓰기</button>
                             </div>
                             
@@ -178,7 +178,7 @@ ${movieInfo.moviePreview}
                                 <span id="director">${moviePeople.act3}</span>
                                 <span>배우</span>
                             </a>
-                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.act4No}">
+                            <a class="actorbox" href="actorMovie?actorNo=${moviePeople.ac41No}">
                                 <div><img src="${contextPath}${moviePeople.act4Picture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.act4}</span>
                                 <span>배우</span>
@@ -194,12 +194,11 @@ ${movieInfo.moviePreview}
                         <c:choose>
                         	<c:when test="${empty movieReview}">
                         		<h3 id="firstReview">첫 리뷰의 주인공이 되어보세요</h3>
-                        		<script>const movieReview = false; </script>
                         	</c:when>
                         	
                         	<c:otherwise>
 	                        	<c:forEach var="review" items="${movieReview}">
-	                        	<script>const movieReview = true;</script>
+	                        	
 			                        <div class="reviewbox">
 			                            <div class="reviewInfo">
 			                                <div>
@@ -216,10 +215,10 @@ ${movieInfo.moviePreview}
 			                                        </c:choose>
 			                                        <span id="userName">${review.memNic}</span>
 			                                    </div>
-			                                    <div class="scoreLight"></div>
+			                                    <div id="scoreLight1"></div>
 			                               
 			                                    <div class="userScoreBox">
-			                                        <span class="userScore">${review.reviewScore}</span>	
+			                                        <span class="userScore">${review.reviewScore}</span>
 			                                    </div>
 			                                </div>
 			                                <div>
@@ -274,8 +273,7 @@ ${movieInfo.moviePreview}
                     <span class="star">
                         ★★★★★
                         <span>★★★★★</span>
-                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10"
-                        id="starScore">
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
                     </span>
                 </div>
             </div>
@@ -293,7 +291,7 @@ ${movieInfo.moviePreview}
                     <textarea name="review" id="reviewArea" spellcheck="false" ></textarea>
                 </div>
                 <div>
-                    <button type="button" id="reviewSubmit"><span>저 장</span></button>
+                    <button id="reviewSubmit"><span>저 장</span></button>
                 </div>
             </div>
         </div>

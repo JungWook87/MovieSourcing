@@ -576,46 +576,6 @@ public class MemberDAO {
 		
 		return result;
 	}
-
-
-
-	/** 회원의 인생 영화 삽입
-	 * @param conn
-	 * @param memNo
-	 * @param movieNo
-	 * @param mode 
-	 * @return
-	 */
-	public int lifeMovie(Connection conn, int memNo, int movieNo, String mode) throws Exception {
-		
-		int result = 0;
-		
-		try {
-			if(mode.equals("insert")) {
-				
-				String sql = prop.getProperty("lifeMovieInsert");
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, memNo);
-				pstmt.setInt(2, movieNo);
-				
-				result = pstmt.executeUpdate();
-				
-			} else {
-				
-				String sql = prop.getProperty("lifeMovieDelete");
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, memNo);
-				pstmt.setInt(2, movieNo);
-				
-				result = pstmt.executeUpdate();
-			}
-			
-		} finally {
-			close(pstmt);
-		}
-		
-		return result;
-	}
 	
 	
 	

@@ -28,6 +28,41 @@ public class mlistService {
 		
 		return mlist;
 	}
+
+
+
+	public List<movie> Searchjanr(String input1) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<movie> mlist = dao.searchjanr(conn, input1);
+		
+		close(conn);
+		
+		return mlist;
+	}
 	
+	public List<movie> Searchnation(String input2) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<movie> mlist = dao.searchnation(conn, input2);
+		
+		close(conn);
+		
+		return mlist;
+	}
+	
+	
+	public List<movie> Searchgrade(String input3) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<movie> mlist = dao.searchgrade(conn, input3);
+		
+		close(conn);
+		
+		return mlist;
+	}
 
 }

@@ -221,7 +221,7 @@ document.getElementsByClassName("fa-regular fa-pen-to-square")[0].addEventListen
 });
 
 
-
+/*
 // 프로필 이미지 옆 x버튼 클릭 시
 document.getElementById("delete-image").addEventListener("click", function(){
     // 0 : 안눌러짐
@@ -242,3 +242,4 @@ document.getElementById("delete-image").addEventListener("click", function(){
 
 });
 
+*/

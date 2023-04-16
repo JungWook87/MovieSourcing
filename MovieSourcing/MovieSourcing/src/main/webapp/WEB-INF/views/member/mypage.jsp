@@ -21,6 +21,8 @@
 </head>
 
 <body>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+
     <div id="movieSourcing">
         <div id="layout">
             <div id="root">
@@ -171,7 +173,7 @@
 									<c:forEach var="lifeMovie" items="${lifeMovieList}">
 										<div id="posterBox">
 											<img src="${contextPath}${lifeMovie.moviePoster}" id="poster"
-											onclick="location.href='${contextPath}/movie/movieInfo?movieNo=${lifeMovie.movieNo}'">
+											onclick="location.href='${contextPath}/movieInfo?movieNo=${lifeMovie.movieNo}'">
 										</div>
 									</c:forEach>
 								</div>
@@ -189,7 +191,10 @@
 
     </div>
 
+   <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+   
     <script src="${contextPath}/resources/js/member/myPage.js"></script>
+    
     
 </body>
 </html>

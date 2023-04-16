@@ -62,7 +62,7 @@
 						
 						<c:otherwise>
 							<div><a href="member/MyPageEnter" ><i class="fa-solid fa-heart"></i></a></div>
-							<div> <a href="member/MyPageEnter" ><i class="fa-solid fa-user"></i></a></div>
+							<div> <a href="member/MyPageEnter?memberNo=${loginMember.memberNo}" ><i class="fa-solid fa-user"></i></a></div>
 						</c:otherwise>
 					</c:choose>
                 </div>
@@ -154,13 +154,13 @@
                         <div>${v.movieTitle}</div>
                         <div>
                             <div class="user">
-                                <img src="${v.memImg}" id="userimg1" class="userimg">
+                                <img src="${contextPath}${v.memImg}" id="userimg1" class="userimg">
                                 <span class="userInfo">
                                     <span class="userNick" id="userNick1">${v.memNick}</span>
                                     <span class="date" id="date1">${v.comDate}</span>
                                 </span>
                             </div>
-                            <p>${v.comContent}</p>
+                            <p class="communityDetail">${v.comContent}</p>
                         </div>
                         
                     </div>
@@ -174,14 +174,14 @@
 
                     <div class="review-content">
                     <c:forEach var="v" items="${result.reviewList}" varStatus="vs">
-                        <div>
+                        <div style="overflow: hidden;">
                             <div class="r-user">
-                                <img src="${v.memImg}" class="userimg2">
+                                <img src="${contextPath}${v.memImg}" class="userimg2">
                                 <span>${v.memNick}</span>
                             </div>
                             <span>${v.movieTitle}</span>
                             <div>${v.reviewScore}</div>
-                            <span>${v.reviewContent}</span>
+                            <span class="reviewContent">${v.reviewContent}</span>
 
                         </div>
                     </c:forEach>

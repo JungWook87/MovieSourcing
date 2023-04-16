@@ -42,7 +42,7 @@
                         
                         <c:forEach var="wishList" items="${wishList}">
                         <div class="watched" style=" cursor: pointer;" 
-	                        onclick="location.href='${contextPath}/movie/movieInfo?movieNo=${wishList.movieNo}'">
+	                        onclick="location.href='${contextPath}/movieInfo?movieNo=${wishList.movieNo}'">
                             <div class="watchedInfo" >
                                 <img src="${contextPath}${wishList.moviePoster}" class="watchedImg" alt="">
                                 <div class="watchedInfoWrap">

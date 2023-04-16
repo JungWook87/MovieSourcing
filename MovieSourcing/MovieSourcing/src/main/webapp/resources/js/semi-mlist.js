@@ -222,3 +222,40 @@ console.log("상태코드 : " + request.status); // 404, 500
 return false;
 
 }
+
+
+function searchData() {
+	console.log($('.search-txt').val());
+	
+	$.ajax({
+		
+		url : "SearchData",
+		data : {"input4" : $('.search-txt').val()},
+		type : "GET",
+		datatype: "JSON",
+		
+		success : function(mlist) {
+			
+			console.log(mlist);
+			
+		let str = JSON.parse(mlist);
+		console.log(str);
+		let res = "";
+		for(let i=0; i<str.length; i++) {
+			
+			res += "<div><a href='movieInfo' id='contents'><img src = '/MovieSourcing"+str[i].moviePoster+"' width='130px'><br><h3>"+str[i].movieTitle+"</h3></a><br><p>"+str[i].national+"/"+str[i].movieGrade+"</p></div>";
+		}
+	
+		$('.mlist2').html(res);
+       
+        },
+        
+         error: function(request, status, error) {
+			console.log("ajax 에러발생");
+			console.log("상태코드 : " + request.status); // 404, 500
+        }		
+	})
+};
+
+
+

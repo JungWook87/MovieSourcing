@@ -10,18 +10,18 @@ const movieScore = document.getElementsByClassName("movieScore");
 		let userScore = movieScore[i].innerText;
 		var score = Number(userScore);
 		
-		if (score >= 10.0){
-		    scoreCircle[i].style.color = "springgreen";
-		    movieScore[i].style.color = "springgreen";
-		} else if (score >= 5.5 && score < 7.5) {
-		    scoreCircle[i].style.color = "yellow";
-		    movieScore[i].style.color = "yellow";
-		} else if ( score >= 3.5 && score < 5.5 ) {
-		    scoreCircle[i].style.color = "white";
+		if(score < 3.5){
+			scoreCircle[i].style.color = "red";
+		    movieScore[i].style.color = "red";	
+		} else if(3.5 <= score && score < 5.5){
+			scoreCircle[i].style.color = "white";
 		    movieScore[i].style.color = "white";
-		} else if (score < 3.5) {
-		    scoreCircle[i].style.color = "red";
-		    movieScore[i].style.color = "red";
+		} else if(5.5 <= score && score < 7.5){
+			scoreCircle[i].style.color = "yellow";
+		    movieScore[i].style.color = "yellow";
+		} else{
+			scoreCircle[i].style.color = "springgreen";
+		    movieScore[i].style.color = "springgreen";
 		}
 		
 	}

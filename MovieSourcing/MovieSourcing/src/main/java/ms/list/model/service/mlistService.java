@@ -65,4 +65,19 @@ public class mlistService {
 		return mlist;
 	}
 
+	
+public List<movie> Searchdata(String input4) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<movie> mlist = dao.searchdata(conn, input4);
+		
+		close(conn);
+		
+		return mlist;
+	}
+	
+	
+	
+	
 }

@@ -12,6 +12,9 @@ span {
     color: white;
 }
 
+body{
+	background-color: black;
+}
 
 /* 회원가입 인풋 설정 */
 input {

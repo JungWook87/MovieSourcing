@@ -41,14 +41,7 @@
 	                                <div class="moviewrap">
 	                                <div id="user">
 	                                    <div class="poster">
-	                                    	<c:choose>
-	                                    		<c:when test="${empty movieReviewList.memPic}">
-	                                        		<i class="fa-solid fa-face-laugh-squint" id="profileImg"></i>
-	                                        	</c:when>
-	                                        	<c:otherwise>
-	                                        		<img src="${contextPath}${movieReviewList.memPic}" id="poster">
-	                                        	</c:otherwise>	
-	                                        </c:choose>
+											<img src="${contextPath}${movieReviewList.memPic}" id="poster">
 	                                    </div>
 	                                </div>    
 	                                    <div class="reviewName">

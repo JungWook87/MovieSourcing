@@ -204,15 +204,7 @@ ${movieInfo.moviePreview}
 			                            <div class="reviewInfo">
 			                                <div>
 			                                    <div id="user">
-			                                    	<c:choose>
-			                                    		<c:when test="${empty review.memPic}">
-					                                        <i class="fa-solid fa-face-laugh-squint" id="profileImg"></i>
-				                                        </c:when>
-				                                        
-				                                        <c:otherwise>
-				                                        	<img src="${contextPath}${review.memPic}">
-				                                        </c:otherwise>
-			                                        </c:choose>
+				                                    <img src="${contextPath}${review.memPic}">
 			                                        <span id="userName">${review.memNic}</span>
 			                                    </div>
 			                                    <div class="scoreLight" style="background-color:springgreen"></div>

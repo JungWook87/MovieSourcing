@@ -39,7 +39,7 @@ public class SignUp2Servlet extends HttpServlet{
 			String root = getServletContext().getRealPath("/");
 			
 			
-			String folderPath = "resources/images/memberProfile/";
+			String folderPath = "/resources/images/memberProfile/";
 			
 			
 			String filePath = root + folderPath;

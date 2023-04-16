@@ -98,7 +98,6 @@
                     <section class="under">
 
                     </section>
-                    <button id="logout">로그아웃</button>
                    
                 </main>
             </div>

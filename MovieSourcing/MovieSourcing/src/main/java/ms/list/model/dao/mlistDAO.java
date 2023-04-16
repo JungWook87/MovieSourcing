@@ -211,5 +211,46 @@ public List<movie> searchgrade(Connection conn, String input3) throws Exception 
 	return mlist;
 }
 
+
+public List<movie> searchdata(Connection conn, String input4) throws Exception {
+	
+	List<movie> mlist = new ArrayList<>();
+	
+	try {
+		
+		int num = 0;		
+		
+		String sql = prop.getProperty("searchdata");
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, input4);
+		
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {		
+			
+			int movieNo = rs.getInt("MOVIE_NO");
+			String movieTitle = rs.getString("MOVIE_TITLE");
+			String movieGrade = rs.getString("MOVIE_GRADE");
+			String national = rs.getString("MOVIE_NATIONAL");
+			String moviePoster = rs.getString("MOVIE_POSTER");
+			String movieJanr = rs.getString("GENRE");
+			
+			mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster, movieJanr));		
+		}
+		
+	}finally {
+		close(pstmt);
+		close(rs);
+		
+	}
+	
+	return mlist;
+}
+
+
+
+
 	
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import ms.member.model.service.MemberService;
 import ms.member.model.vo.Member;
 import oracle.net.aso.c;
@@ -42,7 +44,7 @@ public class MyProfileChangeServlet extends HttpServlet{
 			String root = getServletContext().getRealPath("/");
 			
 			
-			String folderPath = "resources/images/memberProfile/";
+			String folderPath = "/resources/images/memberProfile/";
 			
 			
 			String filePath = root + folderPath;

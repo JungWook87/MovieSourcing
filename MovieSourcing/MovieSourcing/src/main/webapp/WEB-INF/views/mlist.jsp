@@ -18,7 +18,7 @@
 
           
             <div>
-                <a href="#"><img src="${contextPath}/resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
+                <a href="${contextPath}"><img src="${contextPath}/resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
             </div>
 
             <div>
@@ -40,7 +40,7 @@
 
                 <div class="search-box">
             
-                <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
+                <input type="text" class="search-txt " onkeypress="if(event.keyCode == 13){searchData();}" placeholder="영화제목,감독,배우" >
                 <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                 </div>
 

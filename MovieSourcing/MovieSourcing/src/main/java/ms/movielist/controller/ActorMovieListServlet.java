@@ -16,7 +16,7 @@ import ms.movielist.model.service.*;
 import ms.movielist.model.vo.ActorInfo;
 import ms.movielist.model.vo.MovieListInfo;
 
-@WebServlet("/MovieSourcing/actorMovie")
+@WebServlet("/actorMovie")
 public class ActorMovieListServlet extends HttpServlet{
 	
 	@Override

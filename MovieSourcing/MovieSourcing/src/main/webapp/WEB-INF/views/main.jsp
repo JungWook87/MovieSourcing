@@ -34,13 +34,13 @@
                 <div>
                     <ul class="home-nav">
                         <li><a href="${contextPath}" id="homebutton">홈</a></li>
-                        <li><a href="#" id="janrbutton">장르 검색</a></li>
+                        <li><a href="${contextPath}/msList" id="janrbutton">장르 검색</a></li>
                         <li><a href="${contextPath}/boardList">커뮤니티</a></li>
                         <li><a href="${contextPath}/simulation/simulEnter">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
                         <li><a href="${contextPath}" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="#" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="${contextPath}/msList" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                         <li><a href="${contextPath}/boardList"><i class="fa-solid fa-comments"></i></a></li>
                         <li><a href="${contextPath}/simulation/simulEnter"><i class="fa-solid fa-trophy"></i></a></li>
                     </ul>
@@ -179,7 +179,7 @@
                                 <img src="${contextPath}${v.memImg}" class="userimg2">
                                 <span>${v.memNick}</span>
                             </div>
-                            <span>${v.movieTitle}</span>
+                            <span class="reviewTitle">${v.movieTitle}</span>
                             <div>${v.reviewScore}</div>
                             <span class="reviewContent">${v.reviewContent}</span>
 

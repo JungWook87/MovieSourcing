@@ -11,7 +11,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/movie/actorMovie.css">
+    
+    <link rel="stylesheet" href="${contextPath}/resources/css/movie/movieList.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
@@ -50,7 +51,7 @@
                         <div id="selectedMovie">
                             <c:forEach var="movieListInfo" items="${movieListInfo}">
                    			<div id="listBox">
-                                <a href="#" id="movieListLink">
+                                <a href="${contextPath}/movieInfo?movieNo=${movieListInfo.movieNo}" id="movieListLink">
                                     <div>
                                         <img src="${contextPath}${movieListInfo.moviePoster}" alt="#" id="listPoster">
                                     </div>
@@ -59,8 +60,8 @@
                                     </div>
                                     <div>
                                         <div>
-                                            <i class="fa-solid fa-circle" id="scoreCircle"></i>
-                                            <span id="movieScore">${movieListInfo.movieScore}</span>    
+                                            <i class="fa-solid fa-circle" class="scoreCircle"></i>
+                                            <span class="movieScore">${movieListInfo.movieScore}</span>    
                                         </div>
                                         <div>
                                             <span><i class="fa-solid fa-ellipsis-vertical" id="menu"></i></span>
@@ -84,7 +85,7 @@
     </div>   
     
     
-    <script src="../js/movieList.js"></script>
+    <script src="${contextPath}/resources/js/movie/movieList.js"></script>
     
 </body>
 </html>

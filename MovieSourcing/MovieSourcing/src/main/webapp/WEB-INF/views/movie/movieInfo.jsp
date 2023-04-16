@@ -158,7 +158,7 @@ ${movieInfo.moviePreview}
                         <div class="everyone">
                             <!-- 개별 배우 박스 -->
                             
-                            <a class="actorbox" href="pdMovie?pdNo=?${moviePeople.pdNo}">
+                            <a class="actorbox" href="pdMovie?pdNo=${moviePeople.pdNo}">
                                 <div><img src="${contextPath}${moviePeople.pdPicture}" id="directorBox"></div>
                                 <span id="director">${moviePeople.pdName}</span>
                                 <span>감독</span>

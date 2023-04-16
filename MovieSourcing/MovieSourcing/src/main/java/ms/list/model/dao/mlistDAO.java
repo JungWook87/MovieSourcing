@@ -73,7 +73,7 @@ public class mlistDAO {
 
 
 
-	public List<movie> searchjanr(Connection conn, String input) throws Exception {
+	public List<movie> searchjanr(Connection conn, String input1) throws Exception {
 		
 		List<movie> mlist = new ArrayList<>();
 		
@@ -87,14 +87,22 @@ public class mlistDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, input);
+			pstmt.setString(1, input1);
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				mlist = (List<movie>) new movie();
+			while(rs.next()) {
 				
 				
+				
+				int movieNo = rs.getInt("MOVIE_NO");
+				String movieTitle = rs.getString("MOVIE_TITLE");
+				String movieGrade = rs.getString("MOVIE_GRADE");
+				String national = rs.getString("MOVIE_NATIONAL");
+				String moviePoster = rs.getString("MOVIE_POSTER");
+				String movieJanr = rs.getString("GENRE");
+				
+				mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster, movieJanr));
 				
 				
 				
@@ -103,12 +111,105 @@ public class mlistDAO {
 			}
 			
 		}finally {
+			close(pstmt);
+			close(rs);
+			
+		}
+		
+		return mlist;
+	}
+	
+	
+public List<movie> searchnation(Connection conn, String input2) throws Exception {
+		
+		List<movie> mlist = new ArrayList<>();
+		
+		try {
+			
+			int num = 0;
+			
+			
+			
+			String sql = prop.getProperty("searchNational");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, input2);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				
+				
+				int movieNo = rs.getInt("MOVIE_NO");
+				String movieTitle = rs.getString("MOVIE_TITLE");
+				String movieGrade = rs.getString("MOVIE_GRADE");
+				String national = rs.getString("MOVIE_NATIONAL");
+				String moviePoster = rs.getString("MOVIE_POSTER");
+				String movieJanr = rs.getString("GENRE");
+				
+				mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster, movieJanr));
+				
+				
+				
+				
+				
+			}
+			
+		}finally {
+			close(pstmt);
+			close(rs);
+			
+		}
+		
+		return mlist;
+	}
+public List<movie> searchgrade(Connection conn, String input3) throws Exception {
+	
+	List<movie> mlist = new ArrayList<>();
+	
+	try {
+		
+		int num = 0;
+		
+		
+		
+		String sql = prop.getProperty("searchGrade");
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, input3);
+		
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			
+			
+			
+			int movieNo = rs.getInt("MOVIE_NO");
+			String movieTitle = rs.getString("MOVIE_TITLE");
+			String movieGrade = rs.getString("MOVIE_GRADE");
+			String national = rs.getString("MOVIE_NATIONAL");
+			String moviePoster = rs.getString("MOVIE_POSTER");
+			String movieJanr = rs.getString("GENRE");
+			
+			mlist.add(new movie(movieNo, movieTitle, movieGrade, national, moviePoster, movieJanr));
+			
+			
+			
 			
 			
 		}
 		
-		return null;
+	}finally {
+		close(pstmt);
+		close(rs);
+		
 	}
 	
+	return mlist;
+}
+
 	
 }

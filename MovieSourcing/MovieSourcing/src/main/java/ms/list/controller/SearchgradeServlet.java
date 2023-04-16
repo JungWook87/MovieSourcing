@@ -3,34 +3,40 @@ package ms.list.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import ms.list.model.service.mlistService;
 import ms.list.model.vo.movie;
 
-
-@WebServlet("/list/Search")
-public class SearchServlet extends HttpServlet {
-
+@WebServlet("/Searchgrade")
+public class SearchgradeServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		System.out.println("서블릿 들어오는거 체크");
+		
 		mlistService service = new mlistService();
 		
+		String input3 = req.getParameter("input3");
+			
 		try {
 			
-			List<movie> mlist = service.search();
 			
-			req.setAttribute("mlist", mlist);
+			List<movie> mlist = service.Searchgrade(input3);
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/mlist.jsp");
+			System.out.println(mlist);
 			
-			dispatcher.forward(req, resp);
+			new Gson().toJson(mlist, resp.getWriter());
+			
+		
+			
+		
 			
 			
 		}catch(Exception e) {
@@ -40,5 +46,5 @@ public class SearchServlet extends HttpServlet {
 		
 		
 	}
-	
+
 }

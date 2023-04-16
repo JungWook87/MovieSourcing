@@ -374,8 +374,12 @@ header  > div:nth-child(4){
 }
 .review-content span {
     color: white;
-
 }
+
+.reviewTitle{
+	color:red !important;
+}
+
 .r-user {
     display: flex;
     align-items: center;

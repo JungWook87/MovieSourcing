@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="${contextPath}/resources/css/movie/actorMovie.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
@@ -29,7 +30,7 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="#" class="backpage">
+                        <a href="javascript:window.history.back();" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -52,7 +53,7 @@
                            
                            <c:forEach var="movieListInfo" items="${movieListInfo}">
                            		<div id="listBox">
-                                <a href="#" id="movieListLink">
+                                <a href="${contextPath}/movieInfo?movieNo=${movieListInfo.movieNo}" id="movieListLink">
                                     <div>
                                         <img src="${contextPath}${movieListInfo.moviePoster}" alt="#" id="listPoster">
                                     </div>
@@ -61,8 +62,8 @@
                                     </div>
                                     <div>
                                         <div>
-                                            <i class="fa-solid fa-circle" id="scoreCircle"></i>
-                                            <span id="movieScore">${movieListInfo.movieScore}</span>    
+                                            <i class="fa-solid fa-circle" ></i>
+                                            <span class="movieScore">${movieListInfo.movieScore}</span>    
                                         </div>
                                         <div>
                                             <span><i class="fa-solid fa-ellipsis-vertical" id="menu"></i></span>
@@ -82,7 +83,7 @@
             </div>
         </div>
     </div>    
-    <script src="/js/본영화.js"></script>
+    <script src="${contextPath}/resources/js/movie/movieList.js"></script>
 
 </body>
 </html>

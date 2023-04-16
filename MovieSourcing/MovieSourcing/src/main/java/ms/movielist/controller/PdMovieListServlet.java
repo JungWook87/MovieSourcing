@@ -16,7 +16,7 @@ import ms.movielist.model.service.*;
 import ms.movielist.model.vo.MovieListInfo;
 import ms.movielist.model.vo.PdInfo;
 
-@WebServlet("/MovieSourcing/pdMovie")
+@WebServlet("/pdMovie")
 public class PdMovieListServlet extends HttpServlet{
 	
 	@Override

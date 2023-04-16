@@ -79,6 +79,8 @@ const movieScore = document.getElementById("scoreComment");
 
 
 
+
+
 document.getElementById("toggle1").addEventListener("click", function(){
         document.getElementById("submit1").click()
 });
@@ -242,103 +244,22 @@ if(!movieReview){
 } else{
 	
 	const userScore = document.getElementsByClassName("userScore");
-	const scoreLight = document.getElementsByClassName("scoreLight");
+	const scoreLight1 = document.getElementsByClassName("scoreLight");
+	var userScoreText = userScore.innerText;
+	var scoreNumber = Number(userScoreText);
 	
 	for(let i = 0; i < userScore.length; i++){
-
-	var userScoreText = userScore[i].innerText;
-	var scoreNumber = Number(userScoreText);
 		
 		if (scoreNumber >= 4.0){
-		    scoreLight[i].style.backgroundColor = "springgreen";
+		    scoreLight1.style.backgroundColor = "springgreen";
 		} else if (scoreNumber >= 3.0 && scoreNumber < 4.0) {
-		    scoreLight[i].style.backgroundColor = "yellow";
+		    scoreLight1.style.backgroundColor = "yellow";
 		} else if ( scoreNumber >= 2.0 && scoreNumber < 3.0 ) {
-		    scoreLight[i].style.backgroundColor = "white";
+		    scoreLight1.style.backgroundColor = "white";
 		} else if (scoreNumber < 2.0) {
-		    scoreLight[i].style.backgroundColor = "red";
+		    scoreLight1.style.backgroundColor = "red";
 		}
 	}
-}
-
-if(movieReview){
-	
-	const reviewDotImgWrapper = document.getElementsByClassName("reviewDotImgWrapper");
-	const reviewDotImgs = document.querySelectorAll("#reviewDotImg");
-	const popup_menus = document.querySelectorAll("#popup_menu");
-	
-	if(reviewDotImgWrapper.length == 1){
-		reviewDotImgs[0].addEventListener("click", function(){
-			
-			if(popup_menus[0].style.display == "none"){
-				popup_menus[0].style.display = "block";
-			}else{
-				popup_menus[0].style.display = "none";
-			}
-			
-			console.log("첫번째 닷 클릭됨");
-	})
-		
-		
-		
-	} else if(reviewDotImgWrapper.length == 2){
-		reviewDotImgs[0].addEventListener("click", function(){
-			
-			if(popup_menus[0].style.display == "none"){
-				popup_menus[0].style.display = "block";
-			} else{
-				popup_menus[0].style.display = "none";
-			}
-			console.log("첫번째 닷 클릭됨");
-		})
-		
-		reviewDotImgs[1].addEventListener("click", function(){
-			if(popup_menus[1].style.display == "none"){
-				popup_menus[1].style.display = "block";
-			} else{
-				popup_menus[1].style.display = "none";
-			}
-			console.log("두번째 닷 클릭됨");
-		})
-		
-		
-		
-	} else{
-		reviewDotImgs[0].addEventListener("click", function(){
-			if(popup_menus[0].style.display == "none"){
-				popup_menus[0].style.display = "block";
-			} else{
-				popup_menus[0].style.display = "none";
-			}
-			console.log("첫번째 닷 클릭됨");
-			console.log("값:::" + this.value);
-			
-			
-		})
-		
-		reviewDotImgs[1].addEventListener("click", function(){
-
-			if(popup_menus[1].style.display == "none"){
-				popup_menus[1].style.display = "block";
-			} else{
-				popup_menus[1].style.display = "none";
-			}
-			console.log("두번째 닷 클릭됨")
-		})
-		
-		reviewDotImgs[2].addEventListener("click", function(){
-
-			if(popup_menus[2].style.display == "none"){
-				popup_menus[2].style.display = "block";
-			} else{
-				popup_menus[2].style.display = "none";
-			}
-			console.log("세번째 닷 클릭됨")
-		})
-		
-	}
-	
-	
 }
 
 
@@ -389,15 +310,6 @@ $("#reviewSubmit").on("click", function(){
 		}
 	})
 })
-
-
-
-
-
-
-
-
-
 
 
 // 별점 모달

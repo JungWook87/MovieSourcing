@@ -1,19 +1,15 @@
-const userScore = document.getElementsByClassName("userScore");
-const scoreLight = document.getElementsByClassName("scoreLight");
 
-for(let i = 0; i < userScore.length; i++){
+const scoreLight = document.getElementById("scoreLight");
+var userScore = document.getElementById("userScore").innerText;
+var score = Number(userScore);
 
-	var userScoreText = userScore[i].innerText;
-	var scoreNumber = Number(userScoreText);
-	
-	if (scoreNumber >= 4.0){
-	    scoreLight[i].style.backgroundColor = "springgreen";
-	} else if (scoreNumber >= 3.0 && scoreNumber < 4.0) {
-	    scoreLight[i].style.backgroundColor = "yellow";
-	} else if ( scoreNumber >= 2.0 && scoreNumber < 3.0 ) {
-	    scoreLight[i].style.backgroundColor = "white";
-	} else if (scoreNumber < 2.0) {
-	    scoreLight[i].style.backgroundColor = "red";
-	}
-	
-}	
+
+if (score >= 4.0){
+    scoreLight.style.backgroundColor = "springgreen";
+} else if (score >= 3.0 && score < 4.0) {
+    scoreLight.style.backgroundColor = "yellow";
+} else if ( score >= 2.0 && score < 3.0 ) {
+    scoreLight.style.backgroundColor = "white";
+} else if (score < 2.0) {
+    scoreLight.style.backgroundColor = "red";
+}

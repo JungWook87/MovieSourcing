@@ -286,4 +286,81 @@ public class MovieListDAO {
 		return wishList;
 	}
 
+
+	public int deleteWatchedList(Connection conn, int movieNo, int memberNo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteWatchedList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deleteWishList(Connection conn, int movieNo, int memberNo) throws SQLException {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteWishList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, movieNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public List<MovieListInfo> hateList(Connection conn, int memberNo) throws SQLException {
+		// TODO Auto-generated method stub
+		List<MovieListInfo> hateList = new ArrayList<>();
+		
+		MovieListInfo temp = null;
+		
+		try {
+			String sql = prop.getProperty("hateList");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1,memberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				temp = new MovieListInfo(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getInt(5));
+				hateList.add(temp);			
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return hateList;
+	}
+	
+
 }

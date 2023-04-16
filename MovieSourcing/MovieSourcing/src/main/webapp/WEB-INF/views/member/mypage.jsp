@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+<!-- 관심없어요 리뷰 커뮤니티 찜 본영화 순 -->
+<c:set var="memberNo" value="${map.memberNo}"/>
+<c:set var="memberCount" value="${map.memberCount}"/>
+<c:set var="lifeMovieList" value="${map.lifeMovieList}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +19,7 @@
     
     <title>마이페이지</title>
 </head>
+
 <body>
     <div id="movieSourcing">
         <div id="layout">
@@ -34,16 +41,17 @@
                                         <c:if test="${empty loginMember.memberImg}">
                                             <span>
                                            
-                                              <img src="${contextPath}/resources/images/user.png" class="profileImg">
+                                                <i class="fa-solid fa-face-laugh-squint" title="프로필수">
+                                                </i>
      										
-                                           
+                                            
                                             </span>
                                             </c:if>
                                             
                                             <c:if test="${!empty loginMember.memberImg}">
                                             <span>
                                            
-                                                 <img src="${contextPath}/${loginMember.memberImg}" class="profileImg">
+                                                
      										
                                             
                                             </span>
@@ -60,11 +68,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="userMenu">
-                                     
-                                        <a class="fa-regular fa-pen-to-square" href="myPagechangeEnter"></a>
-                                        <a class="fa-solid fa-right-to-bracket" href="logout"></a>
-                                    </div>
+                                    <c:if test="${memberNo eq loginMember.memberNo}">
+	                                    <div id="userMenu">
+	                                        <a class="fa-regular fa-pen-to-square" href="myPagechangeEnter"></a>
+	                                        <a class="fa-solid fa-right-to-bracket" href="logout"></a>
+	                                    </div>
+                                    </c:if>
                                    
                                 </div>
                                 <div id="introduceBox">
@@ -74,12 +83,12 @@
                                         default
                                    
                                     </span>
-                                      </c:if>
-                              <c:if test="${!empty loginMember.memberIntro}">             
+                        </c:if>
+                        <c:if test="${!empty loginMember.memberIntro}">             
                                     <span id="introduceSpan">
          		                        ${loginMember.memberIntro}
                                     </span>
-                                      </c:if>
+                        </c:if>
                                 </div>
                             </div>
 
@@ -89,35 +98,40 @@
                     <!-- 카운트 -->
                     <section class="contents-wrap">
                         <div class="profile-count-container">
-                            <a href="${contextPath}/movielist/wishList?memberNo=${loginmember.memberNo}" >
-                                <span id="wannaseeCount" class="countSpan">0</span>
-                                <span>찜</span>
+                            <a href="${contextPath}/movielist/wishList?memberNo=${memberNo}" >
+                                <span id="wannaseeCount" class="countSpan">${map.memberCount[3].count}</span>
+                                <span>찜 영화</span>
                             </a>
-                            <a href="${contextPath}/movielist/watchedList?memberNo=${loginmember.memberNo}">
-                                <span id="watchedCount" class="countSpan">0</span>
+                            <a href="${contextPath}/movielist/watchedList?memberNo=${memberNo}">
+                                <span id="watchedCount" class="countSpan">${map.memberCount[4].count}</span>
                                 <span>본 영화</span>
                             </a>
-                            <a href="#" >
-                                <span id="lifeMovieCount" class="countSpan">0</span>
-                                <span>인생영화</span>
+                            <a href="${contextPath}/movielist/hateList?memberNo=${memberNo}" >
+                                <span id="hateMovie" class="countSpan">${map.memberCount[0].count}</span>
+                                <span>관심없어요<span class="fa-solid fa-circle-info" id="infoMark" title="관심없는 장르를 제외해줍니다."></span></span>
+                                
                             </a>
                            
                         </div>
 
                         <div class="profile-container2">
-                            <div class="profile-container-box">
-                                <a href="#">내가 쓴 리뷰</a>
-                                <a href="#"><span id="reviewCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
+                            <div class="profile-container-box"  style=" cursor: pointer;" 
+                            onclick="location.href='${contextPath}/movielist/reviewList?memberNo=${memberNo}'">
+                                <a href="#">작성한 리뷰</a>
+                                <a href="#">
+                                <span id="reviewCount">${map.memberCount[1].count}</span> <i class="fa-solid fa-chevron-right" id="arrow"></i>
+                                </a>
                             </div>
                             <hr id="boxLine" class="boxline" color="gray">
-                            <div class="profile-container-box">
+                            <div class="profile-container-box" style=" cursor: pointer;" 
+                            onclick="location.href='${contextPath}/movielist/communityList?memberNo=${memberNo}'">
                                 <a href="#">커뮤니티 작성글</a>
-                                <a href="#"><span id="communityCount">0</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
+                                <a href="#"><span id="communityCount">${map.memberCount[2].count}</span> <i class="fa-solid fa-chevron-right" id="arrow"></i></a>
                             </div>
                             
-                            <hr id="boxLine2" class="boxline" color="gray">
+                           <!--  <hr id="boxLine2" class="boxline" color="gray">
                             
-                            <!-- 개인창을 벗어나면 display none 으로 제어 -->
+                            개인창을 벗어나면 display none 으로 제어
                             <div class="profile-container-box" id="unlikeBox">
                                 <div>
                                     <a href="#">관심없어요</a>
@@ -128,7 +142,7 @@
                                     <div class="genreDiv"><span class="genre">외국영화</span></div>
                                     <div class="genreDiv"><span class="genre">독립영화</span></div>
                                 </a>
-                            </div>  
+                            </div>   -->
                         </div>
                         
                         <div class="lifemovie-container">
@@ -139,59 +153,37 @@
                                 <a href="#">관리</a>
                             </div>
                             <div class="lifemovie-bottom">
-
-                                <!-- 타인이 봤을때 없을 경우 -->
-                                <div class="lifemovie-empty-foreign">
-                                    <span>등록된 인생 영화가 없습니다.</span>
-                                </div>
-
-                                <!-- 개인이 봤을때 등록된 인생영화가 없을 경우  -->
-                                <div class="lifemovie-empty"><span>인생영화를 등록해주세요</span></div>
-                                <button class="lifemovie-button">'인생영화' 등록</button>
-                                
-                                <!-- 인생영화 div -->
-                                <!-- 등록된 인생영화 div append -->
-                                <div class="lifemovie-Imgbox"></div>
+							<c:if test="${ empty lifeMovieList }">
+							    <!-- 타인이 봤을때 없을 경우 -->
+							    <c:if test="${memberNo ne loginMember.memberNo }">
+	                                <div class="lifemovie-empty-foreign">
+	                                    <span>등록된 인생 영화가 없습니다.</span>
+	                                </div>
+                                </c:if>
+                                <c:if test="${memberNo eq loginMember.memberNo }">
+		                                <!-- 개인이 봤을때 등록된 인생영화가 없을 경우  -->
+	                                <div class="lifemovie-empty"><span>인생영화를 등록해주세요</span></div>
+	                                <a class="lifemovie-button">'인생영화' 등록</a>
+                                </c:if>
+							</c:if>
+							<c:if test="${ not empty lifeMovieList }">
+								<div id="lifeMovieBox">
+									<c:forEach var="lifeMovie" items="${lifeMovieList}">
+										<div id="posterBox">
+											<img src="${contextPath}${lifeMovie.moviePoster}" id="poster"
+											onclick="location.href='${contextPath}/movie/movieInfo?movieNo=${lifeMovie.movieNo}'">
+										</div>
+									</c:forEach>
+								</div>
+							</c:if>
+								
                             </div>
                             
                         </div>
-                        <hr color="gray" border-width="0.5em">
-                        <div class="wanttosee-container">
-                            <div class="wanttosee-top">
-                                <span>찜한영화</span>
-                                <a href="#">관리</a>
-                            </div>
-                            <div class="wanttosee-bottom">
-                                <div></div>
-                                <div class="wanttosee-empty"><span>찜한 영화목록이에요</span></div>
-                                
-                                
-                            </div>
-
-
-                        </div>
+                  
                     </section>
                 </main>
-                <header class="navHeader">
-                    <nav class="nav">
-                        <a href="${contextPath}" class="home">
-                            <i class="fa-solid fa-house"></i>
-                            <span>홈</span>
-                        </a>
-                        <a href="#" class="community">
-                            <i class="fa-solid fa-comments"></i>
-                            <span>커뮤니티</span>
-                        </a>
-                        <a href="#" class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <span>탐색</span>
-                        </a>
-                        <a href="MyPageEnter" class="mypage">
-                            <i class="fa-solid fa-user"></i>
-                            <span>마이페이지</span>
-                        </a>
-                    </nav>
-                </header>
+               
             </div>
         </div>
 

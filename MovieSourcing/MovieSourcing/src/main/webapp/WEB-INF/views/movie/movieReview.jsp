@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +11,7 @@
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
-    <title>영화리뷰페이지</title>
+    <title>개인리뷰페이지</title>
 </head>
 <body>
     <div id="movieSourcing">
@@ -20,62 +19,136 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="javascript:window.history.back();" class="backpage">
+                        <a href="#" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
                 </header>
                 <main id="contents">
                     <div class="top">
-                        <span id="topName">${movieReviewList[0].movieTitle} 리뷰</span>
+                        <span id="topName">"kakao"님이 작성한 리뷰</span>
                     </div>
            
                     <div class="reviewContainer">
-                        <div class="review1">
-                            <span class="reviewCount">${fn:length(movieReviewList)}개의 리뷰</span> 
+                        <div class="review1"> 
+                            <span class="reviewCount">42개의 리뷰</span> 
+                            <a href="#">더보기</a>
                         </div>
-                        
-                        <c:forEach var="movieReviewList" items="${movieReviewList}">
-	                        <div class="reviewbox">
-	                            <div class="reviewInfo">
-	                                <div class="moviewrap">
-	                                <div id="user">
-	                                    <div class="poster">
-	                                    	<c:choose>
-	                                    		<c:when test="${empty movieReviewList.memPic}">
-	                                        		<i class="fa-solid fa-face-laugh-squint" id="profileImg"></i>
-	                                        	</c:when>
-	                                        	<c:otherwise>
-	                                        		<img src="${contextPath}${movieReviewList.memPic}" id="poster">
-	                                        	</c:otherwise>	
-	                                        </c:choose>
-	                                    </div>
-	                                </div>    
-	                                    <div class="reviewName">
-	                                    <div class="review">
-	                                            <span id="reviewName">${movieReviewList.memNic}</span>
-	                                        </div>
-	                                        <div class="reviewScoreBox">
-	                                            <span>작성자평가</span>
-	                                            <div class="scoreLight"></div>
-	                                            <div id="userScore">
-	                                                <span class="userScore">${movieReviewList.reviewScore / 2}</span>
-	                                            </div>
-	                                        </div>
-	                                        <div class="userControl"></div>
-	                                    </div>
-	                                </div>
-	                                <div>
-	                                    <span>${movieReviewList.reviewDate}</span>
-	                                </div>
-	                            </div>
-	                            <div class="reviewContent">
-	                                <span id="reviewContent">
-	                                   ${movieReviewList.reviewContent}
-	                                </span>
-	                            </div>
-	                        </div>
-                        </c:forEach>
+                        <div class="reviewbox">
+                            <div class="reviewInfo">
+                                <div class="moviewrap">
+                                    <div class="poster">
+                                        <img src="/이미지/감독영화.jpg" id="poster">
+                                    </div>
+                                    <div class="review">
+                                        <div class="reviewName">
+                                            <span id="reviewName">박쥐</span>
+                                        </div>
+                                        <div class="reviewScoreBox">
+                                            <span>작성자평가</span>
+                                            <div id="scoreLight"></div>
+                                            <div id="userScore">
+                                                <span id="userScore">4.5</span>
+                                            </div>
+                                        </div>
+                                        <div class="userControl"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>3주전</span>
+                                </div>
+                            </div>
+                            <div class="reviewContent">
+                                <span id="reviewContent">
+                                    원래는 4.0였다. 박찬욱 특유의 뒤틀린 유머나 수위 높은 장면이 없는 게 좋으면서도 아쉬워지는 부분이었는데, 안개가 울려퍼지자 우는 탕웨이를 보며 0.5를 매꾸기로 했다.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="reviewbox">
+                            <div class="reviewInfo">
+                                <div class="moviewrap">
+                                    <div class="poster">
+                                        <img src="/이미지/감독영화.jpg" id="poster">
+                                    </div>
+                                    <div class="review">
+                                        <div class="reviewName">
+                                            <span id="reviewName">박쥐</span>
+                                        </div>
+                                        <div class="reviewScoreBox">
+                                            <span>작성자평가</span>
+                                            <div id="scoreLight"></div>
+                                            <div id="userScore">
+                                                <span id="userScore">4.5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>3주전</span>
+                                </div>
+                            </div>
+                            <div class="reviewContent">
+                                <span id="reviewContent">
+                                    리뷰내용
+                                </span>
+                            </div>
+                        </div> <div class="reviewbox">
+                            <div class="reviewInfo">
+                                <div class="moviewrap">
+                                    <div class="poster">
+                                        <img src="/이미지/감독영화.jpg" id="poster">
+                                    </div>
+                                    <div class="review">
+                                        <div class="reviewName">
+                                            <span id="reviewName">박쥐</span>
+                                        </div>
+                                        <div class="reviewScoreBox">
+                                            <span>작성자평가</span>
+                                            <div id="scoreLight"></div>
+                                            <div id="userScore">
+                                                <span id="userScore">4.5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>3주전</span>
+                                </div>
+                            </div>
+                            <div class="reviewContent">
+                                <span id="reviewContent">
+                                    리뷰내용
+                                </span>
+                            </div>
+                        </div> <div class="reviewbox">
+                            <div class="reviewInfo">
+                                <div class="moviewrap">
+                                    <div class="poster">
+                                        <img src="/이미지/감독영화.jpg" id="poster">
+                                    </div>
+                                    <div class="review">
+                                        <div class="reviewName">
+                                            <span id="reviewName">박쥐</span>
+                                        </div>
+                                        <div class="reviewScoreBox">
+                                            <span>작성자평가</span>
+                                            <div id="scoreLight"></div>
+                                            <div id="userScore">
+                                                <span id="userScore">4.5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>3주전</span>
+                                </div>
+                            </div>
+                            <div class="reviewContent">
+                                <span id="reviewContent">
+                                    리뷰내용
+                                </span>
+                            </div>
+                        </div>
                         
                     </div>
                    

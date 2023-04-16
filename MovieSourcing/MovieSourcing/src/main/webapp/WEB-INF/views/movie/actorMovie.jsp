@@ -2,8 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="actorInfo" value="${map.pdInfo}"/>
+<c:set var="actorInfo" value="${map.actorInfo}"/>
 <c:set var="movieListInfo" value="${map.movieListInfo}"/>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
     crossorigin="anonymous"></script>
     
-    <title>감독영화</title>
+    <title>배우영화</title>
 </head>
 <body>
  
@@ -28,7 +29,7 @@
             <div id="root">
                 <header class="backpageHeader">
                     <div classs="backpageDiv">
-                        <a href="javascript:window.history.back();" class="backpage">
+                        <a href="#" class="backpage">
                             <i class="fa-solid fa-chevron-left" id="backpageimg"></i>
                         </a>
                     </div>
@@ -38,8 +39,8 @@
                 <main id="contents">
                 
                     <div class="actorInfo">
-                        <div><img src="${contextPath}${pdInfo.pdImg}" alt="" id="actorImg"></div>
-                        <div><span id="actorName">${pdInfo.pdName}</span></div>
+                        <div><img src="${contextPath}${actorInfo.actorImg}" id="actorImg"></div>
+                        <div><span id="actorName">${actorInfo.actorName}</span></div>
                     </div>
            
                     <div class="Container">
@@ -48,8 +49,9 @@
                             <a href="#"></a>
                         </div>
                         <div id="selectedMovie">
-                            <c:forEach var="movieListInfo" items="${movieListInfo}">
-                   			<div id="listBox">
+                           
+                           <c:forEach var="movieListInfo" items="${movieListInfo}">
+                           		<div id="listBox">
                                 <a href="#" id="movieListLink">
                                     <div>
                                         <img src="${contextPath}${movieListInfo.moviePoster}" alt="#" id="listPoster">
@@ -67,24 +69,20 @@
                                         </div>
                                         
                                     </div>
-                                    
                                 </a>
-                            </div>
-                            </c:forEach>
-                           
+                            	</div>
+                           </c:forEach>
+
 
                         </div>
                     </div>
                    
                 </main>
 
-               
             </div>
         </div>
-    </div>   
-    
-    
-    <script src="../js/movieList.js"></script>
-    
+    </div>    
+    <script src="/js/본영화.js"></script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="member" value="${map.member}" />
-<c:set var="watchedList" value="${map.watchedList}" />
+<c:set var="hateList" value="${map.hateList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/movie/watchedList.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/movie/hateList.css">
     
     <script src="https://kit.fontawesome.com/47910b9f42.js" crossorigin="anonymous"></script>
     
@@ -35,32 +35,27 @@
                 </header>
                 <main id="contents">
                     <div class="top">
-                        <span id="topName">"${member.memberNick}"님이 본 영화</span>
+                        <span id="topName">관심없어요</span>
                     </div>
            
                     <div class="Container">
                         <div class="infomation"> 
-                            <span class="Count">${fn:length(watchedList)}개의 영화를 봤어요</span> 
+                            <span class="Count">${fn:length(hateList)}개의 영화를 설정</span> 
                             <a href="#"></a>
                         </div>
-                        <c:forEach var="watchedList" items="${watchedList}">
+                        <c:forEach var="hateList" items="${hateList}">
 	                        <div class="watched" style=" cursor: pointer;" 
-	                        onclick="location.href='${contextPath}/movie/movieInfo?movieNo=${watchedList.movieNo}'">
+	                        onclick="location.href='${contextPath}/movie/movieInfo?movieNo=${hateList.movieNo}'">
 	                            <div class="watchedInfo">
-	                                <img src="${contextPath}${watchedList.moviePoster}" class="watchedImg" alt="">
+	                               
 	                                <div class="watchedInfoWrap">
-	                                    <div><span id="movieName">${watchedList.movieTitle}</span></div>
-	                                    <div><span id="date">${watchedList.movieOpen}</span></div>
-	                                    <div class="score"> 
-	                                        <span id="score">관객평점 <span id="movieScore">${watchedList.movieScore}</span>/10.0</span>
-	                                    </div>
+	                                    <div><span id="movieName">${hateList.movieTitle}</span></div>
+	                                 
 	                                </div>
 	                            </div>
 	                            <div id="watchedMenu">
 	                                <a class="fa-regular fa-circle-xmark" id="watchedDelete" 
-	                                href="${contextPath}/movielist/deleteWatchedList?movieNo=${watchedList.movieNo}&memberNo=${loginMember.memberNo}"></a>
-	
-	                                <a class="fa-solid fa-ellipsis-vertical" id="watchedDot"></a>
+	                                href="${contextPath}/movielist/deleteHateList?movieNo=${hateList.movieNo}&memberNo=${loginMember.memberNo}"></a>
 	                            </div>
 	                        </div>
                         </c:forEach>
@@ -89,7 +84,7 @@
     </div>
      -->
     
-    <script src="${contextPath}/resources/js/movie/watchedList.js"></script>
+    <script src="${contextPath}/resources/js/movie/hateList.js"></script>
 
 </body>
 </html>

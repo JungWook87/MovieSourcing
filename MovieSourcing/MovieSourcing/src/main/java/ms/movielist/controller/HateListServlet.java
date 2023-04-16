@@ -16,39 +16,37 @@ import ms.movielist.model.service.MovieListService;
 import ms.movielist.model.vo.ListMemberInfo;
 import ms.movielist.model.vo.MovieListInfo;
 
-@WebServlet("/movielist/wishList")
-public class WishListServlet extends HttpServlet{
-
+@WebServlet("/movielist/hateList")
+public class HateListServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("doget 통과");
+	
 		try {
-			
 			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
 			
 			MovieListService service = new MovieListService();
-
+			
 			ListMemberInfo member = service.memberName(memberNo);
 			
-			List<MovieListInfo> wishList = service.wishList(memberNo);
+			List<MovieListInfo> hateList = service.hateList(memberNo);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
-
+			
 			map.put("member", member);
-			map.put("wishList", wishList);
+			map.put("hateList", hateList);
 			
 			req.setAttribute("map", map);
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/wishList.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/hateList.jsp");
 			
 			dispatcher.forward(req, resp);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 		}
 	
 	}
+
 }

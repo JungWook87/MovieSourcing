@@ -19,6 +19,18 @@ import ms.movie.model.vo.MovieReview;
 public class MovieReviewServlet extends HttpServlet{
 	
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		MovieInfoService service = new MovieInfoService();
+		
+		int movieNo = Integer.parseInt(req.getParameter("movieNo"));
+		int ReviewermemNo = Integer.parseInt(req.getParameter("reviewerMemNo"));
+		String mode = req.getParameter("mode");
+		
+		int result = service.movieReviewUD(movieNo, ReviewermemNo, mode);
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		MovieInfoService service = new MovieInfoService();
@@ -38,7 +50,7 @@ public class MovieReviewServlet extends HttpServlet{
 		movieReview.setReviewContent(reviewContent);
 		movieReview.setReviewScore(reviewScore);
 		
-		int result = service.movieReviewIUD(movieReview, mode);
+		int result = service.movieReviewInsert(movieReview, mode);
 		
 		if(result != 0) {
 

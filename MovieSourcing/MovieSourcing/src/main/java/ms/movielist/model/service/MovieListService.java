@@ -143,47 +143,4 @@ public class MovieListService {
 		return wishList;
 	}
 
-
-	public int deleteWatchedList(int movieNo, int memberNo) throws SQLException {
-		// TODO Auto-generated method stub
-		
-		Connection conn = getConnection();
-		
-
-		int result = dao.deleteWatchedList(conn, movieNo, memberNo);
-		
-		if(result > 0)	commit(conn);
-		else			rollback(conn);
-		
-		close(conn);
-		return result;
-	}
-
-
-	public int deleteWishList(int movieNo, int memberNo) throws SQLException {
-		// TODO Auto-generated method stub
-		Connection conn = getConnection();
-		
-
-		int result = dao.deleteWishList(conn, movieNo, memberNo);
-		
-		if(result > 0)	commit(conn);
-		else			rollback(conn);
-		
-		close(conn);
-		return result;
-	}
-
-
-	public List<MovieListInfo> hateList(int memberNo) throws SQLException {
-		// TODO Auto-generated method stub
-		Connection conn = getConnection();
-		
-		List<MovieListInfo> hateList = null;
-		
-		hateList = dao.hateList(conn, memberNo);
-		
-		return hateList;
-	}
-
 }

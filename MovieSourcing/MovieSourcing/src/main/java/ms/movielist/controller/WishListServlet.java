@@ -16,14 +16,13 @@ import ms.movielist.model.service.MovieListService;
 import ms.movielist.model.vo.ListMemberInfo;
 import ms.movielist.model.vo.MovieListInfo;
 
-@WebServlet("/movielist/wishList")
+@WebServlet("/member/wishList")
 public class WishListServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println("doget 통과");
+	
 		try {
 			
 			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
@@ -41,7 +40,7 @@ public class WishListServlet extends HttpServlet{
 			
 			req.setAttribute("map", map);
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/wishList.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INf/views/movie/wishList.jsp");
 			
 			dispatcher.forward(req, resp);
 			

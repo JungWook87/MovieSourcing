@@ -150,7 +150,7 @@ public class MovieInfoService {
 	 * @param mode
 	 * @return
 	 */
-	public int movieReviewIUD(MovieReview movieReview, String mode) {
+	public int movieReviewInsert(MovieReview movieReview, String mode) {
 
 		int result = 0;
 		
@@ -158,7 +158,7 @@ public class MovieInfoService {
 		
 		try {
 			
-			result = dao.movieReviewIUD(conn, movieReview, mode);
+			result = dao.movieReviewInsert(conn, movieReview, mode);
 			
 			if(result != 0) commit(conn);
 			else rollback(conn);
@@ -196,6 +196,33 @@ public class MovieInfoService {
 		
 		
 		return movieReviewList;
+	}
+
+
+
+	public int movieReviewUD(int movieNo, int reviewermemNo, String mode) {
+		
+		int result = 0;
+		
+		Connection conn = getConnection();
+		
+		try {
+			
+			result = dao.movieReviewUD(conn, movieNo, reviewermemNo, mode);
+			
+			if(result != 0) commit(conn);
+			else rollback(conn);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		
+		
+		return result;
 	}
 
 

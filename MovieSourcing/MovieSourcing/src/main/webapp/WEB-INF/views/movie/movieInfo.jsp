@@ -231,8 +231,8 @@ ${movieInfo.moviePreview}
 				                    			<div id="popup_menu" >
 					                                <ul class="popup_main_menu">
 					                                    <!-- session 이용하여 회원 정보 일치시 수정 삭제 버튼 보이고 아니면 안보이게 -->
-					                                    <li><a href="movieReview?mode=update&movieNo=${movieInfo.movieNo}&memNo=${review.memNo}">수정</a></li>
-					                                    <li><a href="movieReview?mode=delete&comNo=${detail.comNo}">삭제</a></li>
+					                                    <li><a href="movieReview?mode=update&movieNo=${movieInfo.movieNo}&memNo=${review.memNo}" method="POST">수정</a></li>
+					                                    <li><a href="#" onclick="reviewDelete('${review.movieNo}', '${review.memNo}')">삭제</a></li>
 					                                    <li><a href="">신고</a></li>
 					                                </ul>
 					                            </div>

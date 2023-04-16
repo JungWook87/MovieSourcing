@@ -41,7 +41,7 @@ public class ActorMovieListServlet extends HttpServlet{
 			
 			req.setAttribute("map", map);
 			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/actorMovie.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/movie/actorMovieList.jsp");
 			
 			dispatcher.forward(req,resp);
 				

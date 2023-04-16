@@ -79,8 +79,6 @@ const movieScore = document.getElementById("scoreComment");
 
 
 
-
-
 document.getElementById("toggle1").addEventListener("click", function(){
         document.getElementById("submit1").click()
 });
@@ -244,22 +242,115 @@ if(!movieReview){
 } else{
 	
 	const userScore = document.getElementsByClassName("userScore");
-	const scoreLight1 = document.getElementsByClassName("scoreLight");
-	var userScoreText = userScore.innerText;
-	var scoreNumber = Number(userScoreText);
+	const scoreLight = document.getElementsByClassName("scoreLight");
 	
 	for(let i = 0; i < userScore.length; i++){
+
+	var userScoreText = userScore[i].innerText;
+	var scoreNumber = Number(userScoreText);
 		
 		if (scoreNumber >= 4.0){
-		    scoreLight1.style.backgroundColor = "springgreen";
+		    scoreLight[i].style.backgroundColor = "springgreen";
 		} else if (scoreNumber >= 3.0 && scoreNumber < 4.0) {
-		    scoreLight1.style.backgroundColor = "yellow";
+		    scoreLight[i].style.backgroundColor = "yellow";
 		} else if ( scoreNumber >= 2.0 && scoreNumber < 3.0 ) {
-		    scoreLight1.style.backgroundColor = "white";
+		    scoreLight[i].style.backgroundColor = "white";
 		} else if (scoreNumber < 2.0) {
-		    scoreLight1.style.backgroundColor = "red";
+		    scoreLight[i].style.backgroundColor = "red";
 		}
 	}
+}
+
+if(movieReview){
+	
+	const reviewDotImgWrapper = document.getElementsByClassName("reviewDotImgWrapper");
+	const reviewDotImgs = document.querySelectorAll("#reviewDotImg");
+	const popup_menus = document.querySelectorAll("#popup_menu");
+	
+	if(reviewDotImgWrapper.length == 1){
+		reviewDotImgs[0].addEventListener("click", function(){
+			
+			if(popup_menus[0].style.display == "none"){
+				popup_menus[0].style.display = "block";
+			}else{
+				popup_menus[0].style.display = "none";
+			}
+			
+	})
+		
+		
+		
+	} else if(reviewDotImgWrapper.length == 2){
+		reviewDotImgs[0].addEventListener("click", function(){
+			
+			if(popup_menus[0].style.display == "none"){
+				if(popup_menus[1].style.display == "block"){
+					popup_menus[1].style.display = "none";
+				}
+				popup_menus[0].style.display = "block";
+			} else{
+				popup_menus[0].style.display = "none";
+			}
+		})
+		
+		reviewDotImgs[1].addEventListener("click", function(){
+			if(popup_menus[1].style.display == "none"){
+				if(popup_menus[0].style.display == "block"){
+					popup_menus[0].style.display = "none";
+				}
+				popup_menus[1].style.display = "block";
+			} else{
+				popup_menus[1].style.display = "none";
+			}
+		})
+		
+		
+		
+	} else{
+		reviewDotImgs[0].addEventListener("click", function(){
+			if(popup_menus[0].style.display == "none"){
+				if(popup_menus[1].style.display == "block" || popup_menus[2].style.display == "block"){
+					popup_menus[1].style.display = "none";
+					popup_menus[2].style.display = "none";
+				}
+				popup_menus[0].style.display = "block";
+				
+			} else{
+				popup_menus[0].style.display = "none";
+			}
+			
+			
+		})
+		
+		reviewDotImgs[1].addEventListener("click", function(){
+
+			if(popup_menus[1].style.display == "none"){
+				if(popup_menus[0].style.display == "block" || popup_menus[2].style.display == "block"){
+					popup_menus[0].style.display = "none";
+					popup_menus[2].style.display = "none";
+				}
+				popup_menus[1].style.display = "block";
+			} else{
+				popup_menus[1].style.display = "none";
+			}
+		})
+		
+		reviewDotImgs[2].addEventListener("click", function(){
+
+			if(popup_menus[2].style.display == "none"){
+				if(popup_menus[1].style.display == "block" || popup_menus[0].style.display == "block"){
+					popup_menus[1].style.display = "none";
+					popup_menus[0].style.display = "none";
+				}
+				popup_menus[2].style.display = "block";
+			} else{
+				popup_menus[2].style.display = "none";
+			}
+		})
+		
+	}
+	
+	
 }
 
 
@@ -312,6 +403,8 @@ $("#reviewSubmit").on("click", function(){
 })
 
 
+
+
 // 별점 모달
 const drawStar = (target) => {
     document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
@@ -328,5 +421,23 @@ reviewOverlay.addEventListener("click", e => {
         }
 
 })
+
+function reviewDelete(movieNo, reviewerMemNo){
+	console.log("movieNo::::" + movieNo);
+	console.log("reviewerMemNo:::" + reviewerMemNo);
+	$.ajax({
+		url:"movieReview" ,
+		data:{
+			"movieNo":movieNo,
+			"reviewerMemNo":reviewerMemNo,
+			"mode" : "delete"
+		},
+		type :"GET",
+		dataType : "JSON"
+	})
+	
+	 window.location.reload();
+}
+
 
 

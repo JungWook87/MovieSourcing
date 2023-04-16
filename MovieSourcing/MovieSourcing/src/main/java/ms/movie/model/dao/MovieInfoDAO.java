@@ -343,7 +343,7 @@ public class MovieInfoDAO {
 	 * @param mode
 	 * @return
 	 */
-	public int movieReviewIUD(Connection conn, MovieReview movieReview, String mode) throws Exception{
+	public int movieReviewInsert(Connection conn, MovieReview movieReview, String mode) throws Exception{
 		
 		int result = 0;
 		
@@ -425,6 +425,30 @@ public class MovieInfoDAO {
 		}
 		
 		return movieReviewList;
+	}
+
+	public int movieReviewUD(Connection conn, int movieNo, int reviewermemNo, String mode) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			if(mode.equals("delete")) {
+				String sql = prop.getProperty("movieReviewDelete");
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, movieNo);
+				pstmt.setInt(2, reviewermemNo);
+				
+				result = pstmt.executeUpdate();
+			}
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result;
 	}
 
 

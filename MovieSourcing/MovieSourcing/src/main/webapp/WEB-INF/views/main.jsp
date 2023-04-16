@@ -28,21 +28,21 @@
             
 
                 <div>
-                    <a href="#"><img src="resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
+                    <a href="${contextPath}"><img src="resources/images/LogoMakr-9dgAJM.png" name="home-logo"></a>
                 </div>
 
                 <div>
                     <ul class="home-nav">
-                        <li><a href="#" id="homebutton">홈</a></li>
+                        <li><a href="${contextPath}" id="homebutton">홈</a></li>
                         <li><a href="#" id="janrbutton">장르 검색</a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                        <li><a href="#">추천 시뮬레이션</a></li>
+                        <li><a href="${contextPath}/boardList">커뮤니티</a></li>
+                        <li><a href="${contextPath}/simulation/simulEnter">추천 시뮬레이션</a></li>
                     </ul>
                     <ul class="home-nav2">
-                        <li><a href="#" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="${contextPath}" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
                         <li><a href="#" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                        <li><a><i class="fa-solid fa-comments"></i></a></li>
-                        <li><a><i class="fa-solid fa-trophy"></i></a></li>
+                        <li><a href="${contextPath}/boardList"><i class="fa-solid fa-comments"></i></a></li>
+                        <li><a href="${contextPath}/simulation/simulEnter"><i class="fa-solid fa-trophy"></i></a></li>
                     </ul>
                 </div>
 
@@ -53,16 +53,24 @@
                     <input type="text" class="search-txt" placeholder="영화제목,감독,배우" >
                     <a href="#" class="search-btn"><i class="fa-solid fa-magnifying-glass" ></i></a>
                     </div>
-
-                    <div><a href="#"><i class="fa-solid fa-heart"></i></a></div>
-                    <div><a href="#"><i class="fa-solid fa-user"></i></a></div>
-
+					
+					<c:choose>
+						<c:when test="${ loginMember.memberId== null }">
+		                    <div><a href="member/login"><i class="fa-solid fa-heart"></i></a></div>
+		                    <div><a href="member/login"><i class="fa-solid fa-user"></i></a></div>
+						</c:when>
+						
+						<c:otherwise>
+							<div><a href="member/MyPageEnter" ><i class="fa-solid fa-heart"></i></a></div>
+							<div> <a href="member/MyPageEnter" ><i class="fa-solid fa-user"></i></a></div>
+						</c:otherwise>
+					</c:choose>
                 </div>
 
           
         </header>
 
-        <section class="main">s
+        <section class="main">
 
             <!-- 영화 정보 -->
             <div class="movie">
@@ -72,7 +80,7 @@
                     </span>
                     <ul class="charts">
                   	<c:forEach var="v" items="${result.netflixList}" varStatus="vs">
-                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}"></a></li>
+                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}" alt="${v.movieTitle}"></a></li>
                     </c:forEach>
                     </ul>
                 </div>
@@ -83,7 +91,7 @@
                     </span>
                     <ul class="charts">
                     <c:forEach var="v" items="${result.watchaList}" varStatus="vs">
-                        <i class="fa-solid fa-${vs.count}"></i><li>><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                        <i class="fa-solid fa-${vs.count}"></i><li>><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
                     </c:forEach>
                     </ul>
                 </div>
@@ -94,7 +102,7 @@
                     </span>
                     <ul class="charts">
                     <c:forEach var="v" items="${result.disneyPlusList}" varStatus="vs">
-                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                        <i class="fa-solid fa-${vs.count}"></i><li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
                     </c:forEach>
                     </ul>
                 </div>
@@ -108,7 +116,7 @@
                 <div class="slide_wrapper">
                     <ul class="slides">
                     <c:forEach var="v" items="${result.recommandList}" varStatus="vs">
-                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
                     </c:forEach>
                     </ul>
                 </div>
@@ -129,7 +137,7 @@
                     
                     <ul class="slides2">
                     <c:forEach var="v" items="${result.newList}" varStatus="vs">
-                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
+                        <li><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}"  alt="${v.movieTitle}"></a></li>
                     </c:forEach>
                     </ul>
                 </div>
@@ -188,13 +196,13 @@
                     <h4 style="color: white ; ">누누님의 인생영화</h4>
                     <div class="f-mlist1">
                    	<c:forEach var="v" items="${result.lifeList1}" varStatus="vs">
-                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
+                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
                     </c:forEach>
                     </div>
                     <h4 style="color: white;">나나님의 인생영화</h4>
                     <div class="f-mlist2">
                     <c:forEach var="v" items="${result.lifeList2}" varStatus="vs">
-                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
+                        <div><a href="${contextPath}/movieInfo?movieNo=${v.movieNo}"><img src="${contextPath}${v.moviePoster}" alt="${v.movieTitle}" width="130px"></a></div>
                     </c:forEach>
                     </div>
                     </div>
@@ -206,7 +214,7 @@
                 <div class="side-1">
             
                     <div class="game">
-                        <a href="#"><img src="resources/images/추천영화테스트.png" width="200px"></a>
+                        <a href="${contextPath}/simulation/simulEnter"><img src="resources/images/추천영화테스트.png" width="200px"></a>
                     </div>
                     <div><a class="btn" name="top"><i class="fa-solid fa-up-long"></i>top</a></div>
                 </div>

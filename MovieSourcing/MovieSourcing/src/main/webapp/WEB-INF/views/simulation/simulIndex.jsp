@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +30,10 @@
 
             <div>
                 <ul class="home-nav">
-                       <li><a href="/MovieSourcing/main">홈</a></li>
+                    <li><a href="${contextPath}">홈</a></li>
                     <li><a href="#">장르 검색</a></li>
-                    <li><a href="#">커뮤니티</a></li>
-                    <li><a href="#">추천 시뮬레이션</a></li>
+                    <li><a href="${contextPath}/boardList">커뮤니티</a></li>
+                    <li><a href="${contextPath}/simulation/simulEnter">추천 시뮬레이션</a></li>
                 </ul>
             </div>
 

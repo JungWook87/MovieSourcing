@@ -19,7 +19,7 @@
         <div>
             <ul class="home-nav">
                 <li><a href="${contextPath}" id="homebutton"><i class="fa-solid fa-house"></i></a></li>
-                <li><a href="#" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <li><a href="${contextPath}/msList" id="janrbutton"><i class="fa-solid fa-magnifying-glass"></i></a></li>
                 <li><a href="${contextPath}/boardList"><i class="fa-solid fa-comments"></i></a></li>
                 <li><a href="${contextPath}/simulation/simulEnter"><i class="fa-solid fa-trophy"></i></a></li>
             </ul>

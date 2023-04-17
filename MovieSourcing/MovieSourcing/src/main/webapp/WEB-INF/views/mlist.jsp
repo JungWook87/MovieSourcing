@@ -124,7 +124,7 @@
                 <div class="side-1">
     
                     <div class="game">
-                        <a href="#"><img src="${contextPath}/resources/images/추천영화테스트.png" width="200px"></a>
+                        <a href="${contextPath}/simulation/simulEnter"><img src="${contextPath}/resources/images/추천영화테스트.png" width="200px"></a>
                     </div>
                     <div><a class="elw" name="top"><i class="fa-solid fa-up-long"></i>top</a></div>
                 </div>

@@ -60,7 +60,7 @@ public class SendIdEmailServlet extends HttpServlet{
 		//  2) 앱 비밀번호 생성(메일, 서버컴퓨터 OS) -> 저장해두기 ( queapyfpwuqdpisq )
 
 		final String smtpEmail = "jinijnleelee@gmail.com"; // 이메일
-		final String password = "fdlqbmmoerdgpgcl"; // 발급 받은 비밀번호
+		final String password = "wgrsjahaoyibkoiy"; // 발급 받은 비밀번호
 
 		// 메일 옵션 설정
 

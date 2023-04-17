@@ -42,7 +42,7 @@ public class SendEmailServlet extends HttpServlet{
 		
 		
 		final String smtpEmail = "jinijnleelee@gmail.com"; // 이메일
-		final String password = "zddzcymdarodzbxt"; // 발급 받은 비밀번호
+		final String password = "wgrsjahaoyibkoiy"; // 발급 받은 비밀번호
 
 
 		// 메일 옵션 설정
